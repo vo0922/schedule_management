@@ -27,9 +27,16 @@ const memberSchema = new Schema({
     profile:
         {
             type: String,
+        },
+    snsId:
+        {
+            type: String,
+        },
+    provider:
+        {
+            type: String,
         }
 }, {versionKey: false})
-
 
 
 module.exports = mongoose.model('member', memberSchema);

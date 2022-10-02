@@ -1,3 +1,4 @@
+/*
 $.ajax({
     type: 'post',
     url : '/login/register',
@@ -13,4 +14,4 @@ $.ajax({
     error: function (err) {
         console.log(err);
     }
-})
+})*/
