@@ -1,0 +1,40 @@
+@import url(common.css);
+
+body {
+  background-color: rgb(228, 228, 228);
+}
+.login_section {
+  width: 25rem;
+  height: 30rem;
+  background-color: var(--body-color);
+  /* border: 5px solid paleturquoise; */
+  margin: 0 auto;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.login_image {
+  height: 65%;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  justify-content: space-around;
+  align-items: center
+}
+.naver {
+  width: calc(750px / 4);
+  height: calc(200px / 4);
+  background-image: url(../images/naver_login_btn.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+.kakao {
+  width: calc(366px / 1.95);
+  height: calc(90px / 1.95);
+  background-image: url(../images/kakao_login_btn.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
