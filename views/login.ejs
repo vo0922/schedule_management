@@ -1,14 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!--================= CSS =================-->
+    <link rel='stylesheet' href='/stylesheets/login.css' />
+     <!--=============== JQUERY ===============-->
     <script src="/jquery-3.6.1.min.js"></script>
+    <!--================= JS ==================-->
     <script src="/javascripts/login.js"></script>
 </head>
 <body>
-<h1>로그인 페이지</h1>
-<button onclick="location.href = '/login/naver'">네이버</button>
-<button onclick="location.href = '/login/kakao'">카카오</button>
+<h1 class="hidden">로그인 페이지</h1>
+<div class="login_section">
+    <div class="login_image">
+        <p>ㅎ2? 어서와</p>
+    </div>
+    <div class="login">
+        <div class="naver">
+            <a href = '/login/naver'></a>
+        </div>
+        <div class="kakao">
+            <a href = '/login/kakao'></a>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>
