@@ -4,8 +4,8 @@ body {
   background-color: rgb(228, 228, 228);
 }
 .login_section {
-  width: 25rem;
-  height: 30rem;
+  width: 35rem;
+  height: 45rem;
   background-color: var(--body-color);
   /* border: 5px solid paleturquoise; */
   margin: 0 auto;

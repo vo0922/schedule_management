@@ -25,13 +25,7 @@ module.exports = {
     },
     updated: async (schedules, memberId, res) => {
         try {
-            let leftScheduleData = await schedules.findOne({_id: schedules._id});
-            let tagsId = [];
-            schedules.tags.map(async (data) => {
-                const tagData = await tagController.editCreated(data, memberId, leftScheduleData._id);
-                tagsId.push(tagData._id);
-            })
-            await leftScheduleData.update({$set: tagsId});
+            let leftScheduleData = await schedule.findOne({_id: schedules._id});
             return leftScheduleData;
         } catch (e) {
             res.status(401).json({message: e});
