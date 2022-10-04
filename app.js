@@ -19,6 +19,7 @@ passportConfig();
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
+const scheduleRouter = require('./routes/schedule');
 
 const app = express();
 
@@ -52,6 +53,8 @@ app.use(passport.session()); // req.session 객체에 passport정보를 추가 �
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
+
+app.use('/schedule', scheduleRouter);
 
 /**
  * 담당자 : 박신욱
