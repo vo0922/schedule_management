@@ -15,9 +15,6 @@ const session = require("express-session");
 
 passportConfig();
 
-// middleware
-const authUtil = require('./middleware/auth').checkUser;
-
 // router
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
