@@ -9,7 +9,12 @@ module.exports = {
             title: schedules.title,
             content: schedules.content,
             priority: schedules.priority,
-            address: schedules.address,
+            map: {
+                title: '',
+                address: '',
+                x: '',
+                y: ''
+            },
             memberId: memberId,
             tagId: [],
         });

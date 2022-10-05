@@ -33,10 +33,20 @@ const scheduleSchema = new Schema({
             type: Number,
             default: 0,
         },
-    address:
+    map:
         {
-            type: String,
-            default: ''
+            title:{
+                type:String
+            },
+            address:{
+                type:String
+            },
+            x:{
+                type:String
+            },
+            y:{
+                type:String
+            }
         },
     memberId:
         {
