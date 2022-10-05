@@ -4,8 +4,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', authUtil, function(req, res, next) {
-  console.log(req.user)
-  res.render('index', { member: req.user});
+  res.render('index', { member: req.user, url:'home' });
 });
 
 /* GET home page. */

@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const authUtil = require("./middleware/auth").checkUser;
 
 // .env
 require('dotenv').config();
@@ -20,6 +21,7 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const scheduleRouter = require('./routes/schedule');
+const calendarRouter = require('./routes/calender');
 
 const app = express();
 
@@ -54,7 +56,8 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 
-app.use('/schedule', scheduleRouter);
+app.use('/schedule', authUtil, scheduleRouter);
+app.use('/calendar', authUtil, calendarRouter);
 
 /**
  * 담당자 : 박신욱

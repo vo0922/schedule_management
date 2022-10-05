@@ -4,20 +4,20 @@
         <a href="/index" class="nav__logo">
             <i class="fa-sharp fa-solid fa-calendar"></i>C&B
         </a>
-
+        <input id="stateUrl" type="hidden" value="<%= url %>">
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="/일정생성" class="nav__link">일정 생성</a>
+                    <a class="nav__link">일정 생성</a>
                 </li>
                 <li class="nav__item">
-                    <a href="/대쉬보드" class="nav__link active-link">대쉬보드</a>
+                    <a href="/" class="nav__link home">대쉬보드</a>
                 </li>
                 <li class="nav__item">
-                    <a href="/캘린더" class="nav__link">캘린더</a>
+                    <a href="/calendar" class="nav__link calendar">캘린더</a>
                 </li>
                 <li class="nav__item">
-                    <a href="/태그통계" class="nav__link">태그 통계</a>
+                    <a href="/statistics" class="nav__link statistics">태그 통계</a>
                 </li>
             </ul>
         </div>
@@ -95,6 +95,22 @@
         } else {
             header.classList.remove('scroll-header')
         }
+    }
+    let stateUrl = document.querySelector('#stateUrl').value;
+
+    switch (stateUrl) {
+        case 'home':
+            document.querySelector('.home').classList.add('active-link');
+            break;
+        case 'calendar':
+            document.querySelector('.calendar').classList.add('active-link');
+            break;
+        case 'statistics':
+            document.querySelector('.statistics').classList.add('active-link');
+            break;
+        default:
+            document.querySelector('.home').classList.add('active-link');
+            break;
     }
 
     window.addEventListener('scroll', scrollHeader)
