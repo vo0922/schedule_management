@@ -38,3 +38,8 @@ body {
   background-repeat: no-repeat;
   
 }
+
+.naver:hover, .kakao:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

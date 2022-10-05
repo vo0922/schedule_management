@@ -1,1 +1,6 @@
+@import url(layout/header.css);
 @import url(common.css);
+
+body {
+  height: 100vh;
+}

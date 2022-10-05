@@ -1,0 +1,113 @@
+<!--==================== HEADER ====================-->
+<header class="header" id="header">
+  <nav class="nav container">
+      <a href="/index" class="nav__logo">
+        <i class="fa-sharp fa-solid fa-calendar"></i>C&B
+      </a>
+
+      <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+              <li class="nav__item">
+                  <a href="/일정생성" class="nav__link">일정 생성</a>
+              </li>
+              <li class="nav__item">
+                  <a href="/대쉬보드" class="nav__link active-link">대쉬보드</a>
+              </li>
+              <li class="nav__item">
+                  <a href="/캘린더" class="nav__link">캘린더</a>
+              </li>
+              <li class="nav__item">
+                  <a href="/태그통계" class="nav__link">태그 통계</a>
+              </li>
+          </ul>
+      </div>
+
+      <div class="nav__menu-login" id="nav-menu-login">
+        <ul class="nav__list nav__menu-login__ul">
+          <div class="dropdown">
+            <div onclick="dp_menu()">
+              <li class="nav__item nav__menu-login__li">
+                <i class="fa-solid fa-circle-user user_icon"></i>
+                <a href="" class="nav__link nav__menu-login__a">이승현</a>
+                <i class="fa-solid fa-caret-down"></i>
+              </li>
+            </div>
+            
+          </div>
+            <!-- 상단 메뉴 사용자 지정 색깔 바꾸기 -->
+            <li class="nav__item nav__menu-login__li">
+              <a href="/" class="nav__link nav__menu-login__a">
+                <i class="fa-solid fa-palette"></i>
+              </a>
+            </li>
+        </ul>
+    </div>
+  </nav>
+</header>
+<div class="user" style="display: none;" id="drop-content">
+  <!-- 유저 정보 -->
+    <div class="user_info_header">
+      <p>User Profile</p>
+    </div>
+  <div class="user_info">
+      <img class="user_img" src="images/kakao_login_btn.png" alt="">
+      <div class="user_info_text">
+        <p>이름(별명) : 쑹쨩</p>
+        <p>이메일 : ssoong12@naver.com </p>
+      </div>
+  </div>
+  <!-- 로그인 API 정보 -->
+  <div class="user_info">
+    <div class="login_icon">
+      <img src="images/naver_icon.png" alt="네이버 아이콘">
+    </div>
+    <p>네이버로 로그인하셨어요</p>
+  </div>
+  <!-- 로그아웃 -->
+  <div class="user_info">
+    <i class="fa-sharp fa-solid fa-arrow-right-from-bracket fa-xl"></i>
+    <p>로그아웃</p>
+  </div>
+</div>
+<script>
+  function dp_menu() {
+    let click = document.getElementById("drop-content")
+    if(click.style.display === "none") {
+      click.style.display = "block"
+    }else {
+      click.style.display = "none"
+    }
+  }
+/*=============== 반응형. SHOW MENU ===============*/
+const navMenu = document.getElementById('nav-menu'),
+  navToggle = document.getElementById('nav-toggle'),
+  navClose = document.getElementById('nav-close')
+
+/*===== MENU SHOW. 메뉴 보이기 =====*/
+if(navToggle){
+  navToggle.addEventListener('click', () =>{
+      navMenu.classList.add('show-menu')
+  })
+}
+
+/*===== MENU HIDDEN. 메뉴 닫기 =====*/
+if(navClose){
+  navClose.addEventListener('click', () =>{
+      navMenu.classList.remove('show-menu')
+  })
+}
+
+
+/*=============== CHANGE BACKGROUND HEADER. header 배경 변경 ===============*/
+function scrollHeader(){
+  const header = document.getElementById('header')
+  // 스크롤 높이가 80 veiwport 보다 크면 header 태그에 scroll-header class 를 추가한다.
+  if(this.scrollY >= 80) {
+    header.classList.add('scroll-header') 
+  } 
+  else {
+    header.classList.remove('scroll-header')
+  }
+}
+window.addEventListener('scroll', scrollHeader)
+</script>
