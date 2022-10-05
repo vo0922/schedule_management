@@ -27,7 +27,7 @@
                 <div class="dropdown">
                     <div onclick="dp_menu()">
                         <li class="nav__item nav__menu-login__li">
-                            <img class="user_img" style="width:20px; border-radius: 20px;" src="<%= member.profile %>" alt="">
+                            <img class="user_img" src="<%= member.profile %>" alt="user 프로필 사진">
                             <a class="nav__link nav__menu-login__a"><%= member.name %></a>
                             <i class="fa-solid fa-caret-down"></i>
                         </li>
@@ -44,12 +44,12 @@
     </nav>
 </header>
 <div class="user" style="display: none;" id="drop-content">
-    <!-- 유저 정보 -->
+  <!-- 유저 정보 -->
     <div class="user_info_header">
-        <p>User Profile</p>
+      <p>User Profile</p>
     </div>
     <div class="user_info">
-        <img class="user_img" src="<%= member.profile %>" alt="">
+        <img class="user_img_deep" src="<%= member.profile %>" alt="user 프로필 사진">
         <div class="user_info_text">
             <p>이름(별명) : <%= member.name %></p>
             <p>이메일 : <%= member.email %> </p>
