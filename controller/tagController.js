@@ -1,7 +1,7 @@
 const tag = require('../models/tag')
 
 module.exports = {
-    created: async (name, memberId, scheduleId, res) => {
+    created: async (name, memberId, scheduleId) => {
         let tagData = {
             name: name,
             memberId: memberId,
@@ -26,10 +26,32 @@ module.exports = {
                 return updateTag;
             }
         } catch (e) {
-            res.status(401).json({message: e});
+            throw new Error(e);
         }
     },
-    editCreated: async (name, memberId, scheduleId, res) => {
-    
+    editCreated: async (scheduleId) => {
+        try {
+            await tag.updateMany({scheduleId: {$in: scheduleId}}, {
+                $pullAll: {scheduleId: [scheduleId]}
+            });
+        } catch (e) {
+            throw new Error(e);
+        }
+    },
+    updated: async (name, tagId) => {
+      try {
+          return await tag.updateOne({_id: tagId}, {
+              name: name
+          })
+      } catch (e) {
+          throw new Error(e);
+      }
+    },
+    deleted: async (tagId) => {
+        try {
+            return await tag.deleteOne({_id: tagId});
+        } catch (e) {
+            throw new Error(e);
+        }
     }
 }
