@@ -27,12 +27,11 @@
                 <div class="dropdown">
                     <div onclick="dp_menu()">
                         <li class="nav__item nav__menu-login__li">
-                            <i class="fa-solid fa-circle-user user_icon"></i>
+                            <img class="user_img" style="width:20px; border-radius: 20px;" src="<%= member.profile %>" alt="">
                             <a class="nav__link nav__menu-login__a"><%= member.name %></a>
                             <i class="fa-solid fa-caret-down"></i>
                         </li>
                     </div>
-
                 </div>
                 <!-- 상단 메뉴 사용자 지정 색깔 바꾸기 -->
                 <li class="nav__item nav__menu-login__li">
@@ -65,7 +64,11 @@
                 <img src="images/kakao_icon.png" alt="네이버 아이콘">
             <% } %>
         </div>
-        <p>네이버로 로그인하셨어요</p>
+        <% if(member.provider == 'naver') { %>
+            <p>네이버로 로그인하셨어요</p>
+        <% } else { %>
+            <p>카카오로 로그인하셨어요</p>
+        <% } %>
     </div>
     <!-- 로그아웃 -->
     <div class="user_info" onclick="location.href='/logout'">

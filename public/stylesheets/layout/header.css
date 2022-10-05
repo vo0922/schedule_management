@@ -76,6 +76,7 @@
   position: absolute;
   right: 1rem;
   margin-top: .2rem;
+  z-index: 10;
 }
 .user_info_header p {
   text-align: center;
