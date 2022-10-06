@@ -1,6 +1,7 @@
-<%- include('../schedule/scheduleModal.ejs')%>
+<%- include('../schedule/scheduleModal.ejs') %>
 <!--==================== HEADER ====================-->
 <header class="header" id="header" style='background-color: <%= member.headerColor %>'>
+    <input id="leftColor" type="hidden" value=<%= member.headerColor %>>
     <nav class="nav container">
         <a href="/" class="nav__logo">
             <i class="fa-sharp fa-solid fa-calendar"></i>C&B
@@ -45,9 +46,9 @@
     </nav>
 </header>
 <div class="user" style="display: none;" id="drop-user-content">
-  <!-- 유저 정보 -->
+    <!-- 유저 정보 -->
     <div class="user_info_header">
-      <p>User Profile</p>
+        <p>User Profile</p>
     </div>
     <div class="user_info">
         <img class="user_img_deep" src="<%= member.profile %>" alt="user 프로필 사진">
@@ -81,10 +82,10 @@
 <div class="color_change" style="display: none;" id="drop-color-content">
     <div class="body_box">
         <div id="box" class="box">
-          <div id="colorList">
-            
-          </div>
+            <div id="colorList">
+
+            </div>
         </div>
-      </div>
+    </div>
 </div>
 <script src="javascripts/layout/header.js"></script>
