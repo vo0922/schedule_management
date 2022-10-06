@@ -46,13 +46,16 @@ function init(){
 
 // onclick event
 function colorSet(colorPick){
-    document.querySelector("#header").style.background = colorPick.id;  //배경색을 선택한 색상박스의 id 값으로 지정해주기
-    const url = `/colorUpdate?color=#ffffff`
+    const url = `/colorUpdate`
     $.ajax({
-      type: 'get',
+      type: 'post',
       url : url,
+      data: {
+        color: colorPick.id
+      },
       success: function (res){
-          console.log(res);
+        document.querySelector("#header").style.background = res.data;  //배경색을 선택한 색상박스의 id 값으로 지정해주기
+
       },
       error: function (err) {
           console.log(err);

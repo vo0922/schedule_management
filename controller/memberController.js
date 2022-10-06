@@ -8,7 +8,7 @@ module.exports = {
       }, {
         $set:{headerColor:color}  // update를 쓸때는 set을 써준다?
       })
-      return updateMember
+      return color
     }catch(e){
       throw new Error(e)
     }

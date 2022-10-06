@@ -9,11 +9,10 @@ router.get('/', authUtil, function(req, res, next) {
 });
 
 // 헤더 색상 변경 API
-router.get('/colorUpdate', function(req, res) {
-  console.log(req.param("color"))
+router.post('/colorUpdate', async function(req, res) {
   try{
-    const updateMember = memberController.colorUpdate(req.params.color, req.user._id)
-    res.status(201).json({data:updateMember, message: "색상 변경 성공"})
+    const color = await memberController.colorUpdate(req.body.color, req.user._id)
+    res.status(201).json({data:color, message: "색상 변경 성공"})
   }catch(e){
     res.status(401).json({message: "색상 변경 실패"})
   }
