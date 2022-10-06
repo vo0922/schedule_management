@@ -184,3 +184,33 @@
   /* background-color: var(--first-color); */
   background-color: var(--first-color);
 }
+/*=============== 팔레트, User가 커스텀한 헤더 ===============*/
+.body-box{
+  display: flex;
+  justify-content: center;
+}
+/* 색상 박스들을 배치할 박스 */
+.box{ 
+  width: 145px;
+  height: 193px;
+  background-color: white;
+  box-shadow: 0 0 5px black;
+  border-radius: 0.5rem;
+  position: fixed;
+  right: 0.2rem;
+  top: 3.85rem;
+}
+/* 색상 박스가 선택되었을 때 속성 */
+.selected{
+  box-shadow: 0 0 5px black;
+}
+/* 색상 박스 */
+.colorBox{
+  width: 2rem;
+  height: 2rem;
+  float: left;
+  margin: .5rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
