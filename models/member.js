@@ -39,7 +39,7 @@ const memberSchema = new Schema({
     headerColor:
         {
             type:String,
-            default:'--header-color'
+            default:'#ffffff'
         }
 }, {versionKey: false})
 
