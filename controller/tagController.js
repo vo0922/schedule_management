@@ -53,5 +53,12 @@ module.exports = {
         } catch (e) {
             throw new Error(e);
         }
+    },
+    selectChange: async (text) => {
+        try {
+            return await tag.find({name: {$regex: text}});
+        } catch (e) {
+            throw new Error(e);
+        }
     }
 }

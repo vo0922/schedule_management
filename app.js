@@ -22,6 +22,7 @@ const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const scheduleRouter = require('./routes/schedule');
 const calendarRouter = require('./routes/calendar');
+const tagRouter = require('./routes/tag');
 
 const app = express();
 
@@ -58,6 +59,7 @@ app.use('/logout', logoutRouter);
 
 app.use('/schedule', authUtil, scheduleRouter);
 app.use('/calendar', authUtil, calendarRouter);
+app.use('/tag', authUtil, tagRouter);
 
 /**
  * 담당자 : 박신욱
