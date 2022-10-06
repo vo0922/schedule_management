@@ -28,7 +28,7 @@ window.onload = function(){
 }
 
 function init(){
-    let colorChip = ["#f89b00", "#f7e600", "#7dbad5",
+    let colorChip = ["#ffffff", "#f7e600", "#7dbad5",
                     "#e091a9", "#86e6c2", "#81c147",
                     "#9941ec", "#ff93f1", "#fd3b85",
                     "#ffd54a", "#6eff4a", "#5ab9c5"]; //색상코드
@@ -47,7 +47,17 @@ function init(){
 // onclick event
 function colorSet(colorPick){
     document.querySelector("#header").style.background = colorPick.id;  //배경색을 선택한 색상박스의 id 값으로 지정해주기
-
+    const url = `/colorUpdate?color=#ffffff`
+    $.ajax({
+      type: 'get',
+      url : url,
+      success: function (res){
+          console.log(res);
+      },
+      error: function (err) {
+          console.log(err);
+      }
+  })
     if(selectedColor != null){
         document.getElementById(selectedColor).className = document.getElementById(selectedColor).className.replace(" selected", "");
     }
