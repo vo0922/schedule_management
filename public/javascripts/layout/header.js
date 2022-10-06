@@ -21,24 +21,24 @@ function dp_headerColor() {
     }
 }
 
-var selectedColor; //선택한 컬러값 저장할 변수
+let selectedColor; //선택한 컬러값 저장할 변수
 
 window.onload = function(){
     init();
 }
 
 function init(){
-    var colorChip = ["#f89b00", "#f7e600", "#7dbad5",
+    let colorChip = ["#f89b00", "#f7e600", "#7dbad5",
                     "#e091a9", "#86e6c2", "#81c147",
                     "#9941ec", "#ff93f1", "#fd3b85",
                     "#ffd54a", "#6eff4a", "#5ab9c5"]; //색상코드
-    var tag = "";
+    let tag = "";
     for(i=0; i<colorChip.length; i++){  //colorBox 의 id명을 색상명으로 지정해주기.
         tag += "<div id="+colorChip[i]+" class='colorBox' onclick='colorSet(this)'></div>";
     }
     document.getElementById("colorList").innerHTML = tag;
 
-    var colorBoxList = document.getElementsByClassName("colorBox");
+    let colorBoxList = document.getElementsByClassName("colorBox");
     for(i=0; i<colorBoxList.length; i++){
         colorBoxList[i].style.background = colorBoxList[i].id;  //id인 색상명을 colorBox의 배경색으로 지정해주기
     }
