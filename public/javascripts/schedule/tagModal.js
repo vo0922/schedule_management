@@ -1,26 +1,24 @@
 let modal = document.getElementById('scheduleModal');
 
-function tagSelected(e) {
+function tagKeyUp(e) {
     let tagHash = e.value.split('#');
-
     if (window.event.keyCode == 13) {
         let tagList = document.getElementById('tagList').value;
-        if (!tagList) {
+        if (!tagList)
             return
-        }
-        if (!tagHash[0]) {
+        if (!tagHash[0])
             return addTagList(tagHash[1])
-        }
         addTagList(tagList);
-    } else {
-        if (!e.value) {
-            return modal.style.display = "none";
-        }
-        if (!tagHash[0]) {
-            return select(tagHash[1])
-        }
-        select(e.value)
     }
+}
+
+function tagInput(e) {
+    let tagHash = e.value.split('#');
+    if (!e.value)
+        return modal.style.display = "none";
+    if (!tagHash[0])
+        return select(tagHash[1]);
+    select(e.value)
 }
 
 function select(text) {
