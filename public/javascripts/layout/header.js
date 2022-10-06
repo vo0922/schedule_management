@@ -33,13 +33,13 @@ function init(){
                     "#9941ec", "#ff93f1", "#fd3b85",
                     "#ffd54a", "#6eff4a", "#5ab9c5"]; //색상코드
     let tag = "";
-    for(i=0; i<colorChip.length; i++){  //colorBox 의 id명을 색상명으로 지정해주기.
+    for(let i=0; i<colorChip.length; i++){  //colorBox 의 id명을 색상명으로 지정해주기.
         tag += "<div id="+colorChip[i]+" class='colorBox' onclick='colorSet(this)'></div>";
     }
     document.getElementById("colorList").innerHTML = tag;
 
     let colorBoxList = document.getElementsByClassName("colorBox");
-    for(i=0; i<colorBoxList.length; i++){
+    for(let i=0; i<colorBoxList.length; i++){
         colorBoxList[i].style.background = colorBoxList[i].id;  //id인 색상명을 colorBox의 배경색으로 지정해주기
     }
 }
