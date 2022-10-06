@@ -12,9 +12,9 @@ router.post('/change', async function(req, res) {
     try{
         const data = await tagController.selectChange(req.body.text);
         if(data.length)
-            res.status(201).json({data: data});
+            res.json({data: data});
         else
-            res.status(202).json({data: false});
+            res.json({data: false});
     }catch(err){
         res.status(401).json({message: "태그 찾기 실패"});
     }

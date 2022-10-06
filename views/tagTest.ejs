@@ -16,6 +16,6 @@
 <body>
 <!--=============== HEADER ===============-->
 <%- include('schedule/tagModal.ejs'); %>
-<input type="text" id="tagList" onkeyup="tagSelected(this)">
+<input type="text" id="tagList" onkeyup="tagKeyUp(this)" oninput="tagInput(this)">
 </body>
 </html>
