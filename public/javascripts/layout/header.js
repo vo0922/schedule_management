@@ -28,8 +28,8 @@ window.onload = function(){
 }
 
 function init(){
-    var colorChip = ["#f89b00", "#f7e600", "#7dbad5", 
-                    "#e091a9", "#86e6c2", "#81c147", 
+    var colorChip = ["#f89b00", "#f7e600", "#7dbad5",
+                    "#e091a9", "#86e6c2", "#81c147",
                     "#9941ec", "#ff93f1", "#fd3b85",
                     "#ffd54a", "#6eff4a", "#5ab9c5"]; //색상코드
     var tag = "";
@@ -48,20 +48,13 @@ function init(){
 function colorSet(colorPick){
     document.querySelector("#header").style.background = colorPick.id;  //배경색을 선택한 색상박스의 id 값으로 지정해주기
 
-    if(selectedColor != null){  
+    if(selectedColor != null){
         document.getElementById(selectedColor).className = document.getElementById(selectedColor).className.replace(" selected", "");
     }
     document.getElementById(colorPick.id).className += " selected";
     selectedColor = colorPick.id;
 }
-function dp_menu() {
-    let click = document.getElementById("drop-content")
-    if (click.style.display === "none") {
-        click.style.display = "block"
-    } else {
-        click.style.display = "none"
-    }
-}
+
 
 /*=============== CHANGE BACKGROUND HEADER. header 배경 변경 ===============*/
 function scrollHeader() {
@@ -73,6 +66,7 @@ function scrollHeader() {
         header.classList.remove('scroll-header')
     }
 }
+
 let stateUrl = document.querySelector('#stateUrl').value;
 
 switch (stateUrl) {

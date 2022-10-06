@@ -21,7 +21,7 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const scheduleRouter = require('./routes/schedule');
-const calendarRouter = require('./routes/calender');
+const calendarRouter = require('./routes/calendar');
 
 const app = express();
 
