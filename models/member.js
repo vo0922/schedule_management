@@ -35,6 +35,11 @@ const memberSchema = new Schema({
     provider:
         {
             type: String,
+        },
+    headerColor:
+        {
+            type:String,
+            default:'--header-color'
         }
 }, {versionKey: false})
 
