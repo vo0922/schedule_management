@@ -40,7 +40,7 @@ function select(text) {
             }
 
             res.data.map((data) => {
-                tagDiv += `<p onclick="addTagList(this.innerText)">${data.name}</p>`
+                tagDiv += `<p class="tagList_sub" onclick="addTagList(this.innerText)">${data.name}</p>`
             })
             tagList.innerHTML = tagDiv
         },

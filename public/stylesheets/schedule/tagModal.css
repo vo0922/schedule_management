@@ -1,20 +1,76 @@
 .tagModal {
     display: none;
-    position: absolute;
     z-index: 11;
-    left: 0;
-    bottom: 10px;
-    width: 30%;
-    min-height: 100px;
-    overflow: auto;
 }
 .tagModal-content{
-    background-color: #fefefe;
-    margin: 7% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #a8a8a8;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 1200px;
-    height:100%;
+    position: absolute;
+    width: 271px;
+    max-height: 346px;
+    overflow: auto;
+    bottom: 75px;
+    background-color: white;
+    border: solid 0.5px #a8a8a8;
+    padding: 12px;
+    box-sizing: border-box;
+    z-index: 9999;
+}
+.tag_write {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#tagInput {
+    width: 50%;
+}
+#tagList {
+    display: flex;
+    flex-wrap: wrap;
+}
+.tagList {
+    width: 64px;
+    margin: 0.25rem;
+    font-size: 1.1rem;
+    background-color: #dadbe9bd;
+    padding: 0.275rem;
+    border-radius: 10px;
+}
+.tagList i {
+    margin-left: 0.2rem;
+}
+.tag_wrap {
+    display: flex;
+    flex-direction: column;
+}
+#tagModalList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.tagList_sub {
+    font-size: 0.9rem;
+    background-color: #dadbe9bd;
+    width: 64px;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0.5rem;
+    padding: 0.25rem;
+}
+.tagContent {
+    height: auto;
+    margin-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    /* overflow: auto; */
+}
+.tagModal-content_show {
+    position: absolute;
+    width: 271px;
+    max-height: 346px;
+    overflow: auto;
+    bottom: 38px;
+    background-color: white;
+    border: solid 0.5px #a8a8a8;
+    padding: 12px;
+    box-sizing: border-box;
+    z-index: 9999;
 }

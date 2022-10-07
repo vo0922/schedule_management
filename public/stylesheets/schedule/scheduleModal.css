@@ -16,11 +16,13 @@
     padding: 20px;
     border: 5px solid #888;
     border-radius: 20px;
-    width: 35%;
+    width: 30%;
     max-width: 1200px;
-    height:70%;
+    height: auto;
     box-sizing: content-box;
-}
+    transition: all .4s;
+
+} 
 .tagContent{
     position: relative;
 }
@@ -32,13 +34,42 @@
     float: right;
 }
 .schedule {
-    height: 10%;
+    height: 75px;
     /* border-top: 1px solid #888; */
-    border-bottom: 1px solid #888;
+    border-bottom: 1px solid #e1e5ec;
     display: flex;
     align-items: center;
     column-gap: 15px;
+    font-size: var(--h3-font-size);
 }
+input[type="text"], input[type="datetime-local"] {
+    width: 90%;
+    height: 70%;
+    font: var(--body-font);
+    color: var(--text-color);
+    border: none;
+}
+input[type="range"] {
+    width: 50%;
+    height: 70%;
+}
+.schedule:nth-child(9) {
+    border: none;
+}
+.schedule_save {
+    justify-content: center;
+    border: none;
+    margin-top: 1rem;
+}
+.schedule_save_btn {
+    width: 20%;
+    height: 70%;
+    background-color: #e1e5ec;
+    color: var(--text-color);
+    border-radius: 10px;
+    font-size: var(--h3-font-size);
+}
+
 /* checkbox 커스텀 */
 /* input[type="checkbox"]{
     display: none;
@@ -57,3 +88,28 @@ input[id="schedule_address_q"]:checked + label::after{
     left: 0;
     top:0;
 } */
+
+/* ===== 주소 옵션 checkbox가 체크 상태일 때 css ===== */
+.show_address_modal-content {
+    background-color: #fefefe;
+    margin: 7% auto; 
+    padding: 20px;
+    border: 5px solid #888;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    box-sizing: content-box;
+    transition: all .4s;
+}
+.modal_section_div {
+    display: flex;
+    justify-content: space-around;
+}
+.modal_section {
+    width: 50%;
+}
+.modal_section:last-of-type{
+    border-left: 4px solid #d3d3d570;
+    padding-left: 45px;
+}
