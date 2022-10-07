@@ -4,7 +4,7 @@ const scheduleController = require('../controller/scheduleController');
 
 router.post('/', async function(req, res) {
     try{
-        const data = await scheduleController.created(req.body ,req.body.memberId);
+        const data = await scheduleController.created(req.body ,req.user._id);
         res.status(201).json({data: data, message: "일정 등록 성공"});
     }catch(err){
         res.status(401).json({message: "일정 등록 실패"});
@@ -13,7 +13,7 @@ router.post('/', async function(req, res) {
 
 router.patch('/', async function(req, res) {
     try{
-        const data = await scheduleController.updated(req.body ,req.body.memberId);
+        const data = await scheduleController.updated(req.body ,req.user._id);
         res.status(201).json({data: data, message: "일정 편집 성공"});
     }catch(err){
         res.status(401).json({message: "일정 편집 실패"});

@@ -23,7 +23,8 @@
             <label for="schedule_content">일정 상세 내용</label>
             <textarea id="schedule_content" name="schedule_content" placeholder="일정에 대한 상새 내용을 입력해 주세요."></textarea>
         </div>
-        <div class="schedule">
+        <div class="tagContent">
+            <%- include('./tagModal.ejs') %>
             <label for="schedule_tag">#태그 입력</label>
             <div id="tagList"></div>
             <input type="text" id="tagInput" onkeyup="tagKeyUp(this)" oninput="tagInput(this)">
@@ -39,11 +40,14 @@
         <div class="schedule">
             <input type="checkbox" id="schedule_address_q" name="schedule_address_q" onclick="show_map()"/>
             <label for="schedule_address_q">주소를 추가하시겠습니까?</label>
+            <input id="addressInput" style="display: none" type="text" disabled>
+            <input id="address" style="display: none" type="hidden" disabled>
+            <input id="addressLat" style="display: none" type="hidden" disabled>
+            <input id="addressHard" style="display: none" type="hidden" disabled>
         </div>
         <div>
-            <button>저장</button>
+            <button onclick="submitSchedule()">등록</button>
         </div>
-        <%- include('./tagModal.ejs') %>
         <%- include('./kakaoMap.ejs') %>
     </div>
 </div>

@@ -87,6 +87,10 @@ function displayPlaces(places) {
             itemEl.onclick = function () {
                 var placePosition = new kakao.maps.LatLng(place.y, place.x);
                 addMarker(placePosition, index);
+                addressInput.value = place.place_name;
+                address.value = place.address_name;
+                addressLat.value = place.y;
+                addressHard.value = place.x;
             }
 
             itemEl.onmouseout = function () {

@@ -3,18 +3,14 @@ const tagController = require('./tagController');
 
 module.exports = {
     created: async (schedules, memberId) => {
+        console.log(schedules);
         const newSchedule = new schedule({
             startDate: schedules.startDate,
             endDate: schedules.endDate,
             title: schedules.title,
             content: schedules.content,
             priority: schedules.priority,
-            map: {
-                title: '',
-                address: '',
-                x: '',
-                y: ''
-            },
+            map: schedules.map,
             memberId: memberId,
             tagId: [],
         });
