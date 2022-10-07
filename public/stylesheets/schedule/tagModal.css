@@ -23,6 +23,9 @@
 #tagInput {
     width: 50%;
 }
+/* input[id="tagInput"]:focus {
+    border: none;
+} */
 #tagList {
     display: flex;
     flex-wrap: wrap;
