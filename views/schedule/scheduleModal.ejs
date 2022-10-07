@@ -1,6 +1,7 @@
 <link rel='stylesheet' href='/stylesheets/schedule/scheduleModal.css'/>
 <script defer src="/javascripts/schedule/kakaoMap.js"></script>
 <script defer src="/javascripts/schedule/scheduleModal.js"></script>
+<script defer src="/javascripts/schedule/tagModal.js"></script>
 <div id="scheduleModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="scheduleModalDone()"><i class="fa-regular fa-circle-xmark"></i></span>
@@ -24,7 +25,8 @@
         </div>
         <div class="schedule">
             <label for="schedule_tag">#태그 입력</label>
-            <textarea id="schedule_tag" name="schedule_tag" placeholder="#해시태그"></textarea>
+            <div id="tagList"></div>
+            <input type="text" id="tagInput" onkeyup="tagKeyUp(this)" oninput="tagInput(this)">
         </div>
         <div class="schedule_priority">
             <label for="schedule_end_day">우선 순위</label>
@@ -41,7 +43,7 @@
         <div>
             <button>저장</button>
         </div>
-
+        <%- include('./tagModal.ejs') %>
         <%- include('./kakaoMap.ejs') %>
     </div>
 </div>

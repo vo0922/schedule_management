@@ -1,14 +1,14 @@
-.modal {
+.tagModal {
     display: none;
     /*position: fixed;*/
-    z-index: 1;
+    z-index: 11;
     left: 0;
     top: 0;
     width: 30%;
     min-height: 100px;
     overflow: auto;
 }
-.modal-content{
+.tagModal-content{
     background-color: #fefefe;
     margin: 7% auto; /* 15% from the top and centered */
     padding: 20px;

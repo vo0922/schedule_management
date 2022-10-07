@@ -1,21 +1,22 @@
-let modal = document.getElementById('scheduleModal');
+let tagModal = document.getElementById('tagModal');
 
 function tagKeyUp(e) {
     let tagHash = e.value.split('#');
     if (window.event.keyCode == 13) {
-        let tagList = document.getElementById('tagList').value;
-        if (!tagList)
+        let tagInput = document.getElementById('tagInput').value;
+        if (!tagInput)
             return
         if (!tagHash[0])
             return addTagList(tagHash[1])
-        addTagList(tagList);
+        addTagList(tagInput);
     }
 }
 
 function tagInput(e) {
+    console.log()
     let tagHash = e.value.split('#');
     if (!e.value)
-        return modal.style.display = "none";
+        return tagModal.style.display = "none";
     if (!tagHash[0])
         return select(tagHash[1]);
     select(e.value)
@@ -33,9 +34,9 @@ function select(text) {
         success: function (res) {
             let tagDiv = '';
             if (!res.data)
-                return modal.style.display = "none";
+                return tagModal.style.display = "none";
             else {
-                modal.style.display = "block";
+                tagModal.style.display = "block";
             }
 
             res.data.map((data) => {
@@ -50,15 +51,16 @@ function select(text) {
 }
 
 function addTagList(text) {
+    let tagInput = document.getElementById('tagInput')
     let newTag = createElements(text);
     let leftTag = document.getElementsByClassName(text)[0];
     if (leftTag) {
         return alert("이미 태그가 존재합니다.");
     }
     let tagDiv = document.getElementById('tagList');
-    tagDiv.before(newTag);
-    tagDiv.value = '';
-    modal.style.display = "none";
+    tagDiv.appendChild(newTag);
+    tagInput.value = '';
+    tagModal.style.display = "none";
 }
 
 function createElements(text) {
