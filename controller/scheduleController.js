@@ -3,8 +3,7 @@ const tagController = require('./tagController');
 
 module.exports = {
     created: async (schedules, memberId) => {
-        console.log(schedules);
-        const newSchedule = new schedule({
+        let newSchedule = new schedule({
             startDate: schedules.startDate,
             endDate: schedules.endDate,
             title: schedules.title,
@@ -12,14 +11,16 @@ module.exports = {
             priority: schedules.priority,
             map: schedules.map,
             memberId: memberId,
-            tagId: [],
-        });
+            tagId:[]
+        })
         try {
-            schedules.tags.map(async (data) => {
+            await newSchedule.save()
+            let newTag = []
+            await Promise.all(schedules.tags.map(async (data) => {
                 const tagData = await tagController.created(data, memberId, newSchedule._id);
-                await newSchedule.update({$push: {tagId: tagData._id}});
-            })
-            return await newSchedule.save()
+                newTag.push(tagData._id);
+            }))
+            return await schedule.findOneAndUpdate({_id: newSchedule._id}, {$set:{tagId: newTag}});
         } catch (e) {
             throw new Error(e);
         }
@@ -41,7 +42,7 @@ module.exports = {
     deleted: async (schedules) => {
         try {
             return await schedules.deleteOne({_id: schedules});
-        }catch (e){
+        } catch (e) {
             throw new Error(e);
         }
     }

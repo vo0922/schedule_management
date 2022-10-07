@@ -1,25 +1,19 @@
 let tagModal = document.getElementById('tagModal');
 
 function tagKeyUp(e) {
-    let tagHash = e.value.split('#');
+    let tagHash = e.value.replace('#','');
     if (window.event.keyCode == 13) {
-        let tagInput = document.getElementById('tagInput').value;
-        if (!tagInput)
+        if (!e.value)
             return
-        if (!tagHash[0])
-            return addTagList(tagHash[1])
-        addTagList(tagInput);
+        addTagList(tagHash);
     }
 }
 
 function tagInput(e) {
-    console.log()
-    let tagHash = e.value.split('#');
+    let tagHash = e.value.replace('#','');
     if (!e.value)
         return tagModal.style.display = "none";
-    if (!tagHash[0])
-        return select(tagHash[1]);
-    select(e.value)
+    select(tagHash)
 }
 
 function select(text) {
@@ -40,7 +34,7 @@ function select(text) {
             }
 
             res.data.map((data) => {
-                tagDiv += `<p onclick="addTagList(this.innerText)">${data.name}</p>`
+                tagDiv += `<div class='tagDiv' onclick="addTagList('${data.name}')"><p>#</p><p>${data.name}</p></div>`
             })
             tagList.innerHTML = tagDiv
         },
@@ -55,6 +49,7 @@ function addTagList(text) {
     let newTag = createElements(text);
     let leftTag = document.getElementsByClassName(text)[0];
     if (leftTag) {
+        tagModal.style.display = "none";
         return alert("이미 태그가 존재합니다.");
     }
     let tagDiv = document.getElementById('tagList');
@@ -64,14 +59,19 @@ function addTagList(text) {
 }
 
 function createElements(text) {
-    let newTag = document.createElement('div')
-    newTag.innerText = text;
-    newTag.className = `tagList ${text}`;
+    let newTag = document.createElement('div');
+    let tagName = document.createElement('p');
+    let tagHash = document.createElement('p');
+    tagHash.innerText = '#';
+    tagName.className = `tagList ${text}`;
+    tagName.innerText = text;
     let newDelete = document.createElement('i');
     newDelete.className = 'fa-regular fa-circle-xmark';
     newDelete.onclick = function () {
         newTag.remove();
     }
+    newTag.appendChild(tagHash);
+    newTag.appendChild(tagName);
     newTag.appendChild(newDelete);
     return newTag;
 }

@@ -32,22 +32,49 @@ function show_map() {
     }
 }
 
+let startDate = document.getElementById('schedule_start_day');
+let endDate = document.getElementById('schedule_end_day');
+let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -8);
+startDate.value = date;
+startDate.min = date;
+endDate.min = date;
+
+function DateValidation() {
+    if (startDate.value)
+        endDate.min = startDate.value;
+    if (endDate.value)
+        startDate.max = endDate.value;
+    if (startDate.value > endDate.value) {
+        alert('종료일을 다시 정해주세요.');
+        endDate.value = startDate.value;
+    }
+}
+
 function submitSchedule() {
+    let title = document.getElementById('schedule_title'),
+        content = document.getElementById('schedule_content'),
+        priority = document.getElementById('schedule_priority')
+    if (!title.value) {
+        return alert('일정 제목을 작성해주세요.');
+    }
+    if (!endDate.value) {
+        return alert('일정 종료일을 선택해주세요.')
+    }
     const url = '/schedule'
     let addressCheck = document.getElementById('schedule_address_q');
     let tagList = document.getElementsByClassName("tagList")
     const data = {
-        startDate: document.getElementById('schedule_start_day').value,
-        endDate: document.getElementById('schedule_end_day').value,
-        title: document.getElementById('schedule_title').value,
-        content: document.getElementById('schedule_content').value,
-        priority: document.getElementById('schedule_priority').value,
-        map: addressCheck.checked ?{
+        startDate: startDate.value,
+        endDate: endDate.value,
+        title: title.value,
+        content: content.value,
+        priority: priority.value,
+        map: addressCheck.checked ? {
             title: addressInput.value,
             address: address.value,
             x: addressHard.value,
             y: addressLat.value
-        }: null,
+        } : null,
         tags: [],
     }
 
@@ -56,17 +83,17 @@ function submitSchedule() {
     }
 
     console.log(data);
-     $.ajax({
-         type: 'post',
-         url: url,
-         contentType : 'application/json',
-         data: JSON.stringify(data),
-         success: function (res) {
-             alert(res.message);
-             location.reload()
-         },
-         error: function (err) {
-             return alert(err.responseJSON.message);
-         }
-     })
+    $.ajax({
+        type: 'post',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function (res) {
+            alert(res.message);
+            location.reload()
+        },
+        error: function (err) {
+            return alert(err.responseJSON.message);
+        }
+    })
 }

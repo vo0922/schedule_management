@@ -20,12 +20,12 @@
         <!-- 시작일 -->
         <div class="schedule">
             <label for="schedule_start_day"><i class="fa-regular fa-clock"></i></label>
-            <input type="datetime-local" id="schedule_start_day" name="schedule_start_day"/>
+            <input type="datetime-local" id="schedule_start_day" onchange="DateValidation()" name="schedule_start_day"/>
         </div>
         <!-- 종료일 -->
         <div class="schedule">
             <label for="schedule_end_day"><i class="fa-sharp fa-solid fa-clock"></i></label>
-            <input type="datetime-local" id="schedule_end_day" name="schedule_end_day"/>
+            <input type="datetime-local" id="schedule_end_day" onchange="DateValidation()" name="schedule_end_day"/>
         </div>
         <!-- 일정 내용 -->
         <div class="schedule">

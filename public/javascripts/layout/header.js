@@ -36,8 +36,10 @@ function init() {
     let tag = "";
     let leftColor = document.getElementById('leftColor').value;
     for (let i = 0; i < colorChip.length; i++) {  //colorBox 의 id명을 색상명으로 지정해주기.
-        if (leftColor == colorChip[i])
+        if (leftColor == colorChip[i]) {
+            selectedColor = colorChip[i]
             tag += "<div id=" + colorChip[i] + " class='colorBox selected' onclick='colorSet(this)'></div>";
+        }
         else
             tag += "<div id=" + colorChip[i] + " class='colorBox' onclick='colorSet(this)'></div>";
     }
