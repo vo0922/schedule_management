@@ -3,12 +3,17 @@
 <script defer src="/javascripts/schedule/scheduleModal.js"></script>
 <div id="scheduleModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="scheduleModalDone()"><i class="fa-regular fa-circle-xmark"></i></span>
+        <!-- 닫기 버튼 -->
+        <span class="close" onclick="scheduleModalDone()">
+            <i class="fa-regular fa-circle-xmark fa-xl close_icon"></i>
+        </span>
         <h3 class="hidden">일정 모달</h3>
         <!-- 일정 제목 -->
         <div class="schedule">
-            <label for="schedule_title"><i class="fa-sharp fa-solid fa-plus"></i></label>
-            <!-- 최대 200자까지만 표시 -->
+            <label for="schedule_title">
+                <i class="fa-sharp fa-solid fa-plus fa-xl schedule_title_icon"></i>
+            </label>
+            <!-- 최대 200자까지만 표시, alert 띄워주기! -->
             <input type="text" id="schedule_title" name="schedule_title" placeholder="일정 제목을 입력해 주세요." maxlength="200"/>
         </div>
         <!-- 시작일 -->
@@ -32,8 +37,8 @@
             <textarea id="schedule_tag" name="schedule_tag" placeholder="#해시태그"></textarea>
         </div>
         <!-- 우선순위 -->
-        <div class="schedule_priority">
-            <label for="schedule_end_day">우선 순위</label>
+        <div class="schedule">
+            <label for="schedule_priority">우선 순위</label>
             <!-- 0~5까지 설정 가능, 기본값은 0 -->
             <input type="range" id="schedule_priority" name="schedule_priority"
             min="0" max="5" value="0" step="1" 
@@ -54,3 +59,13 @@
         <%- include('./kakaoMap.ejs') %>
     </div>
 </div>
+<script>
+    // 체크박스 상태가 체크드 상태가 아니면,
+    // 지도 i 태그를 띄워줘라 
+    let cb = document.getElementById('schedule_address_q').checked
+    if(cb == false){
+        document.getElementById('schedule_address_q').innerHTML = '<i class="fa-sharp fa-solid fa-location-crosshairs"></i>'
+    }else{
+        document.getElementById('schedule_address_q').innerHTML = '<i class="fa-sharp fa-solid fa-location-crosshairs-slash"></i>'
+    }
+</script>
