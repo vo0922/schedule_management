@@ -92,8 +92,6 @@ input[id="schedule_address_q"]:checked + label::after{
     left: 0;
     top:0;
 } */
-<<<<<<< HEAD
-=======
 
 /* ===== 주소 옵션 checkbox가 체크 상태일 때 css ===== */
 .show_address_modal-content {
@@ -119,7 +117,6 @@ input[id="schedule_address_q"]:checked + label::after{
     border-left: 4px solid #d3d3d570;
     padding-left: 45px;
 }
->>>>>>> origin/seunghyun_branch
 
 /* ===== 주소 옵션 checkbox가 체크 상태일 때 css ===== */
 .show_address_modal-content {
