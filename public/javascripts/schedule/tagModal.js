@@ -1,16 +1,19 @@
 let tagModal = document.getElementById('tagModal');
 
 function tagKeyUp(e) {
-    let tagHash = e.value.replace('#','');
+    let tagListDiv = document.getElementsByClassName('tagListDiv')
+    let tagHash = e.value.replace('#', '');
     if (window.event.keyCode == 13) {
         if (!e.value)
             return
         addTagList(tagHash);
     }
+    if (!e.value && window.event.keyCode == 8 && tagListDiv.length)
+        return tagListDiv[tagListDiv.length - 1].remove();
 }
 
 function tagInput(e) {
-    let tagHash = e.value.replace('#','');
+    let tagHash = e.value.replace('#', '');
     if (!e.value)
         return tagModal.style.display = "none";
     select(tagHash)
@@ -62,6 +65,7 @@ function createElements(text) {
     let newTag = document.createElement('div');
     let tagName = document.createElement('p');
     let tagHash = document.createElement('p');
+    newTag.className = 'tagListDiv';
     tagHash.innerText = '#';
     tagName.className = `tagList ${text}`;
     tagName.innerText = text;

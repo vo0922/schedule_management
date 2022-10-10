@@ -1,4 +1,4 @@
-const tag = require('../models/tag')
+const tag = require('../models/tag');
 
 module.exports = {
     created: async (name, memberId, scheduleId) => {
@@ -14,7 +14,7 @@ module.exports = {
                 const newTag = new tag({
                     name: tagData.name,
                     memberId: tagData.memberId,
-                    click: 0,
+                    click: 1,
                     scheduleId: tagData.scheduleId
                 })
                 await newTag.save();
@@ -22,7 +22,8 @@ module.exports = {
             } else {
                 const updateTag = await tag.findOneAndUpdate({name: tagData.name}, {
                     $push: {scheduleId: tagData.scheduleId}
-                });
+                }, {new: true});
+                await tag.updateOne({_id: updateTag._id}, {click: updateTag.scheduleId.length});
                 return updateTag;
             }
         } catch (e) {
@@ -39,13 +40,13 @@ module.exports = {
         }
     },
     updated: async (name, tagId) => {
-      try {
-          return await tag.updateOne({_id: tagId}, {
-              name: name
-          })
-      } catch (e) {
-          throw new Error(e);
-      }
+        try {
+            return await tag.updateOne({_id: tagId}, {
+                name: name
+            })
+        } catch (e) {
+            throw new Error(e);
+        }
     },
     deleted: async (tagId) => {
         try {

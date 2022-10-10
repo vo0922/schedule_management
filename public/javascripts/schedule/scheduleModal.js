@@ -25,7 +25,6 @@ function show_map() {
     if (clickCheck.style.display === "none") {
         clickCheck.style.display = "block"
         addressInput.style.display = "block"
-        
         map.relayout();
     } else {
         clickCheck.style.display = "none"
