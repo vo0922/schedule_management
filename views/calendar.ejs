@@ -5,21 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calendar</title>
-    <!--================= CSS =================-->
     <link rel="stylesheet" href="/stylesheets/index.css">
-    <!--=============== FONTAWESOME ===============-->
+    <link rel='stylesheet' href='/stylesheets/calendar/scheduleViewModal.css'/>
     <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.2.0-web/css/all.min.css">
-    <!--=============== JQUERY ===============-->
+    <link rel="stylesheet" href="/stylesheets/calendar/mobisCalendar/mobiscroll.javascript.min.css">
     <script src="/jquery-3.6.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
-    <link rel="stylesheet" href="/stylesheets/mobisCalendar/mobiscroll.javascript.min.css">
-    <script src="/javascripts/mobisCalendar/mobiscroll.javascript.min.js"></script>
-    <script defer src="/javascripts/mobisCalendar/calendar.js"></script>
+    <script src="/javascripts/calendar/mobisCalendar/mobiscroll.javascript.min.js"></script>
+    <script defer src="/javascripts/calendar/mobisCalendar/calendar.js"></script>
+    <script defer src="/javascripts/calendar/scheduleViewModal.js"></script>
 </head>
 <body>
 <!--=============== HEADER ===============-->
 <%- include('layout/header.ejs'); %>
+<%- include('calendar/scheduleViewModal.ejs') %>
     <div style="height:800px">
         <div id="calendar"></div>
     </div>

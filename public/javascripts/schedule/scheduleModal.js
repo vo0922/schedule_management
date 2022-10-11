@@ -8,12 +8,6 @@ function scheduleModalDone() {
     modal.style.display = "none";
 }
 
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
 /*=============== 지도 checkbox 클릭 시 상세 정보 표시 ===============*/
 let clickCheck = document.getElementById("map_wrap")
 let addressInput = document.getElementById('addressInput');

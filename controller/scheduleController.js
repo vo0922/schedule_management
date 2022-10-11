@@ -53,5 +53,13 @@ module.exports = {
         }catch (e){
             throw new Error(e);
         }
+    },
+    readed: async (scheduleId) => {
+        try{
+            const scheduleData = await schedule.findOne({_id: scheduleId});
+            return scheduleData;
+        }catch (e){
+            throw new Error(e);
+        }
     }
 }
