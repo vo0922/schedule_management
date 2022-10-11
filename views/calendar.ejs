@@ -11,9 +11,17 @@
     <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.2.0-web/css/all.min.css">
     <!--=============== JQUERY ===============-->
     <script src="/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/mobisCalendar/mobiscroll.javascript.min.css">
+    <script src="/javascripts/mobisCalendar/mobiscroll.javascript.min.js"></script>
+    <script defer src="/javascripts/mobisCalendar/calendar.js"></script>
 </head>
 <body>
 <!--=============== HEADER ===============-->
 <%- include('layout/header.ejs'); %>
+    <div style="height:800px">
+        <div id="calendar"></div>
+    </div>
 </body>
 </html>

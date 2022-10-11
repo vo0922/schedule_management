@@ -45,5 +45,13 @@ module.exports = {
         } catch (e) {
             throw new Error(e);
         }
+    },
+    scheduleCalendar: async (memberId) => {
+        try{
+            const scheduleData = await schedule.find({memberId: memberId});
+            return scheduleData;
+        }catch (e){
+            throw new Error(e);
+        }
     }
 }
