@@ -91,13 +91,7 @@
     box-sizing: border-box;
     z-index: 9999;
 }
-/* .tagDiv {
-    display: flex;
-    justify-content: center;
-    background: #a8a8a8;
-    margin: 2px;
-    border-radius: 10px;
-} */
+
 #tagList {
     display: flex;
     flex-wrap: wrap;

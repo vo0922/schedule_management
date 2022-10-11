@@ -25,7 +25,6 @@
 .tagContent{
     position: relative;
 }
-
 .close {
     width: 100%;
 }
@@ -34,7 +33,6 @@
 }
 .schedule {
     height: 75px;
-    /* border-top: 1px solid #888; */
     border-bottom: 1px solid #e1e5ec;
     display: flex;
     align-items: center;
@@ -73,33 +71,9 @@ input[type="range"] {
     font-size: var(--h3-font-size);
 }
 
-/* checkbox 커스텀 */
-/* input[type="checkbox"]{
-    display: none;
-}
-input[type="checkbox"] + label{
-    display: inline-block;
-    position: relative;
-}
-input[id="schedule_address_q"]:checked + label::after{
-    content:'✔';
-    font-size: 25px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    position: absolute;
-    left: 0;
-    top:0;
-} */
-
-/* ===== 주소 옵션 checkbox가 체크 상태일 때 css ===== */
 .show_address_modal-content {
     background-color: #fefefe;
-<<<<<<< HEAD
     margin: 7% auto;
-=======
-    margin: 7% auto; 
->>>>>>> seunghyun_branch
     padding: 20px;
     border: 5px solid #888;
     border-radius: 20px;
@@ -115,12 +89,9 @@ input[id="schedule_address_q"]:checked + label::after{
 }
 .modal_section {
     width: 50%;
-<<<<<<< HEAD
-=======
 }
 #modal_section1 {
     max-width: 510px;
->>>>>>> seunghyun_branch
 }
 .modal_section:last-of-type{
     border-left: 4px solid #d3d3d570;
