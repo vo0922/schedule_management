@@ -20,11 +20,11 @@
 <div id="calendar_section">
     <!--=============== CATEGORY ===============-->
     <div id="calendar_section1" class="calendar_section">
+        <%- include('./category/categoryModal.ejs') %>
         <!-- 카테고리 모달 띄우는 + 버튼 -->
         <span class="open" onclick="categoryModalOpen()">
-            <i class="fa-sharp fa-solid fa-plus" >
-                <%- include('./category/categoryModal.ejs') %>
-            </i>
+            <i class="fa-sharp fa-solid fa-plus"></i>
+            <!-- span tag안에 include된 component가 있어서 스팬에 모달창 컴포넌트가 span의 categoryModalOpen onClick함수를 실행해버림 -->
         </span>
     </div>
     <!--=============== CALENDAL ===============-->
