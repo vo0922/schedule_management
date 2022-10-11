@@ -95,11 +95,7 @@ input[id="schedule_address_q"]:checked + label::after{
 /* ===== 주소 옵션 checkbox가 체크 상태일 때 css ===== */
 .show_address_modal-content {
     background-color: #fefefe;
-<<<<<<< HEAD
     margin: 7% auto;
-=======
-    margin: 7% auto; 
->>>>>>> seunghyun_branch
     padding: 20px;
     border: 5px solid #888;
     border-radius: 20px;
@@ -115,12 +111,9 @@ input[id="schedule_address_q"]:checked + label::after{
 }
 .modal_section {
     width: 50%;
-<<<<<<< HEAD
-=======
 }
 #modal_section1 {
     max-width: 510px;
->>>>>>> seunghyun_branch
 }
 .modal_section:last-of-type{
     border-left: 4px solid #d3d3d570;
