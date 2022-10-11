@@ -18,11 +18,10 @@
 <div id="calendar_section">
     <!--=============== CATEGORY ===============-->
     <div id="calendar_section1" class="calendar_section">
+        <%- include('./category/categoryModal.ejs') %>
         <!-- 카테고리 모달 띄우는 + 버튼 -->
         <span class="open" onclick="categoryModalOpen()">
-            <i class="fa-sharp fa-solid fa-plus" >
-                <%- include('./category/categoryModal.ejs') %>
-            </i>
+            <i class="fa-sharp fa-solid fa-plus"></i>
         </span>
     </div>
     <!--=============== CALENDAL ===============-->
