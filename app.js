@@ -23,6 +23,7 @@ const logoutRouter = require('./routes/logout');
 const scheduleRouter = require('./routes/schedule');
 const calendarRouter = require('./routes/calendar');
 const tagRouter = require('./routes/tag');
+const categoryRouter = require('./routes/category');
 
 const app = express();
 
@@ -56,6 +57,7 @@ app.use(passport.session()); // req.session 객체에 passport정보를 추가 �
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
+app.use('/category', categoryRouter);
 
 app.use('/schedule', authUtil, scheduleRouter);
 app.use('/calendar', authUtil, calendarRouter);
