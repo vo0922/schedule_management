@@ -12,9 +12,9 @@
 }
 .modal-content{
     background-color: #fefefe;
-    margin: 7% auto; /* 15% from the top and centered */
+    margin: 7% auto;
     padding: 20px;
-    border: 5px solid #888;
+    box-shadow: 0 0 10px #222222;
     border-radius: 20px;
     width: 25%;
     max-width: 1200px;
