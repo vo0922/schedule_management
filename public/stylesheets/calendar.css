@@ -1,0 +1,21 @@
+#calendar_section {
+  display: flex;
+}
+#calendar_section1 {
+  background-color: blueviolet;
+  width: 15%;
+  height: 95vh;
+}
+#calendar_section1 .open {
+  font-size: var(--h1-font-size);
+  background-color: aquamarine;
+  padding: 0.5rem;
+  border-radius: 50%;
+  box-shadow: 0 0 15px black;
+}
+
+#calendar_section2 {
+  background-color: antiquewhite;
+  width: 85%;
+  height: 95vh;
+}
