@@ -15,5 +15,21 @@
 <body>
 <!--=============== HEADER ===============-->
 <%- include('layout/header.ejs'); %>
+<div id="calendar_section">
+    <!--=============== CATEGORY ===============-->
+    <div id="calendar_section1" class="calendar_section">
+        <!-- 카테고리 모달 띄우는 + 버튼 -->
+        <span class="open" onclick="categoryModalOpen()">
+            <i class="fa-sharp fa-solid fa-plus" >
+                <%- include('./category/categoryModal.ejs') %>
+            </i>
+        </span>
+    </div>
+    <!--=============== CALENDAL ===============-->
+    <div id="calendar_section2" class="calendar_section">
+
+    </div>
+</div>
+
 </body>
 </html>
