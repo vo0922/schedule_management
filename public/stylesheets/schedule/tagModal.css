@@ -4,10 +4,10 @@
 }
 .tagModal-content{
     position: absolute;
-    width: 271px;
+    width: 240px;
     max-height: 346px;
     overflow: auto;
-    bottom: 75px;
+    bottom: 45px;
     background-color: white;
     border: solid 0.5px #a8a8a8;
     padding: 12px;
@@ -26,17 +26,20 @@
 /* input[id="tagInput"]:focus {
     border: none;
 } */
-#tagList {
-    display: flex;
-    flex-wrap: wrap;
-}
-.tagList {
-    width: 64px;
-    margin: 0.25rem;
+
+/* 해시태그 */
+.tagListDiv {
     font-size: 1.1rem;
     background-color: #dadbe9bd;
     padding: 0.275rem;
+    margin: 0.275rem;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+.tagList {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
 }
 .tagList i {
     margin-left: 0.2rem;
@@ -45,19 +48,29 @@
     display: flex;
     flex-direction: column;
 }
+/* 태그 자동완성 */
 #tagModalList {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
-.tagList_sub {
+
+#tagModal-title {
+    border-bottom: 1px solid #ababab;
+    padding-bottom: 0.25rem;
+    margin: 0.25rem 0.25rem 0.6rem 0.25rem;
+}
+
+#tagModalList .tagDiv {
     font-size: 0.9rem;
     background-color: #dadbe9bd;
-    width: 64px;
     text-align: center;
     border-radius: 10px;
-    margin: 0.5rem;
+    margin: 0.25rem;
     padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    height: 25px;
 }
 .tagContent {
     height: auto;
@@ -65,6 +78,7 @@
     padding-bottom: 0.5rem;
     /* overflow: auto; */
 }
+/* 주소 추가 옵션 선택 시 넓어지면 해시태그 css 수정(.tagModal-content_show */
 .tagModal-content_show {
     position: absolute;
     width: 271px;
@@ -77,10 +91,14 @@
     box-sizing: border-box;
     z-index: 9999;
 }
-.tagDiv {
+/* .tagDiv {
     display: flex;
     justify-content: center;
     background: #a8a8a8;
     margin: 2px;
     border-radius: 10px;
+} */
+#tagList {
+    display: flex;
+    flex-wrap: wrap;
 }

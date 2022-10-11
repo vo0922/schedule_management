@@ -1,6 +1,6 @@
 <link rel='stylesheet' href='/stylesheets/schedule/scheduleModal.css'/>
 <script defer src="/javascripts/schedule/kakaoMap.js"></script>
-<script defer src="/javascripts/schedule/scheduleModal.js"></script>
+<script defer src="/javascripts/schedule/scheduleModal.js" defer></script>
 <script defer src="/javascripts/schedule/tagModal.js"></script>
 <div id="scheduleModal" class="modal">
     <div class="modal-content">
@@ -32,7 +32,7 @@
                 <!-- 일정 내용 -->
                 <div class="schedule">
                     <label for="schedule_content"><i class="fa-regular fa-pen-to-square fa-xl"></i></label>
-                    <input type="text" id="schedule_content" name="schedule_content" placeholder="일정에 대한 상새 내용을 입력해 주세요."/>
+                    <textarea id="schedule_content" name="schedule_content" placeholder="일정에 대한 상새 내용을 입력해 주세요."></textarea>
                 </div>
                 <!-- 태그 입력란 -->
                 <div class="schedule tagContent">
@@ -81,6 +81,13 @@
     </div>
 </div>
 <script>
+    var now_utc = Date.now() // 지금 날짜를 밀리초로
+    // getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
+    var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
+    // new Date(today-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
+    var today = new Date(now_utc-timeOff).toISOString().substring(0, 16);
+    
+    document.getElementById("DateLocal").setAttribute("max", today);
     // 체크박스 상태가 체크드 상태가 아니면,
     // 지도 i 태그를 띄워줘라 
     // let cb = document.getElementById('schedule_address_q').checked
@@ -91,27 +98,7 @@
     // }
     // 체크박스를 클릭했을 때,
     //  show_address_modal-content를 추가해라(class)
-    document.getElementById('schedule_address_q').addEventListener('click', function() {
-        let cb = document.getElementById('schedule_address_q').checked
-        let mc = document.getElementsByClassName('modal-content')[0]
-        let ms = document.getElementById('modal_section')
-        let msc = document.getElementsByClassName('modal_section_content')
-        let tc = document.getElementsByClassName('tagModal-content')[0]
-        if(cb == true) {
-            mc.classList.add('show_address_modal-content')
-            ms.classList.add('modal_section_div')
-            // msc.classList[0].add('modal_section')
-            tc.classList[0].add('tagModal-content_show')    // 적용이 안되고 있어요...
-            tc.classList[0].remove('tagModal-content')   // 적용이 안되고 있어요...
-        }else{
-            mc.classList.remove('show_address_modal-content')
-            ms.classList.remove('modal_section_div')
-            // msc.classList[0].remove('modal_section')
-            tc.classList[0].remove('tagModal-content_show') // 적용이 안되고 있어요...
-            tc.classList[0].add('tagModal-content') // 적용이 안되고 있어요...
-
-        }
-    })
+    
 
     // hashtag속성에서 어떠한 이벤트가 있을 때?
     // .tagContent의 높이속성을 auto로 바꿔라

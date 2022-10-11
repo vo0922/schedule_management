@@ -97,3 +97,26 @@ function submitSchedule() {
         }
     })
 }
+
+/*=============== 지도 checkbox 클릭 시 유동적으로 변하는 CSS 적용 ===============*/
+document.getElementById('schedule_address_q').addEventListener('click', function() {
+    let cb = document.getElementById('schedule_address_q').checked
+    let mc = document.getElementsByClassName('modal-content')[0]
+    let ms = document.getElementById('modal_section')
+    let msc = document.getElementsByClassName('modal_section_content')
+    let tc = document.getElementsByClassName('tagModal-content')[0]
+    if(cb == true) {
+        mc.classList.add('show_address_modal-content')
+        ms.classList.add('modal_section_div')
+        // msc.classList[0].add('modal_section')
+        tc.classList[0].add('tagModal-content_show')    // 적용이 안되고 있어요...
+        tc.classList[0].remove('tagModal-content')   // 적용이 안되고 있어요...
+    }else{
+        mc.classList.remove('show_address_modal-content')
+        ms.classList.remove('modal_section_div')
+        // msc.classList[0].remove('modal_section')
+        tc.classList[0].remove('tagModal-content_show') // 적용이 안되고 있어요...
+        tc.classList[0].add('tagModal-content') // 적용이 안되고 있어요...
+
+    }
+})
