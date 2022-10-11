@@ -17,16 +17,13 @@ function dp_headerColor() {
     if (clickColor.style.display === "none") {
         clickColor.style.display = "block"
         clickUser.style.display = "none"
+        init();
     } else {
         clickColor.style.display = "none"
     }
 }
 
 let selectedColor; //선택한 컬러값 저장할 변수
-
-window.onload = function () {
-    init();
-}
 
 function init() {
     let colorChip = ["#ffffff", "#f7e600", "#7dbad5",

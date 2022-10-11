@@ -21,24 +21,24 @@ window.onload = function () {
             console.log(err);
         }
     })
-    mobiscroll.eventcalendar('#calendar', {
-        dataTimezone: 'utc',
-        displayTimezone: 'Asia/Shanghai',
-        timezonePlugin: mobiscroll.momentTimezone,
+        mobiscroll.eventcalendar('#calendar', {
+            dataTimezone: 'utc',
+            displayTimezone: 'Asia/Shanghai',
+            timezonePlugin: mobiscroll.momentTimezone,
 
-        view: {
-            calendar: {
-                type: 'month',
-                popover: true,
+            view: {
+                calendar: {
+                    type: 'month',
+                    popover: true,
+                }
+            },
+            data: scheduleData,
+            onEventClick: function (event, inst) {
+                if (event.source == 'popover') {
+                    scheduleViewModalOpen(event.event.id);
+                }
             }
-        },
-        data: scheduleData,
-        onEventClick: function (event, inst) {
-            if (event.source == 'popover') {
-                scheduleViewModalOpen(event.event.id);
-            }
-        }
-    });
+        });
 }
 
 

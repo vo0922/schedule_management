@@ -192,7 +192,8 @@
   justify-content: center;
 }
 /* 색상 박스들을 배치할 박스 */
-.box{ 
+.box{
+  z-index: 5;
   width: 145px;
   height: 193px;
   background-color: rgb(230, 230, 230);
