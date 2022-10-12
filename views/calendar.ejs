@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calendar</title>
     <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/calendar.css">
     <link rel='stylesheet' href='/stylesheets/calendar/scheduleViewModal.css'/>
     <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.2.0-web/css/all.min.css">
     <link rel="stylesheet" href="/stylesheets/calendar/mobisCalendar/mobiscroll.javascript.min.css">
@@ -20,25 +21,42 @@
 <body>
 <!--=============== HEADER ===============-->
 <%- include('layout/header.ejs'); %>
-<%- include('calendar/scheduleViewModal.ejs') %>
-    <div style="height:800px">
-        <div id="calendar"></div>
-    </div>
+
 <div id="calendar_section">
     <!--=============== CATEGORY ===============-->
     <div id="calendar_section1" class="calendar_section">
         <%- include('./category/categoryModal.ejs') %>
-        <!-- 카테고리 모달 띄우는 + 버튼 -->
-        <span class="open" onclick="categoryModalOpen()">
+        <!-- (카테고리, 일정생성) 모달 띄우는 + 버튼 -->
+        <div class="plus" onclick="plus_menu()">
             <i class="fa-sharp fa-solid fa-plus"></i>
-            <!-- span tag안에 include된 component가 있어서 스팬에 모달창 컴포넌트가 span의 categoryModalOpen onClick함수를 실행해버림 -->
-        </span>
+            <p>만들기</p>
+            <i class="fa-sharp fa-solid fa-caret-down"></i>
+        </div>
+        <!-- span tag안에 include된 component가 있어서 스팬에 모달창 컴포넌트가 span의 categoryModalOpen onClick함수를 실행해버림 -->
+        <div id="plus_menu" style="display: none;">
+            <span class="plus_menu" onclick="scheduleModalOpen()">
+                <div class="plus_menu_schedule">
+                    <i class="fa-regular fa-clock"></i>
+                    <p>일정생성</p>
+                </div>
+            </span>
+            <span class="plus_menu" onclick="categoryModalOpen()">
+                <div class="plus_menu_category">
+                    <i class="fa-regular fa-bookmark"></i>
+                    <p>카테고리</p>
+                </div>
+            </span>
+        </div>
+    <!--=============== CATEGORY NAVIGATION BAR ===============-->
+    <%- include('./category/categoryNavber.ejs') %>
     </div>
     <!--=============== CALENDAL ===============-->
     <div id="calendar_section2" class="calendar_section">
-        <p>test test</p>
+        <%- include('calendar/scheduleViewModal.ejs') %>
+        <div style="height:800px">
+            <div id="calendar"></div>
+        </div>
     </div>
 </div>
-
 </body>
 </html>
