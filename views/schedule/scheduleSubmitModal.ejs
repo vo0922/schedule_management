@@ -1,0 +1,80 @@
+<div class="modal-content">
+    <h3 class="hidden">일정 모달</h3>
+    <!-- 닫기 버튼 -->
+    <span class="close" onclick="scheduleModalDone()">
+            <i class="fa-regular fa-circle-xmark fa-xl close_icon"></i>
+    </span>
+    <div id="modal_section">
+        <div id="modal_section1" class="modal_section_content">
+            <!-- 일정 제목 -->
+            <div class="schedule">
+                <label for="schedule_title">
+                    <i class="fa-sharp fa-solid fa-plus fa-2xl schedule_title_icon"></i>
+                </label>
+                <!-- 최대 200자까지만 표시, alert 띄워주기! -->
+                <input type="text" id="schedule_title" name="schedule_title" placeholder="일정 제목을 입력해 주세요."
+                       maxlength="200"/>
+            </div>
+            <!-- 시작일 -->
+            <div class="schedule">
+                <label for="schedule_start_day"><i class="fa-regular fa-clock fa-xl"></i></label>
+                <input type="datetime-local" id="schedule_start_day" name="schedule_start_day"
+                       onchange="DateValidation()">
+            </div>
+            <!-- 종료일 -->
+            <div class="schedule">
+                <label for="schedule_end_day"><i class="fa-sharp fa-solid fa-clock fa-xl"></i></label>
+                <input type="datetime-local" id="schedule_end_day" name="schedule_end_day"
+                       onchange="DateValidation()">
+            </div>
+            <!-- 일정 내용 -->
+            <div class="schedule">
+                <label for="schedule_content"><i class="fa-regular fa-pen-to-square fa-xl"></i></label>
+                <textarea id="schedule_content" name="schedule_content"
+                          placeholder="일정에 대한 상새 내용을 입력해 주세요."></textarea>
+            </div>
+            <!-- 태그 입력란 -->
+            <div class="schedule tagContent">
+                <label for="schedule_tag"><i class="fa-sharp fa-solid fa-hashtag fa-xl"></i></label>
+                <div class="tag_wrap">
+                    <%- include('./tagModal.ejs') %>
+                    <div class="tag_write">
+                        <div class="tagList_div">
+                            <div id="tagList">
+
+                            </div>
+                        </div>
+                        <input type="text" id="tagInput" placeholder="#해시태그" onkeyup="tagKeyUp(this)"
+                               oninput="tagInput(this)"/>
+                    </div>
+                </div>
+            </div>
+            <!-- 우선순위 -->
+            <div class="schedule">
+                <label for="schedule_priority">우선 순위</label>
+                <!-- 0~5까지 설정 가능, 기본값은 0 -->
+                <input type="range" id="schedule_priority" name="schedule_priority"
+                       min="0" max="5" value="0" step="1"
+                       oninput="schedule_priority_num.value = schedule_priority.value"/>
+                <output id="schedule_priority_num">0</output>
+            </div>
+            <!-- 주소 옵션 -->
+            <div class="schedule">
+                <!-- checkbox 커스텀하기! check가 true일 땐 이 이미지, false일땐 저 이미지 -->
+                <input type="checkbox" id="schedule_address_q" name="schedule_address_q" onchange="show_map()"/>
+                <label for="schedule_address_q">주소를 추가하시겠습니까?</label>
+                <input id="addressInput" style="display: none" type="text" disabled>
+                <input id="address" style="display: none" type="hidden" disabled>
+                <input id="addressLat" style="display: none" type="hidden" disabled>
+                <input id="addressHard" style="display: none" type="hidden" disabled>
+            </div>
+        </div>
+        <div id="modal_section2" class="modal_section">
+            <%- include('./kakaoMap.ejs') %>
+        </div>
+    </div>
+    <!-- 저장 btn -->
+    <div class="schedule schedule_save">
+
+    </div>
+</div>

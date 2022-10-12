@@ -1,4 +1,3 @@
-<%- include('../schedule/scheduleModal.ejs') %>
 <!--==================== HEADER ====================-->
 <header class="header" id="header" style='background-color: <%= member.headerColor %>'>
     <input id="leftColor" type="hidden" value=<%= member.headerColor %>>
@@ -9,9 +8,6 @@
         <input id="stateUrl" type="hidden" value="<%= url %>">
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
-                <li class="nav__item" onclick="scheduleModalOpen()">
-                    <a class="nav__link">일정 생성</a>
-                </li>
                 <li class="nav__item">
                     <a href="/" class="nav__link home">대쉬보드</a>
                 </li>

@@ -23,7 +23,7 @@ window.onload = function () {
     })
         mobiscroll.eventcalendar('#calendar', {
             dataTimezone: 'utc',
-            displayTimezone: 'Asia/Shanghai',
+            displayTimezone: 'local',
             timezonePlugin: mobiscroll.momentTimezone,
 
             view: {

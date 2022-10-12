@@ -11,7 +11,7 @@ module.exports = {
             priority: schedules.priority,
             map: schedules.map,
             memberId: memberId,
-            tagId:[]
+            tagId: []
         })
         try {
             await newSchedule.save()
@@ -20,7 +20,7 @@ module.exports = {
                 const tagData = await tagController.created(data, memberId, newSchedule._id);
                 newTag.push(tagData._id);
             }))
-            return await schedule.findOneAndUpdate({_id: newSchedule._id}, {$set:{tagId: newTag}});
+            return await schedule.findOneAndUpdate({_id: newSchedule._id}, {$set: {tagId: newTag}});
         } catch (e) {
             throw new Error(e);
         }
@@ -34,31 +34,41 @@ module.exports = {
                 const tagData = await tagController.created(data, memberId, leftScheduleData._id);
                 newTags.push(tagData._id)
             }))
-            return await leftScheduleData.updateOne({$set: {tagId: newTags}});
+            return await leftScheduleData.updateOne({
+                $set: {
+                    startDate: schedules.startDate,
+                    endDate: schedules.endDate,
+                    title: schedules.title,
+                    content: schedules.content,
+                    priority: schedules.priority,
+                    map: schedules.map,
+                    tagId: newTags
+                }
+            });
         } catch (e) {
             throw new Error(e);
         }
     },
     deleted: async (schedules) => {
         try {
-            return await schedules.deleteOne({_id: schedules});
+            return await schedule.deleteOne({_id: schedules});
         } catch (e) {
             throw new Error(e);
         }
     },
     scheduleCalendar: async (memberId) => {
-        try{
+        try {
             const scheduleData = await schedule.find({memberId: memberId});
             return scheduleData;
-        }catch (e){
+        } catch (e) {
             throw new Error(e);
         }
     },
     readed: async (scheduleId) => {
-        try{
-            const scheduleData = await schedule.findOne({_id: scheduleId});
+        try {
+            const scheduleData = await schedule.findOne({_id: scheduleId}).populate('tagId');
             return scheduleData;
-        }catch (e){
+        } catch (e) {
             throw new Error(e);
         }
     }

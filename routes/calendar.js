@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 router.post('/scheduleView', async function (req, res) {
     try{
         const scheduleView = await scheduleController.readed(req.body.scheduleId);
-        res.status(201).json({scheduleView: scheduleView});
+        res.status(201).json({scheduleView: scheduleView, memberId:req.user._id});
     }catch (err){
         res.status(401).json({message: "카테고리 삭제 실패"});
     }

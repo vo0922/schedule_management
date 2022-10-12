@@ -10,7 +10,7 @@
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }
-.modal-content{
+.modal-content {
     background-color: #fefefe;
     margin: 7% auto;
     padding: 20px;
@@ -21,7 +21,11 @@
     height: auto;
     box-sizing: content-box;
     transition: all .4s;
-} 
+}
+#scheduleSubmitModal{
+    display: none;
+    width: auto;
+}
 .tagContent{
     position: relative;
 }
