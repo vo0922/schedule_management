@@ -1,5 +1,3 @@
-let scheduleViewModal = document.getElementById('scheduleViewModal');
-
 function scheduleViewModalOpen(scheduleId) {
     scheduleViewModal.style.display = "block";
     const url = '/calendar/scheduleView'
@@ -22,12 +20,3 @@ function scheduleViewModalOpen(scheduleId) {
     })
 }
 
-function scheduleViewModalDone() {
-    scheduleViewModal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    if (event.target == scheduleViewModal) {
-        scheduleViewModal.style.display = "none";
-    }
-}
