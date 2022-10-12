@@ -5,8 +5,38 @@
         <span class="close" onclick='categoryModalDone()'>
             <i class="fa-regular fa-circle-xmark fa-xl close_icon" ></i>
         </span>
-        <h3 class="">카테고리 모달</h3>
-        
+        <h3>카테고리 모달</h3>
+        <!-- 카테고리 제목 -->
+        <div class="category category_title">
+            <label for="category_title">
+                <i class="fa-sharp fa-solid fa-plus fa-2xl category_title_icon"></i>
+            </label>
+            <input type="text" id="category_title" name="category_title" placeholder="일정 제목을 입력해 주세요."/>
+        </div>
+        <!-- 태그 입력란 -->
+        <div class="category tagContent">
+            <label for="category_tag">
+                <i class="fa-sharp fa-solid fa-hashtag fa-xl"></i>
+            </label>
+            <div class="tag_wrap">
+                <%- include('../schedule/tagModal.ejs') %>
+                <div class="tag_write">
+                    <div class="tagList_div">
+                        <div id="tagList">
+                            
+                        </div>
+                    </div>
+                    <input type="text" id="tagInput" placeholder="#해시태그" onkeyup="tagKeyUp(this)"
+                           oninput="tagInput(this)"/>
+                </div>
+            </div>
+        </div>
+        <!-- 공유 옵션 -->
+        <div class="category">
+            <!-- checkbox 커스텀하기! check가 true일 땐 이 이미지, false일땐 저 이미지 -->
+            <input type="checkbox" id="category_address_q" name="category_address_q"/>
+            <label for="category_address_q">공유자를 추가하시겠습니까?</label>
+        </div>
         <!-- 저장 btn -->
         <div class="category category_save">
             <button class="category_save_btn">등록</button>
