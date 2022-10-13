@@ -2,18 +2,62 @@
   display: flex;
 }
 #calendar_section1 {
-  background-color: blueviolet;
+  background-color: rgb(195, 161, 226);
   width: 15%;
   height: 95vh;
 }
-#calendar_section1 .open {
+/* #calendar_section1 .open {
   font-size: var(--h1-font-size);
   background-color: aquamarine;
   padding: 0.5rem;
   border-radius: 50%;
   box-shadow: 0 0 15px black;
+} */
+.plus {
+  position: absolute;
+  max-width: 13rem;
+  max-height: 80px;
+  left: 16px;
+  top: 72px;
+  font-size: 20px;
+  border-radius: 35px;
+  width: 13rem;
+  height: 60px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 10px #5a5a5a;
 }
-
+.plus:hover {
+  cursor: pointer;
+  background-color: #e8e8eb;
+  box-shadow: 0 5px 20px #5a5a5a;
+  transition: all 0.3s;
+}
+#plus_menu {
+  position: absolute;
+  /* max-width: 145px;
+  max-height: 80px; */
+  left: 31px;
+  top: 140px;
+  background-color: #fff;
+  height: 7.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 7px #5a5a5a;
+}
+.plus_menu_schedule, .plus_menu_category {
+  display: flex;
+  width: 13rem;
+  height: 3rem;
+  font-size: 1.3rem;
+  align-items: flex-end;
+  column-gap: 0.5rem;
+  justify-content: center;
+}
+.plus_menu_schedule:hover, .plus_menu_category:hover {
+  cursor: pointer;
+}
 #calendar_section2 {
   background-color: antiquewhite;
   width: 85%;

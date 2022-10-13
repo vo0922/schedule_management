@@ -50,3 +50,114 @@
   border-radius: 10px;
   font-size: var(--h3-font-size);
 }
+
+
+/* 사용자 목록 */
+.category_share_user_list {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.category_share_user_list_img .tooltip {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+.category_share_user_list_img .tooltip img {
+  border-radius: 50%;
+  border: 1px solid white;
+
+}
+.category_share_user_list_img .tooltip:nth-child(1) {
+  z-index: 6;
+}
+.category_share_user_list_img .tooltip:nth-child(2) {
+  left: -20px;
+  z-index: 5;
+}
+.category_share_user_list_img .tooltip:nth-child(3) {
+  left: -40px;
+  z-index: 4;
+}
+.category_share_user_list_img .tooltip:nth-child(4) {
+  left: -60px;
+  z-index: 3;
+}
+.category_share_user_list_img .tooltip:nth-child(5) {
+  left: -80px;
+  z-index: 2;
+}
+.category_share_user_list_img .tooltip:nth-child(6) {
+  left: -100px;
+  z-index: 1;
+}
+
+/* 사용자 목록 추가 버튼(사용자 추가 모달창 가기) */
+.category_share_user_list_add {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  left: -90px;
+  bottom: 3px;
+  position: relative;
+  z-index: 1;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 5px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.category_share_user_list_add:hover {
+  background-color: #dadada;
+  box-shadow: 0 0 7px black;
+  transition: all .3s;
+}
+
+/* tootip. 아이콘 hover 시 사용자 정보 보이기 */
+.tooltip {
+  display: inline-block;
+}
+.tooltip-text {
+  display: none;
+  position: absolute;
+  max-width: 200px;
+  border-radius: 5px;
+  padding: 5px;
+  background: rgb(243, 243, 243);
+  box-shadow: 0 0 5px black;
+  font: var(--body-font);
+  font-size: small;
+}
+
+.tooltip:hover .tooltip-text {
+  display: block;
+} 
+
+/* 공유 옵션 checkbox가 checked일 때 바뀌는 속성 */
+.show_category-modal-content {
+  background-color: #fefefe;
+  margin: 7% auto;
+  padding: 20px;
+  border: 5px solid #888;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  box-sizing: content-box;
+  transition: all .4s;
+}
+.category_modal_section_div { /* #category_modal_section에 추가되는 class*/
+  display: flex;
+  justify-content: space-around;
+}
+.category_modal_section {
+  width: 50%;
+}
+#category_modal_section1 {
+  max-width: 510px;
+}
+.category_modal_section:last-of-type{
+  border-left: 4px solid #d3d3d570;
+  padding-left: 45px;
+}
