@@ -71,6 +71,7 @@ input[type="range"] {
     font-size: var(--h3-font-size);
 }
 
+/* 지도 checkbox 클릭 시 바뀌는 css */
 .show_address_modal-content {
     background-color: #fefefe;
     margin: 7% auto;

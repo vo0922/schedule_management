@@ -1,98 +1,110 @@
 <link rel='stylesheet' href='/stylesheets/category/categoryModal.css'/>
 <script defer src="/javascripts/category/categoryModal.js"></script>
 <div id="categoryModal" class="category-modal">
-    <div class="category-modal-content">
+    <!-- <div class="category-modal-content"> -->
+    <div class="show_category-modal-content">
         <!-- 닫기 버튼 -->
         <span class="close" onclick='categoryModalDone()'>
             <i class="fa-regular fa-circle-xmark fa-xl close_icon" ></i>
         </span>
         <h3 class="hidden">카테고리 모달</h3>
-        <!-- 카테고리 제목 -->
-        <div class="category category_title">
-            <label for="category_title">
-                <i class="fa-sharp fa-solid fa-plus fa-lg category_title_icon"></i>
-            </label>
-            <input type="text" id="category_title" name="category_title" placeholder="일정 제목을 입력해 주세요."/>
-        </div>
-        <!-- 태그 입력란 -->
-        <div class="category tagContent">
-            <label for="category_tag">
-                <i class="fa-sharp fa-solid fa-hashtag fa-lg"></i>
-            </label>
-            <!-- *** 확인 요망! 영역만 잡아 놓았습니다. 아직 기능 실행이 되는 상태는 아닙니다. *** -->
-            <div class="tag_wrap">
-                <%- include('../schedule/tagModal.ejs') %>
-                <div class="tag_write">
-                    <div class="tagList_div">
-                        <div id="tagList">
-
+        <!-- <div id="category_modal_section"> -->
+        <div class="category_modal_section_div">
+            <div id="category_modal_section1" class="category_modal_section">
+                <!-- 카테고리 제목 -->
+                <div class="category category_title">
+                    <label for="category_title">
+                        <i class="fa-sharp fa-solid fa-plus fa-lg category_title_icon"></i>
+                    </label>
+                    <input type="text" id="category_title" name="category_title" placeholder="일정 제목을 입력해 주세요."/>
+                </div>
+                <!-- 태그 입력란 -->
+                <div class="category tagContent">
+                    <label for="category_tag">
+                        <i class="fa-sharp fa-solid fa-hashtag fa-lg"></i>
+                    </label>
+                    <!-- *** 확인 요망! 영역만 잡아 놓았습니다. 아직 기능 실행이 되는 상태는 아닙니다. *** -->
+                    <div class="tag_wrap">
+                        <%- include('../schedule/tagModal.ejs') %>
+                        <div class="tag_write">
+                            <div class="tagList_div">
+                                <div id="tagList">
+        
+                                </div>
+                            </div>
+                            <input type="text" id="tagInput" placeholder="#해시태그" onkeyup="tagKeyUp(this)"
+                                   oninput="tagInput(this)"/>
                         </div>
                     </div>
-                    <input type="text" id="tagInput" placeholder="#해시태그" onkeyup="tagKeyUp(this)"
-                           oninput="tagInput(this)"/>
+                </div>
+                <!-- 공유 옵션 -->
+                <div class="category checkShareUser">
+                    <!-- checkbox 커스텀하기! check가 true일 땐 이 이미지, false일땐 저 이미지 -->
+                    <input type="checkbox" id="category_address_q" name="category_address_q" onchange="share_user()"/>
+                    <label for="category_address_q">공유자를 추가하시겠습니까?</label>
+                </div>
+                <!-- 옵션 checked일 때 보이는 공유자 list, 공유자 추가 btn -->
+                <div id="checkShareUser_list" style="display: none;">
+                    <div class="category">
+                        <label for="category_share_user">
+                            <i class="fa-regular fa-user fa-lg"></i>
+                        </label>
+                        <div class="category_share_user_list">
+                            <div class="category_share_user_list_img">
+                                <div class="tooltip">
+                                    <img src="images/user_profile1.jpg">
+                                    <span class="tooltip-text">
+                                        <p>이름: 이승현</p>                            
+                                        <p>이메일: ssoong12@naver.com</p>                            
+                                    </span>
+                                </div>
+                                <div class="tooltip">
+                                    <img src="images/user_profile2.jpg">
+                                    <span class="tooltip-text">
+                                        <p>이름: 박신욱</p>                            
+                                        <p>이메일: vo0922@naver.com</p>                            
+                                    </span>
+                                </div>
+                                <div class="tooltip">
+                                    <img src="images/user_profile3.jpg">
+                                    <span class="tooltip-text">
+                                        <p>이름: 정희성</p>                            
+                                        <p>이메일: beautyHS@kakao.com</p>                            
+                                    </span>
+                                </div>
+                                <div class="tooltip">
+                                    <img src="images/user_profile4.jpg">
+                                    <span class="tooltip-text">
+                                        <p>이름: 강재민</p>                            
+                                        <p>이메일: powerKang@kakao.com</p>                            
+                                    </span>
+                                </div>
+                                <div class="tooltip">
+                                    <img src="images/user_profile5.jpg">
+                                    <span class="tooltip-text">
+                                        <p>이름: 배도훈</p>                            
+                                        <p>이메일: dohunGod@kakao.com</p>                            
+                                    </span>
+                                </div>
+                                <div class="tooltip">
+                                    <img src="images/user_profile6.jpg">
+                                    <span class="tooltip-text">
+                                        <p>이름: 김건희</p>                            
+                                        <p>이메일: gunhee@naver.com</p>                            
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="category_share_user_list_add">
+                                <i class="fa-regular fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- 공유 옵션 -->
-        <div class="category checkShareUser">
-            <!-- checkbox 커스텀하기! check가 true일 땐 이 이미지, false일땐 저 이미지 -->
-            <input type="checkbox" id="category_address_q" name="category_address_q" onchange="share_user()"/>
-            <label for="category_address_q">공유자를 추가하시겠습니까?</label>
-        </div>
-        <!-- 옵션 checked일 때 보이는 공유자 list, 공유자 추가 btn -->
-        <div id="checkShareUser_list" style="display: none;">
-            <div class="category">
-                <label for="category_share_user">
-                    <i class="fa-regular fa-user fa-lg"></i>
-                </label>
-                <div class="category_share_user_list">
-                    <div class="category_share_user_list_img">
-                        <div class="tooltip">
-                            <img src="images/user_profile1.jpg">
-                            <span class="tooltip-text">
-                                <p>이름: 이승현</p>                            
-                                <p>이메일: ssoong12@naver.com</p>                            
-                            </span>
-                        </div>
-                        <div class="tooltip">
-                            <img src="images/user_profile2.jpg">
-                            <span class="tooltip-text">
-                                <p>이름: 박신욱</p>                            
-                                <p>이메일: vo0922@naver.com</p>                            
-                            </span>
-                        </div>
-                        <div class="tooltip">
-                            <img src="images/user_profile3.jpg">
-                            <span class="tooltip-text">
-                                <p>이름: 정희성</p>                            
-                                <p>이메일: beautyHS@kakao.com</p>                            
-                            </span>
-                        </div>
-                        <div class="tooltip">
-                            <img src="images/user_profile4.jpg">
-                            <span class="tooltip-text">
-                                <p>이름: 강재민</p>                            
-                                <p>이메일: powerKang@kakao.com</p>                            
-                            </span>
-                        </div>
-                        <div class="tooltip">
-                            <img src="images/user_profile5.jpg">
-                            <span class="tooltip-text">
-                                <p>이름: 배도훈</p>                            
-                                <p>이메일: dohunGod@kakao.com</p>                            
-                            </span>
-                        </div>
-                        <div class="tooltip">
-                            <img src="images/user_profile6.jpg">
-                            <span class="tooltip-text">
-                                <p>이름: 김건희</p>                            
-                                <p>이메일: gunhee@naver.com</p>                            
-                            </span>
-                        </div>
-                    </div>
-                    <div class="category_share_user_list_add">
-                        <i class="fa-regular fa-plus"></i>
-                    </div>
+            <div id="category_modal_section2" class="category_modal_section">
+                <!-- 공유자 추가 btn 눌렀을 때, 사용자 목록 -->
+                <div>
+                    <%- include('./userShareModal.ejs') %>
                 </div>
             </div>
         </div>

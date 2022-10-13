@@ -135,7 +135,29 @@
 } 
 
 /* 공유 옵션 checkbox가 checked일 때 바뀌는 속성 */
-/* .checkShareUser_list-checked {
-  display: none;
+.show_category-modal-content {
+  background-color: #fefefe;
+  margin: 7% auto;
+  padding: 20px;
+  border: 5px solid #888;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  box-sizing: content-box;
   transition: all .4s;
-} */
+}
+.category_modal_section_div { /* #category_modal_section에 추가되는 class*/
+  display: flex;
+  justify-content: space-around;
+}
+.category_modal_section {
+  width: 50%;
+}
+#category_modal_section1 {
+  max-width: 510px;
+}
+.category_modal_section:last-of-type{
+  border-left: 4px solid #d3d3d570;
+  padding-left: 45px;
+}
