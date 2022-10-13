@@ -6,7 +6,7 @@
     <div class="modal-content">
         <!-- 닫기 버튼 -->
         <span class="close" onclick="scheduleModalDone()">
-            <i class="fa-regular fa-circle-xmark fa-xl close_icon"></i>
+            <i class="fa-regular fa-circle-xmark fa-lg close_icon"></i>
         </span>
         <h3 class="hidden">일정 모달</h3>
         <div id="modal_section">
@@ -14,7 +14,7 @@
                 <!-- 일정 제목 -->
                 <div class="schedule">
                     <label for="schedule_title">
-                        <i class="fa-sharp fa-solid fa-plus fa-2xl schedule_title_icon"></i>
+                        <i class="fa-sharp fa-solid fa-plus fa-lg schedule_title_icon"></i>
                     </label>
                     <!-- 최대 200자까지만 표시, alert 띄워주기! -->
                     <input type="text" id="schedule_title" name="schedule_title" placeholder="일정 제목을 입력해 주세요."
@@ -22,25 +22,26 @@
                 </div>
                 <!-- 시작일 -->
                 <div class="schedule">
-                    <label for="schedule_start_day"><i class="fa-regular fa-clock fa-xl"></i></label>
+                    <label for="schedule_start_day"><i class="fa-regular fa-clock fa-lg"></i></label>
                     <input type="datetime-local" id="schedule_start_day" name="schedule_start_day"
                            onchange="DateValidation()">
                 </div>
                 <!-- 종료일 -->
                 <div class="schedule">
-                    <label for="schedule_end_day"><i class="fa-sharp fa-solid fa-clock fa-xl"></i></label>
+                    <label for="schedule_end_day"><i class="fa-sharp fa-solid fa-clock fa-lg"></i></label>
                     <input type="datetime-local" id="schedule_end_day" name="schedule_end_day"
                            onchange="DateValidation()">
                 </div>
                 <!-- 일정 내용 -->
                 <div class="schedule">
-                    <label for="schedule_content"><i class="fa-regular fa-pen-to-square fa-xl"></i></label>
+                    <label for="schedule_content"><i class="fa-regular fa-pen-to-square fa-lg"></i></label>
                     <textarea id="schedule_content" name="schedule_content"
-                              placeholder="일정에 대한 상새 내용을 입력해 주세요."></textarea>
+                              placeholder="일정에 대한 상새 내용을 입력해 주세요."
+                              style="height: 28px;"></textarea>
                 </div>
                 <!-- 태그 입력란 -->
                 <div class="schedule tagContent">
-                    <label for="schedule_tag"><i class="fa-sharp fa-solid fa-hashtag fa-xl"></i></label>
+                    <label for="schedule_tag"><i class="fa-sharp fa-solid fa-hashtag fa-lg"></i></label>
                     <div class="tag_wrap">
                         <%- include('./tagModal.ejs') %>
                         <div class="tag_write">
