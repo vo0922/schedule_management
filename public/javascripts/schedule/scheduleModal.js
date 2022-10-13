@@ -27,6 +27,7 @@ function scheduleSubmitModalReload() {
 }
 
 function scheduleModalOpen() {
+    plus.style.display = "none"
     modal.style.display = "block";
     scheduleSubmitModal.style.display = 'block';
     startDate.value = date;
@@ -76,6 +77,7 @@ function scheduleModalDone() {
 
 function categoryModalOpen() {
     c_modal.style.display = "block";
+    plus.style.display = 'none'
 }
 
 function categoryModalDone() {  // 닫기 버튼이 안 먹히네요 ㅠ.ㅠ

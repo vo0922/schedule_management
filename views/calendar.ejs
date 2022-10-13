@@ -16,6 +16,7 @@
     <script defer src="/javascripts/calendar/fullCalendar/main.js"></script>
     <script defer src="/javascripts/schedule/scheduleModal.js"></script>
     <script defer src="/javascripts/calendar/scheduleViewModal.js"></script>
+    <script defer src="/javascripts/calendar/calendar.js"></script>
 </head>
 <body>
 <!--=============== HEADER ===============-->
@@ -23,9 +24,7 @@
 <%- include('./schedule/scheduleModal.ejs') %>
 <%- include('./calendar/scheduleListModal.ejs') %>
 
-<button onclick="scheduleModalOpen()">일정생성</button>
 
-        <div style="width: 100%;" id='calendar'></div>
 <div id="calendar_section">
     <!--=============== CATEGORY ===============-->
     <div id="calendar_section1" class="calendar_section">
@@ -56,10 +55,7 @@
     </div>
     <!--=============== CALENDAL ===============-->
     <div id="calendar_section2" class="calendar_section">
-        <%- include('calendar/scheduleViewModal.ejs') %>
-        <div style="height:800px">
-            <div id="calendar"></div>
-        </div>
+            <div style="width: 100%;" id='calendar'></div>
     </div>
 </div>
 </body>
