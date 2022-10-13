@@ -94,6 +94,9 @@ window.onclick = function (event) {
     if (event.target == c_modal) {
         c_modal.style.display = "none";
     }
+    if (event.target == scheduleListModal) {
+        scheduleListModal.style.display = 'none';
+    }
 }
 
 /*=============== 지도 checkbox 클릭 시 상세 정보 표시 ===============*/
@@ -170,7 +173,6 @@ function submitSchedule(type, scheduleId) {
         data.tags.push(tagList[i].innerText);
     }
 
-    console.log(data);
     $.ajax({
         type: type,
         url: url,

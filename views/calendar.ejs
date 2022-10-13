@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel='stylesheet' href='/stylesheets/calendar/scheduleViewModal.css'/>
     <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.2.0-web/css/all.min.css">
-    <link rel="stylesheet" href="/stylesheets/calendar/mobisCalendar/mobiscroll.javascript.min.css">
+    <link rel="stylesheet" href="/stylesheets/calendar/fullCalendar/main.css">
+    <link rel="stylesheet" href="/stylesheets/calendar/fullCalendar/calendar.css">
     <script src="/jquery-3.6.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
-    <script src="/javascripts/calendar/mobisCalendar/mobiscroll.javascript.min.js"></script>
-    <script defer src="/javascripts/calendar/mobisCalendar/calendar.js"></script>
+    <script defer src="/javascripts/calendar/fullCalendar/calendar.js"></script>
+    <script defer src="/javascripts/calendar/fullCalendar/main.js"></script>
     <script defer src="/javascripts/schedule/scheduleModal.js"></script>
     <script defer src="/javascripts/calendar/scheduleViewModal.js"></script>
 </head>
@@ -21,10 +20,11 @@
 <!--=============== HEADER ===============-->
 <%- include('layout/header.ejs'); %>
 <%- include('./schedule/scheduleModal.ejs') %>
+<%- include('./calendar/scheduleListModal.ejs') %>
+
 <button onclick="scheduleModalOpen()">일정생성</button>
-    <div style="height:800px">
-        <div id="calendar"></div>
-    </div>
+
+        <div style="width: 100%;" id='calendar'></div>
 <div id="calendar_section">
     <!--=============== CATEGORY ===============-->
     <div id="calendar_section1" class="calendar_section">

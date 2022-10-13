@@ -1,6 +1,7 @@
 function scheduleViewModalOpen(scheduleId) {
     modal.style.display = "block";
     scheduleViewModal.style.display = "block";
+    scheduleListModal.style.display = 'none';
     const url = '/calendar/scheduleView'
     $.ajax({
         type: 'post',
