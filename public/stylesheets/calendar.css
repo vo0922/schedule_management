@@ -19,7 +19,7 @@
   max-height: 80px;
   left: 16px;
   top: 72px;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 35px;
   width: 13rem;
   height: 60px;
@@ -50,7 +50,7 @@
   display: flex;
   width: 13rem;
   height: 3rem;
-  font-size: 1.3rem;
+  font-size: 1rem;
   align-items: flex-end;
   column-gap: 0.5rem;
   justify-content: center;
