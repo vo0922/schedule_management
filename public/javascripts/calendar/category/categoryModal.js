@@ -9,7 +9,7 @@ function share_user() {
         document.getElementsByClassName('show_category-modal-content')[0].className = "category-modal-content"
         document.getElementsByClassName('category_modal_section_div')[0].className = "category_modal_section"
         document.getElementById('category_modal_section2').style.display = "none"
-        // document.getElementsByClassName('category_modal_section_border')[1].className = 'category_modal_section'
+        document.getElementsByClassName('category_modal_section')[1].className = 'category_modal_section'
     }
 }
 
@@ -77,6 +77,14 @@ function categoryModalReload() {
     document.getElementById('userSearchText').value = null;
     shareList.style.display = "none"
     categoryTagModal.style.display = "none";
+}
+
+function extendsUserList() {
+    document.getElementsByClassName('category-modal-content')[0].className = "show_category-modal-content"
+    document.getElementsByClassName('category_modal_section')[0].className = "category_modal_section_div"
+    document.getElementById('category_modal_section2').style.display = "block"
+    document.getElementsByClassName('category_modal_section')[1].className = 'category_modal_section border'
+    userSearch();
 }
 
 function submitCategory() {
