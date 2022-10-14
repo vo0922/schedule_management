@@ -49,7 +49,7 @@
     flex-direction: column;
 }
 /* 태그 자동완성 */
-#tagModalList {
+#categoryTagList {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -61,7 +61,7 @@
     margin: 0.25rem 0.25rem 0.6rem 0.25rem;
 }
 
-#tagModalList .tagDiv {
+#categoryTagList .tagDiv {
     font-size: 0.9rem;
     background-color: #dadbe9bd;
     text-align: center;
@@ -92,7 +92,7 @@
     z-index: 9999;
 }
 
-#tagList {
+#categoryTagDivList {
     display: flex;
     flex-wrap: wrap;
 }

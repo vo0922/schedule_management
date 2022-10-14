@@ -26,7 +26,6 @@ window.onload = function () {
                 dayMaxEvents: true, // allow "more" link when too many events
                 events: scheduleData,
                 locale: "ko",
-                navLinks: true,
 /*                customButtons: {
                     addEventButton: {
                         text: "일정 추가",

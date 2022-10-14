@@ -25,15 +25,15 @@
                     </label>
                     <!-- *** 확인 요망! 영역만 잡아 놓았습니다. 아직 기능 실행이 되는 상태는 아닙니다. *** -->
                     <div class="tag_wrap">
-                        <%- include('../schedule/tagModal.ejs') %>
+                        <%- include('./tagModal.ejs') %>
                         <div class="tag_write">
                             <div class="tagList_div">
-                                <div id="tagList">
+                                <div id="categoryTagDivList">
         
                                 </div>
                             </div>
-                            <input type="text" id="tagInput" placeholder="#해시태그" onkeyup="tagKeyUp(this)"
-                                   oninput="tagInput(this)"/>
+                            <input type="text" id="categoryTagInput" placeholder="#해시태그"
+                                   oninput="categoryTagInput(this)"/>
                         </div>
                     </div>
                 </div>

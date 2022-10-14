@@ -16,10 +16,10 @@ function tagInput(e) {
     let tagHash = e.value.replace('#', '');
     if (!e.value)
         return tagModal.style.display = "none";
-    select(tagHash)
+    selectTag(tagHash)
 }
 
-function select(text) {
+function selectTag(text) {
     let tagList = document.getElementById('tagModalList');
     const url = '/tag/change'
     $.ajax({

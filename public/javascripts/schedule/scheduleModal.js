@@ -82,6 +82,7 @@ function categoryModalOpen() {
 
 function categoryModalDone() {  // 닫기 버튼이 안 먹히네요 ㅠ.ㅠ
     c_modal.style.display = "none";
+    categoryModalReload();
 }
 
 window.onclick = function (event) {
@@ -95,6 +96,7 @@ window.onclick = function (event) {
     }
     if (event.target == c_modal) {
         c_modal.style.display = "none";
+        categoryModalReload();
     }
     if (event.target == scheduleListModal) {
         scheduleListModal.style.display = 'none';
