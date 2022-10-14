@@ -12,5 +12,13 @@ module.exports = {
     }catch(e){
       throw new Error(e)
     }
+  },
+  memberFind: async(text) => {
+    try{
+      const memberData = await member.find().or([{name: {$regex: text}},{email: {$regex: text}}])
+      return memberData
+    }catch(e){
+      throw new Error(e)
+    }
   }
 }
