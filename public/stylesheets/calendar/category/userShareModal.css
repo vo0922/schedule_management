@@ -4,18 +4,21 @@
   justify-content: center;
   align-items: center;
   column-gap: 2rem;
+  padding: 1rem 0;
 }
 .user_share_img img {
   border-radius: 50%;
+  width: 100px;
 }
 /* 사용자 검색란 */
 .user_share_search {
   height: 45px;
-  width: 94%;
+  width: 100%;
   border: 1px solid #1b5ac2;
   background-color: #ffffff;
   display: flex;
   align-items: center;
+  margin: 1rem 0;
 }
 .user_share_search_text {
   font-size: 16px;
@@ -26,7 +29,7 @@
   float: left;
 }
 .user_share_search_btn {
-  width: 50px;
+  width: 15%;
   height: 100%;
   border: 0px;
   background-color: #1b5ac2;
@@ -35,12 +38,25 @@
   color: #ffffff;
 }
 /* 사용자 리스트(목록) */
+.user_share_userList_all {
+  height: 350px;
+  overflow: auto;
+  box-shadow: 0 0 10px #ababab;
+  padding: 0 1rem;
+}
 .user_share_userList {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  column-gap: 1rem;
+  column-gap: 1.5rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid #e1e5ec;
 }
 .user_share_userList_img img {
   border-radius: 50%;
+  width: 50px;
+}
+.user_share_info_name, .user_share_userList_name {
+  font-size: 18px;
+  font-weight: bold;
 }

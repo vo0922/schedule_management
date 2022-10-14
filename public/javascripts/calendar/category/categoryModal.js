@@ -3,9 +3,13 @@ function share_user() {
     let cb = document.getElementById('category_share_q').checked
     let shareList = document.getElementById('checkShareUser_list')
     if (cb) {
-      shareList.style.display = "block"
+        shareList.style.display = "block"
     } else {
-      shareList.style.display = "none"
+        shareList.style.display = "none"
+        document.getElementsByClassName('show_category-modal-content')[0].className = "category-modal-content"
+        document.getElementsByClassName('category_modal_section_div')[0].className = "category_modal_section"
+        document.getElementById('category_modal_section2').style.display = "none"
+        // document.getElementsByClassName('category_modal_section_border')[1].className = 'category_modal_section'
     }
 }
 let categoryTagModal = document.getElementById('categoryTagModal');
