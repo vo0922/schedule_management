@@ -65,6 +65,7 @@ function categoryModalReload() {
     document.getElementById('category_title').value = null;
     document.getElementById('categoryTagInput').value = null;
     document.getElementById('categoryTagDivList').innerHTML = null;
-    document.getElementById('category_address_q').checked = false;
+    document.getElementById('category_share_q').checked = false;
     shareList.style.display = "none"
+    categoryTagModal.style.display = "none";
 }
