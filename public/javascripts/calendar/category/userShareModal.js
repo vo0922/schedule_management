@@ -56,3 +56,10 @@ function shareUserCreate(user) {
         `</span>\n`;
     return tooltipDiv;
 }
+document.getElementById('category_share_user_list_add').addEventListener('click', function() {
+  
+  document.getElementsByClassName('category-modal-content')[0].className = "show_category-modal-content"
+  document.getElementsByClassName('category_modal_section')[0].className = "category_modal_section_div"
+  document.getElementById('category_modal_section2').style.display = "block"
+  // document.getElementsByClassName('category_modal_section')[1].className = 'category_modal_section_border'
+})

@@ -1,15 +1,13 @@
 <link rel='stylesheet' href='/stylesheets/calendar/category/categoryModal.css'/>
 <script defer src="/javascripts/calendar/category/categoryModal.js"></script>
 <div id="categoryModal" class="category-modal">
-    <!-- <div class="category-modal-content"> -->
-    <div class="show_category-modal-content">
+    <div class="category-modal-content">
         <!-- 닫기 버튼 -->
         <span class="close" onclick='categoryModalDone()'>
             <i class="fa-regular fa-circle-xmark fa-xl close_icon" ></i>
         </span>
         <h3 class="hidden">카테고리 모달</h3>
-        <!-- <div id="category_modal_section"> -->
-        <div class="category_modal_section_div">
+        <div id="category_modal_section" class="category_modal_section">
             <div id="category_modal_section1" class="category_modal_section">
                 <!-- 카테고리 제목 -->
                 <div class="category category_title">
@@ -53,14 +51,14 @@
                             <div class="category_share_user_list_img" id="category_share_user">
 
                             </div>
-                            <div class="category_share_user_list_add">
+                            <div class="category_share_user_list_add" id="category_share_user_list_add">
                                 <i class="fa-regular fa-plus"></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="category_modal_section2" class="category_modal_section">
+            <div id="category_modal_section2" style="display: none;" class="category_modal_section">
                 <!-- 공유자 추가 btn 눌렀을 때, 사용자 목록 -->
                 <div>
                     <%- include('./userShareModal.ejs') %>
