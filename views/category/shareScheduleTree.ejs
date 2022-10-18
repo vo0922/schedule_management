@@ -1,0 +1,28 @@
+<link rel='stylesheet' href='/stylesheets/calendar/category/shareScheduleTree.css'/>
+<script src="/javascripts/calendar/category/category.js"></script>
+<ul class="tree">
+    <li>
+        <input type="checkbox" id="root" checked>
+        <label for="root">공유함</label>
+        <ul>
+            <% shareCategory.map((data, idx)=> { %>
+                <li>
+                    <input type="checkbox" id='node<%= idx %>' checked>
+                    <label for='node<%= idx %>'><%= data.memberId.name %></label>
+                    <ul>
+                        <% data.categoryId.map((data2, idx2) => { %>
+                            <li>
+                                <input type="checkbox" id='node<%= idx.toString() + idx2.toString() %>' onclick="shareCategorySearch('<%= data2._id %>', '<%= data2.memberId._id %>')" checked>
+                                <label for="node<%= idx.toString() + idx2.toString() %>"
+                                       class="lastTree"><%= data2.name %></label>
+                            </li>
+                        <% }) %>
+
+                    </ul>
+                <li>
+                <% }) %>
+        </ul>
+    </li>
+</ul>
+</li>
+</ul>

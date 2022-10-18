@@ -1,5 +1,6 @@
 let scheduleData = [];
 let calendarEl = document.getElementById('calendar');
+let calendar;
 window.onload = function () {
     $.ajax({
         type: 'get',
@@ -16,7 +17,7 @@ window.onload = function () {
                 }
                 scheduleData.push(schedule);
             })
-            var calendar = new FullCalendar.Calendar(calendarEl, {
+            calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
                     left: 'title',
                     center: '',
@@ -26,14 +27,6 @@ window.onload = function () {
                 dayMaxEvents: true, // allow "more" link when too many events
                 events: scheduleData,
                 locale: "ko",
-/*                customButtons: {
-                    addEventButton: {
-                        text: "일정 추가",
-                        click: function () {
-                            scheduleModalOpen()
-                        },
-                    },
-                },*/
                 dateClick: function (event) {
                     let clickDate = new Date(event.dateStr).getTime();
                     let scheduleList = [];

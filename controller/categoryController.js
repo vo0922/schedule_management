@@ -1,3 +1,4 @@
+
 const category = require('../models/category')
 
 module.exports = {
@@ -36,6 +37,53 @@ module.exports = {
         try {
             return await category.deleteOne({_id: categoryId});
         }catch (e) {
+            throw new Error(e)
+        }
+    },
+    shareCategory: async (memberId) => {
+        try {
+            let shareCategory = await category.find({shareMemberId:{$in:memberId}}).populate('tagId').populate('memberId');
+            let categoryData = []
+            shareCategory.map((data)=> {
+                let flag = categoryData.findIndex(value=>value.memberId===data.memberId);
+                if(!(flag == -1)){
+                    categoryData[flag].categoryId.push(data);
+                }else{
+                    categoryData.push({
+                        memberId:data.memberId,
+                        categoryId:[data],
+                    })
+                }
+            })
+
+            return categoryData;
+        }catch (e){
+            throw new Error(e)
+        }
+    },
+    shareSchedule: async (categoryId, authMemberId) => {
+        try {
+            let shareSchedule =  await category.findOne({_id: categoryId}).populate({
+                path: 'tagId',
+                populate: {
+                    path: 'scheduleId',
+                    match:{memberId:authMemberId}
+                }
+            })
+            let shareScheduleData = [];
+            shareSchedule.tagId.map((data) => {
+                data.scheduleId.map((scheduleData) => {
+                    let flag = shareScheduleData.find(value => value.scheduleData === scheduleData);
+                    if (!flag) {
+                        shareScheduleData.push({
+                            category: shareSchedule.name,
+                            scheduleData: scheduleData,
+                        })
+                    }
+                })
+            })
+            return shareScheduleData;
+        } catch (e) {
             throw new Error(e)
         }
     }
