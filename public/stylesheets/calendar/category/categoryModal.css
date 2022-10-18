@@ -98,7 +98,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  left: -90px;
+  /* left: -90px; */
   bottom: 3px;
   position: relative;
   z-index: 1;

@@ -5,7 +5,7 @@
 .tagModal-content{
     position: absolute;
     width: 240px;
-    max-height: 346px;
+    max-height: 160px;
     overflow: auto;
     bottom: 45px;
     background-color: white;

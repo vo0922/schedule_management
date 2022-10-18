@@ -37,12 +37,10 @@
 }
 #plus_menu {
   position: absolute;
-  /* max-width: 145px;
-  max-height: 80px; */
   left: 31px;
   top: 140px;
   background-color: #fff;
-  height: 7.5rem;
+  height: 7.75rem;
   border-radius: 10px;
   box-shadow: 0 0 7px #5a5a5a;
 }
