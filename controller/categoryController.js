@@ -2,6 +2,14 @@
 const category = require('../models/category')
 
 module.exports = {
+    findMy: async (memberId) => {
+        try {
+            const myCategory = await category.find({memberId: memberId})
+            return await myCategory;
+        } catch (e) {
+            throw new Error(e)
+        }
+    },
     created: async (categories, memberId) => {
         try {
             const newCategory = new category({

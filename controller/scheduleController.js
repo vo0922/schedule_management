@@ -1,5 +1,7 @@
 const schedule = require('../models/schedule');
+const category = require('../models/category');
 const tagController = require('./tagController');
+const {addWeeks} = require("../public/javascripts/calendar/fullCalendar/main");
 
 module.exports = {
     created: async (schedules, memberId) => {
@@ -59,7 +61,47 @@ module.exports = {
     scheduleCalendar: async (memberId) => {
         try {
             const scheduleData = await schedule.find({memberId: memberId});
-            return scheduleData;
+            let authMemberId = []
+            let authSchedule = await category.find({shareMemberId: {$in: memberId}}).select('memberId');
+
+            authSchedule.map((data) => {
+                authMemberId.push(data.memberId)
+            });
+
+            let shareSchedule = await category.find({shareMemberId: {$in: memberId}}).populate({
+                path: 'tagId',
+                populate: {
+                    path: 'scheduleId',
+                    match: {memberId: {$in: authMemberId}}
+                }
+            })
+
+            let allSchedule = [];
+
+            scheduleData.map((data) => {
+                allSchedule.push({
+                    category: '',
+                    scheduleData: data,
+                })
+            })
+
+            await Promise.all(
+                shareSchedule.map((shareData) => {
+                    shareData.tagId.map((tagData) => {
+                        tagData.scheduleId.map((scheduleData) => {
+                            let flag = allSchedule.find(value => value.scheduleData === scheduleData);
+                            if (!flag) {
+                                allSchedule.push({
+                                    category: shareData.name,
+                                    scheduleData: scheduleData,
+                                })
+                            }
+                        })
+                    })
+                })
+            )
+
+            return allSchedule
         } catch (e) {
             throw new Error(e);
         }

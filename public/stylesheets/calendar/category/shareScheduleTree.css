@@ -1,7 +1,6 @@
 .tree{
     margin-top: 5px;
     position: absolute;
-    top: 150px;
 }
 .tree, .tree ul{
     list-style: none; /* 기본 리스트 스타일 제거 */

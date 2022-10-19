@@ -1,0 +1,39 @@
+
+.tapContainer {
+    position: relative;
+    top:120px;
+    margin: 0 auto;
+    width:90%;
+    font-size: 12px;
+}
+
+ul.tabs {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul.tabs li {
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+ul.tabs li.current {
+    background: rgb(243, 243, 243);
+    color: #222;
+    border-radius: 8px;
+}
+
+.tab-content {
+    display: none;
+    padding-top: 15px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.tab-content.current {
+    display: block;
+}

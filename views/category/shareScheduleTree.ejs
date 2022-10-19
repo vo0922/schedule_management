@@ -2,12 +2,12 @@
 <script src="/javascripts/calendar/category/category.js"></script>
 <ul class="tree">
     <li>
-        <input type="checkbox" id="root" checked>
+        <input type="checkbox" id="root">
         <label for="root">공유함</label>
         <ul>
             <% shareCategory.map((data, idx)=> { %>
                 <li>
-                    <input type="checkbox" id='node<%= idx %>' checked>
+                    <input type="checkbox" id='node<%= idx %>'>
                     <label for='node<%= idx %>'><%= data.memberId.name %></label>
                     <ul>
                         <% data.categoryId.map((data2, idx2) => { %>

@@ -9,11 +9,11 @@ window.onload = function () {
         success: function (res) {
             res.scheduleCalendar.map((data) => {
                 let schedule = {
-                    start: data.startDate,
-                    end: data.endDate,
-                    title: data.title,
+                    start: data.scheduleData.startDate,
+                    end: data.scheduleData.endDate,
+                    title: data.scheduleData.title,
                     color: '#d64646',
-                    id: data._id
+                    id: data.scheduleData._id
                 }
                 scheduleData.push(schedule);
             })
@@ -26,13 +26,21 @@ window.onload = function () {
                 initialDate: new Date(),
                 dayMaxEvents: true, // allow "more" link when too many events
                 events: scheduleData,
+                moreLinkClick: function (event) {
+                    let scheduleList = [];
+                    event.allSegs.map((data) => {
+                        scheduleList.push(data.event);
+                    })
+                    scheduleListModalOpen(scheduleList);
+                    return "none"
+                },
                 locale: "ko",
                 dateClick: function (event) {
                     let clickDate = new Date(event.dateStr).getTime();
                     let scheduleList = [];
                     calendar.getEvents().map((data) => {
                         let startDate = new Date(data.start.toDateString());
-                        let endDate = new Date(data.end).getTime();
+                        let endDate = data.end ? new Date(data.end).getTime() : new Date(data.start).getTime()
                         if (clickDate >= startDate && clickDate < endDate) {
                             scheduleList.push(data);
                         }
@@ -72,12 +80,11 @@ function scheduleListModalOpen(scheduleList) {
         scheduleDivList += `<div class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
         <div class="title">${data._def.title}</div>
         <div class="start">${data.start.toLocaleString()}</div>
-        <div class="end">${data.end.toLocaleString()}</div>
+        <div class="end">${data.end ? data.end.toLocaleString() : data.start.toLocaleString()}</div>
         </div>`
     })
     document.getElementById('scheduleDiv').innerHTML = scheduleDivList;
     document.getElementById('scheduleListSortDiv').innerHTML = scheduleListSortDiv
-    console.log(scheduleList)
 }
 
 // 일정 목록 정렬 기능
@@ -100,41 +107,45 @@ function scheduleListSort(scheduleList, e) {
     // 3. 안에 내용물을 싹 지웠다가 가나다순으로 다시 만들어라
     // 이름순
     function titleSort() {
-        scheduleListSortObject.sort(function(a, b) {
-            if(a.title > b.title){
+        scheduleListSortObject.sort(function (a, b) {
+            if (a.title > b.title) {
                 return 1
             } else {
                 return -1
             }
         })
     }
+
     function startSort() {
-        scheduleListSortObject.sort(function(a,b) {
-        if(a.start > b.start){
-            return 1
-        } else {
-            return -1
-        }
-    })
-    }
-    function endSort() {
-        scheduleListSortObject.sort(function(a, b) {
-            if(a.end > b.end) {
+        scheduleListSortObject.sort(function (a, b) {
+            if (a.start > b.start) {
                 return 1
             } else {
                 return -1
             }
         })
     }
+
+    function endSort() {
+        scheduleListSortObject.sort(function (a, b) {
+            let a_end = a.end ? a.end : a.start;
+            let b_end = b.end ? b.end : b.start;
+            if (a_end > b_end) {
+                return 1
+            } else {
+                return -1
+            }
+        })
+    }
+
     let 일정목록 = []
     scheduleListSortObject.forEach((a, i) => {
-            일정목록.push(`<div class="sortDiv">
+        일정목록.push(`<div class="sortDiv">
             <div class="title">${scheduleListSortObject[i].title}</div>
             <div class="start">${scheduleListSortObject[i].start.toLocaleString()}</div>
-            <div class="end">${scheduleListSortObject[i].end.toLocaleString()}</div>
-            </div>`) 
-            console.log(일정목록)
-        });
+            <div class="end">${scheduleListSortObject[i].end ? scheduleListSortObject[i].end.toLocaleString() : scheduleListSortObject[i].start}</div>
+            </div>`)
+    });
     일정목록바인딩.innerHTML = 일정목록.join('')
- 
+
 }
