@@ -42,6 +42,18 @@ window.onload = function () {
                     } else {
                         scheduleModalOpen();
                     }
+
+                    // 클릭한 날짜 정보 받아오기
+                    let 일구하기 = new Date(event.dateStr).getDate();
+                    var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
+                    var 요일구하기 = new Date(event.date).getDay();
+                    
+                    console.log(event)
+                    console.log(일구하기)
+                    console.log(한주배열[요일구하기])
+                    let 오늘의날짜 = `<p class="scheduleToday">${일구하기}. ${한주배열[요일구하기]}</p>`
+
+                    document.getElementById('nows').innerHTML = 오늘의날짜
                 },
                 eventClick: function (event) {
                     scheduleViewModalOpen(event.event._def.publicId)
@@ -62,27 +74,51 @@ function scheduleListModalDone() {
 
 function scheduleListModalOpen(scheduleList) {
     scheduleListModal.style.display = 'block';
+    
     let scheduleDivList = '';
-    let scheduleListSortDiv = `<select name="scheduleListSortDiv" id="scheduleListSortDiv" onchange='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>
-    <option value="title">이름순</option>
-    <option value="start">시작일순</option>
-    <option value="end">종료일순</option>
-    </select>`
+    // 일정 목록 정렬 filter
+    let scheduleListSortDiv = `
+    <div name="scheduleListSortDiv" id="scheduleListSortDiv_select" style="display: none;">
+        <option class="option" value="title" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>이름순</option>
+        <option class="option" value="start" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>시작일순</option>
+        <option class="option" value="end" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>종료일순</option>
+    </div>`
     scheduleList.map((data) => {
-        scheduleDivList += `<div class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
-        <div class="title">${data._def.title}</div>
-        <div class="start">${data.start.toLocaleString()}</div>
-        <div class="end">${data.end.toLocaleString()}</div>
-        </div>`
+        scheduleDivList += `<li class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
+        <div class="title sortDivList">${data._def.title}</div>
+        <div class="start sortDivList">${data.start.toLocaleString()}</div>
+        <div class="end sortDivList">${data.end.toLocaleString()}</div>
+        </li>`
     })
     document.getElementById('scheduleDiv').innerHTML = scheduleDivList;
-    document.getElementById('scheduleListSortDiv').innerHTML = scheduleListSortDiv
+    document.getElementById('scheduleListSortDiv_icon').innerHTML = scheduleListSortDiv
     console.log(scheduleList)
+
+    // filter 클릭 시 option toggle
+    var count = 0;
+
+    document.getElementById('scheduleListSortDiv_icon').addEventListener('click', function() {
+        count++;
+        if(count % 2 == 0) {
+            document.getElementById('scheduleListSortDiv_select').style.display = 'none'
+        }else {
+            document.getElementById('scheduleListSortDiv_select').style.display = 'block'
+        }
+    })
+    // 날짜교체 - 클릭시 해당 메소드 호출
+    // var dd = date.format("DD")
+    // var ss = date.format("dd")
+    // function onchangeDay(dd,ss){ 
+    //     document.getElementById('now').innerHTML = dd+". "+ss
+    // }
+
+    // console.log(onchangeDay(dd, ss))
 }
 
 // 일정 목록 정렬 기능
 function scheduleListSort(scheduleList, e) {
     let scheduleListSortObject = scheduleList
+    console.log(scheduleListSortObject)
     switch (e.value) {
         case "title":
             titleSort()
@@ -98,8 +134,8 @@ function scheduleListSort(scheduleList, e) {
     // 1. 버튼 누르면
     // 2. scheduleList 안에 있는 자료들을 가나다순으로 정렬하고
     // 3. 안에 내용물을 싹 지웠다가 가나다순으로 다시 만들어라
-    // 이름순
-    function titleSort() {
+    
+    function titleSort() {  // 이름순
         scheduleListSortObject.sort(function(a, b) {
             if(a.title > b.title){
                 return 1
@@ -108,16 +144,17 @@ function scheduleListSort(scheduleList, e) {
             }
         })
     }
-    function startSort() {
+    
+    function startSort() {  // 시작일순
         scheduleListSortObject.sort(function(a,b) {
-        if(a.start > b.start){
-            return 1
-        } else {
-            return -1
-        }
-    })
+            if(a.start > b.start){
+                return 1
+            } else {
+                return -1
+            }
+        })
     }
-    function endSort() {
+    function endSort() {    // 종료일순
         scheduleListSortObject.sort(function(a, b) {
             if(a.end > b.end) {
                 return 1
@@ -126,15 +163,22 @@ function scheduleListSort(scheduleList, e) {
             }
         })
     }
+    // 종류별로 변경된 데이터 뿌려주기
     let 일정목록 = []
     scheduleListSortObject.forEach((a, i) => {
-            일정목록.push(`<div class="sortDiv">
-            <div class="title">${scheduleListSortObject[i].title}</div>
-            <div class="start">${scheduleListSortObject[i].start.toLocaleString()}</div>
-            <div class="end">${scheduleListSortObject[i].end.toLocaleString()}</div>
-            </div>`) 
+            일정목록.push(`<li class="scheduleDiv sortDiv">
+            <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
+            <div class="start sortDivList">${scheduleListSortObject[i].start.toLocaleString()}</div>
+            <div class="end sortDivList">${scheduleListSortObject[i].end.toLocaleString()}</div>
+            </li>`) 
             console.log(일정목록)
         });
     일정목록바인딩.innerHTML = 일정목록.join('')
- 
+    
+}
+
+// 일별 일정 목록의 h1 데이터 바인딩
+function scheduleListToday() {
+    
+    
 }
