@@ -17,7 +17,7 @@ function userSearch() {
                 let userShareCheck = document.getElementById(`${data._id}`);
                 userListHtml.push(
                     `<div class="user_share user_share_userList">\n` +
-                    `<input onchange='shareUserCheck(${JSON.stringify(data)}, this)' type="checkbox" id="user_share_userList_cb" name="user_share_userList_cb" class="user_share_userList_cb" ${userShareCheck ? 'checked':''}/>\n` +
+                    `<input onchange='shareUserCheck(${JSON.stringify(data)}, this)' type="checkbox" id="user_share_userList_cb" name="user_share_userList_cb" class="user_share_userList_cb" ${userShareCheck ? 'checked' : ''}/>\n` +
                     `<div class="user_share_userList_img">\n` +
                     `<img src="${data.profile}">\n` +
                     `</div>\n` +
@@ -42,6 +42,12 @@ function shareUserCheck(user, e) {
     } else {
         document.getElementById(`${user._id}`).remove();
     }
+}
+
+function shareUserList(user) {
+    let categoryShareUser = document.getElementById('category_share_user');
+    let categoryShareUserDiv = shareUserCreate(user);
+    categoryShareUser.appendChild(categoryShareUserDiv);
 }
 
 function shareUserCreate(user) {

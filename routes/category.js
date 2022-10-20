@@ -3,15 +3,6 @@ const categoryController = require("../controller/categoryController");
 const memberController = require("../controller/memberController");
 const router = express.Router();
 
-router.get('/', async function (req, res) {
-    try{
-        const data = await categoryController.findMy(req.user._id);
-        res.status(201).json({data: data, message: "카테고리 검색 성공"});
-    }catch (err){
-        res.status(401).json({message: "카테고리 검색 실패"});
-    }
-})
-
 router.post('/search', async function(req,res){
     try {
         const data = await categoryController.findOne(req.body._id);

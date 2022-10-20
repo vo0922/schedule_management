@@ -166,8 +166,7 @@ function scheduleListSort(scheduleList, e) {
             <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
             <div class="start sortDivList">${scheduleListSortObject[i].start.toLocaleString('ko-KR', {timeZone: 'UTC'})}</div>
             <div class="end sortDivList">${scheduleListSortObject[i].end.toLocaleString()}</div>
-            </li>`) 
-            console.log(일정목록)
+            </li>`)
         });
     일정목록바인딩.innerHTML = 일정목록.join('')
     

@@ -4,7 +4,7 @@ const category = require('../models/category')
 module.exports = {
     findOne: async (categoryId) => {
         try {
-            const categoryData = await category.findOne({_id: categoryId})
+            const categoryData = await category.findOne({_id: categoryId}).populate('tagId').populate('shareMemberId');
             return await categoryData;
         } catch (e) {
             throw new Error(e)
@@ -34,12 +34,13 @@ module.exports = {
     },
     updated: async (categories) => {
         try {
-            let exCategory = await category.findOne({_id: categories});
+            let exCategory = await category.findOne({_id: categories._id});
             if(!exCategory){
                 throw new Error()
             }
-            await category.findOneAndUpdate({_id: exCategory._id}, {
+            return await category.findOneAndUpdate({_id: exCategory._id}, {
                 $set:{
+                    name: categories.name,
                     shareCheck: categories.shareCheck,
                     tagId: categories.tagIds,
                     shareMemberId: categories.shareMemberIds

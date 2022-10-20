@@ -1,5 +1,5 @@
 <link rel='stylesheet' href="/stylesheets/calendar/category/categoryTap.css"/>
-<script defer src="/javascripts/calendar/category/categoryTap.js"></script>
+<script src="/javascripts/calendar/category/categoryTap.js"></script>
 <div class="tapContainer">
     <ul class="tabs">
         <li class="tab-link current" data-tab="tab-1" onclick="tabClick(this)">전체</li>
@@ -12,7 +12,8 @@
         <%- include('./shareScheduleTree.ejs') %>
     </div>
     <div id="tab-2" class="tab-content">
-        <%- include('./shareScheduleTree.ejs') %>
+        <%- include('./categoryArea.ejs') %>
+        <%- include('./categoryMySchedule.ejs') %>
     </div>
     <div id="tab-3" class="tab-content">
         <%- include('./shareScheduleTree.ejs') %>

@@ -135,7 +135,7 @@
 } 
 
 /* 공유 옵션 checkbox가 checked일 때 바뀌는 속성 */
-.show_category-modal-content {
+.category-modal-content.show {
   background-color: #fefefe;
   margin: 7% auto;
   padding: 20px;
@@ -147,7 +147,7 @@
   box-sizing: content-box;
   transition: all .4s;
 }
-.category_modal_section_div { /* #category_modal_section에 추가되는 class*/
+.category_modal_section.div { /* #category_modal_section에 추가되는 class*/
   display: flex;
   justify-content: space-around;
 }

@@ -1,27 +1,43 @@
 function categoryModalOpen() {
     c_modal.style.display = "block";
+    document.getElementsByClassName('category category_save')[0].innerHTML = `<button class="category_save_btn" onclick="submitCategory('post')">등록</button>`
     plus.style.display = 'none'
 }
 
-function categoryModalDone() {  // 닫기 버튼이 안 먹히네요 ㅠ.ㅠ
+function categoryModalDone() {
     c_modal.style.display = "none";
     categoryModalReload();
 }
 
 function categoryEditModalOpen(categoryId) {
     const url = '/category/search'
+    let title = document.getElementById('category_title');
+    let shareCheck = document.getElementById('category_share_q');
+    let categorySubmitButton = document.getElementsByClassName('category category_save')[0];
     $.ajax({
         type: 'post',
         url: url,
         contentType: 'application/json',
-        data: JSON.stringify({_id : categoryId}),
+        data: JSON.stringify({_id: categoryId}),
         success: function (res) {
-            console.log(res);
+            title.value = res.data.name;
+            res.data.tagId.map((data) => {
+                addCategoryTagList(data.name, data._id);
+            })
+            if (res.data.shareMemberId.length) {
+                shareCheck.checked = true;
+                share_user()
+                res.data.shareMemberId.map((data) => {
+                    shareUserList(data);
+                })
+            }
+            categorySubmitButton.innerHTML = `<button class="category_save_btn" onclick="submitCategory('patch','${res.data._id}')">편집 완료</button>`
         },
         error: function (err) {
             console.log(err);
         }
     })
+    categoryModalOpen();
 }
 
 /*=============== 공유 옵션 checkbox 클릭 시 정보 표시 ===============*/
@@ -32,10 +48,7 @@ function share_user() {
         shareList.style.display = "block"
     } else {
         shareList.style.display = "none"
-        document.getElementsByClassName('show_category-modal-content')[0].className = "category-modal-content"
-        document.getElementsByClassName('category_modal_section_div')[0].className = "category_modal_section"
-        document.getElementById('category_modal_section2').style.display = "none"
-        document.getElementsByClassName('category_modal_section')[1].className = 'category_modal_section'
+        shareUserModalDone()
     }
 }
 
@@ -101,24 +114,33 @@ function categoryModalReload() {
     document.getElementById('category_share_user').innerHTML = null;
     document.getElementById('userListDiv').innerHTML = null;
     document.getElementById('userSearchText').value = null;
+    shareUserModalDone()
     shareList.style.display = "none"
     categoryTagModal.style.display = "none";
 }
 
+function shareUserModalDone() {
+    document.getElementsByClassName('category-modal-content')[0].classList.remove('show')
+    document.getElementsByClassName('category_modal_section')[0].classList.remove('div')
+    document.getElementById('category_modal_section2').style.display = "none"
+    document.getElementsByClassName('category_modal_section')[2].classList.remove('border');
+}
+
 function extendsUserList() {
-    document.getElementsByClassName('category-modal-content')[0].className = "show_category-modal-content"
-    document.getElementsByClassName('category_modal_section')[0].className = "category_modal_section_div"
+    document.getElementsByClassName('category-modal-content')[0].classList.add('show')
+    document.getElementsByClassName('category_modal_section')[0].classList.add('div')
     document.getElementById('category_modal_section2').style.display = "block"
-    document.getElementsByClassName('category_modal_section')[1].className = 'category_modal_section border'
+    document.getElementsByClassName('category_modal_section')[2].classList.add('border');
     userSearch();
 }
 
-function submitCategory() {
+function submitCategory(type, categoryId) {
     let shareCheck = document.getElementById('category_share_q');
     let title = document.getElementById('category_title').value;
     let tagList = document.getElementsByClassName("tagListDiv");
     let shareUser = document.getElementsByClassName('tooltip');
     let data = {
+        _id: categoryId,
         name: title,
         shareCheck: shareCheck.checked,
         tagIds: [],
@@ -135,7 +157,7 @@ function submitCategory() {
     const url = '/category';
 
     $.ajax({
-        type: 'post',
+        type: type,
         url: url,
         contentType: 'application/json',
         data: JSON.stringify(data),

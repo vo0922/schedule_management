@@ -6,11 +6,15 @@ const categoryController = require("../controller/categoryController");
 /* GET calendar page. */
 router.get('/', async function (req, res, next) {
     const shareCategory = await categoryController.shareCategory(req.user._id);
+    const myCategory = await categoryController.findMy(req.user._id);
+    const mySchedule = await scheduleController.mySchedule(req.user._id);
     res.render('calendar', {
         member: req.user,
         url: 'calendar',
         kakaoKey: process.env.KAKAO_SCRIPT,
-        shareCategory: shareCategory
+        shareCategory: shareCategory,
+        myCategory: myCategory,
+        mySchedule: mySchedule,
     });
 });
 

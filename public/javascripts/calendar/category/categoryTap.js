@@ -1,22 +1,20 @@
-window.addEventListener('load', function () {
+
+function categoryDelete(categoryId, name) {
+    if(!confirm(`${name} 카테고리를 삭제 하시겠습니까?`)){
+        return
+    }
     const url = '/category'
-    let myCategoryList = document.getElementById('myCategoryList');
     $.ajax({
-        type: 'get',
+        type: 'delete',
+        contentType: 'application/json',
         url: url,
+        data: JSON.stringify({categoryId: categoryId}),
         success: function (res) {
-            let categoryList = [];
-            res.data.map((data) => {
-                categoryList.push(`<div class="categoryList" id="${data._id}">
-                                    <p>${data.name}</p>
-                                    <div class="categoryIcon"><i onclick='categoryEditModalOpen(${JSON.stringify(data._id)})' class="fa-regular fa-pen-to-square"></i>
-                                    <i class="fa-regular fa-trash-can"></i></div>
-                                    </div>`)
-            })
-            myCategoryList.innerHTML = categoryList.join('');
+            alert(res.message);
+            location.reload()
         },
         error: function (err) {
             console.log(err);
         }
     })
-})
+}

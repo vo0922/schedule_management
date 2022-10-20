@@ -4,6 +4,13 @@ const tagController = require('./tagController');
 const {addWeeks} = require("../public/javascripts/calendar/fullCalendar/main");
 
 module.exports = {
+    mySchedule: async (memberId) =>{
+        try {
+            return await schedule.find({memberId: memberId});
+        } catch (e) {
+            throw new Error(e);
+        }
+    },
     created: async (schedules, memberId) => {
         let newSchedule = new schedule({
             startDate: schedules.startDate,
