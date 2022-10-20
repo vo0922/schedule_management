@@ -105,14 +105,7 @@ function scheduleListModalOpen(scheduleList) {
             document.getElementById('scheduleListSortDiv_select').style.display = 'block'
         }
     })
-    // 날짜교체 - 클릭시 해당 메소드 호출
-    // var dd = date.format("DD")
-    // var ss = date.format("dd")
-    // function onchangeDay(dd,ss){ 
-    //     document.getElementById('now').innerHTML = dd+". "+ss
-    // }
-
-    // console.log(onchangeDay(dd, ss))
+    
 }
 
 // 일정 목록 정렬 기능
@@ -168,7 +161,7 @@ function scheduleListSort(scheduleList, e) {
     scheduleListSortObject.forEach((a, i) => {
             일정목록.push(`<li class="scheduleDiv sortDiv">
             <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
-            <div class="start sortDivList">${scheduleListSortObject[i].start.toLocaleString()}</div>
+            <div class="start sortDivList">${scheduleListSortObject[i].start.toLocaleString('ko-KR', {timeZone: 'UTC'})}</div>
             <div class="end sortDivList">${scheduleListSortObject[i].end.toLocaleString()}</div>
             </li>`) 
             console.log(일정목록)
