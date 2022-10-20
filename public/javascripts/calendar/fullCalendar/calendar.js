@@ -55,10 +55,7 @@ window.onload = function () {
                     let 일구하기 = new Date(event.dateStr).getDate();
                     var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
                     var 요일구하기 = new Date(event.date).getDay();
-                    
-                    console.log(event)
-                    console.log(일구하기)
-                    console.log(한주배열[요일구하기])
+
                     let 오늘의날짜 = `<p class="scheduleToday">${일구하기}. ${한주배열[요일구하기]}</p>`
 
                     document.getElementById('nows').innerHTML = 오늘의날짜
@@ -100,8 +97,6 @@ function scheduleListModalOpen(scheduleList) {
     })
     document.getElementById('scheduleDiv').innerHTML = scheduleDivList;
     document.getElementById('scheduleListSortDiv_icon').innerHTML = scheduleListSortDiv
-    console.log(scheduleList)
-
     // filter 클릭 시 option toggle
     var count = 0;
 
