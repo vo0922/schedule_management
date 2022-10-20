@@ -2,9 +2,11 @@
   display: flex;
 }
 #calendar_section1 {
-  background-color: rgb(195, 161, 226);
-  width: 365px;
+  background-color: lightblue;
+  /* background-color: var(--body-color); */
+  width: 475px;
   height: 95vh;
+  padding: 0 2rem;
 }
 .plus {
   position: absolute;
@@ -51,7 +53,7 @@
   cursor: pointer;
 }
 #calendar_section2 {
-  background-color: antiquewhite;
+  background-color: var(--body-color);
   width: 85%;
   height: 95vh;
 }
