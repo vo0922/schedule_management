@@ -1,5 +1,6 @@
 
 const category = require('../models/category')
+const schedule = require("../models/schedule");
 
 module.exports = {
     findOne: async (categoryId) => {
@@ -100,6 +101,31 @@ module.exports = {
                 })
             })
             return shareScheduleData;
+        } catch (e) {
+            throw new Error(e)
+        }
+    },
+    shareAllSchedule: async(memberId) => {
+        try {
+            let authSchedule = await category.find({shareMemberId: {$in: memberId}});
+            let shareAllSchedule = [];
+            await Promise.all(authSchedule.map(async (authScheduleData) => {
+                    let shareSchedule = await schedule.find({
+                        tagId: {$in: authScheduleData.tagId},
+                        memberId: authScheduleData.memberId
+                    })
+                    shareSchedule.map((shareScheduleData) => {
+                        let flag = shareAllSchedule.find(value => value.scheduleData === shareScheduleData);
+                        if (!flag) {
+                            shareAllSchedule.push({
+                                category: authSchedule.name,
+                                scheduleData: shareScheduleData,
+                            })
+                        }
+                    })
+                })
+            )
+            return shareAllSchedule;
         } catch (e) {
             throw new Error(e)
         }

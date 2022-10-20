@@ -2,7 +2,7 @@
 <div id="myCategoryList" class="myCategoryList">
     <% myCategory.map((data)=>{ %>
         <div class="categoryList">
-            <p><%= data.name %></p>
+            <p onclick="shareCategorySearch('<%= data._id %>', '<%= data.memberId._id %>')"><%= data.name %></p>
             <div class="categoryIcon"><i onclick="categoryEditModalOpen('<%=data._id%>')" class="fa-regular fa-pen-to-square"></i>
                 <i class="fa-regular fa-trash-can" onclick="categoryDelete('<%=data._id%>', '<%=data.name%>')"></i></div>
         </div>

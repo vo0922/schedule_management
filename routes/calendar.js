@@ -36,6 +36,15 @@ router.get('/scheduleCalendar', async function (req, res) {
     }
 })
 
+router.get('/shareAllSchedule', async function (req, res) {
+    try {
+        const data = await categoryController.shareAllSchedule(req.user._id);
+        res.status(201).json({data: data});
+    } catch (err) {
+        res.status(401).json({message: "공유 일정 가져오기 실패"});
+    }
+})
+
 router.post('/shareSchedule', async function (req, res) {
     try {
         const data = await categoryController.shareSchedule(req.body.categoryId, req.body.authMemberId);
@@ -44,4 +53,5 @@ router.post('/shareSchedule', async function (req, res) {
         res.status(401).json({message: "일정 검색 실패"});
     }
 })
+
 module.exports = router;

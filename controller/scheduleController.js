@@ -1,10 +1,9 @@
 const schedule = require('../models/schedule');
 const category = require('../models/category');
 const tagController = require('./tagController');
-const {addWeeks} = require("../public/javascripts/calendar/fullCalendar/main");
 
 module.exports = {
-    mySchedule: async (memberId) =>{
+    mySchedule: async (memberId) => {
         try {
             return await schedule.find({memberId: memberId});
         } catch (e) {
@@ -68,20 +67,8 @@ module.exports = {
     scheduleCalendar: async (memberId) => {
         try {
             const scheduleData = await schedule.find({memberId: memberId});
-            let authMemberId = []
-            let authSchedule = await category.find({shareMemberId: {$in: memberId}}).select('memberId');
 
-            authSchedule.map((data) => {
-                authMemberId.push(data.memberId)
-            });
-
-            let shareSchedule = await category.find({shareMemberId: {$in: memberId}}).populate({
-                path: 'tagId',
-                populate: {
-                    path: 'scheduleId',
-                    match: {memberId: {$in: authMemberId}}
-                }
-            })
+            let authSchedule = await category.find({shareMemberId: {$in: memberId}});
 
             let allSchedule = [];
 
@@ -92,18 +79,19 @@ module.exports = {
                 })
             })
 
-            await Promise.all(
-                shareSchedule.map((shareData) => {
-                    shareData.tagId.map((tagData) => {
-                        tagData.scheduleId.map((scheduleData) => {
-                            let flag = allSchedule.find(value => value.scheduleData === scheduleData);
-                            if (!flag) {
-                                allSchedule.push({
-                                    category: shareData.name,
-                                    scheduleData: scheduleData,
-                                })
-                            }
-                        })
+            await Promise.all(authSchedule.map(async (authScheduleData) => {
+                    let shareSchedule = await schedule.find({
+                        tagId: {$in: authScheduleData.tagId},
+                        memberId: authScheduleData.memberId
+                    })
+                    shareSchedule.map((shareScheduleData) => {
+                        let flag = allSchedule.find(value => value.scheduleData === shareScheduleData);
+                        if (!flag) {
+                            allSchedule.push({
+                                category: authSchedule.name,
+                                scheduleData: shareScheduleData,
+                            })
+                        }
                     })
                 })
             )

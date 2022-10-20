@@ -1,5 +1,6 @@
 <link rel='stylesheet' href="/stylesheets/calendar/category/categoryTap.css"/>
 <script src="/javascripts/calendar/category/categoryTap.js"></script>
+
 <div class="tapContainer">
     <ul class="tabs">
         <li class="tab-link current" data-tab="tab-1" onclick="tabClick(this)">전체</li>
@@ -20,19 +21,3 @@
     </div>
 </div>
 
-
-<script>
-    function tabClick(e) {
-        let tab_link = document.getElementsByClassName('tab-link')
-        for (let i = 0; i < tab_link.length; i++) {
-            tab_link[i].classList.remove('current');
-        }
-        e.classList.add('current');
-        let tab_id = e.getAttribute('data-tab');
-        let tab_content = document.getElementsByClassName('tab-content');
-        for (let i = 0; i < tab_content.length; i++) {
-            tab_content[i].classList.remove('current');
-        }
-        document.getElementById(tab_id).classList.add('current');
-    }
-</script>

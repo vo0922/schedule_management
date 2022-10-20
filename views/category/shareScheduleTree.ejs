@@ -13,7 +13,7 @@
                     <ul>
                         <% data.categoryId.map((data2, idx2) => { %>
                             <li>
-                                <input type="checkbox" id='node<%= idx.toString() + idx2.toString() %>' onclick="shareCategorySearch('<%= data2._id %>', '<%= data2.memberId._id %>')" checked>
+                                <input type="checkbox" id='node<%= idx.toString() + idx2.toString() %>' onclick="shareCategorySearch('<%= data2._id %>', '<%= data2.memberId._id %>')">
                                 <label for="node<%= idx.toString() + idx2.toString() %>"
                                        class="lastTree"><%= data2.name %></label>
                             </li>

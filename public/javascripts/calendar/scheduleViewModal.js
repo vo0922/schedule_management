@@ -21,6 +21,9 @@ function scheduleViewModalOpen(scheduleId) {
             if (res.memberId == res.scheduleView.memberId) {
                 document.getElementById('editOpenButton').innerHTML = `<button onclick='scheduleModalEditOpen(${JSON.stringify(res)})'>편집</button>`
                 document.getElementById('deleteButton').innerHTML = `<button onclick="scheduleDelete('${res.scheduleView._id}')">삭제</button>`
+            }else{
+                document.getElementById('editOpenButton').innerHTML = null
+                document.getElementById('deleteButton').innerHTML = null
             }
         },
         error: function (err) {
