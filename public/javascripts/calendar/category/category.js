@@ -1,31 +1,5 @@
-function allCategorySchedule() {
-    const url = '/calendar/scheduleCalendar'
-    $.ajax({
-        type: 'get',
-        url: url,
-        contentType: 'application/json',
-        success: function (res) {
-            calendar.removeAllEvents();
-            res.scheduleCalendar.map((data) => {
-                let schedule = {
-                    start: data.scheduleData.startDate,
-                    end: data.scheduleData.endDate,
-                    title: data.scheduleData.title,
-                    color: '#74c4bc',
-                    id: data.scheduleData._id
-                }
-                calendar.addEvent(schedule);
-            })
-
-        },
-        error: function (err) {
-            alert(err);
-        }
-    })
-}
-
-function allShareSchedule() {
-    const url = '/calendar/shareAllSchedule'
+function scheduleListRequest(address) {
+    const url = `/calendar/${address}`
     $.ajax({
         type: 'get',
         url: url,
@@ -33,13 +7,25 @@ function allShareSchedule() {
         success: function (res) {
             calendar.removeAllEvents();
             res.data.map((data) => {
-                let schedule = {
-                    start: data.scheduleData.startDate,
-                    end: data.scheduleData.endDate,
-                    title: data.scheduleData.title,
-                    color: '#74c4bc',
-                    id: data.scheduleData._id
+                let schedule
+                if(data.scheduleData){
+                    schedule = {
+                        start: data.scheduleData.startDate,
+                        end: data.scheduleData.endDate,
+                        title: data.scheduleData.title,
+                        color: '#74c4bc',
+                        id: data.scheduleData._id
+                    }
+                }else{
+                    schedule = {
+                        start: data.startDate,
+                        end: data.endDate,
+                        title: data.title,
+                        color: '#74c4bc',
+                        id: data._id
+                    }
                 }
+
                 calendar.addEvent(schedule);
             })
 

@@ -7,7 +7,7 @@ window.onload = function () {
         url: '/calendar/scheduleCalendar',
         async: false,
         success: function (res) {
-            res.scheduleCalendar.map((data) => {
+            res.data.map((data) => {
                 let schedule = {
                     start: data.scheduleData.startDate,
                     end: data.scheduleData.endDate,

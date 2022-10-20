@@ -12,13 +12,13 @@ function tabClick(e) {
     document.getElementById(tab_id).classList.add('current');
     switch (e.innerText) {
         case "나의 일정":
-
+            scheduleListRequest('mySchedule');
             break
         case "공유 일정":
-            allShareSchedule();
+            scheduleListRequest('shareAllSchedule');
             break
         case "전체":
-            allCategorySchedule();
+            scheduleListRequest('scheduleCalendar');
             break
         default:
             return
