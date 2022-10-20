@@ -35,6 +35,7 @@ window.onload = function () {
                     return "none"
                 },
                 locale: "ko",
+                // 달력의 날짜 클릭했을 때
                 dateClick: function (event) {
                     let clickDate = new Date(event.dateStr).getTime();
                     let scheduleList = [];
@@ -88,11 +89,35 @@ function scheduleListModalOpen(scheduleList) {
         <option class="option" value="start" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>시작일순</option>
         <option class="option" value="end" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>종료일순</option>
     </div>`
+    
     scheduleList.map((data) => {
+        let 시작하는날 = new Date(data.start)
+        var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
+        // 일정 목록 시작일 받아오기
+        let 시작년 = 시작하는날.getFullYear()
+        let 시작월 = 시작하는날.getMonth()+1
+        let 시작일 = 시작하는날.getDate()
+        let 시작요일 = 시작하는날.getDay()
+        let 시작시 = 시작하는날.getHours() < 12 ? "AM " + 시작하는날.getHours() : "PM " + (시작하는날.getHours()-12)
+        let 시작분 = 시작하는날.getMinutes()
+
+        // 종료일
+        let 종료하는날 = new Date(data.end) 
+
+        // 일정 목록 종료일 받아오기
+        let 종료년 = 종료하는날.getFullYear()
+        let 종료월 = 종료하는날.getMonth()+1
+        let 종료일 = 종료하는날.getDate()
+        let 종료요일 = 종료하는날.getDay()
+        let 종료시 = 종료하는날.getHours() < 12 ? "AM " + 종료하는날.getHours() : "PM " + (종료하는날.getHours()-12)
+        let 종료분 = 종료하는날.getMinutes()
         scheduleDivList += `<li class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
         <div class="title sortDivList">${data._def.title}</div>
-        <div class="start sortDivList">${data.start.toLocaleString()}</div>
-        <div class="end sortDivList">${data.end.toLocaleString()}</div>
+        <div class="time_flex">
+            <div class="start sortDivList">${시작년}.${시작월}.${시작일}.${한주배열[시작요일]}, ${시작시}:${시작분}</div>
+            <div class="sortDivList"> - </div>
+            <div class="end sortDivList">${종료년}.${종료월}.${종료일}.${한주배열[종료요일]}, ${종료시}:${종료분}</div>
+        </div>
         </li>`
     })
     document.getElementById('scheduleDiv').innerHTML = scheduleDivList;
@@ -159,21 +184,51 @@ function scheduleListSort(scheduleList, e) {
             }
         })
     }
+
     // 종류별로 변경된 데이터 뿌려주기
     let 일정목록 = []
     scheduleListSortObject.forEach((a, i) => {
-            일정목록.push(`<li class="scheduleDiv sortDiv">
-            <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
-            <div class="start sortDivList">${scheduleListSortObject[i].start.toLocaleString('ko-KR', {timeZone: 'UTC'})}</div>
-            <div class="end sortDivList">${scheduleListSortObject[i].end.toLocaleString()}</div>
-            </li>`)
-        });
+        // 시작일
+        let 시작하는날 = new Date(scheduleListSortObject[i].start) 
+
+        var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
+
+        // 일정 목록 시작일 받아오기
+        let 시작년 = 시작하는날.getFullYear()
+        let 시작월 = 시작하는날.getMonth()+1
+        let 시작일 = 시작하는날.getDate()
+        let 시작요일 = 시작하는날.getDay()
+        let 시작시 = 시작하는날.getHours() < 12 ? "AM " + 시작하는날.getHours() : "PM " + (시작하는날.getHours()-12)
+        let 시작분 = 시작하는날.getMinutes()
+
+        // 종료일
+        let 종료하는날 = new Date(scheduleListSortObject[i].end) 
+
+        // 일정 목록 종료일 받아오기
+        let 종료년 = 종료하는날.getFullYear()
+        let 종료월 = 종료하는날.getMonth()+1
+        let 종료일 = 종료하는날.getDate()
+        let 종료요일 = 종료하는날.getDay()
+        let 종료시 = 종료하는날.getHours() < 12 ? "AM " + 종료하는날.getHours() : "PM " + (종료하는날.getHours()-12)
+        let 종료분 = 종료하는날.getMinutes()
+
+        일정목록.push(`<li class="scheduleDiv sortDiv">
+        <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
+        <div class="time_flex">
+            <div class="start sortDivList">${시작년}.${시작월}.${시작일}.${한주배열[시작요일]}, ${시작시}:${시작분}</div>
+            <div class="sortDivList"> - </div>
+            <div class="end sortDivList">${종료년}.${종료월}.${종료일}.${한주배열[종료요일]}, ${종료시}:${종료분}</div>
+        </div>
+        </li>`) 
+    });
     일정목록바인딩.innerHTML = 일정목록.join('')
+
+    // console.log(scheduleListSortObject)
     
 }
 
 // 일별 일정 목록의 h1 데이터 바인딩
-function scheduleListToday() {
+function scheduleListToday(scheduleList) {
     
     
 }
