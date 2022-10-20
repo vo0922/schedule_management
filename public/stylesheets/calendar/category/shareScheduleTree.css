@@ -13,8 +13,8 @@
 }
 .tree label{
     cursor: pointer;
-    font-size: 14px;
-    color: #0055CC;
+    font-size: 16px;
+    color: var(--text-color);
 }
 .tree label:hover{
     color: #00AACC;
