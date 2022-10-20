@@ -31,7 +31,7 @@ function scheduleModalOpen() {
     modal.style.display = "block";
     scheduleSubmitModal.style.display = 'block';
     startDate.value = date;
-    startDate.min = date;
+    //startDate.min = date;
     endDate.min = date;
     document.getElementsByClassName('schedule_save')[0].innerHTML=`<button class="schedule_save_btn" onclick="submitSchedule('post')">등록</button>`
 }
@@ -73,16 +73,6 @@ function scheduleModalDone() {
     scheduleSubmitModal.style.display = 'none';
     scheduleViewModal.style.display = 'none';
     scheduleSubmitModalReload()
-}
-
-function categoryModalOpen() {
-    c_modal.style.display = "block";
-    plus.style.display = 'none'
-}
-
-function categoryModalDone() {  // 닫기 버튼이 안 먹히네요 ㅠ.ㅠ
-    c_modal.style.display = "none";
-    categoryModalReload();
 }
 
 window.onclick = function (event) {

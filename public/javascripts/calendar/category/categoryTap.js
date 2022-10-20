@@ -1,4 +1,4 @@
-window.addEventListener('load', function (){
+window.addEventListener('load', function () {
     const url = '/category'
     let myCategoryList = document.getElementById('myCategoryList');
     $.ajax({
@@ -6,8 +6,12 @@ window.addEventListener('load', function (){
         url: url,
         success: function (res) {
             let categoryList = [];
-            res.data.map((data)=>{
-                categoryList.push(`<div id="${data._id}">${data.name}</div>`)
+            res.data.map((data) => {
+                categoryList.push(`<div class="categoryList" id="${data._id}">
+                                    <p>${data.name}</p>
+                                    <div class="categoryIcon"><i onclick='categoryEditModalOpen(${JSON.stringify(data._id)})' class="fa-regular fa-pen-to-square"></i>
+                                    <i class="fa-regular fa-trash-can"></i></div>
+                                    </div>`)
             })
             myCategoryList.innerHTML = categoryList.join('');
         },

@@ -2,6 +2,14 @@
 const category = require('../models/category')
 
 module.exports = {
+    findOne: async (categoryId) => {
+        try {
+            const categoryData = await category.findOne({_id: categoryId})
+            return await categoryData;
+        } catch (e) {
+            throw new Error(e)
+        }
+    },
     findMy: async (memberId) => {
         try {
             const myCategory = await category.find({memberId: memberId})

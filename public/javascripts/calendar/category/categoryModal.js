@@ -1,3 +1,29 @@
+function categoryModalOpen() {
+    c_modal.style.display = "block";
+    plus.style.display = 'none'
+}
+
+function categoryModalDone() {  // 닫기 버튼이 안 먹히네요 ㅠ.ㅠ
+    c_modal.style.display = "none";
+    categoryModalReload();
+}
+
+function categoryEditModalOpen(categoryId) {
+    const url = '/category/search'
+    $.ajax({
+        type: 'post',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify({_id : categoryId}),
+        success: function (res) {
+            console.log(res);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+}
+
 /*=============== 공유 옵션 checkbox 클릭 시 정보 표시 ===============*/
 function share_user() {
     let cb = document.getElementById('category_share_q').checked
