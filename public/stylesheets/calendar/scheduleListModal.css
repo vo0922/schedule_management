@@ -13,15 +13,17 @@
 }
 .modal-content_scheduleList {
     background-color: #fefefe;
-    margin: 14% auto;
+    margin: 11% auto;
     padding: 65px;
     box-shadow: 0 0 10px #222222;
     border-radius: 20px;
     width: 25%;
     max-width: 1200px;
     height: auto;
+    max-height: 422px;
     box-sizing: content-box;
     transition: all .4s;
+    overflow: auto;
 }
 .close_icon_scheduleListModal {
     position: relative;
@@ -92,4 +94,10 @@
 }
 .start, .end {
     font-size: 14px;
+}
+.time_flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 0.5rem;
 }
