@@ -1,0 +1,13 @@
+.option_category {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #979797;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+.option_category_me {
+  font-size: var(--h3-font-size);
+}
