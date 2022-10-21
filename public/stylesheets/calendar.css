@@ -5,7 +5,7 @@
   background-color: lightblue;
   /* background-color: var(--body-color); */
   width: 475px;
-  height: 95vh;
+  height: 94vh;
   padding: 0 2rem;
 }
 .plus {
@@ -55,5 +55,5 @@
 #calendar_section2 {
   background-color: var(--body-color);
   width: 85%;
-  height: 95vh;
+  height: 94vh;
 }

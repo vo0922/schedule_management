@@ -27,11 +27,13 @@ window.onload = function () {
                 dayMaxEvents: true, // allow "more" link when too many events
                 events: scheduleData,
                 moreLinkClick: function (event) {
+                    console.log(event)
                     let scheduleList = [];
                     event.allSegs.map((data) => {
                         scheduleList.push(data.event);
                     })
                     scheduleListModalOpen(scheduleList);
+                    clickDateRequest(event)
                     return "none"
                 },
                 locale: "ko",
@@ -48,18 +50,10 @@ window.onload = function () {
                     })
                     if (scheduleList.length) {
                         scheduleListModalOpen(scheduleList);
+                        clickDateRequest(event)
                     } else {
                         scheduleModalOpen();
                     }
-
-                    // 클릭한 날짜 정보 받아오기
-                    let 일구하기 = new Date(event.dateStr).getDate();
-                    var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
-                    var 요일구하기 = new Date(event.date).getDay();
-
-                    let 오늘의날짜 = `<p class="scheduleToday">${일구하기}. ${한주배열[요일구하기]}</p>`
-
-                    document.getElementById('nows').innerHTML = 오늘의날짜
                 },
                 eventClick: function (event) {
                     scheduleViewModalOpen(event.event._def.publicId)
@@ -78,7 +72,19 @@ function scheduleListModalDone() {
     scheduleListModal.style.display = 'none';
 }
 
+function clickDateRequest(event) {
+    // 클릭한 날짜 정보 받아오기
+    let 일구하기 = new Date(event.date).getDate();
+    var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
+    var 요일구하기 = new Date(event.date).getDay();
+
+    let 오늘의날짜 = `<p class="scheduleToday">${일구하기}. ${한주배열[요일구하기]}</p>`
+
+    document.getElementById('nows').innerHTML = 오늘의날짜
+}
+
 function scheduleListModalOpen(scheduleList) {
+
     scheduleListModal.style.display = 'block';
 
     let scheduleDivList = '';
@@ -133,7 +139,6 @@ function scheduleListModalOpen(scheduleList) {
             document.getElementById('scheduleListSortDiv_select').style.display = 'block'
         }
     })
-
 }
 
 // 일정 목록 정렬 기능

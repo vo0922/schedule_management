@@ -57,8 +57,8 @@ app.use(passport.session()); // req.session 객체에 passport정보를 추가 �
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
-app.use('/category', categoryRouter);
 
+app.use('/category', authUtil, categoryRouter);
 app.use('/schedule', authUtil, scheduleRouter);
 app.use('/calendar', authUtil, calendarRouter);
 app.use('/tag', authUtil, tagRouter);

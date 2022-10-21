@@ -48,6 +48,8 @@ function selectTag(text) {
 }
 
 function addTagList(text) {
+    let tagDiv = document.getElementById('tagList');
+    tagDiv.innerHTML = null;
     let tagInput = document.getElementById('tagInput')
     let newTag = createElements(text);
     let leftTag = document.getElementsByClassName(text)[0];
@@ -55,7 +57,6 @@ function addTagList(text) {
         tagModal.style.display = "none";
         return alert("이미 태그가 존재합니다.");
     }
-    let tagDiv = document.getElementById('tagList');
     tagDiv.appendChild(newTag);
     tagInput.value = '';
     tagModal.style.display = "none";

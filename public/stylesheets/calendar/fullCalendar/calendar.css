@@ -1,4 +1,6 @@
 #calendar {
     max-width: 1100px;
     margin: 0 auto;
+    padding-top:30px;
+    max-height: 800px;
 }

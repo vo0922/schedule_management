@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const tagController = require('../controller/tagController');
-const {checkUser: authUtil} = require("../middleware/auth");
 
 router.post('/change', async function(req, res) {
     try{
