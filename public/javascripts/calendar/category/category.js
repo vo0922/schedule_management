@@ -13,7 +13,7 @@ function scheduleListRequest(address) {
                         start: data.scheduleData.startDate,
                         end: data.scheduleData.endDate,
                         title: data.scheduleData.title,
-                        color: '#74c4bc',
+                        color: '#d64646',
                         id: data.scheduleData._id
                     }
                 }else{
@@ -21,7 +21,7 @@ function scheduleListRequest(address) {
                         start: data.startDate,
                         end: data.endDate,
                         title: data.title,
-                        color: '#74c4bc',
+                        color: '#d64646',
                         id: data._id
                     }
                 }

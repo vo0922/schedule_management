@@ -33,7 +33,7 @@ module.exports = () => {
                     if (exMember) {
                         const updateMember = await member.findOneAndUpdate({snsId:profile.id},{
                             $set:{
-                                email: profile._json.kakao_account.email,
+                                email: profile._json.kakao_account.email ? profile._json.kakao_account.email : profile.username,
                                 name: profile.username,
                                 nickname: profile._json.properties.nickname,
                                 profile: profile._json.properties.profile_image,
@@ -43,7 +43,7 @@ module.exports = () => {
                     } else {
                         // 가입되지 않는 유저면 회원가입 시키고 로그인을 시킨다
                         const newMember = await member.create({
-                            email: profile._json.kakao_account.email,
+                            email: profile._json.kakao_account.email ? profile._json.kakao_account.email : profile.username,
                             nickname: profile._json.properties.nickname,
                             snsId: profile.id,
                             profile: profile._json.properties.profile_image,

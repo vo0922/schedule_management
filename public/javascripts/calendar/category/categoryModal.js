@@ -137,6 +137,9 @@ function extendsUserList() {
 function submitCategory(type, categoryId) {
     let shareCheck = document.getElementById('category_share_q');
     let title = document.getElementById('category_title').value;
+    if(title == '') {
+        return alert("카테고리 제목을 입력해주세요.");
+    }
     let tagList = document.getElementsByClassName("tagListDiv");
     let shareUser = document.getElementsByClassName('tooltip');
     let data = {

@@ -115,7 +115,7 @@ module.exports = {
                         memberId: authScheduleData.memberId
                     })
                     shareSchedule.map((shareScheduleData) => {
-                        let flag = shareAllSchedule.find(value => value.scheduleData === shareScheduleData);
+                        let flag = shareAllSchedule.find(value => JSON.stringify(value.scheduleData) === JSON.stringify(shareScheduleData));
                         if (!flag) {
                             shareAllSchedule.push({
                                 category: authSchedule.name,
