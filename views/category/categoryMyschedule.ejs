@@ -1,5 +1,7 @@
-<h1>나의 일정</h1>
-<div id="myScheduleList" class="myScheduleList">
+<div class="option_schedule">
+    <span class="option_schedule_me">나의 일정</span>
+</div>
+<div id="myScheduleList" class="myScheduleList_class">
     <% mySchedule.map((data)=>{ %>
         <div class="myScheduleList">
             <p onclick="scheduleViewModalOpen('<%= data._id %>')"><%= data.title %></p>

@@ -11,3 +11,9 @@
 .option_category_me {
   font-size: var(--h3-font-size);
 }
+.categoryList_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}

@@ -5,24 +5,34 @@
 </div>
 <ul class="tree">
     <li>
-        <input type="checkbox" id="root">
-        <label for="root">공유함</label>
+        <div class="tree_list">
+            <input type="checkbox" id="root">
+            <label for="root">
+                <p class="label_text">공유함</p>
+            </label>
+        </div>
         <ul>
             <% shareCategory.map((data, idx)=> { %>
                 <li>
-                    <input type="checkbox" id='node<%= idx %>'>
-                    <label for='node<%= idx %>'><%= data.memberId.name %></label>
+                    <div class="tree_list">
+                        <input type="checkbox" id='node<%= idx %>'>
+                        <label for='node<%= idx %>' style="padding-left: 25px;">
+                            <p class="label_text"><%= data.memberId.name %></p>
+                        </label>
+                    </div>
                     <ul>
                         <% data.categoryId.map((data2, idx2) => { %>
                             <li>
-                                <input type="checkbox" id='node<%= idx.toString() + idx2.toString() %>' onclick="shareCategorySearch('<%= data2._id %>', '<%= data2.memberId._id %>')">
-                                <label for="node<%= idx.toString() + idx2.toString() %>"
-                                       class="lastTree"><%= data2.name %></label>
+                                <div class="tree_list">
+                                    <input type="checkbox" id='node<%= idx.toString() + idx2.toString() %>' onclick="shareCategorySearch('<%= data2._id %>', '<%= data2.memberId._id %>')">
+                                    <label for="node<%= idx.toString() + idx2.toString() %>" class="lastTree" style="padding-left: 34px;">
+                                        <p class="label_text"><%= data2.name %></p>
+                                    </label>
+                                </div>
                             </li>
                         <% }) %>
-
                     </ul>
-                <li>
+                </li>
                 <% }) %>
         </ul>
     </li>

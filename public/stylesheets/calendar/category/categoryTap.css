@@ -56,15 +56,20 @@ ul.tabs li.current {
 .myCategoryList {
     width: 100%;
 }
-
+/* 전체 */
+/* 나의 카테고리 */
 .categoryList{
     width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    /* flex-direction: row;
+    justify-content: space-between; */
     padding: 10px;
 }
+.categoryList:hover{
+    color: #00AACC;
+    background-color: #d2d2d2;
 
+}
 .categoryList:hover > .categoryIcon{
     display: block;
 }
@@ -80,4 +85,52 @@ ul.tabs li.current {
 
 .categoryList > .categoryIcon {
     display: none;
+    float: right;
 }
+.categoryList::before {
+    content:'.';
+    display: inline-block;
+    background-color: #fdff7d;
+    width: 6px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+/* 나의 일정 */
+.option_schedule {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #979797;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-top: 23px;
+  }
+  .option_schedule_me {
+    font-size: var(--h3-font-size);
+  }
+  #myScheduleList {
+    width: 100%;
+    padding-top: 10px;
+  }
+  .myScheduleList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 10px;
+  }
+  .myScheduleList::before {
+    content: '.';
+    width: 9px;
+    height: 9px;
+    background-color: #f08080;
+    border-radius: 50%;
+  }
+  .myScheduleList:hover {
+    color: #00AACC;
+    background-color: #d2d2d2;
+    cursor: pointer;
+  }
