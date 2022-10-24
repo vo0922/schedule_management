@@ -5,14 +5,14 @@
 <ul class="tree">
     <li>
         <input type="checkbox" id="rootx">
-        <label for="rootx">
+        <label for="rootx" class="fs_label">
             <p class="label_text">공유함</p>
         </label>
         <ul>
             <% shareCategory.map((data, idx)=> { %>
                 <li>
                     <input type="checkbox" id='node<%= idx %>x'>
-                    <label for='node<%= idx %>x' style="padding-left: 25px;">
+                    <label for='node<%= idx %>x' style="padding-left: 25px;" class="fs_label">
                         <p class="label_text"><%= data.memberId.name %></p>
                     </label>
                     <ul>
@@ -21,7 +21,8 @@
                                 <input type="checkbox" id='node<%= idx.toString() + idx2.toString() %>x'
                                        onclick="shareCategorySearch('<%= data2._id %>', '<%= data2.memberId._id %>')">
                                 <label for="node<%= idx.toString() + idx2.toString() %>x" class="lastTree"
-                                       style="padding-left: 34px;">
+                                        style="padding-left: 45px;">
+                                    <div class="lastTree_before"></div>
                                     <p class="label_text"><%= data2.name %></p>
                                 </label>
                             </li>
