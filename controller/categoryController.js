@@ -26,7 +26,8 @@ module.exports = {
                 memberId: memberId,
                 shareCheck: categories.shareCheck,
                 tagId: categories.tagIds,
-                shareMemberId: categories.shareMemberIds
+                shareMemberId: categories.shareMemberIds,
+                color: categories.color
             });
             return await newCategory.save();
         } catch (e) {
@@ -44,7 +45,8 @@ module.exports = {
                     name: categories.name,
                     shareCheck: categories.shareCheck,
                     tagId: categories.tagIds,
-                    shareMemberId: categories.shareMemberIds
+                    shareMemberId: categories.shareMemberIds,
+                    color: categories.color
                 }
             }, {new: true});
         } catch (e) {
@@ -94,7 +96,7 @@ module.exports = {
                     let flag = shareScheduleData.find(value => value.scheduleData === scheduleData);
                     if (!flag) {
                         shareScheduleData.push({
-                            category: shareSchedule.name,
+                            category: shareSchedule.color,
                             scheduleData: scheduleData,
                         })
                     }
@@ -118,7 +120,7 @@ module.exports = {
                         let flag = shareAllSchedule.find(value => JSON.stringify(value.scheduleData) === JSON.stringify(shareScheduleData));
                         if (!flag) {
                             shareAllSchedule.push({
-                                category: authSchedule.name,
+                                category: authSchedule.color,
                                 scheduleData: shareScheduleData,
                             })
                         }

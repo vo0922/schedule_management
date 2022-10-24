@@ -10,6 +10,7 @@
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
     background-color: #fefefe;
     margin: 7% auto;
@@ -22,19 +23,24 @@
     box-sizing: content-box;
     transition: all .4s;
 }
-#scheduleSubmitModal{
+
+#scheduleSubmitModal {
     display: none;
     width: auto;
 }
-.tagContent{
+
+.tagContent {
     position: relative;
 }
+
 .close {
     width: 100%;
 }
+
 .close_icon {
     float: right;
 }
+
 .schedule {
     height: 75px;
     border-bottom: 1px solid #e1e5ec;
@@ -43,6 +49,7 @@
     column-gap: 15px;
     font-size: var(--h3-font-size);
 }
+
 input[type="text"], input[type="datetime-local"], textarea {
     width: 90%;
     height: 70%;
@@ -50,22 +57,32 @@ input[type="text"], input[type="datetime-local"], textarea {
     color: var(--text-color);
     border: none;
 }
+
+input[type="text"], input[type="datetime-local"], textarea:disabled {
+    background-color: #FFFFFF;
+}
+
 /* input 박스 클릭 시 생기는 테두리 제어하기 */
 input[type="text"]:focus, input[type="datetime-local"]:focus, textarea:focus {
     outline: none;
 }
+
 input[type="range"] {
     width: 50%;
     height: 70%;
 }
+
+
 .schedule:nth-child(9) {
     border: none;
 }
+
 .schedule_save {
     justify-content: center;
     border: none;
     margin-top: 1rem;
 }
+
 .schedule_save_btn {
     width: 20%;
     height: 70%;
@@ -88,17 +105,21 @@ input[type="range"] {
     box-sizing: content-box;
     transition: all .4s;
 }
+
 .modal_section_div {
     display: flex;
     justify-content: space-around;
 }
+
 .modal_section {
     width: 50%;
 }
+
 #modal_section1 {
     max-width: 510px;
 }
-.modal_section:last-of-type{
+
+.modal_section:last-of-type {
     border-left: 4px solid #d3d3d570;
     padding-left: 45px;
 }

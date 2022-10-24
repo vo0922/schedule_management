@@ -14,6 +14,7 @@ function categoryEditModalOpen(categoryId) {
     let title = document.getElementById('category_title');
     let shareCheck = document.getElementById('category_share_q');
     let categorySubmitButton = document.getElementsByClassName('category category_save')[0];
+    let color = document.getElementById('categoryColor');
     $.ajax({
         type: 'post',
         url: url,
@@ -21,6 +22,7 @@ function categoryEditModalOpen(categoryId) {
         data: JSON.stringify({_id: categoryId}),
         success: function (res) {
             title.value = res.data.name;
+            color.value = res.data.color;
             res.data.tagId.map((data) => {
                 addCategoryTagList(data.name, data._id);
             })
@@ -114,6 +116,7 @@ function categoryModalReload() {
     document.getElementById('category_share_user').innerHTML = null;
     document.getElementById('userListDiv').innerHTML = null;
     document.getElementById('userSearchText').value = null;
+    document.getElementById('categoryColor').value = null;
     shareUserModalDone()
     shareList.style.display = "none"
     categoryTagModal.style.display = "none";
@@ -142,12 +145,14 @@ function submitCategory(type, categoryId) {
     }
     let tagList = document.getElementsByClassName("tagListDiv");
     let shareUser = document.getElementsByClassName('tooltip');
+    let color = document.getElementById('categoryColor');
     let data = {
         _id: categoryId,
         name: title,
         shareCheck: shareCheck.checked,
         tagIds: [],
         shareMemberIds: [],
+        color: color.value
     }
     for (let i = 0; i < tagList.length; i++) {
         data.tagIds.push(tagList[i].id);

@@ -12,7 +12,7 @@ window.onload = function () {
                     start: data.scheduleData.startDate,
                     end: data.scheduleData.endDate,
                     title: data.scheduleData.title,
-                    color: '#d64646',
+                    color: data.category,
                     id: data.scheduleData._id
                 }
                 scheduleData.push(schedule);

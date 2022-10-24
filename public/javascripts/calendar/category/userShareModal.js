@@ -6,6 +6,7 @@ function userSearchKeyUp() {
 function userSearch() {
     let userListDiv = document.getElementById('userListDiv')
     let userListHtml = []
+    let myEmail = document.querySelector('.user_share_info_email');
     const url = '/category/userSearch'
     $.ajax({
         type: 'post',
@@ -15,16 +16,18 @@ function userSearch() {
         success: function (res) {
             res.data.map((data) => {
                 let userShareCheck = document.getElementById(`${data._id}`);
-                userListHtml.push(
-                    `<div class="user_share user_share_userList">\n` +
-                    `<input onchange='shareUserCheck(${JSON.stringify(data)}, this)' type="checkbox" id="user_share_userList_cb" name="user_share_userList_cb" class="user_share_userList_cb" ${userShareCheck ? 'checked' : ''}/>\n` +
-                    `<div class="user_share_userList_img">\n` +
-                    `<img src="${data.profile}">\n` +
-                    `</div>\n` +
-                    `<p class="user_share_userList_name">${data.name}</p>\n` +
-                    `<p class="user_share_userList_email">${data.email}</p>\n` +
-                    `</div>`
-                )
+                if(!(myEmail.innerText == data.email)){
+                    userListHtml.push(
+                        `<div class="user_share user_share_userList">\n` +
+                        `<input onchange='shareUserCheck(${JSON.stringify(data)}, this)' type="checkbox" id="user_share_userList_cb" name="user_share_userList_cb" class="user_share_userList_cb" ${userShareCheck ? 'checked' : ''}/>\n` +
+                        `<div class="user_share_userList_img">\n` +
+                        `<img src="${data.profile}">\n` +
+                        `</div>\n` +
+                        `<p class="user_share_userList_name">${data.name}</p>\n` +
+                        `<p class="user_share_userList_email">${data.email}</p>\n` +
+                        `</div>`
+                    )
+                }
             })
             userListDiv.innerHTML = userListHtml.join("");
         },

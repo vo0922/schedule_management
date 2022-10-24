@@ -36,6 +36,10 @@ const categorySchema = new Schema({
             ref: "member",
             required: true,
         }],
+    color:
+        {
+            type:String
+        }
 }, {versionKey: false})
 
 

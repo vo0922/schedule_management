@@ -88,7 +88,7 @@ module.exports = {
                         let flag = allSchedule.find(value => JSON.stringify(value.scheduleData._id) === JSON.stringify(shareScheduleData._id));
                         if (!flag) {
                             allSchedule.push({
-                                category: authSchedule.name,
+                                category: authSchedule.color,
                                 scheduleData: shareScheduleData,
                             })
                         }
