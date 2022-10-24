@@ -196,7 +196,7 @@ function show_map(placePosition, index, callback) {
             if(callback){
                 callback(placePosition, index);
             }
-        }, 100)
+        }, 200)
     } else {
         clickCheck.style.display = "none"
         addressInput.style.display = "none"

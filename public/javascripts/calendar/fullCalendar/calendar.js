@@ -8,6 +8,7 @@ window.onload = function () {
         async: false,
         success: function (res) {
             res.data.map((data) => {
+                console.log(data);
                 let schedule = {
                     start: data.scheduleData.startDate,
                     end: data.scheduleData.endDate,
