@@ -1,4 +1,3 @@
-
 <div class="option_share">
     <span class="option_share_me">나의 공유함</span>
 </div>
@@ -22,7 +21,7 @@
                                        onclick="shareCategorySearch('<%= data2._id %>', '<%= data2.memberId._id %>')">
                                 <label for="node<%= idx.toString() + idx2.toString() %>" class="lastTree"
                                        style="padding-left: 45px;">
-                                    <div class="lastTree_before"></div>
+                                    <div class="lastTree_before" style="background-color: <%= data2.color %>"></div>
                                     <p class="label_text"><%= data2.name %></p>
                                 </label>
                             </li>

@@ -5,7 +5,7 @@
 <div id="myCategoryList" class="myCategoryList">
     <% myCategory.map((data)=>{ %>
         <div class="categoryList">
-            <div class="myCategoryList_before"></div>
+            <div class="myCategoryList_before" style="background-color: <%= data.color %>"></div>
             <div class="categoryList_div">
                 <p onclick="shareCategorySearch('<%= data._id %>', '<%= data.memberId._id %>')"><%= data.name %></p>
                 <div class="categoryIcon">

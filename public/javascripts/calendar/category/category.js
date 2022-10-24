@@ -13,7 +13,7 @@ function scheduleListRequest(address) {
                         start: data.scheduleData.startDate,
                         end: data.scheduleData.endDate,
                         title: data.scheduleData.title,
-                        color: data.category,
+                        color: data.category ? data.category : "#f08080",
                         id: data.scheduleData._id
                     }
                 }else{
@@ -21,7 +21,7 @@ function scheduleListRequest(address) {
                         start: data.startDate,
                         end: data.endDate,
                         title: data.title,
-                        color: '',
+                        color: data.category ? data.category : "#f08080",
                         id: data._id
                     }
                 }
@@ -50,7 +50,7 @@ function shareCategorySearch(categoryId, authMemberId) {
                     start: data.scheduleData.startDate,
                     end: data.scheduleData.endDate,
                     title: data.scheduleData.title,
-                    color: data.category,
+                    color: data.category ? data.category : "#f08080",
                     id: data.scheduleData._id
                 }
                 calendar.addEvent(schedule);
