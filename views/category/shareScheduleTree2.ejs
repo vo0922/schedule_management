@@ -4,23 +4,23 @@
 </div>
 <ul class="tree">
     <li>
-        <input type="checkbox" id="root">
-        <label for="root">
+        <input type="checkbox" id="rootx">
+        <label for="rootx">
             <p class="label_text">공유함</p>
         </label>
         <ul>
             <% shareCategory.map((data, idx)=> { %>
                 <li>
-                    <input type="checkbox" id='node<%= idx %>'>
-                    <label for='node<%= idx %>' style="padding-left: 25px;">
+                    <input type="checkbox" id='node<%= idx %>x'>
+                    <label for='node<%= idx %>x' style="padding-left: 25px;">
                         <p class="label_text"><%= data.memberId.name %></p>
                     </label>
                     <ul>
                         <% data.categoryId.map((data2, idx2) => { %>
                             <li>
-                                <input type="checkbox" id='node<%= idx.toString() + idx2.toString() %>'
+                                <input type="checkbox" id='node<%= idx.toString() + idx2.toString() %>x'
                                        onclick="shareCategorySearch('<%= data2._id %>', '<%= data2.memberId._id %>')">
-                                <label for="node<%= idx.toString() + idx2.toString() %>" class="lastTree"
+                                <label for="node<%= idx.toString() + idx2.toString() %>x" class="lastTree"
                                        style="padding-left: 34px;">
                                     <p class="label_text"><%= data2.name %></p>
                                 </label>

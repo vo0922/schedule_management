@@ -3,8 +3,8 @@
 </div>
 <div id="myScheduleList" class="myScheduleList_class">
     <% mySchedule.map((data)=>{ %>
-        <div class="myScheduleList">
-            <p onclick="scheduleViewModalOpen('<%= data._id %>')"><%= data.title %></p>
+        <div class="myScheduleList" onclick="scheduleViewModalOpen('<%= data._id %>')">
+            <p><%= data.title %></p>
         </div>
     <% }) %>
 </div>

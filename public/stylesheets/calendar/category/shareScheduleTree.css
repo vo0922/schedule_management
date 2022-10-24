@@ -1,6 +1,8 @@
 .tree{
     margin-top: 5px;
     position: absolute;
+    overflow: auto;
+    height: 450px;
 }
 .tree, .tree ul{
     list-style: none; /* 기본 리스트 스타일 제거 */
@@ -8,12 +10,10 @@
 }
 .tree, .tree li{
     width: 100%;
-    height: 30px;
 }
 .tree_list {
     padding-left:10px;
     /* padding: 12px; */
-
 }
 .tree_list:hover {
     background-color: #d2d2d2;
@@ -21,7 +21,6 @@
 }
 .tree_list:hover > .label_text{
     color: #00AACC;
-
 }
 .tree *:before{
     /* width:20px;
@@ -49,7 +48,7 @@
     display: flex;
     width: auto;
     /* background-color: #0000ff; */
-    padding: 12px;
+    padding: 7px;
 }
 
 .tree label:hover > {
@@ -60,12 +59,11 @@
 .tree label:before{
     content: '>';
     transform: rotate(-90deg);
-    margin: .5rem;
-
+    margin: .1rem;
     /* content: '+' */
 }
 .tree label.lastTree:before{
-    content:'.';
+    content:'';
     display: inline-block;
     background-color: #00AACC;
     width: 25px;
@@ -78,40 +76,40 @@
 
 }
 .tree label.lastTree:hover:before{
-    content:'.';
+    content:'';
     display: inline-block;
     background-color: #00AACC;
     width: 30px;
     height: 6px;
 }
-.tree input[type="checkbox"] {
+#tab-1 > .tree input[type="checkbox"] {
     display: none;
 }
-.tree input[type="checkbox"]:checked~ul {
+#tab-1 > .tree input[type="checkbox"]:checked~ul {
     display: none;
 }
-.tree input[type="checkbox"]:checked+label:before{
+#tab-1 > .tree input[type="checkbox"]:checked+label:before{
     content: '>';
     transform: rotate(90deg);
-    
+
     /* content: '-' */
 }
-.tree input[type="checkbox"]:checked+label:hover:before{
+#tab-1 > .tree input[type="checkbox"]:checked+label:hover:before{
     content: '>';
     transform: rotate(90deg);
     /* content: '-' */
 
 }
 
-.tree input[type="checkbox"]:checked+label.lastTree:before{
-    content:'.';
+#tab-1 > .tree input[type="checkbox"]:checked+label.lastTree:before{
+    content:'';
     display: inline-block;
     background-color: #00AACC;
     width: 30px;
     height: 6px;
 }
-.tree input[type="checkbox"]:checked+label.lastTree:hover:before{
-    content:'.';
+#tab-1 > .tree input[type="checkbox"]:checked+label.lastTree:hover:before{
+    content:'';
     display: inline-block;
     background-color: #00AACC;
     width: 30px;
@@ -127,4 +125,39 @@
 }
 .tree_third {
     padding-left: 34px;
+}
+
+
+#tab-3 > .tree input[type="checkbox"] {
+    display: none;
+}
+#tab-3 > .tree input[type="checkbox"]:checked~ul {
+    display: none;
+}
+#tab-3 > .tree input[type="checkbox"]:checked+label:before{
+    content: '>';
+    transform: rotate(90deg);
+
+    /* content: '-' */
+}
+#tab-3 > .tree input[type="checkbox"]:checked+label:hover:before{
+    content: '>';
+    transform: rotate(90deg);
+    /* content: '-' */
+
+}
+
+#tab-3 > .tree input[type="checkbox"]:checked+label.lastTree:before{
+    content:'';
+    display: inline-block;
+    background-color: #00AACC;
+    width: 30px;
+    height: 6px;
+}
+#tab-3 > .tree input[type="checkbox"]:checked+label.lastTree:hover:before{
+    content:'';
+    display: inline-block;
+    background-color: #00AACC;
+    width: 30px;
+    height: 6px;
 }

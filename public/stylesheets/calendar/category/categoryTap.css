@@ -1,9 +1,9 @@
 
 .tapContainer {
     position: relative;
-    top:120px;
+    top: 120px;
     margin: 0 auto;
-    width:90%;
+    width: 90%;
     font-size: 16px;
     color: var(--text-color);
 }
@@ -25,8 +25,9 @@ ul.tabs li {
     padding: 10px 15px;
     cursor: pointer;
     text-align: center;
-    
+
 }
+
 ul.tabs li:nth-of-type(1), ul.tabs li:nth-of-type(2) {
     border-right: 1px solid #ababab;
 }
@@ -55,26 +56,30 @@ ul.tabs li.current {
 
 .myCategoryList {
     width: 100%;
+    overflow: auto;
+    max-height: 180px;
 }
+
 /* 전체 */
 /* 나의 카테고리 */
-.categoryList{
+.categoryList {
     width: 100%;
     display: flex;
     /* flex-direction: row;
     justify-content: space-between; */
     padding: 10px;
 }
-.categoryList:hover{
+
+.categoryList:hover {
     color: #00AACC;
     background-color: #d2d2d2;
-
 }
-.categoryList:hover > .categoryIcon{
+
+.categoryList:hover > .categoryIcon {
     display: block;
 }
 
-.categoryList > p {
+.categoryList_div > p {
     cursor: pointer;
 }
 
@@ -87,8 +92,9 @@ ul.tabs li.current {
     display: none;
     float: right;
 }
+
 .categoryList::before {
-    content:'.';
+    content: '';
     display: inline-block;
     background-color: #fdff7d;
     width: 6px;
@@ -107,30 +113,37 @@ ul.tabs li.current {
     font-weight: bold;
     color: var(--text-color);
     margin-top: 23px;
-  }
-  .option_schedule_me {
+}
+
+.option_schedule_me {
     font-size: var(--h3-font-size);
-  }
-  #myScheduleList {
+}
+
+#myScheduleList {
     width: 100%;
     padding-top: 10px;
-  }
-  .myScheduleList {
+    overflow: auto;
+    height: 400px;
+}
+
+.myScheduleList {
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 1rem;
     padding: 10px;
-  }
-  .myScheduleList::before {
-    content: '.';
+}
+
+.myScheduleList::before {
+    content: '';
     width: 9px;
     height: 9px;
     background-color: #f08080;
     border-radius: 50%;
-  }
-  .myScheduleList:hover {
+}
+
+.myScheduleList:hover {
     color: #00AACC;
     background-color: #d2d2d2;
     cursor: pointer;
-  }
+}

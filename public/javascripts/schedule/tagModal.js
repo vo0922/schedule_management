@@ -49,7 +49,6 @@ function selectTag(text) {
 
 function addTagList(text) {
     let tagDiv = document.getElementById('tagList');
-    tagDiv.innerHTML = null;
     let tagInput = document.getElementById('tagInput')
     let newTag = createElements(text);
     let leftTag = document.getElementsByClassName(text)[0];
