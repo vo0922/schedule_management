@@ -1,5 +1,6 @@
 function categoryModalOpen() {
     c_modal.style.display = "block";
+    document.getElementById('categoryColor').value = '#f08080';
     document.getElementsByClassName('category category_save')[0].innerHTML = `<button class="category_save_btn" onclick="submitCategory('post')">등록</button>`
     plus.style.display = 'none'
 }
@@ -116,7 +117,7 @@ function categoryModalReload() {
     document.getElementById('category_share_user').innerHTML = null;
     document.getElementById('userListDiv').innerHTML = null;
     document.getElementById('userSearchText').value = null;
-    document.getElementById('categoryColor').value = null;
+    document.getElementById('categoryColor').value = '#f08080';
     shareUserModalDone()
     shareList.style.display = "none"
     categoryTagModal.style.display = "none";
