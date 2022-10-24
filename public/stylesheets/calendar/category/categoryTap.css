@@ -94,11 +94,7 @@ ul.tabs li.current {
 }
 
 .categoryList::before {
-<<<<<<< HEAD
     content: '';
-=======
-    content:'';
->>>>>>> seunghyun_branch
     display: inline-block;
     background-color: #fdff7d;
     width: 6px;
@@ -136,14 +132,9 @@ ul.tabs li.current {
     align-items: center;
     column-gap: 1rem;
     padding: 10px;
-<<<<<<< HEAD
 }
 
 .myScheduleList::before {
-=======
-  }
-  .myScheduleList::before {
->>>>>>> seunghyun_branch
     content: '';
     width: 9px;
     height: 9px;
