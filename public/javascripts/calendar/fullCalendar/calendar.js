@@ -27,7 +27,6 @@ window.onload = function () {
                 dayMaxEvents: true, // allow "more" link when too many events
                 events: scheduleData,
                 moreLinkClick: function (event) {
-                    console.log(event)
                     let scheduleList = [];
                     event.allSegs.map((data) => {
                         scheduleList.push(data.event);
@@ -52,7 +51,7 @@ window.onload = function () {
                         scheduleListModalOpen(scheduleList);
                         clickDateRequest(event)
                     } else {
-                        scheduleModalOpen();
+                        scheduleModalOpen(event.date);
                     }
                 },
                 eventClick: function (event) {

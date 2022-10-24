@@ -51,11 +51,11 @@ function scheduleSubmitModalReload() {
     show_map()
 }
 
-function scheduleModalOpen() {
+function scheduleModalOpen(clickStart) {
     plus.style.display = "none"
     modal.style.display = "block";
     scheduleSubmitModal.style.display = 'block';
-    startDate.value = date;
+    startDate.value = clickStart ? new Date(clickStart.getTime() - clickStart.getTimezoneOffset() * 60000).toISOString().slice(0, -8) : date;
     //startDate.min = date;
     endDate.min = date;
     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class="schedule_save_btn" onclick="submitSchedule('post')">등록</button>`
