@@ -88,7 +88,7 @@ ul.tabs li.current {
     float: right;
 }
 .categoryList::before {
-    content:'.';
+    content:'';
     display: inline-block;
     background-color: #fdff7d;
     width: 6px;
@@ -123,7 +123,7 @@ ul.tabs li.current {
     padding: 10px;
   }
   .myScheduleList::before {
-    content: '.';
+    content: '';
     width: 9px;
     height: 9px;
     background-color: #f08080;

@@ -37,6 +37,16 @@
                         <i class="fa-solid fa-palette" onclick="dp_headerColor()"></i>
                     </a>
                 </li>
+                <!-- 로그인 API 정보 -->
+                <div class="login_icon">
+                    <% if(member.provider == 'naver') { %>
+                        <img src="/images/naver_icon.png" alt="네이버 아이콘">
+                    <% } else { %>
+                        <img src="/images/kakao_icon.png" alt="네이버 아이콘">
+                    <% } %>
+                </div>
+                    
+                
             </ul>
         </div>
     </nav>
@@ -53,21 +63,7 @@
             <p>이메일 : <%= member.email %> </p>
         </div>
     </div>
-    <!-- 로그인 API 정보 -->
-    <div class="user_info">
-        <div class="login_icon">
-            <% if(member.provider == 'naver') { %>
-                <img src="/images/naver_icon.png" alt="네이버 아이콘">
-            <% } else { %>
-                <img src="/images/kakao_icon.png" alt="네이버 아이콘">
-            <% } %>
-        </div>
-        <% if(member.provider == 'naver') { %>
-            <p>네이버로 로그인하셨어요</p>
-        <% } else { %>
-            <p>카카오로 로그인하셨어요</p>
-        <% } %>
-    </div>
+    
     <!-- 로그아웃 -->
     <div class="user_info" onclick="location.href='/logout'">
         <i class="fa-sharp fa-solid fa-arrow-right-from-bracket fa-xl"></i>
