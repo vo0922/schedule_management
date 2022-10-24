@@ -12,7 +12,8 @@ function tagKeyUp(e) {
         return tagListDiv[tagListDiv.length - 1].remove();
 }
 
-function tagInput(e) {
+function tagInput(e, line) {
+    handleLine(e, line)
     let tagHash = e.value.replace('#', '');
     if (!e.value)
         return tagModal.style.display = "none";

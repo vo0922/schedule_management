@@ -6,6 +6,30 @@ var startDate = document.getElementById('schedule_start_day');
 var endDate = document.getElementById('schedule_end_day');
 var date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -8);
 
+let aleartFlag = 0;
+
+function handleLine(e, line) {
+    if(aleartFlag == 1){
+        return
+    }
+    if(e.value.length > line) {
+        aleartFlag = 1;
+        let lineAlertDiv = document.getElementById('lineAlert');
+        lineAlertDiv.innerHTML=`글자 수 ${line}자를 넘을 수 없습니다.`
+        lineAlertDiv.style.display='block'
+        lineAlertDiv.style.opacity = 0.6;
+        let alertTimer = setInterval(()=>{
+            lineAlertDiv.style.opacity -= 0.02
+        },50)
+        setTimeout(()=>{
+            clearInterval(alertTimer);
+            lineAlertDiv.style.display='none'
+            aleartFlag = 0;
+        }, 1500)
+        e.value = e.value.substr(0, line);
+    }
+}
+
 function scheduleSubmitModalReload() {
     scheduleDisabled()
     document.getElementById('schedule_title').value = null;
