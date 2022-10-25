@@ -9,10 +9,11 @@ var date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 6000
 let aleartFlag = 0;
 
 function handleLine(e, line) {
-    if(aleartFlag == 1){
-        return
-    }
     if(e.value.length > line) {
+        e.value = e.value.substr(0, line);
+        if(aleartFlag == 1){
+            return
+        }
         aleartFlag = 1;
         let lineAlertDiv = document.getElementById('lineAlert');
         lineAlertDiv.innerHTML=`글자 수 ${line}자를 넘을 수 없습니다.`
@@ -26,7 +27,6 @@ function handleLine(e, line) {
             lineAlertDiv.style.display='none'
             aleartFlag = 0;
         }, 1500)
-        e.value = e.value.substr(0, line);
     }
 }
 

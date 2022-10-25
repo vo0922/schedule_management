@@ -7,14 +7,47 @@
     <title>home</title>
     <!--================= CSS =================-->
     <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/statistics.css">
     <!--=============== FONTAWESOME ===============-->
     <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.2.0-web/css/all.min.css">
     <!--=============== JQUERY ===============-->
     <script src="/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="/javascripts/statistics/tagChart.js"></script>
 </head>
 <body>
 <!--=============== HEADER ===============-->
 <%- include('layout/header.ejs'); %>
-<h1>태그 통계</h1>
+<div class="statisticsPage">
+    <div class="tagChart">
+        <%- include('statistics/tagChart.ejs'); %>
+    </div>
+    <div class="myTagRank">
+        <p>태그 () 에 대한 통계입니다.</p>
+        <hr/>
+        <p>태그 순위</p>
+        <div class="tagRankGrid">
+            <div class="tagItem1">
+                태그1
+            </div>
+            <div class="tagItem2">
+                태그2
+            </div>
+            <div class="tagItem3">
+                태그3
+            </div>
+            <div class="tagItem4">
+                태그4
+            </div>
+            <div class="tagItem5">
+                태그5
+            </div>
+            <div class="tagItem6">
+                태그6
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>
