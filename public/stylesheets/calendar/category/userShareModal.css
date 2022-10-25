@@ -55,7 +55,7 @@
 .user_share_userList_img img {
   border-radius: 50%;
   max-height: 50px;
-  width: 50px;
+  max-width: 50px;
 }
 .user_share_info_name, .user_share_userList_name {
   font-size: 18px;

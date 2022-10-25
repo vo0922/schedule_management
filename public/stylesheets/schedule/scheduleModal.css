@@ -84,14 +84,21 @@ input[type="range"] {
 }
 
 .schedule_save_btn {
-    width: 20%;
+    width: 100px;
     height: 70%;
     background-color: #e1e5ec;
     color: var(--text-color);
     border-radius: 10px;
     font-size: var(--h3-font-size);
 }
-
+.schedule_delete_btn {
+    width: 100px;
+    height: 70%;
+    background-color: #9907074d;
+    color: var(--text-color);
+    border-radius: 10px;
+    font-size: var(--h3-font-size);
+}
 /* 지도 checkbox 클릭 시 바뀌는 css */
 .show_address_modal-content {
     background-color: #fefefe;
@@ -122,4 +129,8 @@ input[type="range"] {
 .modal_section:last-of-type {
     border-left: 4px solid #d3d3d570;
     padding-left: 45px;
+}
+
+label[for="schedule_address_q"]:hover {
+    color: #00AACC;
 }

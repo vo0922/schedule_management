@@ -9,20 +9,20 @@
   border-right: 2px solid #e9e9e9;
 }
 .plus {
-  position: absolute;
-    max-width: 20.55rem;
-    max-height: 75px;
-    left: 55px;
-    top: 72px;
-    font-size: 16px;
-    border-radius: 35px;
-    width: 100%;
-    height: 73px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 0 10px #5a5a5a;
+  position: relative;
+  max-width: 17rem;
+  left: 2.5rem;
+  top: 2rem;
+  font-size: 19px;
+  border-radius: 50px;
+  width: 100%;
+  max-height: 73px;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 7px #5a5a5a;
+  justify-content: space-evenly;
 }
 .plus:hover {
   cursor: pointer;
@@ -32,25 +32,33 @@
 }
 #plus_menu {
   position: absolute;
-  left: 121px;
-  top: 150px;
+  left: 5.95rem;
+  top: 10.25rem;
   background-color: #fff;
-  height: 7.75rem;
+  width: 14rem;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0 0 7px #5a5a5a;
   z-index: 11;
 }
 .plus_menu_schedule, .plus_menu_category {
   display: flex;
-  width: 13rem;
-  height: 3rem;
+  width: auto;
+  height: 4rem;
   font-size: 1rem;
-  align-items: flex-end;
+  align-items: center;
   column-gap: 0.5rem;
   justify-content: center;
 }
 .plus_menu_schedule:hover, .plus_menu_category:hover {
   cursor: pointer;
+  background-color: #e9e9e9;
+}
+.plus_menu_schedule:hover {
+  border-radius: 10px 10px 0 0;
+}
+.plus_menu_category:hover {
+  border-radius: 0 0 10px 10px;
 }
 #calendar_section2 {
   background-color: var(--body-color);

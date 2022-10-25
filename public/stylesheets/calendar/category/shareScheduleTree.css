@@ -162,7 +162,7 @@
     height: 30px;
 }
 
-label:hover {
+.fs_label:hover, .lastTree:hover{
     color: #00AACC;
     background-color: #d2d2d2;
     cursor: pointer;
