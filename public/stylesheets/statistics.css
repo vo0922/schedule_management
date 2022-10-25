@@ -26,7 +26,53 @@
 
 }
 
+.myTagHeader {
+    border-bottom: 1px dotted rgba(0, 0, 0, .2);
+    display: flex;
+    padding: 20px;
+}
+
+.myTagHeader > p {
+    color: #1b5ac2;
+}
+
+.myTagRankHeader {
+    border-bottom: 1px solid rgba(0, 0, 0, .8);
+    padding: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .tagRankGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.tagItem {
+    border-bottom: 1px dotted rgba(0, 0, 0, .2);
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tagItem > span {
+    display: flex;
+    align-items: center;
+}
+
+.rank {
+    margin-right: 5px;
+}
+
+span > .count {
+    font-size: 12px;
+    color: lightcoral;
+    margin-right: 25px;
+}
+
+span > .percent {
+    font-size: 18px;
+    font-weight: bolder;
 }
