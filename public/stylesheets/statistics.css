@@ -8,15 +8,28 @@
     justify-content: center;
 }
 
-.tagChart {
+.topStatistics {
     width: 80%;
     height: 35vh;
-    background-color: #FFFFFF;
     margin-bottom: 30px;
     margin-top: 10px;
     display: flex;
+    justify-content: space-between;
+}
+
+.tagChart {
+    width: 47%;
+    height: 35vh;
+    background-color: #FFFFFF;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 15px;
+}
+
+.scheduleArea {
+    width: 47%;
+    height: 35vh;
+    background-color: #FFFFFF;
 }
 
 .myTagRank {

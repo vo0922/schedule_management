@@ -10,7 +10,7 @@ let pieChartData = {
     }]
 };
 
-let pieChartDraw = function () {
+function pieChartDraw() {
     let ctx = document.getElementById('tagChart').getContext('2d');
 
     window.pieChart = new Chart(ctx, {
@@ -18,51 +18,24 @@ let pieChartDraw = function () {
         data: pieChartData,
         options: {
             responsive: false,
-            legend: {
-                display: false
-            },
-            legendCallback: customLegend
-        }
-    });
+            plugins: {
+                legend:{
+                    display: false,
+                    labels:{
+                        generateLabels: function (chart) {
+                            console.log(chart);
+                            let color = chart.data.datasets[0].backgroundColor;
+                            let ulData = [];
+                            chart.data.labels.map((label, idx) => {
+                                ulData.push(`<div><span style="background-color: ${color[idx]}; display: inline-block; width: 10px; height: 10px; border-radius: 70px"></span> ${label}</div>`);
+                            })
 
-};
-
-let customLegend = function (chart) {
-    let ul = document.createElement('ul');
-    let color = chart.data.datasets[0].backgroundColor;
-
-    chart.data.labels.forEach(function (label, index) {
-        ul.innerHTML += `<li><span style="background-color: ${color[index]}; display: inline-block; width: 30px; height: 10px;"></span> ${label}</li>`;
-    });
-
-    return ul.outerHTML;
-};
-
-function fullTagChart() {
-    const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [
-                "축구",
-                "배구",
-                "농구",
-                "야구",
-                "수영",
-                "육상",
-                "스타벅스"
-            ],
-            datasets: [
-                {
-                    label: "태그 사용 수",
-                    data: [10, 20, 30, 40, 10, 20, 30, 40, 50],
-                    backgroundColor: "red"
+                            return document.getElementById('legendDiv').innerHTML = ulData.join('');
+                        }
+                    }
                 },
-                {
-                    label: "전체 태그 사용 수",
-                    data: [10, 20, 30, 40, 10, 20, 30, 40, 60],
-                    backgroundColor: "blue"
-                }
-            ]
+            },
+
         }
     });
-}
+};
