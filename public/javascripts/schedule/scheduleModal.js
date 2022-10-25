@@ -120,7 +120,7 @@ function scheduleViewModalOpen(scheduleId) {
 
 
             if (res.memberId == res.scheduleView.memberId) {
-                document.getElementsByClassName('schedule_save')[0].innerHTML = `<button onclick='scheduleModalEditOpen(${JSON.stringify(res)})'>편집</button>` + `<button onclick="scheduleDelete('${res.scheduleView._id}')">삭제</button>`
+                document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class='schedule_save_btn' onclick='scheduleModalEditOpen(${JSON.stringify(res)})'>편집</button>` + `<button class='schedule_delete_btn' onclick="scheduleDelete('${res.scheduleView._id}')">삭제</button>`
             } else {
                 document.getElementsByClassName('schedule_save')[0].innerHTML = null
             }
