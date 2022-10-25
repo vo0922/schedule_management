@@ -24,6 +24,7 @@ const scheduleRouter = require('./routes/schedule');
 const calendarRouter = require('./routes/calendar');
 const tagRouter = require('./routes/tag');
 const categoryRouter = require('./routes/category');
+const statisticsRouter = require('./routes/statistics');
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.use('/category', authUtil, categoryRouter);
 app.use('/schedule', authUtil, scheduleRouter);
 app.use('/calendar', authUtil, calendarRouter);
 app.use('/tag', authUtil, tagRouter);
+app.use('/statistics',authUtil, statisticsRouter);
 
 /**
  * 담당자 : 박신욱
