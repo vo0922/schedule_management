@@ -11,7 +11,6 @@ router.get('/', function (req, res, next) {
 router.get('/totalTag', async function (req, res) {
     try{
         const totalTag = await scheduleController.totalTag(req.user._id)
-
         res.status(201).json({data: totalTag, message: "나의 총 일정"})
     }catch(err) {
         console.log(err)
