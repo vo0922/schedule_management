@@ -3,6 +3,8 @@ window.onload = function () {
     pieChartBinding()
 }
 
+let totalCount = 0;
+
 function pieChartBinding() {
     let labels = []
     let count = []
@@ -13,6 +15,7 @@ function pieChartBinding() {
             res.data.map((data) => {
                 labels.push(data.tag.name)
                 count.push(data.count)
+                totalCount += data.count;
             })
                 let pieChartData = {
                     labels: labels,
@@ -61,7 +64,6 @@ function pieChartDraw(pieChartData) {
 
 function tagChartData() {
     const url = '/statistics/totalTagSort';
-    let totalCount = 5;
     let tagEl = [];
     $.ajax({
         type: 'get',
