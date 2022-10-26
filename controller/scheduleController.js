@@ -108,5 +108,27 @@ module.exports = {
         } catch (e) {
             throw new Error(e);
         }
+    },// 총 일정 갯수
+    totalTag: async (memberId) => {
+        try {
+            const tagName = await schedule.find({memberId: memberId}).populate('tagId')
+            let totalTag = []
+            tagName.map((schedule) => {
+                schedule.tagId.map((tagData) => {
+                    let flag = totalTag.findIndex(value => value.tag._id === tagData._id);
+                        if (flag == -1) {
+                            totalTag.push({
+                                tag: tagData,
+                                count: 1,
+                            })
+                        }else{
+                            totalTag[flag].count += 1
+                        }
+                })
+            })
+            return totalTag;
+        } catch (e) {
+            throw new Error(e);
+        }
     }
 }
