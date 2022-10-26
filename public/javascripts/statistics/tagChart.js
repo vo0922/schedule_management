@@ -1,9 +1,9 @@
-window.onload = function () {
-    tagChartData()
-    pieChartBinding()
-}
-
 let totalCount = 0;
+
+window.onload = function () {
+    pieChartBinding()
+    tagChartData()
+}
 
 function pieChartBinding() {
     let labels = []
@@ -17,14 +17,15 @@ function pieChartBinding() {
                 count.push(data.count)
                 totalCount += data.count;
             })
-                let pieChartData = {
-                    labels: labels,
-                    datasets: [{
-                        data: count,
-                        backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)']
-                    }]
-                };
-                pieChartDraw(pieChartData)
+            let pieChartData = {
+                labels: labels,
+                datasets: [{
+                    data: count,
+                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+                    hoverOffset: 6,
+                }]
+            };
+            pieChartDraw(pieChartData)
         },
         error: function (err) {
             console.log(err)
@@ -41,23 +42,33 @@ function pieChartDraw(pieChartData) {
         data: pieChartData,
         options: {
             responsive: false,
+            onClick: (event, elements) => {
+                if (elements.length > 0) {
+                    console.log(event.chart.data.labels[elements[0].index])
+                }
+            },
             plugins: {
                 legend: {
                     display: false,
                     labels: {
                         generateLabels: function (chart) {
                             let color = chart.data.datasets[0].backgroundColor;
-                            let ulData = [];
+                            let divData = [];
                             chart.data.labels.map((label, idx) => {
-                                ulData.push(`<div style="margin-bottom: 6px;"><span style="background-color: ${color[idx]}; display: inline-block; width: 15px; height: 15px; border-radius: 70px"></span> ${label}</div>`);
+                                divData.push(`<div style="margin-bottom: 6px; font-size: 14px">
+                                            <span style="background-color: ${color[idx]}; display: inline-block; width: 15px; height: 15px; border-radius: 70px;">
+                                            </span> ${label}: <span id="percent${idx}"></span>
+                                            </div>`);
                             })
-
-                            return document.getElementById('legendDiv').innerHTML = ulData.join('');
+                            document.getElementById('legendDiv').innerHTML = divData.join('');
+                            chart.data.datasets[0].data.map((data, idx) => {
+                                let percent = data / totalCount * 100;
+                                document.getElementById(`percent${idx}`).innerHTML = `${percent.toFixed(1)}%(${data})`;
+                            })
                         }
                     }
                 },
             },
-
         }
     });
 };
@@ -70,6 +81,10 @@ function tagChartData() {
         url: url,
         contentType: 'application/json',
         success: function (res) {
+            let totalCount = 0;
+            res.data.map((data) => {
+                totalCount += data.count;
+            })
             res.data.map((data, idx) => {
                 let percent = data.count / totalCount * 100;
                 tagEl.push(`
