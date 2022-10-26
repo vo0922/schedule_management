@@ -63,7 +63,7 @@ app.use('/category', authUtil, categoryRouter);
 app.use('/schedule', authUtil, scheduleRouter);
 app.use('/calendar', authUtil, calendarRouter);
 app.use('/tag', authUtil, tagRouter);
-app.use('/statistics',authUtil, statisticsRouter);
+app.use('/statistics', authUtil, statisticsRouter);
 
 /**
  * 담당자 : 박신욱
