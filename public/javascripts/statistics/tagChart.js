@@ -84,6 +84,7 @@ function tagChartData() {
                 </div>
                 `)
             })
+            document.getElementById('myTagHeader').innerHTML = `<p>태그 (${res.data.length})</p> &nbsp; 에 대한 통계입니다.`
             document.getElementById('tagRankGrid').innerHTML = tagEl.join('');
         },
         error: function (err) {
