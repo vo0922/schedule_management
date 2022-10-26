@@ -7,6 +7,17 @@ router.get('/', function (req, res, next) {
     res.render('statistics', {member: req.user, url: 'statistics'});
 });
 
+router.get('/totalTagSort', async function (req, res) {
+    try{
+        const totalTag = await scheduleController.totalTag(req.user._id)
+        let result = totalTag.sort((a, b) => b.count - a.count);
+        res.status(201).json({data: result, message: "태그 정렬 성공"})
+    }catch(err) {
+        console.log(err)
+        res.status(401).json({message: "총 태그정렬 실패"})
+    }
+})
+
 // 태그 통계 라우터
 router.get('/totalTag', async function (req, res) {
     try{

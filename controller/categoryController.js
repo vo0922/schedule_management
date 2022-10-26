@@ -120,7 +120,7 @@ module.exports = {
                         let flag = shareAllSchedule.find(value => JSON.stringify(value.scheduleData) === JSON.stringify(shareScheduleData));
                         if (!flag) {
                             shareAllSchedule.push({
-                                category: authSchedule.color,
+                                category: authScheduleData.color,
                                 scheduleData: shareScheduleData,
                             })
                         }

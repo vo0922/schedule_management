@@ -1,4 +1,5 @@
 window.onload = function () {
+    tagChartData()
     pieChartDraw();
 }
 
@@ -19,11 +20,10 @@ function pieChartDraw() {
         options: {
             responsive: false,
             plugins: {
-                legend:{
+                legend: {
                     display: false,
-                    labels:{
+                    labels: {
                         generateLabels: function (chart) {
-                            console.log(chart);
                             let color = chart.data.datasets[0].backgroundColor;
                             let ulData = [];
                             chart.data.labels.map((label, idx) => {
@@ -39,3 +39,36 @@ function pieChartDraw() {
         }
     });
 };
+
+function tagChartData() {
+    const url = '/statistics/totalTagSort';
+    let totalCount = 5;
+    let tagEl = [];
+    $.ajax({
+        type: 'get',
+        url: url,
+        contentType: 'application/json',
+        success: function (res) {
+            res.data.map((data, idx) => {
+                let percent = data.count / totalCount * 100;
+                tagEl.push(`
+                <div class="tagItem">
+                <span class="itemContent"><p class="rank">${idx + 1}위</p> <p class="tag">${data.tag.name}</p></span>
+                <div style="width: 30%; height: 120%; margin: 0 auto;overflow: hidden">
+                    <span style="display:inline-block;line-height: 19px; height: 66.6%;width: 98%;border-radius: 20px;background-color: #c7c7c7">
+                        <span style="text-align: center ; display:inline-block; border-radius: 20px;height: 100%;width: ${percent.toFixed(1)}%;background-color: #0098fe;">
+                            <span class="MemberProgressText" style="color: rgb(255, 255, 255); display: inline-block; text-align: center; height: 100%; width: 210px;">${percent.toFixed(1)}%</span>
+                        </span>
+                    </span>
+                </div>
+                <span><p class="count">${data.count}</p><p class="percent">${percent.toFixed(1)}%</p></span>
+                </div>
+                `)
+            })
+            document.getElementById('tagRankGrid').innerHTML = tagEl.join('');
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+}

@@ -97,11 +97,15 @@
 }
 
 .tagItem > .itemContent {
-    width: 13%;
+    width: 12%;
 }
 
 .rank {
     margin-right: 5px;
+}
+
+.rank,.tag {
+    font-size: 1rem;
 }
 
 span > .count {
