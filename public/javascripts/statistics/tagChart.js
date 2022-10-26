@@ -27,7 +27,7 @@ function pieChartDraw() {
                             let color = chart.data.datasets[0].backgroundColor;
                             let ulData = [];
                             chart.data.labels.map((label, idx) => {
-                                ulData.push(`<div><span style="background-color: ${color[idx]}; display: inline-block; width: 10px; height: 10px; border-radius: 70px"></span> ${label}</div>`);
+                                ulData.push(`<div style="margin-bottom: 6px;"><span style="background-color: ${color[idx]}; display: inline-block; width: 15px; height: 15px; border-radius: 70px"></span> ${label}</div>`);
                             })
 
                             return document.getElementById('legendDiv').innerHTML = ulData.join('');

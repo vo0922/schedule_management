@@ -10,26 +10,47 @@
 
 .topStatistics {
     width: 80%;
-    height: 35vh;
-    margin-bottom: 30px;
+    height: 37vh;
+    margin-bottom: 20px;
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
 
 .tagChart {
-    width: 47%;
+    width: 48%;
     height: 35vh;
     background-color: #FFFFFF;
     display: flex;
-    align-items: center;
-    padding: 15px;
+    flex-direction: column;
+    padding: 10px;
 }
 
-.scheduleArea {
-    width: 47%;
+.chartArea {
+    display: flex;
+    align-items: center;
+}
+
+.chartAreaHeader {
+    height: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.chartAreaHeader > p {
+    font-size: 18px;
+    opacity: 0.8;
+    font-weight: bolder;
+    margin-left: 15px;
+}
+
+.scheduleList {
+    width: 48%;
     height: 35vh;
     background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
 .myTagRank {
@@ -75,6 +96,10 @@
     align-items: center;
 }
 
+.tagItem > .itemContent {
+    width: 13%;
+}
+
 .rank {
     margin-right: 5px;
 }
@@ -88,4 +113,8 @@ span > .count {
 span > .percent {
     font-size: 18px;
     font-weight: bolder;
+}
+
+.scheduleCount {
+    color: #1b5ac2;
 }
