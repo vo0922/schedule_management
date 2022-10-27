@@ -33,6 +33,31 @@
                           placeholder="일정에 대한 상세 내용을 입력해 주세요."
                           style="height: 28px;"></textarea>
             </div>
+            <!-- 진행도 입력란 -->
+            <div class="schedule">
+                <label for="schedule_progress"><i class="fa-solid fa-spinner fa-lg"></i></label>
+                <!-- <ul name="progress" id="scheduleProgress">
+                    <li value="ing" class="progress_option" selected>
+                        <div class="progress_option_div progress-ing">
+                            진행
+                        </div>
+                    </li>
+                    <li value="done" class="progress_option">
+                        <div class="progress_option_div progress-done">
+                            완료
+                        </div>
+                    </li>
+                </ul> -->
+                <div class="boxx">
+                    <div class="selectBox2 ">
+                    <button class="label">진행도 선택</button>
+                    <ul class="optionList">
+                        <li class="optionItem">진행</li>
+                        <li class="optionItem">완료</li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
             <!-- 태그 입력란 -->
             <div class="schedule tagContent">
                 <label for="schedule_tag"><i class="fa-sharp fa-solid fa-hashtag fa-lg"></i></label>
@@ -78,3 +103,40 @@
 
     </div>
 </div>
+<script>
+    // const select = document.getElementById('scheduleProgress')
+    // const option = document.querySelectorAll('progress_option')
+    
+    // select.addEventListener('click', () => {
+
+    // })
+    const label = document.querySelectorAll('.label');
+    label.forEach(function(lb){
+        lb.addEventListener('click', e => {
+            let optionList = lb.nextElementSibling;
+            let optionItems = optionList.querySelectorAll('.optionItem');
+            clickLabel(lb, optionItems);
+        })
+    });
+    const clickLabel = (lb, optionItems) => {
+        if(lb.parentNode.classList.contains('active')) {
+            lb.parentNode.classList.remove('active');
+            optionItems.forEach((opt) => {
+                opt.removeEventListener('click', () => {
+                    handleSelect(lb, opt)
+                })
+            })
+        } else {
+            lb.parentNode.classList.add('active');
+            optionItems.forEach((opt) => {
+                opt.addEventListener('click', () => {
+                    handleSelect(lb, opt)
+                })
+            })
+        }
+    }
+    const handleSelect = (label, item) => {
+        label.innerHTML = item.textContent;
+        label.parentNode.classList.remove('active');
+    }
+</script>
