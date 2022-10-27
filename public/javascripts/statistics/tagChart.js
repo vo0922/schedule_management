@@ -23,7 +23,7 @@ function chartBinding() {
                 totalCount += data.count;
                 if (idx < 6) {
                     color.push(defaultColor[idx]);
-                }else {
+                } else {
                     color.push(defaultColor[6]);
                 }
             })
@@ -163,8 +163,8 @@ function tagChartData() {
                 <div class="tagItem">
                 <span class="itemContent"><p class="rank">${idx + 1}위</p> <p class="tag">${data.tag.name}</p></span>
                 <div style="width: 180px; height: 30px; margin: 0 auto;overflow: hidden">
-                    <span style="display:inline-block;line-height: 19px; height: 66.6%;width: 98%;border-radius: 20px;background-color: #c7c7c7">
-                        <span style="text-align: center ; display:inline-block; border-radius: 20px;height: 100%;width: ${percent.toFixed(1)}%;background-color: #0098fe;">
+                    <span style="display:inline-block; height: 66.6%;width: 180px;border-radius: 20px;background-color: #c7c7c7">
+                        <span style="text-align:center ; display:inline-block; border-radius: 20px; height: 100%; width: ${percent.toFixed(1)}%; background-color: #0098fe;">
                             <span class="MemberProgressText" style="color: rgb(255, 255, 255); display: inline-block; text-align: center; height: 100%; width: 180px;">${percent.toFixed(1)}%</span>
                         </span>
                     </span>
