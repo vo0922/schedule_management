@@ -6,12 +6,7 @@ window.onload = function () {
     tagAboutSchedule()
 }
 
-<<<<<<< HEAD
 function chartBinding() {
-=======
-// 태그 통계 원형 차트
-function pieChartBinding() {
->>>>>>> seunghyun_branch
     let labels = []
     let count = []
     let totalTagCount = []
