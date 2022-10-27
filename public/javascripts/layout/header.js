@@ -69,6 +69,7 @@ function colorSet(colorPick) {
         document.getElementById(selectedColor).className = document.getElementById(selectedColor).className.replace(" selected", "");
     }
     document.getElementById(colorPick.id).className += " selected";
+    document.getElementById('leftColor').value = colorPick.id;
     selectedColor = colorPick.id;
 }
 
