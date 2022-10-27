@@ -108,7 +108,7 @@ module.exports = {
         } catch (e) {
             throw new Error(e);
         }
-    },// 총 일정 갯수
+    },// 총 일정 갯수 => 태그 통계 구하기
     totalTag: async (memberId) => {
         try {
             const tagName = await schedule.find({memberId: memberId}).populate('tagId')
@@ -130,5 +130,14 @@ module.exports = {
         } catch (e) {
             throw new Error(e);
         }
+    }, // 태그에 해당되는 일정들
+    tagAboutSchedule: async (memberId) => {
+        try {
+            const tagAboutScheduleData = await schedule.find({memberId: memberId}).populate('tagId')
+            return tagAboutScheduleData
+        } catch (e) {
+            throw new Error(e)
+        }
     }
+
 }

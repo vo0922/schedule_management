@@ -29,4 +29,15 @@ router.get('/totalTag', async function (req, res) {
     }
 })
 
+// 태그 관련 일정 목록 라우터
+router.get('/tagAboutSchedule', async function (req, res) {
+    try{
+        const tagAboutScheduleData = await scheduleController.tagAboutSchedule(req.user._id)
+        res.status(201).json({data: tagAboutScheduleData, message: "선택한 태그들을 포함하는 일정들"})
+    }catch(err) {
+        console.log(err)
+        res.status(401).json({message: "태그 관련 일정 목록 가져오기 실패"})
+    }
+})
+
 module.exports = router;
