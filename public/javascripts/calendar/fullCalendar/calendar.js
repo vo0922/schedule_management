@@ -73,13 +73,13 @@ function scheduleListModalDone() {
 
 function clickDateRequest(event) {
     // 클릭한 날짜 정보 받아오기
-    let 일구하기 = new Date(event.date).getDate();
-    var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
-    var 요일구하기 = new Date(event.date).getDay();
+    let needDay = new Date(event.date).getDate();
+    var needWeekend = new Array('일', '월', '화', '수', '목', '금', '토')
+    var needDayStr = new Date(event.date).getDay();
 
-    let 오늘의날짜 = `<p class="scheduleToday">${일구하기}. ${한주배열[요일구하기]}</p>`
+    let today = `<p class="scheduleToday">${needDay}. ${needWeekend[needDayStr]}</p>`
 
-    document.getElementById('nows').innerHTML = 오늘의날짜
+    document.getElementById('nows').innerHTML = today
 }
 
 function scheduleListModalOpen(scheduleList) {
@@ -96,34 +96,44 @@ function scheduleListModalOpen(scheduleList) {
     </div>`
 
     scheduleList.map((data) => {
-        let 시작하는날 = new Date(data.start)
-        var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
-        // 일정 목록 시작일 받아오기
-        let 시작년 = 시작하는날.getFullYear()
-        let 시작월 = 시작하는날.getMonth() + 1
-        let 시작일 = 시작하는날.getDate()
-        let 시작요일 = 시작하는날.getDay()
-        let 시작시 = 시작하는날.getHours() < 12 ? "AM " + 시작하는날.getHours() : "PM " + (시작하는날.getHours() - 12)
-        let 시작분 = 시작하는날.getMinutes()
+        let startDate = new Date(data.start)
+        var weekend = new Array('일', '월', '화', '수', '목', '금', '토')
+        // 일정 목록 endDay 받아오기
+        let startYear = startDate.getFullYear()
+        let startMonth = startDate.getMonth() + 1
+        let startDay = startDate.getDate()
+        let startDayStr = startDate.getDay()
+        let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12)
+        let startMinutes = startDate.getMinutes()
 
-        // 종료일
-        let 종료하는날 = new Date(data.end ? data.end : data.start)
+        // endDay
+        let endDate = new Date(data.end ? data.end : data.start)
 
-        // 일정 목록 종료일 받아오기
-        let 종료년 = 종료하는날.getFullYear()
-        let 종료월 = 종료하는날.getMonth() + 1
-        let 종료일 = 종료하는날.getDate()
-        let 종료요일 = 종료하는날.getDay()
-        let 종료시 = 종료하는날.getHours() < 12 ? "AM " + 종료하는날.getHours() : "PM " + (종료하는날.getHours() - 12)
-        let 종료분 = 종료하는날.getMinutes()
-        scheduleDivList += `<li class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
-        <div class="title sortDivList">${data._def.title}</div>
-        <div class="time_flex">
-            <div class="start sortDivList">${시작년}.${시작월}.${시작일}.${한주배열[시작요일]}, ${시작시}:${시작분}</div>
-            <div class="sortDivList"> - </div>
-            <div class="end sortDivList">${종료년}.${종료월}.${종료일}.${한주배열[종료요일]}, ${종료시}:${종료분}</div>
-        </div>
-        </li>`
+        // 일정 목록 endDay 받아오기
+        let endYear = endDate.getFullYear()
+        let endMonth = endDate.getMonth() + 1
+        let endDay = endDate.getDate()
+        let endDayStr = endDate.getDay()
+        let endHours = endDate.getHours() < 12 ? "AM " + endDate.getHours() : "PM " + (endDate.getHours() - 12)
+        let endMinutes = endDate.getMinutes()
+        scheduleDivList += 
+        `<div class="scheduleDiv_li">
+            <div class="list_style"></div>
+            <li class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
+                <div class="title_group">
+                    <div class="title sortDivList">${data._def.title}</div>
+                </div>
+                <div class="time_flex">
+                    <div class="start sortDivList">
+                    ${startYear}.${startMonth}.${startDay}.${weekend[startDayStr]}, ${startHours}:${startMinutes}
+                    </div>
+                    <div class="sortDivList"> - </div>
+                    <div class="end sortDivList">
+                    ${endYear}.${endMonth}.${endDay}.${weekend[endDayStr]}, ${endHours}:${endMinutes}
+                    </div>
+                </div>
+            </li>
+        </div>`
     })
     document.getElementById('scheduleDiv').innerHTML = scheduleDivList;
     document.getElementById('scheduleListSortDiv_icon').innerHTML = scheduleListSortDiv
@@ -154,7 +164,7 @@ function scheduleListSort(scheduleList, e) {
             endSort()
             break
     }
-    let 일정목록바인딩 = document.getElementById('scheduleDiv')
+    let scheduleListBinding = document.getElementById('scheduleDiv')
     // 1. 버튼 누르면
     // 2. scheduleList 안에 있는 자료들을 가나다순으로 정렬하고
     // 3. 안에 내용물을 싹 지웠다가 가나다순으로 다시 만들어라
@@ -169,7 +179,7 @@ function scheduleListSort(scheduleList, e) {
         })
     }
 
-    function startSort() {  // 시작일순
+    function startSort() {  // startDay순
         scheduleListSortObject.sort(function (a, b) {
             if (a.start > b.start) {
                 return 1
@@ -179,7 +189,7 @@ function scheduleListSort(scheduleList, e) {
         })
     }
 
-    function endSort() {    // 종료일순
+    function endSort() {    // endDay순
         scheduleListSortObject.sort(function (a, b) {
             let a_end = a.end ? a.end : a.start
             let b_end = b.end ? b.end : b.start
@@ -192,49 +202,48 @@ function scheduleListSort(scheduleList, e) {
     }
 
     // 종류별로 변경된 데이터 뿌려주기
-    let 일정목록 = []
+    let scheduleListWantSort = []
     scheduleListSortObject.forEach((a, i) => {
-        // 시작일
-        let 시작하는날 = new Date(scheduleListSortObject[i].start)
+        // startDay
+        let startDate = new Date(scheduleListSortObject[i].start)
 
-        var 한주배열 = new Array('일', '월', '화', '수', '목', '금', '토')
+        var weekend = new Array('일', '월', '화', '수', '목', '금', '토')
 
-        // 일정 목록 시작일 받아오기
-        let 시작년 = 시작하는날.getFullYear()
-        let 시작월 = 시작하는날.getMonth() + 1
-        let 시작일 = 시작하는날.getDate()
-        let 시작요일 = 시작하는날.getDay()
-        let 시작시 = 시작하는날.getHours() < 12 ? "AM " + 시작하는날.getHours() : "PM " + (시작하는날.getHours() - 12)
-        let 시작분 = 시작하는날.getMinutes()
+        // 일정 목록 startDay 받아오기
+        let startYear = startDate.getFullYear()
+        let startMonth = startDate.getMonth() + 1
+        let startDay = startDate.getDate()
+        let startDayStr = startDate.getDay()
+        let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12)
+        let startMinutes = startDate.getMinutes()
 
-        // 종료일
-        let 종료하는날 = new Date(scheduleListSortObject[i].end ? scheduleListSortObject[i].end : scheduleListSortObject[i].start)
+        // endDay
+        let endDate = new Date(scheduleListSortObject[i].end ? scheduleListSortObject[i].end : scheduleListSortObject[i].start)
 
-        // 일정 목록 종료일 받아오기
-        let 종료년 = 종료하는날.getFullYear()
-        let 종료월 = 종료하는날.getMonth() + 1
-        let 종료일 = 종료하는날.getDate()
-        let 종료요일 = 종료하는날.getDay()
-        let 종료시 = 종료하는날.getHours() < 12 ? "AM " + 종료하는날.getHours() : "PM " + (종료하는날.getHours() - 12)
-        let 종료분 = 종료하는날.getMinutes()
+        // 일정 목록 endDay 받아오기
+        let endYear = endDate.getFullYear()
+        let endMonth = endDate.getMonth() + 1
+        let endDay = endDate.getDate()
+        let endDayStr = endDate.getDay()
+        let endHours = endDate.getHours() < 12 ? "AM " + endDate.getHours() : "PM " + (endDate.getHours() - 12)
+        let endMinutes = endDate.getMinutes()
 
-        일정목록.push(`<li class="scheduleDiv sortDiv">
-        <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
-        <div class="time_flex">
-            <div class="start sortDivList">${시작년}.${시작월}.${시작일}.${한주배열[시작요일]}, ${시작시}:${시작분}</div>
-            <div class="sortDivList"> - </div>
-            <div class="end sortDivList">${종료년}.${종료월}.${종료일}.${한주배열[종료요일]}, ${종료시}:${종료분}</div>
+        scheduleListWantSort.push(`
+        <div class="scheduleDiv_li">
+            <div class="list_style"></div>
+            <li class="scheduleDiv sortDiv">
+                <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
+                <div class="time_flex">
+                    <div class="start sortDivList">${startYear}.${startMonth}.${startDay}.${weekend[startDayStr]}, ${startHours}:${startMinutes}</div>
+                    <div class="sortDivList"> - </div>
+                    <div class="end sortDivList">${endYear}.${endMonth}.${endDay}.${weekend[endDayStr]}, ${endHours}:${endMinutes}</div>
+                </div>
+            </li>
         </div>
-        </li>`)
+        `)
     });
-    일정목록바인딩.innerHTML = 일정목록.join('')
+    scheduleListBinding.innerHTML = scheduleListWantSort.join('')
 
     // console.log(scheduleListSortObject)
-
-}
-
-// 일별 일정 목록의 h1 데이터 바인딩
-function scheduleListToday(scheduleList) {
-
 
 }

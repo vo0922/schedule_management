@@ -49,6 +49,7 @@
     border-radius: 5px;
     box-shadow: 0 0 5px #222222;
     background-color: white;
+    z-index: 999;
 }
 
 #scheduleListSortDiv_select .option {
@@ -67,29 +68,31 @@
 }
 
 #scheduleDiv {
-    width: 70%;
-    list-style: disc;
-    position: relative;
-    left: 34px;
+    width: 100%;
+    /* position: relative;
+    left: 34px; */
 }
 .scheduleDiv {
     z-index: 3;
-    /* display: list-item;  
-    margin-left: 1em;
-    list-style-type: disc; */
 }
-.scheduleDiv::marker {
-    font-size: 50px;
-    color: #717271;
+.scheduleDiv_li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 2rem;
+    padding: 1rem;
+    position: relative;
+    right: 5.25%;
 }
+
 .vertical-line {
     height: auto;
     border-left: 3px solid #8a8a8a;
     margin-top: 20px;
 }
 .sortDivList {
-    position: relative;
-    bottom: 14px;
+    /* position: relative;
+    bottom: 14px; */
     font-size: 18px;
 }
 .start, .end {
@@ -98,6 +101,12 @@
 .time_flex {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
     column-gap: 0.5rem;
+}
+.list_style {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #1b5ac2;
 }

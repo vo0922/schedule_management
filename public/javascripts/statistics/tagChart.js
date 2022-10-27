@@ -152,7 +152,7 @@ function tagAboutSchedule() {
                 tagUl.push(
                 `<div class="scheduleDiv_li">
                     <div class="list_style"></div>
-                    <li class='scheduleDiv' onclick="">
+                    <li class='scheduleDiv'>
                         <div class="title_group">
                             <div class="title sortDivList">${data.title}</div>
                             <div class="about_tag sortDivList">${tagName.join('')}</div>
