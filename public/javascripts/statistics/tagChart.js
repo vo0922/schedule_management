@@ -3,9 +3,15 @@ let totalCount = 0;
 window.onload = function () {
     chartBinding()
     tagChartData()
+    tagAboutSchedule()
 }
 
+<<<<<<< HEAD
 function chartBinding() {
+=======
+// 태그 통계 원형 차트
+function pieChartBinding() {
+>>>>>>> seunghyun_branch
     let labels = []
     let count = []
     let totalTagCount = []
@@ -155,4 +161,71 @@ function tagChartData() {
             console.log(err);
         }
     })
+}
+// 태그 차트 클릭 시 관련된 일정 목록
+function tagAboutSchedule() {
+    let tagUl = []
+    let tagListAboutSchedule = []
+    $.ajax({
+        type: 'get',
+        url: '/statistics/tagAboutSchedule',
+        success: function (res) {
+            console.log(res.data)
+
+            res.data.map((data) => {
+                let startDate = new Date(data.startDate)
+                var weekend = new Array('일', '월', '화', '수', '목', '금', '토')
+                // 일정 목록 종료일 받아오기
+                let startYear = startDate.getFullYear()
+                let startMonth = startDate.getMonth() + 1
+                let startDay = startDate.getDate()
+                let startDayStr = startDate.getDay()
+                let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12)
+                let startMinutes = startDate.getMinutes()
+
+                // 종료일
+                let endDate = new Date(data.endDate ? data.endDate : data.startDate)
+
+                // 일정 목록 종료일 받아오기
+                let endYear = endDate.getFullYear()
+                let endMonth = endDate.getMonth() + 1
+                let endDay = endDate.getDate()
+                let endDayStr = endDate.getDay()
+                let endHours = endDate.getHours() < 12 ? "AM " + endDate.getHours() : "PM " + (endDate.getHours() - 12)
+                let endMinutes = endDate.getMinutes()
+
+                let tagName = []
+                data.tagId.map((dataTagId) => {
+                    tagName.push(
+                        `#` + dataTagId.name
+                    )
+                })
+                tagUl.push(
+                `<div class="scheduleDiv_li">
+                    <div class="list_style"></div>
+                    <li class='scheduleDiv'>
+                        <div class="title_group">
+                            <div class="title sortDivList">${data.title}</div>
+                            <div class="about_tag sortDivList">${tagName.join('')}</div>
+                        </div>
+                        <div class="time_flex">
+                            <div class="start sortDivList">
+                            ${startYear}.${startMonth}.${startDay}.${weekend[startDayStr]}, ${startHours}:${startMinutes}
+                            </div>
+                            <div class="sortDivList"> - </div>
+                            <div class="end sortDivList">
+                            ${endYear}.${endMonth}.${endDay}.${weekend[endDayStr]}, ${endHours}:${endMinutes}
+                            </div>
+                        </div>
+                    </li>
+                </div>`
+                )
+            })
+            document.getElementById('scheduleDiv').innerHTML = tagUl.join('')
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+
 }
