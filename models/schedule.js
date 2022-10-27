@@ -60,12 +60,20 @@ const scheduleSchema = new Schema({
             ref: "tag",
             required: true,
         }],
+    completion:
+        {
+            type: Date,
+            default:''
+        }
 }, {versionKey: false})
 
 scheduleSchema.pre("deleteOne", async function(next) {
     const {_id} = this.getFilter();
     await tag.updateMany({scheduleId: {$in: _id}}, {
-        $pullAll: {scheduleId: [_id]}
+        $pullAll: {scheduleId: [_id]},
+        $inc: {
+            click: -1
+        }
     });
     next();
 })

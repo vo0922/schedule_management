@@ -26,11 +26,6 @@
     padding: 10px;
 }
 
-.chartArea {
-    display: flex;
-    align-items: center;
-}
-
 .chartAreaHeader {
     height: 15%;
     display: flex;

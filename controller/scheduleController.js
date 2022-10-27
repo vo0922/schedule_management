@@ -130,5 +130,22 @@ module.exports = {
         } catch (e) {
             throw new Error(e);
         }
+    },
+    todaySchedule: async (memberId) => {
+        try {
+            let today = new Date();
+            let startToday = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, 0, 0, 0);
+            let endToday = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
+
+            const todaySchedule = await schedule.find({
+                memberId: memberId,
+                startDate: {$lte: startToday},
+                endDate: {$gte: endToday}
+            });
+
+            return todaySchedule;
+        } catch (e) {
+            throw new Error(e);
+        }
     }
 }

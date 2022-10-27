@@ -1,0 +1,84 @@
+
+.chartArea [id*="slide"] {
+    display: none;
+}
+
+.chartArea .slidewrap {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.chartArea .slidelist {
+    white-space: nowrap;
+    font-size: 0;
+}
+
+.chartArea .slidelist > li {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    transition: all .5s;
+}
+
+.chart1 {
+    width:100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.chart2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.chartArea .slide-control {
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+}
+
+.chartArea .slide-control label {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+    cursor: pointer;
+}
+
+.chartArea .slide-control .left {
+    left: 30px;
+}
+
+.chartArea .slide-control .right {
+    right: 30px;
+}
+
+.chartArea .slide-control [class*="control"] {
+    display: none;
+}
+
+.chartArea [id="slide01"]:checked ~ .slidewrap .slidelist > li {
+    transform: translateX(0%);
+}
+
+.chartArea [id="slide02"]:checked ~ .slidewrap .slidelist > li {
+    transform: translateX(-100%);
+}
+
+.chartArea [id="slide01"]:checked ~ .slidewrap .control01 {
+    display: block;
+}
+
+.chartArea [id="slide01"]:checked ~ .slidewrap .control01 {
+    display: block;
+}
+
+.chartArea [id="slide02"]:checked ~ .slidewrap .control02 {
+    display: block;
+}

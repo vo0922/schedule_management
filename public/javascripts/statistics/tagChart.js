@@ -1,18 +1,20 @@
 let totalCount = 0;
 
 window.onload = function () {
-    pieChartBinding()
+    chartBinding()
     tagChartData()
 }
 
-function pieChartBinding() {
+function chartBinding() {
     let labels = []
     let count = []
+    let totalTagCount = []
     $.ajax({
         type: 'get',
         url: '/statistics/totalTag',
         success: function (res) {
             res.data.map((data) => {
+                totalTagCount.push(data.tag.click)
                 labels.push(data.tag.name)
                 count.push(data.count)
                 totalCount += data.count;
@@ -25,7 +27,22 @@ function pieChartBinding() {
                     hoverOffset: 6,
                 }]
             };
+            let barChartData = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: '나의 태그',
+                        data: count,
+                        backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+                    },
+                    {
+                        label: '전체 태그',
+                        data: totalTagCount
+                    }
+                ]
+            }
             pieChartDraw(pieChartData)
+            barChartDraw(barChartData)
         },
         error: function (err) {
             console.log(err)
@@ -69,6 +86,36 @@ function pieChartDraw(pieChartData) {
                     }
                 },
             },
+        }
+    });
+};
+
+function barChartDraw(barChartData) {
+
+    var ctx = document.getElementById('barTagChart').getContext('2d');
+    window.barChart = new Chart(ctx, {
+        type: 'bar',
+        data: barChartData,
+        options: {
+            responsive: false,
+            onClick: (event, elements) => {
+                if (elements.length > 0) {
+                    console.log(event.chart.data.labels[elements[0].index])
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            },
+            scales: {
+                x:{
+                    display: true
+                },
+                y:{
+                    display: false
+                }
+            }
         }
     });
 };

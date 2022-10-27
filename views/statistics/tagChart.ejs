@@ -1,7 +1,37 @@
+<link rel="stylesheet" href="/stylesheets/statistics/tagChart.css">
+
 <div class="chartAreaHeader">
     <p>태그 차트</p>
 </div>
+
 <div class="chartArea">
-    <canvas id="tagChart" style="height:25vh; width:25vw; max-width: 500px"></canvas>
-    <div id="legendDiv" class="legendDiv"></div>
+    <input type="radio" name="slide" id="slide01" checked>
+    <input type="radio" name="slide" id="slide02">
+    <div class="slidewrap">
+        <ul class="slidelist">
+            <li>
+                <div class="chart1">
+                    <canvas id="tagChart" style="height:25vh; width:25vw; max-width: 500px"></canvas>
+                    <div id="legendDiv" class="legendDiv"></div>
+                </div>
+            </li>
+            <li>
+                <div class="chart2">
+                    <canvas id="barTagChart" style="height:25vh; width:25vw; max-width: 500px"></canvas>
+                </div>
+            </li>
+        </ul>
+
+        <div class="slide-control">
+            <div class="control01">
+                <label for="slide02" class="left"><i class="fa-solid fa-chevron-left"></i></label>
+                <label for="slide02" class="right"><i class="fa-solid fa-chevron-right"></i></label>
+            </div>
+            <div class="control02">
+                <label for="slide01" class="left"><i class="fa-solid fa-chevron-left"></i></label>
+                <label for="slide01" class="right"><i class="fa-solid fa-chevron-right"></i></label>
+            </div>
+        </div>
+    </div>
+
 </div>
