@@ -83,7 +83,6 @@ function clickDateRequest(event) {
 }
 
 function scheduleListModalOpen(scheduleList) {
-
     scheduleListModal.style.display = 'block';
 
     let scheduleDivList = '';
@@ -108,7 +107,6 @@ function scheduleListModalOpen(scheduleList) {
 
         // endDay
         let endDate = new Date(data.end ? data.end : data.start)
-
         // 일정 목록 endDay 받아오기
         let endYear = endDate.getFullYear()
         let endMonth = endDate.getMonth() + 1
@@ -118,7 +116,7 @@ function scheduleListModalOpen(scheduleList) {
         let endMinutes = endDate.getMinutes()
         scheduleDivList += 
         `<div class="scheduleDiv_li">
-            <div class="list_style"></div>
+            <div class="list_style" style="background-color: ${data.borderColor}"></div>
             <li class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
                 <div class="title_group">
                     <div class="title sortDivList">${data._def.title}</div>
@@ -230,7 +228,7 @@ function scheduleListSort(scheduleList, e) {
 
         scheduleListWantSort.push(`
         <div class="scheduleDiv_li">
-            <div class="list_style"></div>
+            <div class="list_style" style="background-color: ${scheduleListSortObject[i].borderColor}"></div>
             <li class="scheduleDiv sortDiv">
                 <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
                 <div class="time_flex">
@@ -243,7 +241,4 @@ function scheduleListSort(scheduleList, e) {
         `)
     });
     scheduleListBinding.innerHTML = scheduleListWantSort.join('')
-
-    // console.log(scheduleListSortObject)
-
 }

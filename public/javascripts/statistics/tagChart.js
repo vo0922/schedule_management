@@ -12,19 +12,26 @@ function chartBinding() {
     let totalTagCount = []
     $.ajax({
         type: 'get',
-        url: '/statistics/totalTag',
+        url: '/statistics/totalTagSort',
         success: function (res) {
-            res.data.map((data) => {
+            let defaultColor = ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)', 'rgba(0, 0, 0, 0.5)'];
+            let color = []
+            res.data.map((data, idx) => {
                 totalTagCount.push(data.tag.click)
                 labels.push(data.tag.name)
                 count.push(data.count)
                 totalCount += data.count;
+                if (idx < 6) {
+                    color.push(defaultColor[idx]);
+                }else {
+                    color.push(defaultColor[6]);
+                }
             })
             let pieChartData = {
                 labels: labels,
                 datasets: [{
                     data: count,
-                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+                    backgroundColor: color,
                     hoverOffset: 6,
                 }]
             };
@@ -34,7 +41,7 @@ function chartBinding() {
                     {
                         label: '나의 태그',
                         data: count,
-                        backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+                        backgroundColor: color,
                     },
                     {
                         label: '전체 태그',
@@ -62,7 +69,7 @@ function pieChartDraw(pieChartData) {
             responsive: false,
             onClick: (event, elements) => {
                 if (elements.length > 0) {
-                    console.log(event.chart.data.labels[elements[0].index])
+                    clickChartSchedule(event.chart.data.labels[elements[0].index])
                 }
             },
             plugins: {
@@ -91,6 +98,23 @@ function pieChartDraw(pieChartData) {
     });
 };
 
+function clickChartSchedule(name) {
+    const url = '/statistics/tagSchedule'
+    $.ajax({
+        type: 'post',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify({name: name}),
+        success: function (res) {
+            document.getElementById('scheduleCount').innerText = res.data.scheduleId.length;
+            tagAboutScheduleBind(res.data.scheduleId)
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+}
+
 function barChartDraw(barChartData) {
 
     var ctx = document.getElementById('barTagChart').getContext('2d');
@@ -101,7 +125,7 @@ function barChartDraw(barChartData) {
             responsive: false,
             onClick: (event, elements) => {
                 if (elements.length > 0) {
-                    console.log(event.chart.data.labels[elements[0].index])
+                    clickChartSchedule(event.chart.data.labels[elements[0].index])
                 }
             },
             plugins: {
@@ -110,10 +134,10 @@ function barChartDraw(barChartData) {
                 },
             },
             scales: {
-                x:{
+                x: {
                     display: true
                 },
-                y:{
+                y: {
                     display: false
                 }
             }
@@ -138,10 +162,10 @@ function tagChartData() {
                 tagEl.push(`
                 <div class="tagItem">
                 <span class="itemContent"><p class="rank">${idx + 1}위</p> <p class="tag">${data.tag.name}</p></span>
-                <div style="width: 30%; height: 120%; margin: 0 auto;overflow: hidden">
+                <div style="width: 180px; height: 30px; margin: 0 auto;overflow: hidden">
                     <span style="display:inline-block;line-height: 19px; height: 66.6%;width: 98%;border-radius: 20px;background-color: #c7c7c7">
                         <span style="text-align: center ; display:inline-block; border-radius: 20px;height: 100%;width: ${percent.toFixed(1)}%;background-color: #0098fe;">
-                            <span class="MemberProgressText" style="color: rgb(255, 255, 255); display: inline-block; text-align: center; height: 100%; width: 210px;">${percent.toFixed(1)}%</span>
+                            <span class="MemberProgressText" style="color: rgb(255, 255, 255); display: inline-block; text-align: center; height: 100%; width: 180px;">${percent.toFixed(1)}%</span>
                         </span>
                     </span>
                 </div>
@@ -157,46 +181,53 @@ function tagChartData() {
         }
     })
 }
-// 태그 차트 클릭 시 관련된 일정 목록
+
 function tagAboutSchedule() {
-    let tagUl = []
-    let tagListAboutSchedule = []
     $.ajax({
         type: 'get',
         url: '/statistics/tagAboutSchedule',
         success: function (res) {
-            console.log(res.data)
+            document.getElementById('scheduleCount').innerText = res.data.length
+            tagAboutScheduleBind(res.data);
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+}
 
-            res.data.map((data) => {
-                let startDate = new Date(data.startDate)
-                var weekend = new Array('일', '월', '화', '수', '목', '금', '토')
-                // 일정 목록 종료일 받아오기
-                let startYear = startDate.getFullYear()
-                let startMonth = startDate.getMonth() + 1
-                let startDay = startDate.getDate()
-                let startDayStr = startDate.getDay()
-                let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12)
-                let startMinutes = startDate.getMinutes()
+function tagAboutScheduleBind(data) {
+    let tagUl = []
+    data.map((data) => {
+        let startDate = new Date(data.startDate)
+        var weekend = new Array('일', '월', '화', '수', '목', '금', '토')
+        // 일정 목록 종료일 받아오기
+        let startYear = startDate.getFullYear()
+        let startMonth = startDate.getMonth() + 1
+        let startDay = startDate.getDate()
+        let startDayStr = startDate.getDay()
+        let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12)
+        let startMinutes = startDate.getMinutes()
 
-                // 종료일
-                let endDate = new Date(data.endDate ? data.endDate : data.startDate)
+        // 종료일
+        let endDate = new Date(data.endDate ? data.endDate : data.startDate)
 
-                // 일정 목록 종료일 받아오기
-                let endYear = endDate.getFullYear()
-                let endMonth = endDate.getMonth() + 1
-                let endDay = endDate.getDate()
-                let endDayStr = endDate.getDay()
-                let endHours = endDate.getHours() < 12 ? "AM " + endDate.getHours() : "PM " + (endDate.getHours() - 12)
-                let endMinutes = endDate.getMinutes()
+        // 일정 목록 종료일 받아오기
+        let endYear = endDate.getFullYear()
+        let endMonth = endDate.getMonth() + 1
+        let endDay = endDate.getDate()
+        let endDayStr = endDate.getDay()
+        let endHours = endDate.getHours() < 12 ? "AM " + endDate.getHours() : "PM " + (endDate.getHours() - 12)
+        let endMinutes = endDate.getMinutes()
 
-                let tagName = []
-                data.tagId.map((dataTagId) => {
-                    tagName.push(
-                        `#` + dataTagId.name
-                    )
-                })
-                tagUl.push(
-                `<div class="scheduleDiv_li">
+        let tagName = []
+        data.tagId.map((dataTagId) => {
+            tagName.push(
+                `#` + dataTagId.name
+            )
+        })
+        tagUl.push(
+            `<div class="scheduleDiv_li">
                     <div class="list_style"></div>
                     <li class='scheduleDiv'>
                         <div class="title_group">
@@ -214,13 +245,7 @@ function tagAboutSchedule() {
                         </div>
                     </li>
                 </div>`
-                )
-            })
-            document.getElementById('scheduleDiv').innerHTML = tagUl.join('')
-        },
-        error: function (err) {
-            console.log(err)
-        }
+        )
     })
-
+    document.getElementById('scheduleDiv').innerHTML = tagUl.join('')
 }

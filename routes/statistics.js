@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const scheduleController = require('../controller/scheduleController');
+const tagController = require('../controller/tagController');
 
 /* GET 태그통계 page. */
 router.get('/', function (req, res, next) {
@@ -15,6 +16,16 @@ router.get('/totalTagSort', async function (req, res) {
     }catch(err) {
         console.log(err)
         res.status(401).json({message: "총 태그정렬 실패"})
+    }
+})
+
+router.post('/tagSchedule', async function (req, res) {
+    try{
+        const scheduleData = await tagController.findNameAndSchedule(req.body.name, req.user._id)
+        res.status(201).json({data: scheduleData, message: "일정 가져오기 성공"})
+    }catch(err) {
+        console.log(err)
+        res.status(401).json({message: "일정 가져오기 실패"})
     }
 })
 

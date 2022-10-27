@@ -1,3 +1,8 @@
+.legendDiv {
+    overflow: auto;
+    height: 28vh;
+}
+
 
 .chartArea [id*="slide"] {
     display: none;

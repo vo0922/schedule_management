@@ -1,6 +1,19 @@
 const tag = require('../models/tag');
 
 module.exports = {
+    findNameAndSchedule: async (name, memberId) => {
+        try {
+            return await tag.findOne({name: name}).populate({
+                path: 'scheduleId',
+                match: {memberId: memberId},
+                populate: {
+                    path: 'tagId',
+                }
+            })
+        } catch (e) {
+            throw new Error(e);
+        }
+    },
     created: async (name, memberId, scheduleId) => {
         let tagData = {
             name: name,

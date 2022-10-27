@@ -9,22 +9,22 @@ var date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 6000
 let aleartFlag = 0;
 
 function handleLine(e, line) {
-    if(e.value.length > line) {
+    if (e.value.length > line) {
         e.value = e.value.substr(0, line);
-        if(aleartFlag == 1){
+        if (aleartFlag == 1) {
             return
         }
         aleartFlag = 1;
         let lineAlertDiv = document.getElementById('lineAlert');
-        lineAlertDiv.innerHTML=`글자 수 ${line}자를 넘을 수 없습니다.`
-        lineAlertDiv.style.display='block'
+        lineAlertDiv.innerHTML = `글자 수 ${line}자를 넘을 수 없습니다.`
+        lineAlertDiv.style.display = 'block'
         lineAlertDiv.style.opacity = 0.6;
-        let alertTimer = setInterval(()=>{
+        let alertTimer = setInterval(() => {
             lineAlertDiv.style.opacity -= 0.02
-        },50)
-        setTimeout(()=>{
+        }, 50)
+        setTimeout(() => {
             clearInterval(alertTimer);
-            lineAlertDiv.style.display='none'
+            lineAlertDiv.style.display = 'none'
             aleartFlag = 0;
         }, 1500)
     }
@@ -66,7 +66,9 @@ function scheduleViewModalOpen(scheduleId) {
     scheduleListModal.style.display = 'none';
     const url = '/calendar/scheduleView'
     $.ajax({
-        type: 'post', url: url, data: {
+        type: 'post',
+        url: url,
+        data: {
             scheduleId: scheduleId
         }, success: function (res) {
             res.scheduleView.tagId.map((data) => {
@@ -111,8 +113,6 @@ function scheduleViewModalOpen(scheduleId) {
                 document.getElementById('addressHard').value = res.scheduleView.map.x;
                 var placePosition = new kakao.maps.LatLng(res.scheduleView.map.y, res.scheduleView.map.x);
                 show_map(placePosition, 1, addMarker);
-
-
                 document.getElementById('keyword').value = res.scheduleView.map.title;
             }
             modal.style.display = "block";
@@ -217,7 +217,7 @@ function show_map(placePosition, index, callback) {
         tc[0].classList.add('show')
         window.setTimeout(() => {
             map.relayout();
-            if(callback){
+            if (callback) {
                 callback(placePosition, index);
             }
         }, 200)
