@@ -19,9 +19,10 @@ router.post('/colorUpdate', authUtil, async function (req, res) {
     }
 })
 
+// 일정 완료율 API
 router.get('/todaySchedule', async function (req, res) {
     try {
-        const data = await scheduleController.todaySchedule('633e5567e5065fd274f39fad');
+        const data = await scheduleController.todaySchedule(req.user._id);
         res.status(201).json({data: data});
     } catch (e) {
         res.status(401).json({message: "오늘 일정 가져오기 실패"})
