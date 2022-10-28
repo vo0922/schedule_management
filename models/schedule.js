@@ -35,17 +35,17 @@ const scheduleSchema = new Schema({
         },
     map:
         {
-            title:{
-                type:String
+            title: {
+                type: String
             },
-            address:{
-                type:String
+            address: {
+                type: String
             },
-            x:{
-                type:String
+            x: {
+                type: String
             },
-            y:{
-                type:String
+            y: {
+                type: String
             }
         },
     memberId:
@@ -62,12 +62,12 @@ const scheduleSchema = new Schema({
         }],
     completion:
         {
-            type: Date,
-            default:''
+            type: Boolean,
+            default: false
         }
 }, {versionKey: false})
 
-scheduleSchema.pre("deleteOne", async function(next) {
+scheduleSchema.pre("deleteOne", async function (next) {
     const {_id} = this.getFilter();
     await tag.updateMany({scheduleId: {$in: _id}}, {
         $pullAll: {scheduleId: [_id]},

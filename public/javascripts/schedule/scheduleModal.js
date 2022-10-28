@@ -41,8 +41,8 @@ function labelHandle() {
     clickLabel(lb, progress_optionItems);
 }
 
-function handleSelect(label, item, e) {
-    label.innerHTML = e.target.innerHTML;
+function handleSelect(label, item) {
+    document.getElementById('completeLabel').innerHTML = item.innerHTML;
     label.parentNode.classList.remove('active');
 }
 
@@ -51,15 +51,15 @@ function clickLabel(lb, progress_optionItems) {
         lb.parentNode.classList.remove('active');
         // 옵션 클릭 시 클릭한 옵션을 넘김
         progress_optionItems.forEach((opt) => {
-            opt.removeEventListener('click', (e) => {
-                handleSelect(lb, opt, e)
+            opt.removeEventListener('click', () => {
+                handleSelect(lb, opt)
             })
         })
     } else {
         lb.parentNode.classList.add('active');
         progress_optionItems.forEach((opt) => {
-            opt.addEventListener('click', (e) => {
-                handleSelect(lb, opt, e)
+            opt.addEventListener('click', () => {
+                handleSelect(lb, opt)
             })
         })
     }
@@ -81,7 +81,8 @@ function scheduleSubmitModalReload() {
     document.getElementById('addressHard').value = null;
     document.getElementById('keyword').value = null;
     document.getElementById('tagList').innerHTML = null;
-    document.getElementById('progress_label').innerHTML = '진행도 선택'
+    document.getElementById('completeLabel').innerHTML = '진행도 선택'
+    document.getElementById('progress_label_icon').classList.add('hidden');
     document.querySelectorAll('.progress_label').forEach(function (lb) {
         lb.parentNode.classList.remove('active');
     })
@@ -127,13 +128,14 @@ function scheduleViewModalOpen(scheduleId) {
             startDate.disabled = true;
             endDate.disabled = true;
             tagInput.style.display = 'none'
+            document.getElementById('progress_label_icon').classList.add('hidden');
             scheduleProgress.classList.remove('hidden');
             label[0].removeEventListener('click', labelHandle);
             let tagDeleteIcon = document.getElementsByClassName("fa-regular fa-circle-xmark");
             for (let i = 0; i < tagDeleteIcon.length; i++) {
                 tagDeleteIcon[i].style.display = 'none';
             }
-            document.getElementById('progress_label').innerHTML = res.scheduleView.completion ? '완료' : '진행'
+            document.getElementById('completeLabel').innerHTML = res.scheduleView.completion ? document.getElementById("progress_optionItem2").innerHTML : document.getElementById("progress_optionItem1").innerHTML
             document.getElementById('schedule_address_q').disabled = true;
             kakaoMapMenu.style.display = 'none';
             title.value = res.scheduleView.title;
@@ -211,6 +213,7 @@ function scheduleDisabled() {
     endDate.disabled = false;
     tagInput.style.display = 'block';
     document.getElementById('schedule_address_q').disabled = false;
+    document.getElementById('progress_label_icon').classList.remove('hidden');
     let tagDeleteIcon = document.getElementsByClassName("fa-regular fa-circle-xmark");
     for (let i = 0; i < tagDeleteIcon.length; i++) {
         tagDeleteIcon[i].style.display = 'block';
@@ -296,10 +299,10 @@ function submitSchedule(type, scheduleId) {
     const url = '/schedule';
     let addressCheck = document.getElementById('schedule_address_q');
     let tagList = document.getElementsByClassName("tagList")
-    let progress = document.getElementById('progress_label');
-    let completeDate = ''
+    let progress = document.getElementById('completeLabel');
+    let complete = false
     if (progress.innerText == "완료") {
-        completeDate = new Date();
+        complete = true;
     }
     const data = {
         _id: scheduleId ? scheduleId : null,
@@ -312,7 +315,7 @@ function submitSchedule(type, scheduleId) {
             title: addressInput.value, address: address.value, x: addressHard.value, y: addressLat.value
         } : null,
         tags: [],
-        completion: completeDate
+        completion: complete
     }
 
     for (let i = 0; i < tagList.length; i++) {
