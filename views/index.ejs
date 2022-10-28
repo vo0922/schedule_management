@@ -7,6 +7,7 @@
     <title>home</title>
     <!--================= CSS =================-->
     <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
     <!--=============== FONTAWESOME ===============-->
     <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.2.0-web/css/all.min.css">
     <!--=============== JQUERY ===============-->
@@ -15,6 +16,30 @@
 <body>
 <!--=============== HEADER ===============-->
 <%- include('layout/header.ejs'); %>
-<h1>홈</h1>
+<!-- <h1>홈</h1> -->
+<div class="dashboardPage">
+    <div class="topDashboard">
+        <!-- 오늘 일정 완료율 -->
+        <div class="todayScheduleChart">
+            <%- include('dashboard/todayScheduleChart.ejs'); %>
+        </div>
+        <!-- 오늘 일정 리스트(진행/완료 상태 표시bar) -->
+        <div class="todayScheduleList">
+            <%- include('dashboard/todayScheduleList.ejs'); %>
+        </div>
+    </div>
+    <!-- 추가 기능: 오늘 가야 할 곳 표시 영역 -->
+    <div class="bottomDashboard">
+        <!-- 가야 할 곳 표시(리스트) -->
+        <div class="scheduleAddressList">
+            <%- include('dashboard/scheduleAddressList.ejs'); %>
+        </div>
+        <!-- 가야 할 곳 표시(지도) -->
+        <div class="scheduleAddress">
+            <%- include('dashboard/scheduleAddress.ejs'); %>
+        </div>
+        
+    </div>
+</div>
 </body>
 </html>
