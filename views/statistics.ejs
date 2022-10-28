@@ -20,13 +20,16 @@
 <%- include('layout/header.ejs'); %>
 <div class="statisticsPage">
     <div class="topStatistics">
+        <!-- 태그 통계 -->
         <div class="tagChart">
             <%- include('statistics/tagChart.ejs'); %>
         </div>
+        <!-- 태그 클릭 시 해당 태그가 포함된 일정 목록 -->
         <div class="scheduleList">
             <%- include('statistics/scheduleArea.ejs'); %>
         </div>
     </div>
+    <!-- 태그 순위 -->
     <div class="myTagRank">
         <div id="myTagHeader" class="myTagHeader">
 
