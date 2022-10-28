@@ -30,6 +30,41 @@ function handleLine(e, line) {
     }
 }
 
+const label = document.querySelectorAll('.progress_label');
+
+label[0].addEventListener('click', labelHandle)
+
+function labelHandle() {
+    const lb = document.querySelectorAll('.progress_label')[0];
+    let progress_optionList = lb.nextElementSibling;
+    let progress_optionItems = progress_optionList.querySelectorAll('.progress_optionItem');
+    clickLabel(lb, progress_optionItems);
+}
+
+function handleSelect(label, item, e) {
+    label.innerHTML = e.target.innerHTML;
+    label.parentNode.classList.remove('active');
+}
+
+function clickLabel(lb, progress_optionItems) {
+    if (lb.parentNode.classList.contains('active')) {
+        lb.parentNode.classList.remove('active');
+        // 옵션 클릭 시 클릭한 옵션을 넘김
+        progress_optionItems.forEach((opt) => {
+            opt.removeEventListener('click', (e) => {
+                handleSelect(lb, opt, e)
+            })
+        })
+    } else {
+        lb.parentNode.classList.add('active');
+        progress_optionItems.forEach((opt) => {
+            opt.addEventListener('click', (e) => {
+                handleSelect(lb, opt, e)
+            })
+        })
+    }
+}
+
 function scheduleSubmitModalReload() {
     scheduleDisabled()
     document.getElementById('schedule_title').value = null;
@@ -46,6 +81,9 @@ function scheduleSubmitModalReload() {
     document.getElementById('addressHard').value = null;
     document.getElementById('keyword').value = null;
     document.getElementById('tagList').innerHTML = null;
+    document.querySelectorAll('.progress_label').forEach(function (lb) {
+        lb.parentNode.classList.remove('active');
+    })
 
     removeMarker()
     show_map()
@@ -58,6 +96,7 @@ function scheduleModalOpen(clickStart) {
     startDate.value = clickStart ? new Date(clickStart.getTime() - clickStart.getTimezoneOffset() * 60000).toISOString().slice(0, -8) : date;
     //startDate.min = date;
     endDate.min = date;
+    document.getElementById('scheduleProgress').classList.add('hidden');
     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class="schedule_save_btn" onclick="submitSchedule('post')">등록</button>`
 }
 
@@ -79,6 +118,7 @@ function scheduleViewModalOpen(scheduleId) {
             let priority = document.getElementById('schedule_priority');
             let tagInput = document.getElementById('tagInput');
             let kakaoMapMenu = document.getElementById('menu_wrap');
+            let scheduleProgress = document.getElementById('scheduleProgress');
             title.disabled = true;
             content.disabled = true;
             content.placeholder = ''
@@ -86,6 +126,8 @@ function scheduleViewModalOpen(scheduleId) {
             startDate.disabled = true;
             endDate.disabled = true;
             tagInput.style.display = 'none'
+            scheduleProgress.classList.remove('hidden');
+            label[0].removeEventListener('click', labelHandle);
             let tagDeleteIcon = document.getElementsByClassName("fa-regular fa-circle-xmark");
             for (let i = 0; i < tagDeleteIcon.length; i++) {
                 tagDeleteIcon[i].style.display = 'none';
@@ -158,6 +200,7 @@ function scheduleDisabled() {
     let priority = document.getElementById('schedule_priority');
     let tagInput = document.getElementById('tagInput');
     let kakaoMapMenu = document.getElementById('menu_wrap');
+    label[0].addEventListener('click', labelHandle)
     title.disabled = false;
     content.placeholder = '일정에 대한 상세 내용을 입력해 주세요.'
     content.disabled = false;
