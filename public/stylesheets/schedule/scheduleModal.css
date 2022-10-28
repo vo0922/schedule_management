@@ -148,7 +148,7 @@ label[for="schedule_address_q"]:hover {
 
 }
 
-.progress_selectBox:before {
+.progress_label_icon {
     content: '>';
     position: absolute;
     top: 18%;
@@ -157,14 +157,14 @@ label[for="schedule_address_q"]:hover {
     z-index: -1;
 }
 
-.progress_selectBox:after {
+.progress_label_icon {
     content: '';
     display: block;
     width: 2px;
     height: 100%;
     position: absolute;
-    top: 0;
-    right: 35px;
+    top: -3px;
+    right: 23px;
 }
 
 .progress_selectBox .progress_label {
