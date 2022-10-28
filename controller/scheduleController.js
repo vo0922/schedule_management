@@ -50,7 +50,8 @@ module.exports = {
                     content: schedules.content,
                     priority: schedules.priority,
                     map: schedules.map,
-                    tagId: newTags
+                    tagId: newTags,
+                    completion: schedules.completion
                 }
             });
         } catch (e) {

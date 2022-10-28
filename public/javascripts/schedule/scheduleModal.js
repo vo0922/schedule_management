@@ -81,6 +81,7 @@ function scheduleSubmitModalReload() {
     document.getElementById('addressHard').value = null;
     document.getElementById('keyword').value = null;
     document.getElementById('tagList').innerHTML = null;
+    document.getElementById('progress_label').innerHTML = '진행도 선택'
     document.querySelectorAll('.progress_label').forEach(function (lb) {
         lb.parentNode.classList.remove('active');
     })
@@ -132,6 +133,7 @@ function scheduleViewModalOpen(scheduleId) {
             for (let i = 0; i < tagDeleteIcon.length; i++) {
                 tagDeleteIcon[i].style.display = 'none';
             }
+            document.getElementById('progress_label').innerHTML = res.scheduleView.completion ? '완료' : '진행'
             document.getElementById('schedule_address_q').disabled = true;
             kakaoMapMenu.style.display = 'none';
             title.value = res.scheduleView.title;
@@ -294,6 +296,11 @@ function submitSchedule(type, scheduleId) {
     const url = '/schedule';
     let addressCheck = document.getElementById('schedule_address_q');
     let tagList = document.getElementsByClassName("tagList")
+    let progress = document.getElementById('progress_label');
+    let completeDate = ''
+    if (progress.innerText == "완료") {
+        completeDate = new Date();
+    }
     const data = {
         _id: scheduleId ? scheduleId : null,
         startDate: startDate.value,
@@ -305,6 +312,7 @@ function submitSchedule(type, scheduleId) {
             title: addressInput.value, address: address.value, x: addressHard.value, y: addressLat.value
         } : null,
         tags: [],
+        completion: completeDate
     }
 
     for (let i = 0; i < tagList.length; i++) {
@@ -312,7 +320,11 @@ function submitSchedule(type, scheduleId) {
     }
 
     $.ajax({
-        type: type, url: url, contentType: 'application/json', data: JSON.stringify(data), success: function (res) {
+        type: type,
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function (res) {
             alert(res.message);
             location.reload()
         }, error: function (err) {
