@@ -26,7 +26,11 @@
     flex-direction: column;
     padding: 10px;
     border-radius: 21px;
+<<<<<<< HEAD
     box-shadow: 3px 12px 12px #00000052;
+=======
+    box-shadow: 4px 5px 10px #00000052;
+>>>>>>> seunghyun_branch
 }
 
 .chartAreaHeader {
@@ -51,7 +55,11 @@
     flex-direction: column;
     padding: 10px;
     border-radius: 21px;
+<<<<<<< HEAD
     box-shadow: 3px 12px 12px #00000052;
+=======
+    box-shadow: 4px 5px 10px #00000052;
+>>>>>>> seunghyun_branch
 }
 
 .scheduleTitle:hover {
@@ -107,7 +115,11 @@
     height: 48vh;
     background-color: #FFFFFF;
     border-radius: 21px;
+<<<<<<< HEAD
     box-shadow: 3px 12px 12px #00000052;
+=======
+    box-shadow: 4px 5px 10px #00000052;
+>>>>>>> seunghyun_branch
 }
 
 
