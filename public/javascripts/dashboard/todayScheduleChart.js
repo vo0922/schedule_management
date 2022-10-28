@@ -12,6 +12,10 @@ function scheduleCompletion() {
             let totalScheduleCount = res.data.length
             let doneScheduleCount = 0
             res.data.map((data) => {
+                if(data.map) {
+                    let placePosition = new kakao.maps.LatLng(data.map.y, data.map.x);
+                    addMarker(placePosition, 1, data.map.title);
+                }
                 // 완료한 일정 갯수 구하기
                 if (data.completion) {
                     doneScheduleCount += 1
@@ -21,6 +25,7 @@ function scheduleCompletion() {
             let doneRatePoint = doneRate.toFixed(1)
             document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint);
             document.getElementById('percentageText').innerHTML = doneRatePoint + '%'
+            map.setBounds(bounds);
             $.radialChart()
         },
         error: function (err) {
