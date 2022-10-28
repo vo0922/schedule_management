@@ -136,80 +136,28 @@ label[for="schedule_address_q"]:hover {
 }
 
 /* 진행도 select box */
-#scheduleProgress {
-    /* position: absolute; */
-    top: 0;
-    width: 136px;
-    height: 32px;
-    overflow: hidden;
-    border: solid 1px transparent;
-    box-sizing: border-box;
-    border-radius: 4px;
-    background-color: #fff;
-    transition: all 0.3s ease;
+.progress_selectBox {
     font-family: var(--body-font);
-    font-size: 1.15rem;
-    color: var(--text-color);
-}
-#scheduleProgress > .progress_option {
-    display: flex;
-    width: 100%;
-    height: 36px;
-    padding: 8px 10px;
-    box-sizing: border-box;
-    font-size: 14px;
-    color: #222;
-    background-color: #FFFFFF;
-    cursor: pointer;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--body-font);
-    font-size: 1.15rem;
-    color: var(--text-color);
-}
-
-
-.progress_option_div {
-    border-radius: 2px;
-    width: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    box-sizing: border-box;
-}
-.progress-ing {/* 진행 */
-    background-color: #e5f5ff;
-}
-.progress-done {/* 완료 */
-    background-color: #ddf9f0;
-}
-
-
-
-
-.selectBox2 {
     position: relative;
     z-index: 1;
-    width: 150px;
+    width: 140px;
     height: 35px;
     border-radius: 4px;
-    border: 2px solid lightcoral;
-    background: url('https://freepikpsd.com/media/2019/10/down-arrow-icon-png-7-Transparent-Images.png') calc(100% - 7px) center no-repeat;
-    background-size: 20px;
     cursor: pointer;
+    border: 2px solid #0098fe;
+
   }
   
-  .selectBox2:before {
-    content: '💜';
+  .progress_selectBox:before {
+    content: '>';
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%); 
-    right: 5px; 
+    top: 18%;
+    transform: rotate(90deg);
+    right: 10px; 
     z-index: -1;
   }
 
-  .selectBox2:after {
+  .progress_selectBox:after {
     content: '';
     display: block; 
     width: 2px;
@@ -217,28 +165,27 @@ label[for="schedule_address_q"]:hover {
     position: absolute; 
     top: 0; 
     right: 35px;
-    background: lightcoral;
   }
   
-  .selectBox2 .label {
+  .progress_selectBox .progress_label {
     display: flex;
     align-items: center;
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
     border: 0 none;
     outline: 0 none;
-    padding-left: 15px;
+    padding-left: 10px;
     background: transparent;
     cursor: pointer;
   }
   
-  .selectBox2 .optionList {
+  .progress_selectBox .progress_optionList {
     position: absolute; 
-    top: 28px;
+    top: 35px;
     left: 0;
     width: 100%;
-    background: lightcoral;
-    color: #fff;
+    background: #fff;
+    color: var(--text-color);
     list-style-type: none;
     padding: 0;
     border-radius: 6px;
@@ -247,29 +194,61 @@ label[for="schedule_address_q"]:hover {
     transition: .3s ease-in;
   }
   
-  .selectBox2 .optionList::-webkit-scrollbar {width: 6px;}
-  .selectBox2 .optionList::-webkit-scrollbar-track {background: transparent; }
-  .selectBox2 .optionList::-webkit-scrollbar-thumb {background: #303030; border-radius: 45px;}
-  .selectBox2 .optionList::-webkit-scrollbar-thumb:hover {background: #303030;}
+  .progress_selectBox .progress_optionList::-webkit-scrollbar {width: 6px;}
+  .progress_selectBox .progress_optionList::-webkit-scrollbar-track {background: transparent; }
+  .progress_selectBox .progress_optionList::-webkit-scrollbar-thumb {background: #303030; border-radius: 45px;}
+  .progress_selectBox .progress_optionList::-webkit-scrollbar-thumb:hover {background: #303030;}
   
-  .selectBox2.active {
+  .progress_selectBox.active {
       z-index: 10;
   }
 
-  .selectBox2.active .optionList {
+  .progress_selectBox.active .progress_optionList {
     max-height: 500px;
   }
   
-  .selectBox2 .optionItem {
-    border-bottom: 1px dashed rgb(170, 72, 72);
+  .progress_selectBox .progress_optionItem {
+    /* border-bottom: 1px dashed rgb(170, 72, 72);
     padding: 5px 15px 5px;
-    transition: .1s;
+    transition: .1s; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #222;
+    background-color: #FFFFFF;
+    cursor: pointer;
+
   }
   
-  .selectBox2 .optionItem:hover {
-    background: rgb(175, 93, 93);
+  .progress_selectBox .progress_optionItem:hover {
+    background: #e2e2e2;
   }
   
-  .selectBox2 .optionItem:last-child {
+  .progress_selectBox .progress_optionItem:last-child {
     border-bottom: 0 none;
+  }
+  .progress_optionItem_name_div {
+    border-radius: 2px;
+    width: 48px;
+  }
+  .progress_optionItem_name {
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .ing {
+    /* 진행 */
+    background-color: #e5f5ff;
+
+  }
+  .done {
+    /* 완료 */
+    background-color: #ddf9f0;
   }

@@ -36,25 +36,21 @@
             <!-- 진행도 입력란 -->
             <div class="schedule">
                 <label for="schedule_progress"><i class="fa-solid fa-spinner fa-lg"></i></label>
-                <!-- <ul name="progress" id="scheduleProgress">
-                    <li value="ing" class="progress_option" selected>
-                        <div class="progress_option_div progress-ing">
-                            진행
-                        </div>
-                    </li>
-                    <li value="done" class="progress_option">
-                        <div class="progress_option_div progress-done">
-                            완료
-                        </div>
-                    </li>
-                </ul> -->
-                <div class="boxx">
-                    <div class="selectBox2 ">
-                    <button class="label">진행도 선택</button>
-                    <ul class="optionList">
-                        <li class="optionItem">진행</li>
-                        <li class="optionItem">완료</li>
-                    </ul>
+                <div class="progress_box">
+                    <div class="progress_selectBox">
+                        <button class="progress_label">진행도 선택</button>
+                        <ul class="progress_optionList">
+                            <li class="progress_optionItem">
+                                <div class="progress_optionItem_name_div">
+                                    <div class="progress_optionItem_name ing">진행</div>
+                                </div>
+                            </li>
+                            <li class="progress_optionItem">
+                                <div class="progress_optionItem_name_div">
+                                    <div class="progress_optionItem_name done">완료</div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -110,33 +106,36 @@
     // select.addEventListener('click', () => {
 
     // })
-    const label = document.querySelectorAll('.label');
+    const label = document.querySelectorAll('.progress_label');
     label.forEach(function(lb){
         lb.addEventListener('click', e => {
-            let optionList = lb.nextElementSibling;
-            let optionItems = optionList.querySelectorAll('.optionItem');
-            clickLabel(lb, optionItems);
+            let progress_optionList = lb.nextElementSibling;
+            let progress_optionItems = progress_optionList.querySelectorAll('.progress_optionItem');
+            clickLabel(lb, progress_optionItems);
         })
     });
-    const clickLabel = (lb, optionItems) => {
+    // 클릭한 옵션의 텍스트를 라벨 안에 넣음
+    const handleSelect = (label, item, e) => {
+        label.innerHTML = e.target.innerHTML;
+        label.parentNode.classList.remove('active');
+    }
+    const clickLabel = (lb, progress_optionItems) => {
+        // 라벨을 클릭 시 옵션 목록이 열림/닫힘
         if(lb.parentNode.classList.contains('active')) {
             lb.parentNode.classList.remove('active');
-            optionItems.forEach((opt) => {
-                opt.removeEventListener('click', () => {
-                    handleSelect(lb, opt)
+            // 옵션 클릭 시 클릭한 옵션을 넘김
+            progress_optionItems.forEach((opt) => {
+                opt.removeEventListener('click', (e) => {
+                    handleSelect(lb, opt, e)
                 })
             })
         } else {
             lb.parentNode.classList.add('active');
-            optionItems.forEach((opt) => {
-                opt.addEventListener('click', () => {
-                    handleSelect(lb, opt)
+            progress_optionItems.forEach((opt) => {
+                opt.addEventListener('click', (e) => {
+                    handleSelect(lb, opt, e)
                 })
             })
         }
-    }
-    const handleSelect = (label, item) => {
-        label.innerHTML = item.textContent;
-        label.parentNode.classList.remove('active');
     }
 </script>
