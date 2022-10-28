@@ -6,6 +6,8 @@ window.onload = function () {
     tagAboutSchedule()
 }
 
+let etcLabels = [];
+
 function chartBinding() {
     let labels = []
     let count = []
@@ -16,17 +18,25 @@ function chartBinding() {
         success: function (res) {
             let defaultColor = ['rgb(255, 99, 132)', 'rgb(255, 159, 64)', 'rgb(255, 205, 86)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)', 'rgba(0, 0, 0, 0.5)'];
             let color = []
+            let etcCount = 0;
+            let etcTotalCount = 0;
             res.data.map((data, idx) => {
-                totalTagCount.push(data.tag.click)
-                labels.push(data.tag.name)
-                count.push(data.count)
                 totalCount += data.count;
                 if (idx < 6) {
+                    totalTagCount.push(data.tag.click)
+                    labels.push(data.tag.name)
+                    count.push(data.count)
                     color.push(defaultColor[idx]);
                 } else {
-                    color.push(defaultColor[6]);
+                    etcLabels.push(data.tag.name);
+                    etcTotalCount += data.tag.click;
+                    etcCount += data.count;
                 }
             })
+            totalTagCount.push(etcTotalCount)
+            labels.push('기타')
+            count.push(etcCount)
+            color.push(defaultColor[6]);
             let pieChartData = {
                 labels: labels,
                 datasets: [{
@@ -69,7 +79,12 @@ function pieChartDraw(pieChartData) {
             responsive: false,
             onClick: (event, elements) => {
                 if (elements.length > 0) {
-                    clickChartSchedule(event.chart.data.labels[elements[0].index])
+                    let tagName = event.chart.data.labels[elements[0].index]
+                    if (tagName != '기타') {
+                        clickChartSchedule(tagName, 'tagSchedule')
+                    } else {
+                        clickChartSchedule(etcLabels, 'tagManySchedule')
+                    }
                 }
             },
             plugins: {
@@ -98,23 +113,6 @@ function pieChartDraw(pieChartData) {
     });
 };
 
-function clickChartSchedule(name) {
-    const url = '/statistics/tagSchedule'
-    $.ajax({
-        type: 'post',
-        url: url,
-        contentType: 'application/json',
-        data: JSON.stringify({name: name}),
-        success: function (res) {
-            document.getElementById('scheduleCount').innerText = res.data.scheduleId.length;
-            tagAboutScheduleBind(res.data.scheduleId)
-        },
-        error: function (err) {
-            console.log(err)
-        }
-    })
-}
-
 function barChartDraw(barChartData) {
 
     var ctx = document.getElementById('barTagChart').getContext('2d');
@@ -125,7 +123,12 @@ function barChartDraw(barChartData) {
             responsive: false,
             onClick: (event, elements) => {
                 if (elements.length > 0) {
-                    clickChartSchedule(event.chart.data.labels[elements[0].index])
+                    let tagName = event.chart.data.labels[elements[0].index]
+                    if (tagName != '기타') {
+                        clickChartSchedule(tagName, 'tagSchedule')
+                    } else {
+                        clickChartSchedule(etcLabels, 'tagManySchedule')
+                    }
                 }
             },
             plugins: {
@@ -144,6 +147,37 @@ function barChartDraw(barChartData) {
         }
     });
 };
+
+function clickChartSchedule(name, address) {
+    const url = `/statistics/${address}`
+    $.ajax({
+        type: 'post',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify({name: name}),
+        success: function (res) {
+            let scheduleData = [];
+            let scheduleCount = 0;
+            if(res.data.length > 1) {
+                res.data.map((data) => {
+                    scheduleCount += data.scheduleId.length;
+                    data.scheduleId.map((schedules) => {
+                        scheduleData.push(schedules);
+                    })
+                })
+            } else {
+                scheduleCount = res.data.scheduleId.length;
+                scheduleData = res.data.scheduleId;
+            }
+            document.getElementById('scheduleCount').innerText = scheduleCount;
+            tagAboutScheduleBind(scheduleData)
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+}
+
 
 function tagChartData() {
     const url = '/statistics/totalTagSort';

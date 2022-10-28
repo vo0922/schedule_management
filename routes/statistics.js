@@ -29,6 +29,16 @@ router.post('/tagSchedule', async function (req, res) {
     }
 })
 
+router.post('/tagManySchedule', async function (req, res) {
+    try{
+        const scheduleData = await tagController.findManyNameAndSchedule(req.body.name, req.user._id)
+        res.status(201).json({data: scheduleData, message: "일정 가져오기 성공"})
+    }catch(err) {
+        console.log(err)
+        res.status(401).json({message: "일정 가져오기 실패"})
+    }
+})
+
 // 태그 통계 라우터
 router.get('/totalTag', async function (req, res) {
     try{

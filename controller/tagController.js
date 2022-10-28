@@ -14,6 +14,19 @@ module.exports = {
             throw new Error(e);
         }
     },
+    findManyNameAndSchedule: async (names, memberId) => {
+        try {
+            return await tag.find({name: {$in : names}}).populate({
+                path: 'scheduleId',
+                match: {memberId: memberId},
+                populate: {
+                    path: 'tagId',
+                }
+            })
+        } catch (e) {
+            throw new Error(e);
+        }
+    },
     created: async (name, memberId, scheduleId) => {
         let tagData = {
             name: name,
