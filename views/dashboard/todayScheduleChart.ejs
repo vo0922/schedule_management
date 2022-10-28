@@ -10,11 +10,11 @@
 </div>
 <div id="doneRatePoint">
   <!-- data-percentage에 넣고 싶은 값을 넣기 -->
-  <!-- <svg class="radial-progress" data-percentage="${doneRatePoint}" viewBox="0 0 80 80"> -->
+   <svg id="radial-progress" class="radial-progress" data-percentage="0" viewBox="0 0 80 80">
     <circle class="incomplete" cx="40" cy="40" r="35"></circle>
     <!-- 일정 완료율 표시 bar -->
     <circle class="complete" cx="40" cy="40" r="35" style="stroke-dashoffset: 39.58406743523136;"></circle>
     <!-- 일정 완료율 텍스트 -->
-    <text class="percentage" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">82%</text>
+    <text id="percentageText" class="percentage" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)"></text>
   </svg>
 </div>

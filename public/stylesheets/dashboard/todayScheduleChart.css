@@ -17,7 +17,7 @@ svg.radial-progress circle.incomplete { opacity: 0.25; }
 
 svg.radial-progress circle.complete { stroke-dasharray: 219.91148575129; }
 
-svg.radial-progress text {
+svg.radial-progress .text {
   fill: #000;
   text-anchor: middle;
 }
