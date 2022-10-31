@@ -5,31 +5,22 @@
     <h1>오늘 일정 리스트</h1>
   </div>
   <div class="todayScheduleList_container">
-    <div class="scheduleContainer">
+    <div class="scheduleContainer" id="containerIng" ondragover="overDrag(event, this)">
       <div class="progress_header">
         <div class="progress_header_head">진행 중인 일정</div>
         <p class="progress_header_count">7</p>
       </div>
-      <div class="draggable" draggable="true">진행 일정1</div>
-      <div class="draggable" draggable="true">진행 일정2</div>
+      <div class="draggable" draggable="true" id="element1" ondragstart="startDrag(event)" ondragend="endDrag(event)">진행 일정1</div>
+      <div class="draggable" draggable="true" id="element2" ondragstart="startDrag(event)" ondragend="endDrag(event)">진행 일정2</div>
     </div>
-    <div class="scheduleContainer">
+    <div class="scheduleContainer" id="containerDone" ondragover="overDrag(event, this)">
       <div class="progress_header">
         <div class="progress_header_head">완료된 일정</div>
         <p class="progress_header_count">5</p>
       </div>
-      <div class="draggable" draggable="true">완료 일정1</div>
-      <div class="draggable" draggable="true">완료 일정2</div>
+      <div class="draggable" draggable="true" id="element3" ondragstart="startDrag(event)" ondragend="endDrag(event)">완료 일정1</div>
+      <div class="draggable" draggable="true" id="element4" ondragstart="startDrag(event)" ondragend="endDrag(event)">완료 일정2</div>
     </div>
-    <!-- <div class="scheduleContainer">
-      <div class="progress_header">
-        <div class="progress_header_head">공유받은 일정</div>
-        <p class="progress_header_count">3</p>
-      </div>
-      <div class="draggable" draggable="true">공유1</div>
-      <div class="draggable" draggable="true">공유2</div>
-    </div> -->
-    
   </div>
 
 </div>
