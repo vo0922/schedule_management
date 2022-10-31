@@ -10,20 +10,21 @@
 .topDashboard, .bottomDashboard {
   width: 95%;
   height: 38vh;
-  margin-bottom: 55px;
+  margin-bottom: 40px;
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
 /* 오늘 일정 완료율 */
 .todayScheduleChart {
-  width: 28%;
+  width: 30%;
   height: 40vh;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
+
 /* 오늘 일정 리스트 */
 .todayScheduleList {
   width: 68%;
@@ -33,9 +34,19 @@
   flex-direction: column;
   padding: 10px;
 }
+
+.myMemo {
+  width: 30%;
+  height: 42vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
 /* 오늘 가야 할 곳 표시(리스트) */
 .scheduleAddressList {
-  width: 58%;
+  width: 29%;
   height: 42vh;
   background-color: #FFFFFF;
   display: flex;
@@ -44,7 +55,7 @@
 }
 /* 오늘 가야 할 곳 표시(지도) */
 .scheduleAddress {
-  width: 38%;
+  width: 37%;
   height: 42vh;
   background-color: #FFFFFF;
   display: flex;

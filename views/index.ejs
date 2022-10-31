@@ -13,7 +13,7 @@
     <!--=============== JQUERY ===============-->
     <script src="/jquery-3.6.1.min.js"></script>
     <script defer src="/javascripts/dashboard/kakaoMap.js"></script>
-    <script defer src="/javascripts/dashboard/scheduleAddress.js"></script>
+    <script defer src="/javascripts/dashboard/scheduleAddressList.js"></script>
 </head>
 <body>
 <!--=============== HEADER ===============-->
@@ -32,6 +32,9 @@
     </div>
     <!-- 추가 기능: 오늘 가야 할 곳 표시 영역 -->
     <div class="bottomDashboard">
+        <div class="myMemo">
+            <%- include('dashboard/myMemo.ejs'); %>
+        </div>
         <!-- 가야 할 곳 표시(리스트) -->
         <div class="scheduleAddressList">
             <%- include('dashboard/scheduleAddressList.ejs'); %>
