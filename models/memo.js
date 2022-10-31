@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-/**
- * 담당자 : 박신욱
- * 함수 설명 : 사용자 모델
- * 주요 기능 : 사용자 스키마 설계
- */
 const memoSchema = new Schema({
     content:
         {
@@ -18,9 +13,14 @@ const memoSchema = new Schema({
             require: true
         },
     schedule:
-        {
+        [{
             type:mongoose.Schema.Types.ObjectId,
             ref:'schedule'
+        }],
+    date:
+        {
+            type:Date,
+            default: new Date()
         }
 }, {versionKey: false})
 

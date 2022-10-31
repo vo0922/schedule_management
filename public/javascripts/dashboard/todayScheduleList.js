@@ -60,4 +60,3 @@ function getDragAfterElement(scheduleContainer, x) {
   ).element;
 }
 
-console.log(draggables)

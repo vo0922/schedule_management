@@ -1,12 +1,20 @@
 <link rel="stylesheet" href="/stylesheets/dashboard/myMemo.css">
 <div class="myMemoList">
     <div class="myMemoHeader">
-        <i class="fa-regular fa-bookmark"></i> <p class="myMemoTitle">메모</p>
+        <div class="myMemoLeft">
+            <i class="fa-regular fa-bookmark"></i> <p class="myMemoTitle">메모</p>
+        </div>
+        <div class="myMemoRight">
+            <i class="fa-solid fa-filter"></i>
+        </div>
     </div>
     <div id="myMemoContent" class="myMemoContent">
         <div class="myMemoContentHeader">
             <i class="fa-solid fa-plus"></i>
-            <input id="memoAdd" type="text" placeholder="할 일을 추가해주세요.">
+            <input id="memoAdd" onkeyup="addMemo(this)" type="text" placeholder="할 일을 추가해주세요.">
+        </div>
+        <div id="memoList" class="memoList">
+
         </div>
     </div>
 </div>

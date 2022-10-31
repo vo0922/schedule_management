@@ -3,13 +3,19 @@
     justify-content: center;
     flex-direction: column;
 }
+
 .myMemoHeader {
     display: flex;
     align-items: center;
     padding: 10px;
+    justify-content: space-between;
 }
 
-.myMemoHeader > i {
+.myMemoLeft {
+    display: flex;
+}
+
+.myMemoLeft > i {
     width: 35px;
     text-align: center;
     font-size: 20px;
@@ -20,9 +26,14 @@
     border-radius: 10px;
 }
 
-.myMemoHeader > .myMemoTitle {
+.myMemoLeft > .myMemoTitle {
     font-weight: bold;
     font-size: 20px;
+}
+
+.myMemoRight > i:hover {
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 .myMemoContentHeader {
@@ -58,4 +69,31 @@
 
 .myMemoContentHeader > input[type='text']:hover {
     background-color: #dadada;
+}
+
+.memoList {
+    display: flex;
+    flex-direction: column;
+}
+
+.memoContent {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin: 5px;
+}
+
+.memoContent:hover {
+    cursor: pointer;
+    background-color: #dadada;
+}
+
+.memoIcon {
+    display: flex;
+}
+
+.memoIcon > i {
+    margin-right: 5px;
 }
