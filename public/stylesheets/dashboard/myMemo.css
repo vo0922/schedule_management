@@ -17,6 +17,7 @@
 
 .myMemoLeft > i {
     width: 35px;
+    height: 30px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -69,6 +70,11 @@
 
 .myMemoContentHeader > input[type='text']:hover {
     background-color: #dadada;
+}
+
+.myMemoContent {
+    overflow: auto;
+    height: 34vh;
 }
 
 .memoList {

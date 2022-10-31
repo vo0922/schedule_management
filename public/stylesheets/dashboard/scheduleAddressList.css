@@ -25,6 +25,7 @@
 
 .addressListLeft > i {
     width: 35px;
+    height: 30px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -35,7 +36,7 @@
 }
 
 .addressCardList {
-    height: 35vh;
+    height: 34vh;
     width: 100%;
     overflow: auto;
     display: flex;
