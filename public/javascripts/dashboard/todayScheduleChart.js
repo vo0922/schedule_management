@@ -25,6 +25,7 @@ function scheduleCompletion() {
             let doneRatePoint = doneRate.toFixed(1)
             document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint);
             document.getElementById('percentageText').innerHTML = doneRatePoint + '%'
+            document.getElementById('scheduleCount').innerHTML = totalScheduleCount
             map.setBounds(bounds);
             $.radialChart()
         },
