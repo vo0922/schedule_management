@@ -24,3 +24,26 @@ function addressCardClick(scheduleData) {
     let placePosition = new kakao.maps.LatLng(scheduleData.map.y, scheduleData.map.x);
     addMarker(placePosition, 1, scheduleData.map.title);
 }
+
+function fullAdress() {
+    $.ajax({
+        type: 'get',
+        url: '/todaySchedule',
+        success: function (res) {
+            removeMarker();
+            res.data.map((data) => {
+                if(data.map) {
+                    let placePosition = new kakao.maps.LatLng(data.map.y, data.map.x);
+                    addMarker(placePosition, 1, data.map.title);
+                }
+            })
+            document.getElementById('addressListCount').innerText = res.data.length
+            if(Object.keys(bounds).length){
+                map.setBounds(bounds);
+            }
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+}

@@ -25,6 +25,7 @@ function scheduleCompletion() {
             let doneRate = doneScheduleCount / totalScheduleCount * 100
             let doneRatePoint = doneRate.toFixed(1)
             document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint);
+            document.getElementById('addressListCount').innerText = res.data.length
             document.getElementById('percentageText').innerHTML = doneRatePoint + '%'
             if(Object.keys(bounds).length){
                 map.setBounds(bounds);

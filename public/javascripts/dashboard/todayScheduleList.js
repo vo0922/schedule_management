@@ -14,13 +14,10 @@ draggables.forEach(draggable => {
   draggable.addEventListener("dragend", () => {
     draggable.classList.remove("dragging");
   });
-console.log(draggable)
-
 });
 
 // 드롭될 요소 - drag할 box
 scheduleContainers.forEach(scheduleContainer => {
-  console.log(scheduleContainer)
   // dragover => 4. 드래그하면서 마우스가 대상 객체의 영역 위에 자리 잡고 있을 때 발생함.
   scheduleContainer.addEventListener("dragover", e => {
     e.preventDefault(); // 드롭될 요소에는 정상 작동을 위해 넣어주기
