@@ -72,12 +72,9 @@
     background-color: #eeeeee;
 }
 
-.myMemoContent {
-    overflow: auto;
-    height: 34vh;
-}
-
 .memoList {
+    overflow: auto;
+    height: 32vh;
     display: flex;
     flex-direction: column;
 }

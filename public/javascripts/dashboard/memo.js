@@ -3,22 +3,23 @@ window.addEventListener('load', function () {
 })
 
 function memoScheduleHover(e) {
-    if(e.querySelector('.memoSchedule')){
-        let event = e.querySelectorAll('.memoSchedule')
-        for(let i = 0; event.length; i++) {
+    let event = e.querySelectorAll('.memoSchedule')
+    if (event) {
+        for (let i = 0; i < event.length; i++) {
             event[i].classList.add('hover');
         }
     }
 }
 
 function memoScheduleNotHover(e) {
-    if(e.querySelector('.memoSchedule')){
-        let event = e.querySelectorAll('.memoSchedule')
-        for(let i = 0; event.length; i++) {
+    let event = e.querySelectorAll('.memoSchedule')
+    if (event) {
+        for (let i = 0; i < event.length; i++) {
             event[i].classList.remove('hover');
         }
     }
 }
+
 function memoList() {
     $.ajax({
         type: 'get',
@@ -71,10 +72,10 @@ function addMemo(e) {
                 let memoEl = document.createElement('div');
                 memoEl.className = 'memoDiv';
                 memoEl.id = `${res.data._id}`
-                memoEl.onmouseover =()=> {
+                memoEl.onmouseover = () => {
                     memoScheduleHover(memoEl)
                 };
-                memoEl.onmouseout = ()=> {
+                memoEl.onmouseout = () => {
                     memoScheduleNotHover(memoEl)
                 };
                 memoEl.onclick = () => {
