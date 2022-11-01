@@ -12,7 +12,6 @@ function endDrag(event) {
   // dragend => 7. 대상 객체를 드래그하다가 마우스 버튼을 놓는 순간 발생함.
   const draggable =  document.getElementById(event.target.id)
   draggable.classList.remove("dragging");
-
 }
 
 // 드롭될 요소 - drag할 box
@@ -22,7 +21,7 @@ function overDrag(event, container) { // container = this
   const afterElement = getDragAfterElement(container, event.clientX);
   const draggable = document.querySelector(".dragging");
   if (afterElement === undefined) {
-    container.appendChild(draggable); // scheduleContainer에 dragging class 추가
+    container.appendChild(draggable); // scheduleContainer에 dragging class 추가    
   } else {
     // 부모노드.insertBefor(삽입할 노드, 기준점 노드)
     container.insertBefore(draggable, afterElement); // scheduleContainer안에서 자유자재로 순서 바꾸기
