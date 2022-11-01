@@ -1,0 +1,37 @@
+<link rel='stylesheet' href='/stylesheets/dashboard/memoModal.css'/>
+<div id="memoModal" class="memoModal">
+    <div class="memoModal-content">
+        <span class="memoModalClose" onclick="memoModalDone()">
+            <i class="fa-regular fa-circle-xmark fa-xl close_icon"></i>
+        </span>
+        <div class="memoModalHeader">
+            메모
+        </div>
+        <div class="memoModalText">
+            <input id="memoContent" type="text" placeholder="할 일을 추가해주세요.">
+        </div>
+        <div class="memoTag">
+            <p class="leftTag">나의 일정</p>
+            <p class="rightTag">선택된 일정</p>
+        </div>
+        <div class="memoModalContent">
+            <div class="memoModalLeftContent">
+                <div class="memoModalLeftContentInput">
+                    <input id="myScheduleSearch" type="text" placeholder="일정 이름으로 검색.">
+                </div>
+                <div id="myScheduleList" class="myScheduleList">
+
+                </div>
+            </div>
+            <div class="memoModalRightContent">
+                <div id="myScheduleCheckList" class="myScheduleCheckList">
+
+                </div>
+            </div>
+        </div>
+        <div class="memoModalButton">
+            <button id="memoSaveButton" class="memoSaveButton">저장</button>
+            <button id="memoDeleteButton" class="memoDeleteButton">삭제</button>
+        </div>
+    </div>
+</div>

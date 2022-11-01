@@ -5,7 +5,7 @@
     <h1>오늘 일정 리스트</h1>
   </div>
   <div class="todayScheduleList_container">
-    <div class="scheduleContainer" id="containerIng" ondragover="overDrag(event, this)">
+    <div class="scheduleContainer" id="containerIng" ondragover="overDrag(event, this)" ondrop="scheduleDrop(event)">
       <div class="progress_header">
         <div class="progress_header_head">진행 중인 일정</div>
         <p class="progress_header_count">7</p>

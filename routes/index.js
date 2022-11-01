@@ -58,4 +58,33 @@ router.post('/memo', async function (req, res) {
     }
 })
 
+router.post('/memo/view/search', async function (req, res) {
+    try {
+        const memoData = await memoController.memoFind(req.body.memoId);
+        const myScheduleData = await scheduleController.myScheduleSearch(req.user._id, req.body.text)
+        res.status(201).json({memoData: memoData, myScheduleData: myScheduleData});
+    } catch (e) {
+        res.status(401).json({message: "메모 가져오기 실패"})
+    }
+})
+
+router.post('/memo/view', async function (req, res) {
+    try {
+        const memoData = await memoController.memoFind(req.body.memoId);
+        const myScheduleData = await scheduleController.mySchedule(req.user._id)
+        res.status(201).json({memoData: memoData, myScheduleData: myScheduleData});
+    } catch (e) {
+        res.status(401).json({message: "메모 가져오기 실패"})
+    }
+})
+
+router.patch('/memo', async function (req, res) {
+    try {
+        const data = await memoController.memoUpdate(req.body.data)
+        res.status(201).json({data: data});
+    } catch (e) {
+        res.status(401).json({message: "메모 업데이트 실패"})
+    }
+})
+
 module.exports = router;

@@ -5,7 +5,17 @@ const tagController = require('./tagController');
 module.exports = {
     mySchedule: async (memberId) => {
         try {
-            return await schedule.find({memberId: memberId});
+            return await schedule.find({memberId: memberId}).populate('tagId');
+        } catch (e) {
+            throw new Error(e);
+        }
+    },
+    myScheduleSearch: async (memberId, text) => {
+        try {
+            return await schedule.find({
+                memberId: memberId,
+                title: {$regex: text}
+            }).populate('tagId');
         } catch (e) {
             throw new Error(e);
         }

@@ -69,7 +69,7 @@
 }
 
 .myMemoContentHeader > input[type='text']:hover {
-    background-color: #dadada;
+    background-color: #eeeeee;
 }
 
 .myMemoContent {
@@ -91,9 +91,13 @@
     margin: 5px;
 }
 
-.memoContent:hover {
+.memoDiv:hover {
     cursor: pointer;
-    background-color: #dadada;
+    background-color: #eeeeee;
+}
+
+.memoDiv {
+    transition: all 0.3s ease;
 }
 
 .memoIcon {
@@ -101,5 +105,35 @@
 }
 
 .memoIcon > i {
+    margin-right: 5px;
+}
+
+.memoScheduleList {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.memoSchedule {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    opacity: 0;
+    max-height: 0;
+    height: fit-content;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.memoSchedule.hover {
+    opacity: 1;
+    height: fit-content;
+    max-height: 500px;
+    padding: 10px;
+    margin-left: 0px;
+}
+
+.memoSchedule > i {
     margin-right: 5px;
 }

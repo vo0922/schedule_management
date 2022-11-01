@@ -13,12 +13,14 @@
     <!--=============== JQUERY ===============-->
     <script src="/jquery-3.6.1.min.js"></script>
     <script defer src="/javascripts/dashboard/kakaoMap.js"></script>
-    <script defer src="/javascripts/dashboard/scheduleAddressList.js"></script>
-    <script defer src="/javascripts/dashboard/memo.js"></script>
+    <script src="/javascripts/dashboard/scheduleAddressList.js"></script>
+    <script src="/javascripts/dashboard/memo.js"></script>
+    <script defer src="/javascripts/dashboard/memoModal.js"></script>
 </head>
 <body>
 <!--=============== HEADER ===============-->
 <%- include('layout/header.ejs'); %>
+<%- include('./dashboard/memoModal.ejs') %>
 <!-- <h1>홈</h1> -->
 <div class="dashboardPage">
     <div class="topDashboard">
