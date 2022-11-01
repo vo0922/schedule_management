@@ -16,6 +16,7 @@ function endDrag(event) {
 
 // 드롭될 요소 - drag할 box
 function overDrag(event, container) { // container = this
+  console.log(container)
   // dragover => 4. 드래그하면서 마우스가 대상 객체의 영역 위에 자리 잡고 있을 때 발생함.
   event.preventDefault(); // 드롭될 요소에는 정상 작동을 위해 넣어주기
   const afterElement = getDragAfterElement(container, event.clientX);
@@ -25,6 +26,7 @@ function overDrag(event, container) { // container = this
   } else {
     // 부모노드.insertBefor(삽입할 노드, 기준점 노드)
     container.insertBefore(draggable, afterElement); // scheduleContainer안에서 자유자재로 순서 바꾸기
+    // container.parentNode.insertBefore(draggable, afterElement);
   }
 }
 
