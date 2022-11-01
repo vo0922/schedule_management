@@ -3,13 +3,21 @@ window.addEventListener('load', function () {
 })
 
 function memoScheduleHover(e) {
-    if(e.querySelector('.memoSchedule'))
-        e.querySelector('.memoSchedule').classList.add('hover')
+    if(e.querySelector('.memoSchedule')){
+        let event = e.querySelectorAll('.memoSchedule')
+        for(let i = 0; event.length; i++) {
+            event[i].classList.add('hover');
+        }
+    }
 }
 
 function memoScheduleNotHover(e) {
-    if(e.querySelector('.memoSchedule'))
-        e.querySelector('.memoSchedule').classList.remove('hover')
+    if(e.querySelector('.memoSchedule')){
+        let event = e.querySelectorAll('.memoSchedule')
+        for(let i = 0; event.length; i++) {
+            event[i].classList.remove('hover');
+        }
+    }
 }
 function memoList() {
     $.ajax({
