@@ -1,0 +1,29 @@
+
+.shareScheduleList_header {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+.shareScheduleList_header h1 {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--text-color);
+}
+#shareScheduleCount {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1b5ac2;
+}
+.shareScheduleList_header i {
+  width: 35px;
+  height: 30px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgb(247 243 168 / 84%);
+  padding: 4px;
+  border-radius: 10px;
+}
+.share_colorBox {
+
+}

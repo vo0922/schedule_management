@@ -7,12 +7,12 @@
   </div>
   <div class="todayScheduleList_container">
     <!-- 진행 container -->
-    <div class="scheduleContainer" id="containerIng" ondragover="overDrag(event, this)">
+    <div class="scheduleContainer" id="containerIng">
       <div class="progress_header">
         <div class="progress_header_head">진행 중인 일정</div>
         <p class="progress_header_count">7</p>
       </div>
-      <div class="scheduleContainer_elements">
+      <div class="scheduleContainer_elements" id="scheduleContainer_elements_ing" ondragover="overDrag(event, this)">
         <!-- drag할 element -->
         <div class="draggable" draggable="true" id="element1" ondragstart="startDrag(event)" ondragend="endDrag(event)">
           <!-- element 안 속성 -->
@@ -69,12 +69,12 @@
       </div>
     </div>
     <!-- 완료 container -->
-    <div class="scheduleContainer" id="containerDone" ondragover="overDrag(event, this)">
+    <div class="scheduleContainer" id="containerDone">
       <div class="progress_header">
         <div class="progress_header_head">완료된 일정</div>
         <p class="progress_header_count">5</p>
       </div>
-      <div class="scheduleContainer_elements">
+      <div class="scheduleContainer_elements" id="scheduleContainer_elements_done" ondragover="overDrag(event, this)">
         <div class="draggable" draggable="true" id="element3" ondragstart="startDrag(event)" ondragend="endDrag(event)"><div class="scheduleBox">
           <label class="scheduleCheckBox">
             <p class="scheduleCheckBox_title">아침 먹기</p>
