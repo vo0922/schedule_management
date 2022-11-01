@@ -68,6 +68,13 @@
     /*========== z index ==========*/
     --z-tooltip: 10;
     --z-fixed: 100;
+    
+    /*========== scrollbar css ==========*/
+    --webkit-scrollbar-width: 13px;
+    --webkit-scrollbar-thumb-bg: #bcbcbc;
+    --webkit-scrollbar-thumb-br: 13px;
+    --webkit-scrollbar-track-bg: #e4e3e3;
+    --webkit-scrollbar-track-br: 13px;
 }
 
 /* Responsive typography. 반응형 변수 지정 */

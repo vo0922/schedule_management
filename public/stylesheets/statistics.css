@@ -86,6 +86,19 @@
     overflow: auto;
     height: 30vh;
 }
+/* scrollbar custom */
+#scheduleDiv::-webkit-scrollbar {
+    width: var(--webkit-scrollbar-width);
+  }
+  #scheduleDiv::-webkit-scrollbar-thumb {
+    background-color: var(--webkit-scrollbar-thumb-bg);
+    border-radius: var(--webkit-scrollbar-thumb-br);
+  }
+  #scheduleDiv::-webkit-scrollbar-track {
+    background-color: var(--webkit-scrollbar-track-bg);
+    border-radius: var(--webkit-scrollbar-track-br);
+    /* box-shadow: inset 0px 0px 5px white; */
+  }
 
 .scheduleDiv_li {
     display: flex;
@@ -140,6 +153,20 @@
     overflow: auto;
     height: 35vh;
 }
+
+/* scrollbar custom */
+.tagRankGrid::-webkit-scrollbar {
+    width: var(--webkit-scrollbar-width);
+  }
+  .tagRankGrid::-webkit-scrollbar-thumb {
+    background-color: var(--webkit-scrollbar-thumb-bg);
+    border-radius: var(--webkit-scrollbar-thumb-br);
+  }
+  .tagRankGrid::-webkit-scrollbar-track {
+    background-color: var(--webkit-scrollbar-track-bg);
+    border-radius: var(--webkit-scrollbar-track-br);
+    /* box-shadow: inset 0px 0px 5px white; */
+  }
 
 .tagItem {
     border-bottom: 1px dotted rgba(0, 0, 0, .2);
