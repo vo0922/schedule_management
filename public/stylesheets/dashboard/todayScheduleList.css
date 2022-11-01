@@ -42,15 +42,24 @@
 
 .scheduleContainer {
   width: 500px;
-  height: 335px;
-  overflow: auto;
   margin: 10px;
   padding: 10px;
-  /* background-color: #b5c1dc57; */
-  background-color: #f0efe9;
+  /* background-color: #f0efe9; */
   border-radius: 8px;
 }
+#containerIng {
+  background-color: #b5c1dc69;
 
+}
+#containerDone {
+  background-color: #d3f1ab78;
+  
+}
+
+.scheduleContainer_elements {
+  height: 300px;
+  overflow: auto;
+}
 .draggable.dragging {
   opacity: 0.5;
 }
@@ -144,14 +153,14 @@
 }
 
 /* ===== scrollbar custom하기 ===== */
-.scheduleContainer::-webkit-scrollbar {
+.scheduleContainer_elements::-webkit-scrollbar {
   width: var(--webkit-scrollbar-width);
 }
-.scheduleContainer::-webkit-scrollbar-thumb {
+.scheduleContainer_elements::-webkit-scrollbar-thumb {
   background-color: var(--webkit-scrollbar-thumb-bg);
   border-radius: var(--webkit-scrollbar-thumb-br);
 }
-.scheduleContainer::-webkit-scrollbar-track {
+.scheduleContainer_elements::-webkit-scrollbar-track {
   background-color: var(--webkit-scrollbar-track-bg);
   border-radius: var(--webkit-scrollbar-track-br);
   /* box-shadow: inset 0px 0px 5px white; */
