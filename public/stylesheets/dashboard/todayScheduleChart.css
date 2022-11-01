@@ -1,9 +1,10 @@
 svg.radial-progress {
   height: auto;
-  max-width: 200px;
-  padding: 1em;
+  max-width: 300px;
+  padding: 2em;
   transform: rotate(-90deg);
   width: 100%;
+  margin-top: 1rem;
 }
 
 svg.radial-progress circle {
@@ -22,4 +23,47 @@ svg.radial-progress .text {
   text-anchor: middle;
 }
 /* 원 색상 */
-svg.radial-progress circle { stroke: #63ed56; }
+svg.radial-progress circle { stroke: #5697ed; }
+
+/* 승현 custom */
+.todayScheduleChart_header {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.todayScheduleChart_header p {
+  font-weight: bold;
+  font-size: 20px;
+}
+.todayScheduleChart_count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* column-gap: 10px; */
+}
+#scheduleCount {
+  margin-left: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1b5ac2;
+}
+
+text {
+  font-size: 10.5px;
+}
+
+#doneRatePoint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todayScheduleChart_header > i {
+  width: 35px;
+  height: 30px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgba(190, 205, 255, 0.502);
+  padding: 4px;
+  border-radius: 10px;
+}
