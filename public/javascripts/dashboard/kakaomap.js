@@ -11,7 +11,7 @@ var overlay = [];
 
 // 지도를 생성합니다
 let map = new kakao.maps.Map(mapContainer, mapOption);
-var bounds = new kakao.maps.LatLngBounds();
+let bounds = new kakao.maps.LatLngBounds();
 function addMarker(position, idx, title) {
         marker = new kakao.maps.Marker({
             position: position, // 마커의 위치

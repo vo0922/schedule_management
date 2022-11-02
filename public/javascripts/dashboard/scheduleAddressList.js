@@ -12,7 +12,7 @@ function addressListBind(addressData) {
             <div class="addressCardContent">
                 <p>${data.content}</p>
             </div>
-        </div>
+            </div>
             `
         )
     });
@@ -22,6 +22,9 @@ function addressListBind(addressData) {
 function addressCardClick(scheduleData) {
     removeMarker();
     let placePosition = new kakao.maps.LatLng(scheduleData.map.y, scheduleData.map.x);
+    let bound = new kakao.maps.LatLngBounds();
+    bound.extend(placePosition);
+    map.setBounds(bound);
     addMarker(placePosition, 1, scheduleData.map.title);
 }
 
