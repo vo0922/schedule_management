@@ -167,4 +167,17 @@ module.exports = {
             throw new Error(e)
         }
     },
+    scheduleProgress: async (scheduleId, progress) => {
+        try {
+            const scheduleData = await schedule.findOneAndUpdate({_id: scheduleId}, {
+                $set :{
+                    completion: progress
+            }
+        },{new: true})
+        return scheduleData
+
+        } catch (e) {
+            throw new Error(e)
+        }
+    }
 }

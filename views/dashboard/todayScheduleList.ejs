@@ -12,55 +12,65 @@
         <div class="progress_header_head">진행 중인 일정</div>
         <p class="progress_header_count">7</p>
       </div>
-      <div class="scheduleContainer_elements" id="scheduleContainer_elements_ing" ondragover="overDrag(event, this)">
+      <div class="scheduleContainer_elements" id="scheduleContainer_elements_ing" ondragover="overDrag(event, this)" ondrop="dropDrag(event, this)">
         <!-- drag할 element -->
         <div class="draggable" draggable="true" id="element1" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
           <div class="scheduleBox">
-            <label class="scheduleCheckBox">
+            <div class="scheduleCheckBox">
               <p class="scheduleCheckBox_title">헤븐트리 동료들과 점심</p>
+              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
+            </div>
+            <label class="scheduleCheckBox">
               <input type="checkbox">
               <div class="scheduleCheckBox_checkmark"></div>
-              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
             </label>
           </div>  
         </div>
         <div class="draggable" draggable="true" id="element2" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
           <div class="scheduleBox">
+            <div class="scheduleCheckBox">
+              <p class="scheduleCheckBox_title">강재민오빠 살찌우기</p>
+              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
+            </div>
             <label class="scheduleCheckBox">
-              <p class="scheduleCheckBox_title">피피티 만들기1</p>
               <input type="checkbox">
               <div class="scheduleCheckBox_checkmark"></div>
-              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
             </label>
           </div>  
         </div>
         <div class="draggable" draggable="true" id="element3" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
           <div class="scheduleBox">
+            <div class="scheduleCheckBox">
+              <p class="scheduleCheckBox_title">신욱씨는 신이당</p>
+              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
+            </div>
             <label class="scheduleCheckBox">
-              <p class="scheduleCheckBox_title">피피티 만들기2</p>
               <input type="checkbox">
               <div class="scheduleCheckBox_checkmark"></div>
-              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
             </label>
           </div>  
         </div>
         <div class="draggable" draggable="true" id="element4" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
           <div class="scheduleBox">
+            <div class="scheduleCheckBox">
+              <p class="scheduleCheckBox_title">이.. 이게 뭐노</p>
+              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
+            </div>
             <label class="scheduleCheckBox">
-              <p class="scheduleCheckBox_title">피피티 만들기3</p>
               <input type="checkbox">
               <div class="scheduleCheckBox_checkmark"></div>
-              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
             </label>
           </div>  
         </div>
         <div class="draggable" draggable="true" id="element5" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
           <div class="scheduleBox">
+            <div class="scheduleCheckBox">
+              <p class="scheduleCheckBox_title">하아......</p>
+              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
+            </div>
             <label class="scheduleCheckBox">
-              <p class="scheduleCheckBox_title">피피티 만들기4</p>
               <input type="checkbox">
               <div class="scheduleCheckBox_checkmark"></div>
-              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
             </label>
           </div>  
         </div>
@@ -73,26 +83,30 @@
         <div class="progress_header_head">완료된 일정</div>
         <p class="progress_header_count">5</p>
       </div>
-      <div class="scheduleContainer_elements" id="scheduleContainer_elements_done" ondragover="overDrag(event, this)">
+      <div class="scheduleContainer_elements" id="scheduleContainer_elements_done" ondragover="overDrag(event, this)" ondrop="dropDrag(event, this)">
         <div class="draggable" draggable="true" id="element7" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
           <div class="scheduleBox">
+            <div class="scheduleCheckBox">
+              <p class="scheduleCheckBox_title">멀보노</p>
+              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
+            </div>
             <label class="scheduleCheckBox">
-              <p class="scheduleCheckBox_title">아침 먹기</p>
               <input type="checkbox" checked="true">
               <div class="scheduleCheckBox_checkmark"></div>
-              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
             </label>
           </div>  
         </div>
           <div class="draggable" draggable="true" id="element8" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
             <div class="scheduleBox">
-            <label class="scheduleCheckBox">
-              <p class="scheduleCheckBox_title">한의원 가기</p>
-              <input type="checkbox" checked="true">
-              <div class="scheduleCheckBox_checkmark"></div>
-              <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
-            </label>
-          </div>  
+              <div class="scheduleCheckBox">
+                <p class="scheduleCheckBox_title">보노보노 펀치!</p>
+                <p class="scheduleDate">2022.11.01.화 ~ 2022.11.02.수</p>
+              </div>
+              <label class="scheduleCheckBox">
+                <input type="checkbox" checked="true">
+                <div class="scheduleCheckBox_checkmark"></div>
+              </label>
+            </div>   
         </div>
       </div>
     </div>
