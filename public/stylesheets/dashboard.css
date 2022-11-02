@@ -17,7 +17,7 @@
 }
 /* 오늘 일정 완료율 */
 .todayScheduleChart {
-  width: 24%;
+  width: 20%;
   height: 40vh;
   background-color: #FFFFFF;
   display: flex;
@@ -27,7 +27,7 @@
 
 /* 오늘 일정 리스트 */
 .todayScheduleList {
-  width: 48%;
+  width: 50%;
   height: 40vh;
   background-color: #FFFFFF;
   display: flex;
@@ -37,7 +37,7 @@
 
 /* 공유받은 일정 리스트 */
 .shareScheduleList {
-  width: 24%;
+  width: 26%;
   height: 40vh;
   background-color: #FFFFFF;
   display: flex;
