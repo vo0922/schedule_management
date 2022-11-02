@@ -1,12 +1,10 @@
 const draggables = document.querySelectorAll(".draggable"); // drag 아이템
-const scheduleContainers = document.querySelectorAll(".scheduleContainer");
-console.log(draggables) // drag할 box
+const scheduleContainers = document.querySelectorAll(".scheduleContainer");// drag할 box
 // 드롭할 요소 - drag 아이템
 function startDrag(event, target) {
   // 드래그가 시작될 때 dragging class를 추가
   // dragstart => 1. 사용자가 객체(object)를 드래그하려고 시작할 때 발생함.
   const draggable =  target
-  console.log(draggable)
   draggable.classList.add("dragging");
 }
 function endDrag(event, target) {
@@ -58,4 +56,18 @@ function getDragAfterElement(container, y) {
     // 초깃값 : -infinity(음의 무한대. 어떤 수를 -0으로 나누어도 나오는 값)
     { offset: Number.NEGATIVE_INFINITY },
   ).element;
+}
+
+function dropDrag(event, target) {
+  console.log(target.id)
+  // element를 옮긴 container의 id값 scheduleContainer_elements_done(완료) = true일 때 실행할 것
+  const done = 'scheduleContainer_elements_done'
+  const ing = 'scheduleContainer_elements_ing'
+  if (target.id === done) {
+    console.log('성공')
+  }else if (target.id === ing){
+    console.log('실패')
+  }else {
+    console.log('걍 실패임 ㅅㄱ')
+  }
 }
