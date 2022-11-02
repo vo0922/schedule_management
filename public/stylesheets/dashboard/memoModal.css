@@ -115,7 +115,7 @@
     border-radius: 4px;
     background-color: #FFFFFF;
     transition: all 0.2s ease;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 .memoModalLeftContentInput > input[type='text']:focus {
@@ -124,7 +124,7 @@
 
 .myScheduleList {
     width: 100%;
-    height: 85%;
+    height: 80%;
     padding: 20px;
     overflow: auto;
 }
@@ -132,6 +132,7 @@
 .mySchedule {
     display: flex;
     align-items: center;
+    padding: 10px;
     margin-bottom: 10px;
 }
 
@@ -147,8 +148,9 @@
 
 .myScheduleCheckList {
     width: 100%;
-    height: 85%;
-    padding: 20px;
+    height: 80%;
+    margin-top: 20px;
+    padding: 10px 20px 20px 10px;
     overflow: auto;
 }
 
@@ -178,16 +180,23 @@
 
 .checkMySchedule {
     margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-.myScheduleList::-webkit-scrollbar, myScheduleCheckList::-webkit-scrollbar-track{
+.checkMySchedule:hover {
+    background-color: #dadada;
+    cursor: pointer;
+}
+
+.myScheduleList::-webkit-scrollbar, .myScheduleCheckList::-webkit-scrollbar{
     width: var(--webkit-scrollbar-width);
 }
-.myScheduleList::-webkit-scrollbar-thumb, myScheduleCheckList::-webkit-scrollbar-track{
+.myScheduleList::-webkit-scrollbar-thumb, .myScheduleCheckList::-webkit-scrollbar-thumb{
     background-color: var(--webkit-scrollbar-thumb-bg);
     border-radius: var(--webkit-scrollbar-thumb-br);
 }
-.myScheduleList::-webkit-scrollbar-track, myScheduleCheckList::-webkit-scrollbar-track{
+.myScheduleList::-webkit-scrollbar-track, .myScheduleCheckList::-webkit-scrollbar-track{
     background-color: var(--webkit-scrollbar-track-bg);
     border-radius: var(--webkit-scrollbar-track-br);
     /* box-shadow: inset 0px 0px 5px white; */

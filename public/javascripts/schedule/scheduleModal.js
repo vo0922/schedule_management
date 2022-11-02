@@ -281,9 +281,11 @@ function show_map(placePosition, index, callback) {
 function DateValidation() {
     if (startDate.value) endDate.min = startDate.value;
     if (endDate.value) startDate.max = endDate.value;
-    if (startDate.value > endDate.value) {
-        alert('종료일을 다시 정해주세요.');
-        endDate.value = startDate.value;
+    if(endDate.value){
+        if (startDate.value > endDate.value) {
+            alert('종료일을 다시 정해주세요.');
+            endDate.value = startDate.value;
+        }
     }
 }
 
