@@ -1,25 +1,27 @@
 const draggables = document.querySelectorAll(".draggable"); // drag 아이템
-const scheduleContainers = document.querySelectorAll(".scheduleContainer"); // drag할 box
+const scheduleContainers = document.querySelectorAll(".scheduleContainer");
+console.log(draggables) // drag할 box
 // 드롭할 요소 - drag 아이템
-function startDrag(event) {
+function startDrag(event, target) {
   // 드래그가 시작될 때 dragging class를 추가
   // dragstart => 1. 사용자가 객체(object)를 드래그하려고 시작할 때 발생함.
-  const draggable =  document.getElementById(event.target.id)
+  const draggable =  target
+  console.log(draggable)
   draggable.classList.add("dragging");
 }
-function endDrag(event) {
+function endDrag(event, target) {
   // 드래그가 끝날 때 dragging class를 제거
   // dragend => 7. 대상 객체를 드래그하다가 마우스 버튼을 놓는 순간 발생함.
-  const draggable =  document.getElementById(event.target.id)
+  const draggable =  target
   draggable.classList.remove("dragging");
 }
 
 // 드롭될 요소 - drag할 box
 function overDrag(event, container) { // container = this
-  console.log(container)
+  // console.log(container)
   // dragover => 4. 드래그하면서 마우스가 대상 객체의 영역 위에 자리 잡고 있을 때 발생함.
   event.preventDefault(); // 드롭될 요소에는 정상 작동을 위해 넣어주기
-  const afterElement = getDragAfterElement(container, event.clientX);
+  const afterElement = getDragAfterElement(container, event.clientY);
   const draggable = document.querySelector(".dragging");
   if (afterElement === undefined) {
     container.appendChild(draggable); // scheduleContainer에 dragging class 추가    
@@ -30,7 +32,7 @@ function overDrag(event, container) { // container = this
   }
 }
 
-function getDragAfterElement(container, x) {
+function getDragAfterElement(container, y) {
   // 드래그 리스트
   const draggableElements = [
     // .draggable:not(.dragging) = .draggable에서 .dragging이 아닌 모든 요소
@@ -43,7 +45,7 @@ function getDragAfterElement(container, x) {
     // child = 현재값 = currentValue
     (closest, child) => {
       const box = child.getBoundingClientRect();  // 현재값의 위치값 얻기
-      const offset = x - box.left - box.width / 2;
+      const offset = y - box.top - box.height / 2;
       // console.log(offset);
       // 기존에 있던 컨테이너에서 아이템이 다른 쪽으로 가면 offset값이 음수가 나옴. 
       if (offset < 0 && offset > closest.offset) {  
