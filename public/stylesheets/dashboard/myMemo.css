@@ -32,6 +32,40 @@
     font-size: 20px;
 }
 
+.myMemoRight {
+    position: relative;
+}
+
+.sortMenu {
+    width: 140px;
+    height: 80px;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+.sortMenu.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 15;
+    padding: 10px;
+    right: -20px;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #eeeeee;
+}
+
+.sortMenu.active > li {
+    list-style: none;
+    padding: 5px;
+    border-radius: 20px
+}
+
+.sortMenu.active > li:hover {
+    background-color: #dadada;
+    cursor: pointer;
+}
+
 .myMemoRight > i:hover {
     cursor: pointer;
     opacity: 0.5;

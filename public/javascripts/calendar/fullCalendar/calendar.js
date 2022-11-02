@@ -149,6 +149,7 @@ function scheduleListModalOpen(scheduleList) {
 }
 
 // 일정 목록 정렬 기능
+
 function scheduleListSort(scheduleList, e) {
     let scheduleListSortObject = scheduleList
     switch (e.value) {

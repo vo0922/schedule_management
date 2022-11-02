@@ -5,7 +5,11 @@
             <i class="fa-regular fa-bookmark"></i> <p class="myMemoTitle">메모</p>
         </div>
         <div class="myMemoRight">
-            <i class="fa-solid fa-filter"></i>
+            <i class="fa-solid fa-filter" onclick="sortMenu()"></i>
+            <div class="sortMenu">
+                <li onclick="sort('desc')">최신순 <i class="fa-solid fa-sort-up"></i></li>
+                <li onclick="sort('asc')">마지막순 <i class="fa-solid fa-sort-down"></i></li>
+            </div>
         </div>
     </div>
     <div id="myMemoContent" class="myMemoContent">

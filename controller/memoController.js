@@ -6,7 +6,8 @@ module.exports = {
             const memoData = new memo({
                 content: content,
                 memberId: memberId,
-                schedule: scheduleId
+                schedule: scheduleId,
+                date: new Date(),
             })
             const InsertMemo = await memoData.save();
 
