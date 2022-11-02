@@ -179,3 +179,16 @@
 .checkMySchedule {
     margin: 10px;
 }
+
+.myScheduleList::-webkit-scrollbar, myScheduleCheckList::-webkit-scrollbar-track{
+    width: var(--webkit-scrollbar-width);
+}
+.myScheduleList::-webkit-scrollbar-thumb, myScheduleCheckList::-webkit-scrollbar-track{
+    background-color: var(--webkit-scrollbar-thumb-bg);
+    border-radius: var(--webkit-scrollbar-thumb-br);
+}
+.myScheduleList::-webkit-scrollbar-track, myScheduleCheckList::-webkit-scrollbar-track{
+    background-color: var(--webkit-scrollbar-track-bg);
+    border-radius: var(--webkit-scrollbar-track-br);
+    /* box-shadow: inset 0px 0px 5px white; */
+}

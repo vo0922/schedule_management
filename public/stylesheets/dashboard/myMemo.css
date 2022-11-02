@@ -167,3 +167,16 @@
 .memoSchedule > i {
     margin-right: 5px;
 }
+
+.memoList::-webkit-scrollbar {
+    width: var(--webkit-scrollbar-width);
+}
+.memoList::-webkit-scrollbar-thumb {
+    background-color: var(--webkit-scrollbar-thumb-bg);
+    border-radius: var(--webkit-scrollbar-thumb-br);
+}
+.memoList::-webkit-scrollbar-track {
+    background-color: var(--webkit-scrollbar-track-bg);
+    border-radius: var(--webkit-scrollbar-track-br);
+    /* box-shadow: inset 0px 0px 5px white; */
+}
