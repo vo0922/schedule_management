@@ -58,13 +58,13 @@ function memoModalBind(res) {
 
     res.myScheduleData.map((data) => {
         let myScheduleTagData = [];
-        data.tagId.map((data,idx)=>{
-            if(idx>3){
+        data.tagId.map((data, idx) => {
+            if (idx > 3) {
                 myScheduleTagData.push('...');
                 return
             }
             myScheduleTagData.push(
-                `
+                        `
                         #${data.name}
                         `
             )
@@ -73,7 +73,7 @@ function memoModalBind(res) {
         myScheduleData.push(
             `
                     <div class="mySchedule">
-                        <input onchange='scheduleCheck(${JSON.stringify(data)}, this)' type="checkbox" style="margin-right: 10px;" ${flag? 'checked':null}> 
+                        <input onchange='scheduleCheck(${JSON.stringify(data)}, this)' type="checkbox" style="margin-right: 10px;" ${flag ? 'checked' : null}> 
                         <p class="scheduleTitle">${data.title}</p>
                         <p class="scheduleTag">${myScheduleTagData.join('')}</p>
                     </div>
@@ -109,10 +109,10 @@ function submitMemo(memoId) {
         content: content,
         schedules: [],
     }
-    for(let i = 0; i < checkSchedule.length; i++) {
+    for (let i = 0; i < checkSchedule.length; i++) {
         data.schedules.push(checkSchedule[i].id);
     }
-    if(content == '') {
+    if (content == '') {
         return alert("메모 내용이 비어있습니다.");
     }
     $.ajax({
@@ -134,7 +134,7 @@ function memoModalDone() {
 }
 
 window.addEventListener('click', function (event) {
-    if(event.target == memoModal) {
+    if (event.target == memoModal) {
         memoModalDone();
     }
 })

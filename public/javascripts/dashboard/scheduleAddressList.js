@@ -7,7 +7,7 @@ function addressListBind(addressData) {
                 <div class="addressCardHeader">
                    <p class="cardAddress">${data.map.title}</p>
                     <p class="cardTitle">${data.title}</p>
-                    <p class="cardDate">${new Date(data.startDate).getFullYear()} - ${new Date(data.endDate).getFullYear()}</p>
+                    <p class="cardDate">-${new Date(data.endDate).getFullYear()}.${new Date(data.endDate).getMonth() + 1}.${new Date(data.endDate).getDay()}</p>
                 </div>
             <div class="addressCardContent">
                 <p>${data.content}</p>
