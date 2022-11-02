@@ -1,67 +1,21 @@
 <script defer src="/javascripts/dashboard/shareScheduleList.js"></script>
 <link rel="stylesheet" href="/stylesheets/dashboard/shareScheduleList.css">
 <div class="shareScheduleList_header">
-  <i class="fa-solid fa-share"></i>
-  <h1>공유받은 일정 목록</h1>
-  <!-- <p>공유받은 일정 갯수 :</p> -->
-  <p id="shareScheduleCount">3</p>
+    <div class="shareScheduleHeaderLeft">
+        <i class="fa-solid fa-share"></i>
+        <h1>공유받은 일정 목록</h1>
+        <!-- <p>공유받은 일정 갯수 :</p> -->
+        <p id="shareScheduleCount"></p>
+    </div>
+    <div class="shareScheduleHeaderRight">
+        <i class="fa-solid fa-shuffle" onclick="filterMenu()"></i>
+        <div class="filterMenu">
+            <li onclick="filterReq(null)">전체</li>
+            <li onclick="filterReq(false)">진행중</li>
+            <li onclick="filterReq(true)">완료</li>
+        </div>
+    </div>
 </div>
-<div class="shareScheduleList_div">
-  <div class="shareScheduleList_content">
-    <!-- 공유받은 일정 지정 색깔 -->
-    <div class="share_colorBox"></div>
-    <div class="share_contentBox">
-      <!-- 상단 영역 -->
-      <div class="shareScheduleList_content_top">
-        <div>
-          <!-- 공유받은 일정 제목 -->
-          <p class="shareScheduleList_content_top_title">PPT 만들기</p>
-          <!-- 진행도 표시 -->
-          <p class="shareScheduleList_content_top_progress">진행도 표시 ㄱㄱ</p>
-        </div>
-        <!-- 날짜 -->
-        <p>2022.11.02.수 ~ 2022.11.02.수</p>
-      </div>
-      <!-- hover 시 보이는 하단 영역 -->
-      <div class="shareScheduleList_content_bottom">
-        <!-- 공유자 프로필(사진, 이름, 메일) -->
-        <img class="share_user_img" src="/images/kakao_icon.png" alt="profile_img">
-        <div class="share_user_profile">
-          <p>박신욱</p>
-          <p>vo0922@naver.com</p>
-        </div>
-        <!-- 공유받은 카테고리 이름 -->
-        <p class="share_category">치킨앤 맥주조</p>
-      </div>
-    </div>
-  </div>
-  <div class="shareScheduleList_content">
-    <!-- 공유받은 일정 지정 색깔 -->
-    <div class="share_colorBox"></div>
-    <div class="share_contentBox">
-      <!-- 상단 영역 -->
-      <div class="shareScheduleList_content_top">
-        <div>
-          <!-- 공유받은 일정 제목 -->
-          <p class="shareScheduleList_content_top_title">PPT 만들기</p>
-          <!-- 진행도 표시 -->
-          <p class="shareScheduleList_content_top_progress">진행도 표시 ㄱㄱ</p>
-        </div>
-        <!-- 날짜 -->
-        <p>2022.11.02.수 ~ 2022.11.02.수</p>
-      </div>
-      <!-- hover 시 보이는 하단 영역 -->
-      <div class="shareScheduleList_content_bottom">
-        <!-- 공유자 프로필(사진, 이름, 메일) -->
-        <img class="share_user_img" src="/images/kakao_icon.png" alt="profile_img">
-        <div class="share_user_profile">
-          <p>박신욱</p>
-          <p>vo0922@naver.com</p>
-        </div>
-        <!-- 공유받은 카테고리 이름 -->
-        <p class="share_category">치킨앤 맥주조</p>
-      </div>
-    </div>
-  </div>
+<div id="shareScheduleList_div" class="shareScheduleList_div">
 
 </div>

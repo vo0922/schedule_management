@@ -1,6 +1,6 @@
 const draggables = document.querySelectorAll(".draggable"); // drag 아이템
 const scheduleContainers = document.querySelectorAll(".scheduleContainer");
-console.log(draggables) // drag할 box
+
 // 드롭할 요소 - drag 아이템
 function startDrag(event, target) {
   // 드래그가 시작될 때 dragging class를 추가

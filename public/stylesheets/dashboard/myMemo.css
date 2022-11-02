@@ -37,11 +37,11 @@
 }
 
 .sortMenu {
+    display: none;
     width: 120px;
     height: 90px;
     position: absolute;
     text-align: center;
-    display: none;
 }
 .sortMenu.active {
     display: flex;

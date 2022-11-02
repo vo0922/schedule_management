@@ -7,7 +7,62 @@
   display: flex;
   column-gap: 10px;
   align-items: center;
+  justify-content: space-between;
 }
+
+.shareScheduleList_header > .shareScheduleHeaderLeft {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.shareScheduleList_header > .shareScheduleHeaderRight {
+  position: relative;
+}
+
+.shareScheduleList_header > .shareScheduleHeaderRight > i {
+  font-size: 18px;
+}
+
+.shareScheduleList_header > .shareScheduleHeaderRight > i:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.filterMenu {
+  display: none;
+  width: 100px;
+  height: 120px;
+  position: absolute;
+  text-align: center;
+}
+
+.filterMenu.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 15;
+  padding: 5px;
+  right: -20px;
+  border-radius: 20px;
+  background-color: #FFFFFF;
+  border: 1px solid #eeeeee;
+}
+
+.filterMenu.active > li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 20px
+}
+
+.filterMenu.active > li:hover {
+  background-color: #dadada;
+  cursor: pointer;
+}
+
+
 .shareScheduleList_header h1 {
   font-weight: bold;
   font-size: 20px;
@@ -18,7 +73,7 @@
   font-weight: bold;
   color: #1b5ac2;
 }
-.shareScheduleList_header i {
+.shareScheduleHeaderLeft > i {
   width: 35px;
   height: 30px;
   text-align: center;

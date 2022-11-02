@@ -131,5 +131,36 @@ module.exports = {
         } catch (e) {
             throw new Error(e)
         }
+    },
+    todayShareSchedule : async(memberId, progress) => {
+        try {
+            let authSchedule = await category.find({shareMemberId: {$in: memberId}}).populate('memberId');
+            let todaySchedule = [];
+            let today = new Date();
+            let startToday = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1, 0, 0, 0);
+            let endToday = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0);
+            await Promise.all(authSchedule.map(async (authScheduleData) => {
+                    let shareSchedule = await schedule.find({
+                        tagId: {$in: authScheduleData.tagId},
+                        memberId: authScheduleData.memberId,
+                        startDate: {$lte: startToday},
+                        endDate: {$gte: endToday},
+                        completion: progress != null ? progress : {$ne: null}
+                    })
+                    shareSchedule.map((shareScheduleData) => {
+                        let flag = todaySchedule.find(value => JSON.stringify(value.scheduleData) === JSON.stringify(shareScheduleData));
+                        if (!flag) {
+                            todaySchedule.push({
+                                scheduleData: shareScheduleData,
+                                category: authScheduleData
+                            })
+                        }
+                    })
+                })
+            )
+            return todaySchedule;
+        } catch (e) {
+            throw new Error(e)
+        }
     }
 }
