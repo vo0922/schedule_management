@@ -57,7 +57,6 @@ function getDragAfterElement(container, y) {
 }
 
 function dropDrag(event, target) {
-  console.log(target.id)
   // element를 옮긴 container의 id값 scheduleContainer_elements_done(완료) = true일 때 실행할 것
   const done = 'scheduleContainer_elements_done'
   const ing = 'scheduleContainer_elements_ing'
