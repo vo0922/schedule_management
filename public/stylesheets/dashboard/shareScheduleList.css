@@ -1,6 +1,6 @@
 
 .shareScheduleList_div {
-  max-height: 34vh;
+  height: 35vh;
   overflow: auto;
 }
 .shareScheduleList_header {
@@ -85,28 +85,29 @@
 }
 
 .shareScheduleList_content {
-  width: 96%;
-  background-color: #cac9ff12;
+  background-color: #c5c5d514;
   padding: 12px;
   display: flex;
   column-gap: 1rem;
   margin: 15px 10px;
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 0 7px #8d8b8b8c;
   border-radius: 10px;
+  height: 7vh;
+  transition: all 0.3s ease;
 }
 .share_colorBox {
   width: 10px;
-  height: 80px;
+  /* height: 80px; */
   background-color: #1b5ac2;
 }
 .share_contentBox {
-  width: 100%;
+  width: 93%;
 }
 /* 상단 */
 .shareScheduleList_content_top {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: baseline;
+  justify-content: space-between;
   column-gap: 1rem;
   padding-bottom: 10px;
 }
@@ -124,25 +125,110 @@
 .shareScheduleList_content_bottom {
   display: flex;
   align-items: center;
+  border-top: 1px solid #3838386b;;
+  padding: 10px 0;
+  height: 0;
+  text-align: center;
   justify-content: flex-start;
-  border-top: 1px solid black;
-  height: 55px;
-  column-gap: 25px;
+  /* transition: all 0.3s ease; */
+  opacity: 0;
 }
+.shareScheduleList_content_bottom.hover {
+  opacity: 1;
+  height: fit-content;
+
+}
+
 .share_user_img {
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  margin: 0 0 0 1rem;
+  margin: 0 1rem 0 1rem;
 }
 .share_user_profile {
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 1px solid #3838386b;
+  border-right: 1px solid #3838386b;
   padding: 0 1rem;
 }
 .share_user_profile p {
   text-align: center;
 }
 .share_category {
-  /* padding: 0 1rem; */
+  width: fit-content;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* ===== checkbox custom하기 ===== */
+/* The shareScheduleCheckBox */
+.shareScheduleCheckBox {
+  /* position: relative;
+  cursor: pointer; */
+  font-size: var(--nomal-font-size);
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Hide the browser's default checkbox */
+.shareScheduleCheckBox input {
+  /* position: absolute; */
+  opacity: 0;
+  /* cursor: pointer; */
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.shareScheduleCheckBox_checkmark {
+  /* position: absolute; */
+  /* top: 5px;
+  right: 1px; */
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  box-shadow: inset 1px 2px 4px #3333337a;
+  border-radius: 50%;
+
+}
+
+/* When the checkbox is checked, add a blue background */
+.shareScheduleCheckBox input:checked ~ .shareScheduleCheckBox_checkmark {
+  background-color: #fff;
+}
+
+/* Create the shareScheduleCheckBox_checkmark/indicator (hidden when not checked) */
+.shareScheduleCheckBox_checkmark:after {
+  content: "";
+  display: none;
+}
+
+/* Show the shareScheduleCheckBox_checkmark when checked */
+.shareScheduleCheckBox input:checked ~ .shareScheduleCheckBox_checkmark:after {
+  display: block;
+}
+
+/* Style the shareScheduleCheckBox_checkmark/indicator */
+.shareScheduleCheckBox .shareScheduleCheckBox_checkmark:after {
+  content: "";
+  /* left: 9px;
+  top: 5px; */
+  width: 25px;
+  height: 25px;
+  background-image: url(/images/checked.png);
+  background-size: 25px;
+  background-repeat: no-repeat;
+}
+
+.shareScheduleList_div::-webkit-scrollbar {
+  width: var(--webkit-scrollbar-width);
+}
+.shareScheduleList_div::-webkit-scrollbar-thumb {
+  background-color: var(--webkit-scrollbar-thumb-bg);
+  border-radius: var(--webkit-scrollbar-thumb-br);
+}
+.shareScheduleList_div::-webkit-scrollbar-track {
+  background-color: var(--webkit-scrollbar-track-bg);
+  border-radius: var(--webkit-scrollbar-track-br);
+  /* box-shadow: inset 0px 0px 5px white; */
 }

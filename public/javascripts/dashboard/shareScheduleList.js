@@ -24,24 +24,27 @@ function shareScheduleBind(progress) {
             document.getElementById('shareScheduleCount').innerText = res.data.length
             res.data.map((data)=>{
                 shareScheduleData.push(`
-                  <div class="shareScheduleList_content">
+                  <div class="shareScheduleList_content" onmouseover="shareScheduleListDivHover(this)" onmouseout="shareScheduleListDivNotHover(this)">
                     <!-- 공유받은 일정 지정 색깔 -->
-                    <div class="share_colorBox"></div>
+                    <div class="share_colorBox" style="background-color:${data.category.color}"></div>
                     <div class="share_contentBox">
                       <!-- 상단 영역 -->
                       <div class="shareScheduleList_content_top">
                         <div>
                           <!-- 공유받은 일정 제목 -->
                           <p class="shareScheduleList_content_top_title">${data.scheduleData.title}</p>
+                          <!-- 날짜 -->
+                          <p>
+                              ${new Date(data.scheduleData.startDate).getFullYear()}.${new Date(data.scheduleData.startDate).getMonth() + 1}.${new Date(data.scheduleData.startDate).getDate()}
+                              ~
+                              ${new Date(data.scheduleData.endDate).getFullYear()}.${new Date(data.scheduleData.endDate).getMonth() + 1}.${new Date(data.scheduleData.endDate).getDate()}
+                          </p>
+                          </div>
                           <!-- 진행도 표시 -->
-                          <p class="shareScheduleList_content_top_progress">${data.scheduleData.completion}</p>
-                        </div>
-                        <!-- 날짜 -->
-                        <p>
-                            ${new Date(data.scheduleData.startDate).getFullYear()}.${new Date(data.scheduleData.startDate).getMonth() + 1}.${new Date(data.scheduleData.startDate).getDate()}
-                            ~
-                            ${new Date(data.scheduleData.endDate).getFullYear()}.${new Date(data.scheduleData.endDate).getMonth() + 1}.${new Date(data.scheduleData.endDate).getDate()}
-                        </p>
+                          <label class="shareScheduleCheckBox">
+                            <input id="${data.scheduleData._id}check" type="checkbox" ${data.scheduleData.completion ? "checked" : null } disabled>
+                            <div class="shareScheduleCheckBox_checkmark"></div>
+                          </label>
                       </div>
                       <!-- hover 시 보이는 하단 영역 -->
                       <div class="shareScheduleList_content_bottom">
@@ -64,4 +67,22 @@ function shareScheduleBind(progress) {
             console.log(err)
         }
     })
+}
+
+// 공유 일정 목록 hover event
+function shareScheduleListDivHover(e) {
+  // console.log(e)
+  let event = e.querySelector('.shareScheduleList_content_bottom')
+  if (event) {
+          event.classList.add('hover');
+          e.style.height = "15vh"
+      }
+}
+
+function shareScheduleListDivNotHover(e) {
+  let event = e.querySelector('.shareScheduleList_content_bottom')
+  if (event) {
+          event.classList.remove('hover');
+          e.style.height = "7vh"
+  }
 }
