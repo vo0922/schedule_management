@@ -17,6 +17,7 @@ router.post('/colorUpdate', authUtil, async function (req, res) {
         const color = await memberController.colorUpdate(req.body.color, req.user._id);
         res.status(201).json({data: color, message: "색상 변경 성공"});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "색상 변경 실패"});
     }
 })
@@ -27,6 +28,7 @@ router.get('/todaySchedule', async function (req, res) {
         const data = await scheduleController.todaySchedule(req.user._id);
         res.status(201).json({data: data});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "오늘 일정 가져오기 실패"});
     }
 })
@@ -36,6 +38,7 @@ router.get('/memo', async function (req, res) {
         const data = await memoController.memoReaded(req.user._id);
         res.status(201).json({data: data});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "메모 가져오기 실패"});
     }
 })
@@ -46,6 +49,7 @@ router.delete('/memo', async function (req, res) {
         const data = await memoController.memoDelete(req.body.memoId);
         res.status(201).json({data: data});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "메모 삭제 실패"})
     }
 })
@@ -55,6 +59,7 @@ router.post('/memo', async function (req, res) {
         const data = await memoController.memoInsert(req.user._id, req.body.content, req.body.scheduleId);
         res.status(201).json({data: data});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "메모 등록 실패"});
     }
 })
@@ -65,6 +70,7 @@ router.post('/memo/view/search', async function (req, res) {
         const myScheduleData = await scheduleController.myScheduleSearch(req.user._id, req.body.text);
         res.status(201).json({memoData: memoData, myScheduleData: myScheduleData});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "메모 가져오기 실패"});
     }
 })
@@ -75,6 +81,7 @@ router.post('/memo/view', async function (req, res) {
         const myScheduleData = await scheduleController.mySchedule(req.user._id);
         res.status(201).json({memoData: memoData, myScheduleData: myScheduleData});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "메모 가져오기 실패"});
     }
 })
@@ -84,6 +91,7 @@ router.patch('/memo', async function (req, res) {
         const data = await memoController.memoUpdate(req.body.data);
         res.status(201).json({data: data});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "메모 업데이트 실패"});
     }
 })
@@ -94,6 +102,7 @@ router.post('/todayShareSchedule', async function (req, res) {
         const data = await categoryController.todayShareSchedule(req.user._id, progress);
         res.status(201).json({data: data});
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "메모 업데이트 실패"});
     }
 })
@@ -103,6 +112,7 @@ router.patch('/todayScheduleProgress', async function (req, res) {
         const data = await scheduleController.scheduleProgress(req.body.scheduleId, req.body.progress)
         res.status(201).json({data: data})
     } catch (e) {
+        console.log(e);
         res.status(401).json({message: "일정 진행도 변경 실패"})
     }
 })

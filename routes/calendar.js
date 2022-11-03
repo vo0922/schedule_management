@@ -23,6 +23,7 @@ router.post('/scheduleView', async function (req, res) {
         const scheduleView = await scheduleController.readed(req.body.scheduleId);
         res.status(201).json({scheduleView: scheduleView, memberId: req.user._id});
     } catch (err) {
+        console.log(err);
         res.status(401).json({message: "일정 가져오기 실패"});
     }
 })
@@ -32,6 +33,7 @@ router.get('/mySchedule', async function (req, res) {
         const mySchedule = await scheduleController.mySchedule(req.user._id);
         res.status(201).json({data: mySchedule});
     } catch (err) {
+        console.log(err);
         res.status(401).json({message: "나의 일정 가져오기 실패"});
     }
 })
@@ -42,6 +44,7 @@ router.get('/scheduleCalendar', async function (req, res) {
         const scheduleCalendar = await scheduleController.scheduleCalendar(req.user._id);
         res.status(201).json({data: scheduleCalendar});
     } catch (err) {
+        console.log(err);
         res.status(401).json({message: "일정 가져오기 실패"});
     }
 })
@@ -51,6 +54,7 @@ router.get('/shareAllSchedule', async function (req, res) {
         const data = await categoryController.shareAllSchedule(req.user._id);
         res.status(201).json({data: data});
     } catch (err) {
+        console.log(err);
         res.status(401).json({message: "공유 일정 가져오기 실패"});
     }
 })
@@ -60,6 +64,7 @@ router.post('/shareSchedule', async function (req, res) {
         const data = await categoryController.shareSchedule(req.body.categoryId, req.body.authMemberId);
         res.status(201).json({data: data, message: "공유 검색 성공"});
     } catch (err) {
+        console.log(err);
         res.status(401).json({message: "공유 일정 검색 실패"});
     }
 })

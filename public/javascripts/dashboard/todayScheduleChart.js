@@ -15,7 +15,7 @@ function scheduleCompletion() {
             res.data.map((data) => {
                 if(data.map) {
                     let placePosition = new kakao.maps.LatLng(data.map.y, data.map.x);
-                    addMarker(placePosition, 1, data.map.title);
+                    dashBoardAddMarker(placePosition, 1, data.map.title);
                 }
                 // 완료한 일정 갯수 구하기
                 if (data.completion) {
@@ -25,12 +25,16 @@ function scheduleCompletion() {
             scheduleBinding(res.data)
             let doneRate = doneScheduleCount / totalScheduleCount * 100
             let doneRatePoint = doneRate.toFixed(1)
-            document.getElementById('addressListCount').innerText = res.data.length
-            document.getElementById('scheduleCount').innerText = res.data.length
+            let dateString = ['일','월','화','수','목','금','토'];
+            let todayString = `${new Date().getFullYear()}.${new Date().getMonth()}.${new Date().getDate()}.${dateString[new Date().getDay()]}`
+            document.getElementById('addressListCount').innerText = res.data.length;
+            document.getElementById('scheduleCount').innerText = res.data.length;
             document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint);
-            document.getElementById('percentageText').innerHTML = doneRatePoint + '%'
-            if(Object.keys(bounds).length){
-                map.setBounds(bounds);
+            document.getElementById('percentageText').innerHTML = doneRatePoint + '%';
+            document.getElementById('todayDateTag').innerHTML = todayString;
+
+            if(Object.keys(dashBoardBounds).length){
+                dashBoardMap.setBounds(dashBoardBounds);
             }
             $.radialChart()
         },
@@ -46,14 +50,14 @@ $('svg.radial-progress').each(function () {
 $.radialChart = function () {
     $('svg.radial-progress').each(function () {
         // 진행률 가져오기
-        percent = document.getElementById('radial-progress').getAttribute('data-percentage');
+        let percent = document.getElementById('radial-progress').getAttribute('data-percentage');
         // svg circle.complete의 반지름을 가져옵니다
-        radius = $(this).find($('circle.complete')).attr('r');
+        let radius = $(this).find($('circle.complete')).attr('r');
         // 원주 가져오기 (2πr)
-        circumference = 2 * Math.PI * radius;
+        let circumference = 2 * Math.PI * radius;
         // 원주의 백분율을 기준으로 stroke-dashoffset 값을 가져옵니다.
         // Get stroke-dashoffset value based on the percentage of the circumference
-        strokeDashOffset = circumference - ((percent * circumference) / 100);
+        let strokeDashOffset = circumference - ((percent * circumference) / 100);
         // 1.25초 동안 transition 진행
         $(this).find($('circle.complete')).animate({'stroke-dashoffset': strokeDashOffset}, 800);
     })

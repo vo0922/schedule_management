@@ -3,7 +3,7 @@ window.addEventListener('load', function () {
 })
 
 function memoScheduleHover(e) {
-    let event = e.querySelectorAll('.memoSchedule')
+    let event = e.querySelectorAll('.memoSchedule');
     if (event) {
         for (let i = 0; i < event.length; i++) {
             event[i].classList.add('hover');
@@ -12,7 +12,7 @@ function memoScheduleHover(e) {
 }
 
 function memoScheduleNotHover(e) {
-    let event = e.querySelectorAll('.memoSchedule')
+    let event = e.querySelectorAll('.memoSchedule');
     if (event) {
         for (let i = 0; i < event.length; i++) {
             event[i].classList.remove('hover');

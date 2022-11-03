@@ -20,12 +20,12 @@ function addressListBind(addressData) {
 }
 
 function addressCardClick(scheduleData) {
-    removeMarker();
+    dashBoardRemoveMarker();
     let placePosition = new kakao.maps.LatLng(scheduleData.map.y, scheduleData.map.x);
     let bound = new kakao.maps.LatLngBounds();
     bound.extend(placePosition);
-    map.setBounds(bound);
-    addMarker(placePosition, 1, scheduleData.map.title);
+    dashBoardMap.setBounds(bound);
+    dashBoardAddMarker(placePosition, 1, scheduleData.map.title);
 }
 
 function fullAdress() {
@@ -33,16 +33,16 @@ function fullAdress() {
         type: 'get',
         url: '/todaySchedule',
         success: function (res) {
-            removeMarker();
+            dashBoardRemoveMarker();
             res.data.map((data) => {
                 if(data.map) {
                     let placePosition = new kakao.maps.LatLng(data.map.y, data.map.x);
-                    addMarker(placePosition, 1, data.map.title);
+                    dashBoardAddMarker(placePosition, 1, data.map.title);
                 }
             })
             document.getElementById('addressListCount').innerText = res.data.length
-            if(Object.keys(bounds).length){
-                map.setBounds(bounds);
+            if(Object.keys(dashBoardBounds).length){
+                dashBoardMap.setBounds(dashBoardBounds);
             }
         },
         error: function (err) {

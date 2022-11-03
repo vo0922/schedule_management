@@ -1,3 +1,4 @@
+
 // 드롭할 요소 - drag 아이템
 function startDrag(event, target) {
   // 드래그가 시작될 때 dragging class를 추가
@@ -6,11 +7,21 @@ function startDrag(event, target) {
   draggable.classList.add("dragging");
   event.dataTransfer.setData('_id', event.target.id)
 }
+
 function endDrag(event, target) {
-  // 드래그가 끝날 때 dragging class를 제거
-  // dragend => 7. 대상 객체를 드래그하다가 마우스 버튼을 놓는 순간 발생함.
   const draggable =  target
   draggable.classList.remove("dragging");
+  const done = 'scheduleContainer_elements_done'
+  const ing = 'scheduleContainer_elements_ing'
+  let scheduleId = target.id
+  let targetEl = document.getElementById(`${target.id}check`);
+  if (target.parentNode.id === done) {
+    scheduleProgressReq(scheduleId, true)
+    targetEl.checked = true
+  }else if (target.parentNode.id === ing){
+    scheduleProgressReq(scheduleId, false)
+    targetEl.checked = false
+  }
 }
 
 // 드롭될 요소 - drag할 box
@@ -57,11 +68,11 @@ function getDragAfterElement(container, y) {
   ).element;
 }
 
-function dropDrag(event, target) {
+/*function dropDrag(event, target) {
   // element를 옮긴 container의 id값 scheduleContainer_elements_done(완료) = true일 때 실행할 것
   const done = 'scheduleContainer_elements_done'
   const ing = 'scheduleContainer_elements_ing'
-  scheduleId = event.dataTransfer.getData('_id')
+  let scheduleId = event.dataTransfer.getData('_id')
   let targetEl = document.getElementById(`${scheduleId}check`);
   if (target.id === done) {
     scheduleProgressReq(scheduleId, true)
@@ -70,7 +81,7 @@ function dropDrag(event, target) {
     scheduleProgressReq(scheduleId, false)
     targetEl.checked = false
   }
-}
+}*/
 
 // 진행도를 수정하는 함수
 function scheduleProgressReq(scheduleId, progress) {
@@ -115,7 +126,7 @@ function scheduleBinding(scheduleData) {
    let scheduleDataDiv = `
    <div class="draggable" draggable="true" id="${data._id}" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
       <div class="scheduleBox">
-        <div class="scheduleCheckBox">
+        <div class="scheduleCheckBox" onclick="scheduleViewModalOpen('${data._id}', true)">
           <p class="scheduleCheckBox_title">${data.title}</p>
           <p class="scheduleDate">
           ${new Date(data.startDate).getFullYear()}.
@@ -142,13 +153,13 @@ function scheduleBinding(scheduleData) {
   })
   ingContainer.innerHTML = ingData.join('')
   doneContainer.innerHTML = doneData.join('')
-  ingCountDiv.innerText = ingCount
-  doneCountDiv.innerText = doneCount
+  ingCountDiv.innerText = ingCount.toString()
+  doneCountDiv.innerText = doneCount.toString()
 }
 
 // 체크 눌렀을 때 양옆으로 이동하는 함수
 function changeProgress(scheduleId, e) {
-
+  event.stopPropagation();
   scheduleProgressReq(scheduleId, e.checked)
   let ingContainer = document.getElementById('scheduleContainer_elements_ing')
   let doneContainer = document.getElementById('scheduleContainer_elements_done')

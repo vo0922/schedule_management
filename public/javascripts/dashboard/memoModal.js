@@ -7,6 +7,7 @@ function memoModalOpen(memoId) {
         contentType: 'application/json',
         data: JSON.stringify({memoId: memoId}),
         success: function (res) {
+            document.getElementById('myScheduleSearch').value = null
             memoModalBind(res)
             document.getElementById('memoContent').value = res.memoData.content
             document.getElementById('memoDeleteButton').onclick = () => {
@@ -23,7 +24,7 @@ function memoModalOpen(memoId) {
             res.memoData.schedule.map((data) => {
                 checkScheduleData.push(
                     `
-                    <div id="${data._id}" class="checkMySchedule">
+                    <div id="${data._id}" onclick="scheduleViewModalOpen('${data._id}', true)" class="checkMySchedule">
                         <p class="scheduleTitle">${data.title}</p>
                     </div>
                     `

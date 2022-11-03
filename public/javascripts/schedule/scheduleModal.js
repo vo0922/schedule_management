@@ -1,6 +1,7 @@
 var modal = document.getElementById('scheduleModal');
 var scheduleSubmitModal = document.getElementById('scheduleSubmitModal');
 var c_modal = document.getElementById('categoryModal');
+var scheduleListModal = document.getElementById('scheduleListModal');
 
 var startDate = document.getElementById('schedule_start_day');
 var endDate = document.getElementById('schedule_end_day');
@@ -102,9 +103,10 @@ function scheduleModalOpen(clickStart) {
     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class="schedule_save_btn" onclick="submitSchedule('post')">등록</button>`
 }
 
-function scheduleViewModalOpen(scheduleId) {
+function scheduleViewModalOpen(scheduleId, noEdit) {
     modal.style.display = "block";
-    scheduleListModal.style.display = 'none';
+    if (scheduleListModal)
+        scheduleListModal.style.display = 'none';
     const url = '/calendar/scheduleView'
     $.ajax({
         type: 'post',
@@ -112,63 +114,13 @@ function scheduleViewModalOpen(scheduleId) {
         data: {
             scheduleId: scheduleId
         }, success: function (res) {
-            res.scheduleView.tagId.map((data) => {
-                addTagList(data.name);
-            });
-            let title = document.getElementById('schedule_title');
-            let content = document.getElementById('schedule_content');
-            let priority = document.getElementById('schedule_priority');
-            let tagInput = document.getElementById('tagInput');
-            let kakaoMapMenu = document.getElementById('menu_wrap');
-            let scheduleProgress = document.getElementById('scheduleProgress');
-            title.disabled = true;
-            content.disabled = true;
-            content.placeholder = ''
-            priority.disabled = true;
-            startDate.disabled = true;
-            endDate.disabled = true;
-            tagInput.style.display = 'none'
-            document.getElementById('progress_label_icon').classList.add('hidden');
-            scheduleProgress.classList.remove('hidden');
-            label[0].removeEventListener('click', labelHandle);
-            let tagDeleteIcon = document.getElementsByClassName("fa-regular fa-circle-xmark");
-            for (let i = 0; i < tagDeleteIcon.length; i++) {
-                tagDeleteIcon[i].style.display = 'none';
-            }
-            document.getElementById('completeLabel').innerHTML = res.scheduleView.completion ? document.getElementById("progress_optionItem2").innerHTML : document.getElementById("progress_optionItem1").innerHTML
-            document.getElementById('schedule_address_q').disabled = true;
-            kakaoMapMenu.style.display = 'none';
-            title.value = res.scheduleView.title;
-            let leftStartDate = new Date(res.scheduleView.startDate);
-            let left = new Date(leftStartDate.getTime() - leftStartDate.getTimezoneOffset() * 60000).toISOString().slice(0, -5);
-            startDate.value = left;
-            let leftEndDate = new Date(res.scheduleView.endDate);
-            left = new Date(leftEndDate.getTime() - leftEndDate.getTimezoneOffset() * 60000).toISOString().slice(0, -5);
-            endDate.value = left;
-            startDate.min = date;
-            endDate.min = date;
-            startDate.max = endDate.value;
-            content.value = res.scheduleView.content;
-            priority.value = res.scheduleView.priority;
-            document.getElementById('schedule_priority_num').value = res.scheduleView.priority;
-            if (res.scheduleView.map) {
-                document.getElementById('schedule_address_q').checked = true;
-                document.getElementById('addressInput').value = res.scheduleView.map.title;
-                document.getElementById('address').value = res.scheduleView.map.address;
-                document.getElementById('addressLat').value = res.scheduleView.map.y;
-                document.getElementById('addressHard').value = res.scheduleView.map.x;
-                var placePosition = new kakao.maps.LatLng(res.scheduleView.map.y, res.scheduleView.map.x);
-                show_map(placePosition, 1, addMarker);
-                document.getElementById('keyword').value = res.scheduleView.map.title;
-            }
-            modal.style.display = "block";
-            scheduleSubmitModal.style.display = 'block';
-
-
-            if (res.memberId == res.scheduleView.memberId) {
-                document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class='schedule_save_btn' onclick='scheduleModalEditOpen(${JSON.stringify(res)})'>편집</button>` + `<button class='schedule_delete_btn' onclick="scheduleDelete('${res.scheduleView._id}')">삭제</button>`
-            } else {
-                document.getElementsByClassName('schedule_save')[0].innerHTML = null
+            scheduleViewData(res);
+            if(!noEdit){
+                if (res.memberId == res.scheduleView.memberId) {
+                    document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class='schedule_save_btn' onclick='scheduleModalEditOpen(${JSON.stringify(res)})'>편집</button>` + `<button class='schedule_delete_btn' onclick="scheduleDelete('${res.scheduleView._id}')">삭제</button>`
+                } else {
+                    document.getElementsByClassName('schedule_save')[0].innerHTML = null
+                }
             }
         }, error: function (err) {
             console.log(err);
@@ -176,7 +128,64 @@ function scheduleViewModalOpen(scheduleId) {
     })
 }
 
+function scheduleViewData(res) {
+    res.scheduleView.tagId.map((data) => {
+        addTagList(data.name);
+    });
+    let title = document.getElementById('schedule_title');
+    let content = document.getElementById('schedule_content');
+    let priority = document.getElementById('schedule_priority');
+    let tagInput = document.getElementById('tagInput');
+    let kakaoMapMenu = document.getElementById('menu_wrap');
+    let scheduleProgress = document.getElementById('scheduleProgress');
+    title.disabled = true;
+    content.disabled = true;
+    content.placeholder = ''
+    priority.disabled = true;
+    startDate.disabled = true;
+    endDate.disabled = true;
+    tagInput.style.display = 'none'
+    document.getElementById('progress_label_icon').classList.add('hidden');
+    scheduleProgress.classList.remove('hidden');
+    label[0].removeEventListener('click', labelHandle);
+    let tagDeleteIcon = document.getElementsByClassName("fa-regular fa-circle-xmark");
+    for (let i = 0; i < tagDeleteIcon.length; i++) {
+        tagDeleteIcon[i].style.display = 'none';
+    }
+    document.getElementById('completeLabel').innerHTML = res.scheduleView.completion ? document.getElementById("progress_optionItem2").innerHTML : document.getElementById("progress_optionItem1").innerHTML
+    document.getElementById('schedule_address_q').disabled = true;
+    kakaoMapMenu.style.display = 'none';
+    title.value = res.scheduleView.title;
+    let leftStartDate = new Date(res.scheduleView.startDate);
+    let left = new Date(leftStartDate.getTime() - leftStartDate.getTimezoneOffset() * 60000).toISOString().slice(0, -5);
+    startDate.value = left;
+    let leftEndDate = new Date(res.scheduleView.endDate);
+    left = new Date(leftEndDate.getTime() - leftEndDate.getTimezoneOffset() * 60000).toISOString().slice(0, -5);
+    endDate.value = left;
+    startDate.min = date;
+    endDate.min = date;
+    startDate.max = endDate.value;
+    content.value = res.scheduleView.content;
+    priority.value = res.scheduleView.priority;
+    document.getElementById('schedule_priority_num').value = res.scheduleView.priority;
+    if (res.scheduleView.map) {
+        document.getElementById('schedule_address_q').checked = true;
+        document.getElementById('addressInput').value = res.scheduleView.map.title;
+        document.getElementById('address').value = res.scheduleView.map.address;
+        document.getElementById('addressLat').value = res.scheduleView.map.y;
+        document.getElementById('addressHard').value = res.scheduleView.map.x;
+        var placePosition = new kakao.maps.LatLng(res.scheduleView.map.y, res.scheduleView.map.x);
+        show_map(placePosition, 1, addMarker);
+        document.getElementById('keyword').value = res.scheduleView.map.title;
+    }
+    modal.style.display = "block";
+    scheduleSubmitModal.style.display = 'block';
+}
+
 function scheduleDelete(scheduleId) {
+    if(!confirm("정말 삭제 하시겠습니까?")){
+        return
+    }
     const url = '/schedule'
     $.ajax({
         type: 'delete',
@@ -281,7 +290,7 @@ function show_map(placePosition, index, callback) {
 function DateValidation() {
     if (startDate.value) endDate.min = startDate.value;
     if (endDate.value) startDate.max = endDate.value;
-    if(endDate.value){
+    if (endDate.value) {
         if (startDate.value > endDate.value) {
             alert('종료일을 다시 정해주세요.');
             endDate.value = startDate.value;

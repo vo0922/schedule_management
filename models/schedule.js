@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const tag = require('./tag');
+const memo = require('./memo');
 
 /**
  * 담당자 : 박신욱
@@ -75,6 +76,9 @@ scheduleSchema.pre("deleteOne", async function (next) {
             click: -1
         }
     });
+    await memo.updateMany({schedule:{$in:_id}},{
+        $pullAll: {schedule: [_id]},
+    })
     next();
 })
 

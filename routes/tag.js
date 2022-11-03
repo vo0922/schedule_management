@@ -10,6 +10,7 @@ router.post('/change', async function(req, res) {
         else
             res.json({data: false});
     }catch(err){
+        console.log(err);
         res.status(401).json({message: "태그 찾기 실패"});
     }
 });

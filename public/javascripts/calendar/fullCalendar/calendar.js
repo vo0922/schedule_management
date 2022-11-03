@@ -65,7 +65,7 @@ window.onload = function () {
         }
     })
 }
-var scheduleListModal = document.getElementById('scheduleListModal');
+
 
 function scheduleListModalDone() {
     scheduleListModal.style.display = 'none';

@@ -4,7 +4,6 @@ const passport = require('passport');
 
 /* GET login page. */
 router.get('/', function (req, res, next) {
-
     res.render('login', {title: 'Express'});
 });
 
