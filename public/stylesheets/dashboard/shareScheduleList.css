@@ -130,12 +130,12 @@
   height: 0;
   text-align: center;
   justify-content: flex-start;
-  /* transition: all 0.3s ease; */
   opacity: 0;
 }
 .shareScheduleList_content_bottom.hover {
   opacity: 1;
   height: fit-content;
+  transition: all 0.3s ease;
 
 }
 
