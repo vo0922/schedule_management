@@ -166,7 +166,7 @@ module.exports = {
         } catch (e) {
             throw new Error(e)
         }
-    },
+    },// 일정 진행도(진행/완료)
     scheduleProgress: async (scheduleId, progress) => {
         try {
             const scheduleData = await schedule.findOneAndUpdate({_id: scheduleId}, {

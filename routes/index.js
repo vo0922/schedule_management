@@ -97,5 +97,14 @@ router.post('/todayShareSchedule', async function (req, res) {
         res.status(401).json({message: "메모 업데이트 실패"});
     }
 })
+// 일정 진행도 변경 API
+router.patch('/todayScheduleProgress', async function (req, res) {
+    try {
+        const data = await scheduleController.scheduleProgress(req.body.scheduleId, req.body.progress)
+        res.status(201).json({data: data})
+    } catch (e) {
+        res.status(401).json({message: "일정 진행도 변경 실패"})
+    }
+})
 
 module.exports = router;
