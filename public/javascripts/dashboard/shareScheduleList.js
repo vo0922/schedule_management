@@ -46,7 +46,7 @@ function shareScheduleBind(progress) {
                       <!-- hover 시 보이는 하단 영역 -->
                       <div class="shareScheduleList_content_bottom">
                         <!-- 공유자 프로필(사진, 이름, 메일) -->
-                        <img class="share_user_img" src="/images/kakao_icon.png" alt="profile_img">
+                        <img class="share_user_img" src="${data.category.memberId.profile}" alt="profile_img">
                         <div class="share_user_profile">
                           <p>${data.category.memberId.name}</p>
                           <p>${data.category.memberId.email}</p>
