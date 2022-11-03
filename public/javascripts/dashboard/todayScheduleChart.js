@@ -22,11 +22,12 @@ function scheduleCompletion() {
                     doneScheduleCount += 1
                 }
             })
+            scheduleBinding(res.data)
             let doneRate = doneScheduleCount / totalScheduleCount * 100
             let doneRatePoint = doneRate.toFixed(1)
-            document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint);
             document.getElementById('addressListCount').innerText = res.data.length
             document.getElementById('scheduleCount').innerText = res.data.length
+            document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint);
             document.getElementById('percentageText').innerHTML = doneRatePoint + '%'
             if(Object.keys(bounds).length){
                 map.setBounds(bounds);
@@ -43,9 +44,9 @@ $('svg.radial-progress').each(function () {
     $(this).find($('circle.complete')).removeAttr('style');
 });
 $.radialChart = function () {
-    $('svg.radial-progress').each(function (index, value) {
+    $('svg.radial-progress').each(function () {
         // 진행률 가져오기
-        percent = $(value).data('percentage');
+        percent = document.getElementById('radial-progress').getAttribute('data-percentage');
         // svg circle.complete의 반지름을 가져옵니다
         radius = $(this).find($('circle.complete')).attr('r');
         // 원주 가져오기 (2πr)
@@ -54,6 +55,6 @@ $.radialChart = function () {
         // Get stroke-dashoffset value based on the percentage of the circumference
         strokeDashOffset = circumference - ((percent * circumference) / 100);
         // 1.25초 동안 transition 진행
-        $(this).find($('circle.complete')).animate({'stroke-dashoffset': strokeDashOffset}, 1250);
+        $(this).find($('circle.complete')).animate({'stroke-dashoffset': strokeDashOffset}, 800);
     })
 }

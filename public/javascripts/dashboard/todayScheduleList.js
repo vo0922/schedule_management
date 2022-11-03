@@ -4,6 +4,7 @@ function startDrag(event, target) {
   // dragstart => 1. 사용자가 객체(object)를 드래그하려고 시작할 때 발생함.
   const draggable =  target
   draggable.classList.add("dragging");
+  event.dataTransfer.setData('_id', event.target.id)
 }
 function endDrag(event, target) {
   // 드래그가 끝날 때 dragging class를 제거
@@ -60,11 +61,104 @@ function dropDrag(event, target) {
   // element를 옮긴 container의 id값 scheduleContainer_elements_done(완료) = true일 때 실행할 것
   const done = 'scheduleContainer_elements_done'
   const ing = 'scheduleContainer_elements_ing'
+  scheduleId = event.dataTransfer.getData('_id')
+  let targetEl = document.getElementById(`${scheduleId}check`);
   if (target.id === done) {
-    console.log('성공')
+    scheduleProgressReq(scheduleId, true)
+    targetEl.checked = true
   }else if (target.id === ing){
-    console.log('실패')
-  }else {
-    console.log('걍 실패임 ㅅㄱ')
+    scheduleProgressReq(scheduleId, false)
+    targetEl.checked = false
+  }
+}
+
+// 진행도를 수정하는 함수
+function scheduleProgressReq(scheduleId, progress) {
+  let ingCountDiv = document.getElementById('ingCount')
+  let doneCountDiv = document.getElementById('doneCount')
+  let ingContainer = document.getElementById('scheduleContainer_elements_ing')
+  let doneContainer = document.getElementById('scheduleContainer_elements_done')
+  
+  $.ajax({
+    type: 'patch',
+    url: '/todayScheduleProgress',
+    contentType: 'application/json',
+    data: JSON.stringify({scheduleId: scheduleId, progress: progress}),
+    success: function (res) {
+      let ingCount = ingContainer.querySelectorAll('.draggable').length
+      let doneCount = doneContainer.querySelectorAll('.draggable').length
+      let doneRatePoint = doneCount / (ingCount + doneCount) * 100
+      document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint.toFixed(1));
+      document.getElementById('percentageText').innerHTML = doneRatePoint.toFixed(1) + '%'
+      ingCountDiv.innerText = ingCount
+      doneCountDiv.innerText = doneCount
+      $.radialChart()
+    },
+    error: function (err) {
+        console.log(err)
+    }
+  })
+}
+
+// 바인딩 함수
+function scheduleBinding(scheduleData) {
+  let ingContainer = document.getElementById('scheduleContainer_elements_ing')
+  let doneContainer = document.getElementById('scheduleContainer_elements_done')
+  let ingCountDiv = document.getElementById('ingCount')
+  let doneCountDiv = document.getElementById('doneCount')
+
+  let ingData = []
+  let doneData = []
+  let ingCount = 0
+  let doneCount = 0
+  scheduleData.map((data) => {
+   let scheduleDataDiv = `
+   <div class="draggable" draggable="true" id="${data._id}" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
+      <div class="scheduleBox">
+        <div class="scheduleCheckBox">
+          <p class="scheduleCheckBox_title">${data.title}</p>
+          <p class="scheduleDate">
+          ${new Date(data.startDate).getFullYear()}.
+          ${new Date(data.startDate).getMonth() + 1}.
+          ${new Date(data.startDate).getDate()} ~
+          ${new Date(data.endDate).getFullYear()}.
+          ${new Date(data.endDate).getMonth() + 1}.
+          ${new Date(data.endDate).getDate()}
+          </p>
+        </div>
+        <label class="scheduleCheckBox">
+          <input id="${data._id}check" onchange="changeProgress('${data._id}', this)" type="checkbox" ${data.completion ? "checked" : null }>
+          <div class="scheduleCheckBox_checkmark"></div>
+        </label>
+      </div>  
+    </div>`
+    if(data.completion) {
+      doneData.push(scheduleDataDiv)
+      doneCount++
+    }else {
+      ingData.push(scheduleDataDiv)
+      ingCount++
+    }
+  })
+  ingContainer.innerHTML = ingData.join('')
+  doneContainer.innerHTML = doneData.join('')
+  ingCountDiv.innerText = ingCount
+  doneCountDiv.innerText = doneCount
+}
+
+// 체크 눌렀을 때 양옆으로 이동하는 함수
+function changeProgress(scheduleId, e) {
+
+  scheduleProgressReq(scheduleId, e.checked)
+  let ingContainer = document.getElementById('scheduleContainer_elements_ing')
+  let doneContainer = document.getElementById('scheduleContainer_elements_done')
+  let scheduleEl = document.getElementById(scheduleId)
+  if(e.checked){
+    scheduleEl.remove()
+    doneContainer.appendChild(scheduleEl)
+
+  }else{
+    scheduleEl.remove()
+    ingContainer.appendChild(scheduleEl)
   }
 }
