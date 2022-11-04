@@ -58,6 +58,7 @@ ul.tabs li.current {
     width: 100%;
     overflow: auto;
     max-height: 180px;
+    min-height: 35px;
 }
 
 /* 전체 */
