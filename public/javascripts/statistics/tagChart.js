@@ -241,17 +241,17 @@ function tagAboutScheduleBind(data) {
     let tagUl = []
     data.map((data) => {
         let startDate = new Date(data.startDate)
-        var weekend = new Array('일', '월', '화', '수', '목', '금', '토')
+        var weekend = new Array('일', '월', '화', '수', '목', '금', '토');
         // 일정 목록 종료일 받아오기
-        let startYear = startDate.getFullYear()
-        let startMonth = startDate.getMonth() + 1
-        let startDay = startDate.getDate()
-        let startDayStr = startDate.getDay()
-        let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12)
-        let startMinutes = startDate.getMinutes()
+        let startYear = startDate.getFullYear();
+        let startMonth = startDate.getMonth() + 1;
+        let startDay = startDate.getDate();
+        let startDayStr = startDate.getDay();
+        let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12);
+        let startMinutes = startDate.getMinutes();
 
         // 종료일
-        let endDate = new Date(data.endDate ? data.endDate : data.startDate)
+        let endDate = new Date(data.endDate ? data.endDate : data.startDate);
 
         // 일정 목록 종료일 받아오기
         let endYear = endDate.getFullYear()

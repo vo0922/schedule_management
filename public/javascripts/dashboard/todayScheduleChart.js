@@ -28,7 +28,7 @@ function scheduleCompletion() {
                 doneRate = doneScheduleCount / totalScheduleCount * 100
             let doneRatePoint = doneRate.toFixed(1)
             let dateString = ['일', '월', '화', '수', '목', '금', '토'];
-            let todayString = `${new Date().getFullYear()}.${new Date().getMonth()}.${new Date().getDate()}.${dateString[new Date().getDay()]}`
+            let todayString = `${new Date().getFullYear()}.${new Date().getMonth() + 1}.${new Date().getDate()}.${dateString[new Date().getDay()]}`
             document.getElementById('addressListCount').innerText = res.data.length;
             document.getElementById('scheduleCount').innerText = res.data.length;
             document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint);
