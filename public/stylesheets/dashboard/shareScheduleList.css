@@ -42,11 +42,11 @@
   flex-direction: column;
   justify-content: center;
   z-index: 15;
-  padding: 5px;
   right: -20px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #FFFFFF;
-  border: 1px solid #eeeeee;
+  border: 1px solid #c1c1c19e;
+  height: fit-content;
 }
 
 .filterMenu.active > li {
@@ -54,7 +54,10 @@
   display: flex;
   justify-content: center;
   padding: 10px;
-  border-radius: 20px
+}
+.filterMenu.active > li:nth-of-type(2){
+  border-top : 1px dotted #cccccc78;
+  border-bottom : 1px dotted #cccccc78;
 }
 
 .filterMenu.active > li:hover {
@@ -125,7 +128,7 @@
 .shareScheduleList_content_bottom {
   display: flex;
   align-items: center;
-  border-top: 1px solid #3838386b;;
+  border-top: 1px dashed #38383821;;
   padding: 10px 0;
   height: 0;
   text-align: center;
@@ -135,7 +138,7 @@
 .shareScheduleList_content_bottom.hover {
   opacity: 1;
   height: fit-content;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 
 }
 
@@ -144,19 +147,25 @@
   height: 45px;
   border-radius: 50%;
   margin: 0 1rem 0 1rem;
+  box-shadow: 0 0 5px #434343;
 }
 .share_user_profile {
-  border-left: 1px solid #3838386b;
-  border-right: 1px solid #3838386b;
+  border-left: 1px dashed #38383821;
+  border-right: 1px dashed #38383821;
   padding: 0 1rem;
 }
 .share_user_profile p {
   text-align: center;
 }
+.share_user_name {
+  /* font-weight: bold; */
+}
 .share_category {
   width: fit-content;
   text-align: center;
   margin: 0 auto;
+  /* font-weight: bold; */
+
 }
 
 /* ===== checkbox custom하기 ===== */
