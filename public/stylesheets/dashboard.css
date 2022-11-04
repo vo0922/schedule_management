@@ -23,6 +23,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 15px;
+  box-shadow: 4px 5px 10px #00000052;
 }
 
 /* 오늘 일정 리스트 */
@@ -33,6 +35,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 15px;
+  box-shadow: 4px 5px 10px #00000052;
 }
 
 /* 공유받은 일정 리스트 */
@@ -43,6 +47,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 15px;
+  box-shadow: 4px 5px 10px #00000052;
 }
 
 /* 메모 */
@@ -53,6 +59,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 15px;
+  box-shadow: 4px 5px 10px #00000052;
 }
 
 /* 오늘 가야 할 곳 표시(리스트) */
@@ -63,6 +71,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  border-radius: 15px;
+  box-shadow: 4px 5px 10px #00000052;
 }
 /* 오늘 가야 할 곳 표시(지도) */
 .scheduleAddress {
@@ -72,4 +82,6 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  border-radius: 15px;
+  box-shadow: 4px 5px 10px #00000052;
 }

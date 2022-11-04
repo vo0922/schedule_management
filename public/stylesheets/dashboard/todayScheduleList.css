@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   column-gap: 10px;
+  padding: 10px;
 }
 .dashboard_content_header h1 {
   font-weight: bold;
@@ -19,13 +20,14 @@
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-  background-color: rgb(247 243 168 / 84%);
+  background-color:  rgb(247 217 168 / 84%);;
   padding: 4px;
   border-radius: 10px;
 }
 .todayScheduleList_container {
   display: flex;
   flex-direction: row;
+  height: 33vh;
 }
 
 .draggable {
@@ -42,7 +44,7 @@
 
 .scheduleContainer {
   width: 500px;
-  height: 33vh;
+  /* height: 33vh; */
   margin: 10px;
   padding: 10px;
   /* background-color: #f0efe9; */
@@ -58,7 +60,7 @@
 }
 
 .scheduleContainer_elements {
-  height: 29vh;
+  height: 27vh;
   overflow: auto;
 }
 .draggable.dragging {

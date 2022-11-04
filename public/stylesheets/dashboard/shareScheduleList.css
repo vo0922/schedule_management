@@ -1,13 +1,15 @@
-
 .shareScheduleList_div {
   height: 35vh;
   overflow: auto;
+  margin-bottom: 10px;
 }
 .shareScheduleList_header {
   display: flex;
   column-gap: 10px;
   align-items: center;
   justify-content: space-between;
+  padding: 10px;
+
 }
 
 .shareScheduleList_header > .shareScheduleHeaderLeft {
