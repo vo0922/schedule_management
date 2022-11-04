@@ -1,0 +1,31 @@
+.emptyData {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.emptyData img {
+    opacity: 0.3;
+    width: 243px;
+    height: 156px;
+}
+.emptyData {
+    text-align: center;
+}
+.emptyData p {
+    color: #ccc;
+}
+.emptyData > button {
+    opacity: 0.3;
+    background-color: transparent;
+    padding: 10px;
+    border: 1px dotted #a8a8a8;
+    border-radius: 10px;
+}
+.emptyData > button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+    border: 1px dotted black;
+}

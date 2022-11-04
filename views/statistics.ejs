@@ -8,6 +8,7 @@
     <!--================= CSS =================-->
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="stylesheet" href="/stylesheets/statistics.css">
+    <link rel="stylesheet" href="/stylesheets/statistics/noneComponent.css">
     <!--=============== FONTAWESOME ===============-->
     <link rel="stylesheet" href="/stylesheets/fontawesome-free-6.2.0-web/css/all.min.css">
     <!--=============== JQUERY ===============-->
@@ -30,15 +31,17 @@
         </div>
     </div>
     <!-- 태그 순위 -->
-    <div class="myTagRank">
+    <div id="myTagRank" class="myTagRank">
         <div id="myTagHeader" class="myTagHeader">
 
         </div>
-        <div class="myTagRankHeader">
-            <p>태그 순위</p>
-        </div>
-        <div id="tagRankGrid" class="tagRankGrid">
+        <div id="myTagContent">
+            <div class="myTagRankHeader">
+                <p>태그 순위</p>
+            </div>
+            <div id="tagRankGrid" class="tagRankGrid">
 
+            </div>
         </div>
     </div>
 </div>

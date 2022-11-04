@@ -8,6 +8,18 @@ window.onload = function () {
 
 let etcLabels = [];
 
+let noneTag = `<div class="emptyData">
+                <p>사용된 태그가 없습니다.</p>
+                <img src="images/noTag.jpg" alt="">
+                <button onclick="location.href='/calendar'">태그 사용하러 가기</button>
+              </div>`;
+
+let noneSchedule = `<div class="emptyData">
+                      <p>일정이 비어 있습니다.</p>
+                      <img src="images/noSchedule.jpg" alt="">
+                      <button onclick="location.href='/calendar'">일정 추가하러 가기</button>
+                    </div>`;
+
 function chartBinding() {
     let labels = []
     let count = []
@@ -61,8 +73,13 @@ function chartBinding() {
                     }
                 ]
             }
-            pieChartDraw(pieChartData)
-            barChartDraw(barChartData)
+            if(res.data.length){
+                pieChartDraw(pieChartData)
+                barChartDraw(barChartData)
+            }else{
+                document.getElementById('chartArea').innerHTML = noneTag
+            }
+
         },
         error: function (err) {
             console.log(err)
@@ -214,7 +231,11 @@ function tagChartData() {
                 `)
             })
             document.getElementById('myTagHeader').innerHTML = `<p>태그 (${res.data.length})</p> &nbsp; 에 대한 통계입니다.`
-            document.getElementById('tagRankGrid').innerHTML = tagEl.join('');
+            if(res.data.length){
+                document.getElementById('tagRankGrid').innerHTML = tagEl.join('');
+            } else {
+                document.getElementById('myTagRank').innerHTML = noneTag;
+            }
         },
         error: function (err) {
             console.log(err);
@@ -228,7 +249,11 @@ function tagAboutSchedule() {
         url: '/statistics/tagAboutSchedule',
         success: function (res) {
             document.getElementById('scheduleCount').innerText = res.data.length
-            tagAboutScheduleBind(res.data);
+            if(res.data.length){
+                tagAboutScheduleBind(res.data);
+            }else{
+                document.getElementById('scheduleDiv').innerHTML = noneSchedule;
+            }
         },
         error: function (err) {
             console.log(err)
