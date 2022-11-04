@@ -178,7 +178,7 @@ function clickChartSchedule(name, address) {
     })
 }
 
-
+// 태그 순위
 function tagChartData() {
     const url = '/statistics/totalTagSort';
     let tagEl = [];
@@ -230,6 +230,7 @@ function tagAboutSchedule() {
     })
 }
 
+// 일정 목록
 function tagAboutScheduleBind(data) {
     let tagUl = []
     data.map((data) => {
@@ -257,7 +258,7 @@ function tagAboutScheduleBind(data) {
         let tagName = []
         data.tagId.map((dataTagId) => {
             tagName.push(
-                `#` + dataTagId.name
+                `#` + dataTagId.name + ' '
             )
         })
         tagUl.push(

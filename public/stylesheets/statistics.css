@@ -208,3 +208,20 @@ span > .percent {
 .scheduleCount {
     color: #1b5ac2;
 }
+
+
+/* 태그 순위 - 1,2,3위 custom */
+.myTagRankHeader i {
+    font-size: 25px;
+}
+.gold {
+    color: red;
+}
+
+.silver {
+    color: blue;
+}
+
+.bronze {
+    color: yellow;
+}
