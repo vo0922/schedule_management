@@ -51,7 +51,7 @@ function shareScheduleBind(progress) {
                         <!-- 공유자 프로필(사진, 이름, 메일) -->
                         <img class="share_user_img" src="${data.category.memberId.profile}" alt="profile_img">
                         <div class="share_user_profile">
-                          <p>${data.category.memberId.name}</p>
+                          <p class="share_user_name">${data.category.memberId.name}</p>
                           <p>${data.category.memberId.email}</p>
                         </div>
                         <!-- 공유받은 카테고리 이름 -->
