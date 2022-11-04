@@ -32,13 +32,15 @@ function chartBinding() {
                     etcTotalCount += data.tag.click;
                     etcCount += data.count;
                 }
+                if (idx == 6) {
+                    labels.push('기타')
+                }
             })
             totalTagCount.push(etcTotalCount)
-            labels.push('기타')
             count.push(etcCount)
             color.push(defaultColor[6]);
             let pieChartData = {
-                labels: labels,
+                labels: labels.length? labels : ["태그가 없습니다."],
                 datasets: [{
                     data: count,
                     backgroundColor: color,
@@ -97,13 +99,13 @@ function pieChartDraw(pieChartData) {
                             chart.data.labels.map((label, idx) => {
                                 divData.push(`<div style="margin-bottom: 6px; font-size: 14px">
                                             <span style="background-color: ${color[idx]}; display: inline-block; width: 15px; height: 15px; border-radius: 70px;">
-                                            </span> ${label}: <span id="percent${idx}"></span>
+                                            </span> ${label} <span id="percent${idx}"></span>
                                             </div>`);
                             })
                             document.getElementById('legendDiv').innerHTML = divData.join('');
                             chart.data.datasets[0].data.map((data, idx) => {
                                 let percent = data / totalCount * 100;
-                                document.getElementById(`percent${idx}`).innerHTML = `${percent.toFixed(1)}%(${data})`;
+                                document.getElementById(`percent${idx}`).innerHTML = !isNaN(percent) ? ` : ${percent.toFixed(1)}%(${data})` : null;
                             })
                         }
                     }
