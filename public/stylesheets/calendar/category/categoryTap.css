@@ -79,7 +79,7 @@ ul.tabs li.current {
     display: block;
 }
 
-.categoryList_div > p {
+.categoryList_div {
     cursor: pointer;
 }
 

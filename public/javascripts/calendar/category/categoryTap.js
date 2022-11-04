@@ -27,6 +27,7 @@ function tabClick(e) {
 
 
 function categoryDelete(categoryId, name) {
+    event.stopPropagation();
     if (!confirm(`${name} 카테고리를 삭제 하시겠습니까?`)) {
         return
     }

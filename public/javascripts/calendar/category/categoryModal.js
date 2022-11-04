@@ -11,6 +11,7 @@ function categoryModalDone() {
 }
 
 function categoryEditModalOpen(categoryId) {
+    event.stopPropagation();
     const url = '/category/search'
     let title = document.getElementById('category_title');
     let shareCheck = document.getElementById('category_share_q');

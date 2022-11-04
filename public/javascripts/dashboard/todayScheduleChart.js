@@ -13,7 +13,7 @@ function scheduleCompletion() {
             let doneScheduleCount = 0;
             addressListBind(res.data)
             res.data.map((data) => {
-                if(data.map) {
+                if (data.map) {
                     let placePosition = new kakao.maps.LatLng(data.map.y, data.map.x);
                     dashBoardAddMarker(placePosition, 1, data.map.title);
                 }
@@ -23,9 +23,11 @@ function scheduleCompletion() {
                 }
             })
             scheduleBinding(res.data)
-            let doneRate = doneScheduleCount / totalScheduleCount * 100
+            let doneRate = 0
+            if (!isNaN(doneScheduleCount / totalScheduleCount * 100))
+                doneRate = doneScheduleCount / totalScheduleCount * 100
             let doneRatePoint = doneRate.toFixed(1)
-            let dateString = ['일','월','화','수','목','금','토'];
+            let dateString = ['일', '월', '화', '수', '목', '금', '토'];
             let todayString = `${new Date().getFullYear()}.${new Date().getMonth()}.${new Date().getDate()}.${dateString[new Date().getDay()]}`
             document.getElementById('addressListCount').innerText = res.data.length;
             document.getElementById('scheduleCount').innerText = res.data.length;
@@ -33,7 +35,7 @@ function scheduleCompletion() {
             document.getElementById('percentageText').innerHTML = doneRatePoint + '%';
             document.getElementById('todayDateTag').innerHTML = todayString;
 
-            if(Object.keys(dashBoardBounds).length){
+            if (Object.keys(dashBoardBounds).length) {
                 dashBoardMap.setBounds(dashBoardBounds);
             }
             $.radialChart()

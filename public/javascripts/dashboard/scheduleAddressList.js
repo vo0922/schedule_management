@@ -1,16 +1,21 @@
 function addressListBind(addressData) {
     let addressEl = [];
     addressData.map((data) => {
+        let content = data.content;
+        if(content.length>20){
+            content = content.substring(0, 20)
+            content+='...';
+        }
         addressEl.push(
             `
              <div class="addressCard" onclick='addressCardClick(${JSON.stringify(data)})'>
                 <div class="addressCardHeader">
                    <p class="cardAddress">${data.map.title}</p>
                     <p class="cardTitle">${data.title}</p>
-                    <p class="cardDate">-${new Date(data.endDate).getFullYear()}.${new Date(data.endDate).getMonth() + 1}.${new Date(data.endDate).getDay()}</p>
+                    <p class="cardDate">-${new Date(data.endDate).getFullYear()}.${new Date(data.endDate).getMonth() + 1}.${new Date(data.endDate).getDate()}</p>
                 </div>
             <div class="addressCardContent">
-                <p>${data.content}</p>
+                <p>${content}</p>
             </div>
             </div>
             `

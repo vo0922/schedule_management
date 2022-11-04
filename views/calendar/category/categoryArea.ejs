@@ -4,10 +4,10 @@
 </div>
 <div id="myCategoryList" class="myCategoryList">
     <% myCategory.map((data)=>{ %>
-        <div class="categoryList">
+        <div class="categoryList" onclick="shareCategorySearch('<%= data._id %>', '<%= data.memberId._id %>')">
             <div class="myCategoryList_before" style="background-color: <%= data.color %>"></div>
             <div class="categoryList_div">
-                <p onclick="shareCategorySearch('<%= data._id %>', '<%= data.memberId._id %>')"><%= data.name %></p>
+                <p><%= data.name %></p>
                 <div class="categoryIcon">
                     <i onclick="categoryEditModalOpen('<%= data._id %>')" class="fa-regular fa-pen-to-square"></i>
                     <i class="fa-regular fa-trash-can"

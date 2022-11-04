@@ -24,7 +24,7 @@ function shareScheduleBind(progress) {
             document.getElementById('shareScheduleCount').innerText = res.data.length
             res.data.map((data)=>{
                 shareScheduleData.push(`
-                  <div class="shareScheduleList_content" onmouseover="shareScheduleListDivHover(this)" onmouseout="shareScheduleListDivNotHover(this)">
+                  <div class="shareScheduleList_content" onmouseover="shareScheduleListDivHover(this)" onmouseout="shareScheduleListDivNotHover(this)" onclick="scheduleViewModalOpen('${data.scheduleData._id}', true)">
                     <!-- 공유받은 일정 지정 색깔 -->
                     <div class="share_colorBox" style="background-color:${data.category.color}"></div>
                     <div class="share_contentBox">
