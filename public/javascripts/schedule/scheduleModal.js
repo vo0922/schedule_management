@@ -328,7 +328,7 @@ function submitSchedule(type, scheduleId) {
         title: title.value,
         content: content.value,
         priority: priority.value,
-        map: addressCheck.checked ? {
+        map: addressCheck.checked && addressInput.value ? {
             title: addressInput.value, address: address.value, x: addressHard.value, y: addressLat.value
         } : null,
         tags: [],
