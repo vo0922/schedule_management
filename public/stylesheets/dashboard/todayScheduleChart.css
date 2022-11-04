@@ -30,6 +30,8 @@ svg.radial-progress circle { stroke: #5697ed; }
   display: flex;
   align-items: center;
   column-gap: 10px;
+  padding: 10px;
+
 }
 .todayScheduleChart_header p {
   font-weight: bold;
@@ -63,7 +65,7 @@ text {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-  background-color: rgba(190, 205, 255, 0.502);
+  background-color: rgba(250, 155, 155, 0.5);
   padding: 4px;
   border-radius: 10px;
 }
