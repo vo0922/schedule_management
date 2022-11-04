@@ -31,7 +31,7 @@
                 <label for="schedule_content"><i class="fa-regular fa-pen-to-square fa-lg"></i></label>
                 <textarea id="schedule_content" name="schedule_content"
                           placeholder="일정에 대한 상세 내용을 입력해 주세요."
-                          style="height: 100px;"></textarea>
+                          style="max-height: 100px;" onkeydown="resize()"></textarea>
             </div>
             <!-- 진행도 입력란 -->
             <div id="scheduleProgress" class="schedule">
@@ -99,3 +99,11 @@
 
     </div>
 </div>
+<script>
+    function resize() {
+        let e = document.getElementById('schedule_content');
+        console.log(e.scrollHeight)
+        e.style.height = '1px';
+        e.style.height = (12 + e.scrollHeight) + 'px';
+    }
+</script>

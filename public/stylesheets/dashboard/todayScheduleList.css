@@ -32,7 +32,7 @@
 
 .draggable {
   width: 90%;
-  height: 70px;
+  height: 68px;
   border: none;
   border-radius: 8px;
   margin: 12px;
@@ -61,7 +61,11 @@
 
 .scheduleContainer_elements {
   height: 27vh;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.scheduleContainer_elements:hover {
+  overflow-y: auto;
 }
 .draggable.dragging {
   opacity: 0.5;

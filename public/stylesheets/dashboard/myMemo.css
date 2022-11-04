@@ -120,10 +120,15 @@
 }
 
 .memoList {
-    overflow: auto;
-    height: 32vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 31vh;
     display: flex;
     flex-direction: column;
+}
+
+.memoList:hover {
+    overflow-y: auto;
 }
 
 .memoContent {

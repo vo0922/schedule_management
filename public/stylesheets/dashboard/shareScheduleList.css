@@ -1,8 +1,14 @@
 .shareScheduleList_div {
   height: 35vh;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
   margin-bottom: 10px;
 }
+
+.shareScheduleList_div:hover {
+  overflow-y: auto;
+}
+
 .shareScheduleList_header {
   display: flex;
   column-gap: 10px;

@@ -98,6 +98,7 @@ function scheduleModalOpen(clickStart) {
     plus.style.display = "none"
     modal.style.display = "block";
     scheduleSubmitModal.style.display = 'block';
+    resize()
     startDate.value = clickStart ? new Date(clickStart.getTime() - clickStart.getTimezoneOffset() * 60000).toISOString().slice(0, -8) : date;
     //startDate.min = date;
     endDate.min = date;
@@ -117,6 +118,7 @@ function scheduleViewModalOpen(scheduleId, noEdit) {
             scheduleId: scheduleId
         }, success: function (res) {
             scheduleViewData(res);
+            resize()
             document.querySelector(".schedule_address_qLabel").classList.add('view');
             document.querySelector('.progress_selectBox').classList.add('view');
             if(!noEdit){
@@ -211,6 +213,7 @@ function scheduleModalEditOpen(res) {
     document.querySelector('.progress_selectBox').classList.remove('view');
     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class="schedule_save_btn" onclick="submitSchedule('patch', '${res.scheduleView._id}')">편집 완료</button>`
     scheduleDisabled()
+    resize()
 }
 
 function scheduleDisabled() {
@@ -237,23 +240,24 @@ function scheduleDisabled() {
 }
 
 function scheduleModalDone() {
+    scheduleSubmitModalReload()
     modal.style.display = "none";
     tagModal.style.display = "none";
     scheduleSubmitModal.style.display = 'none';
-    scheduleSubmitModalReload()
+
 }
 
 window.onclick = function (event) {
     let modalComponent = [modal, scheduleSubmitModal];
     if (modalComponent.includes(event.target)) {
+        scheduleSubmitModalReload()
         modal.style.display = 'none';
         scheduleSubmitModal.style.display = 'none';
         tagModal.style.display = "none";
-        scheduleSubmitModalReload()
     }
     if (event.target == c_modal) {
-        c_modal.style.display = "none";
         categoryModalReload();
+        c_modal.style.display = "none";
     }
     if (event.target == scheduleListModal) {
         scheduleListModal.style.display = 'none';

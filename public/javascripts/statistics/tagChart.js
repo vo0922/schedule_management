@@ -195,9 +195,12 @@ function tagChartData() {
             })
             res.data.map((data, idx) => {
                 let percent = data.count / totalCount * 100;
+                let rankIcon = idx < 3 ? `<i class="fa-solid fa-medal"></i>` : ``;
                 tagEl.push(`
                 <div class="tagItem">
-                <span class="itemContent"><p class="rank">${idx + 1}위</p> <p class="tag">${data.tag.name}</p></span>
+                <span class="itemContent"><p class="rank">${idx + 1}위</p> <p class="tag">${data.tag.name}</p>
+                ${rankIcon}
+                </span>
                 <div style="width: 180px; height: 30px; margin: 0 auto;overflow: hidden">
                     <span style="display:inline-block; height: 66.6%;width: 180px;border-radius: 20px;background-color: #c7c7c7">
                         <span style="text-align:center ; display:inline-block; border-radius: 20px; height: 100%; width: ${percent.toFixed(1)}%; background-color: #0098fe;">
