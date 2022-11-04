@@ -87,6 +87,8 @@ function scheduleSubmitModalReload() {
     document.querySelectorAll('.progress_label').forEach(function (lb) {
         lb.parentNode.classList.remove('active');
     })
+    document.querySelector(".schedule_address_qLabel").classList.remove('view');
+    document.querySelector('.progress_selectBox').classList.remove('view');
 
     removeMarker()
     show_map()
@@ -115,6 +117,8 @@ function scheduleViewModalOpen(scheduleId, noEdit) {
             scheduleId: scheduleId
         }, success: function (res) {
             scheduleViewData(res);
+            document.querySelector(".schedule_address_qLabel").classList.add('view');
+            document.querySelector('.progress_selectBox').classList.add('view');
             if(!noEdit){
                 if (res.memberId == res.scheduleView.memberId) {
                     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class='schedule_save_btn' onclick='scheduleModalEditOpen(${JSON.stringify(res)})'>편집</button>` + `<button class='schedule_delete_btn' onclick="scheduleDelete('${res.scheduleView._id}')">삭제</button>`
@@ -203,6 +207,8 @@ function scheduleDelete(scheduleId) {
 }
 
 function scheduleModalEditOpen(res) {
+    document.querySelector(".schedule_address_qLabel").classList.remove('view');
+    document.querySelector('.progress_selectBox').classList.remove('view');
     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class="schedule_save_btn" onclick="submitSchedule('patch', '${res.scheduleView._id}')">편집 완료</button>`
     scheduleDisabled()
 }
