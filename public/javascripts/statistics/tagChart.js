@@ -190,21 +190,22 @@ function tagChartData() {
         contentType: 'application/json',
         success: function (res) {
             let totalCount = 0;
+            let color = ['#e0c134', '#c0c0c0', '#8b6331']
             res.data.map((data) => {
                 totalCount += data.count;
             })
             res.data.map((data, idx) => {
                 let percent = data.count / totalCount * 100;
-                let rankIcon = idx < 3 ? `<i class="fa-solid fa-medal"></i>` : ``;
+                let rankIcon = idx < 3 ? `<i class="fa-solid fa-medal" style="color:${color[idx]}; font-size: 26px;"></i>` : ``;
                 tagEl.push(`
                 <div class="tagItem">
                 <span class="itemContent"><p class="rank">${idx + 1}위</p> <p class="tag">${data.tag.name}</p>
                 ${rankIcon}
                 </span>
-                <div style="width: 180px; height: 30px; margin: 0 auto;overflow: hidden">
-                    <span style="display:inline-block; height: 66.6%;width: 180px;border-radius: 20px;background-color: #c7c7c7">
+                <div style="height: 35px; width: 250px;">
+                    <span style="display:inline-block; height: 66.6%;width: 250px;border-radius: 20px;background-color: #c7c7c7">
                         <span style="text-align:center ; display:inline-block; border-radius: 20px; height: 100%; width: ${percent.toFixed(1)}%; background-color: #0098fe;">
-                            <span class="MemberProgressText" style="color: rgb(255, 255, 255); display: inline-block; text-align: center; height: 100%; width: 180px;">${percent.toFixed(1)}%</span>
+                            <span class="MemberProgressText" style="color: rgb(255, 255, 255); display: inline-block; text-align: center; height: 100%; width: 250px;">${percent.toFixed(1)}%</span>
                         </span>
                     </span>
                 </div>

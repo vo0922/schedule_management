@@ -151,7 +151,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: auto;
-    height: 35vh;
+    height: 33.5vh;
 }
 
 /* scrollbar custom */
@@ -174,20 +174,23 @@
     margin-left: 10px;
     margin-right: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    column-gap: 7rem;
 }
 
 .tagItem > span {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    column-gap: 1rem;
 }
 
 .tagItem > .itemContent {
-    width: 12%;
+    width: 180px;
 }
 
 .rank {
-    margin-right: 5px;
+    font-weight: bold;
 }
 
 .rank,.tag {
@@ -195,7 +198,8 @@
 }
 
 span > .count {
-    font-size: 12px;
+    font-size: 14.5px;
+    font-weight: bold;
     color: lightcoral;
     margin-right: 25px;
 }
@@ -215,13 +219,13 @@ span > .percent {
     font-size: 25px;
 }
 .gold {
-    color: red;
+    color: #e0c134;
 }
 
 .silver {
-    color: blue;
+    color: #c0c0c0;
 }
 
 .bronze {
-    color: yellow;
+    color: #8b6331;
 }
