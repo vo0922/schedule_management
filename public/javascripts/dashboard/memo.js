@@ -53,6 +53,7 @@ function memoList() {
             document.getElementById('memoList').innerHTML = memoListData.join('');
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
@@ -105,6 +106,7 @@ function addMemo(e) {
                 e.value = null;
             },
             error: function (err) {
+                console.log(err);
                 return alert(err.responseJSON.message);
             }
         })
@@ -122,6 +124,7 @@ function deleteMemo(memoId) {
             document.getElementById(`${memoId}`).remove();
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })

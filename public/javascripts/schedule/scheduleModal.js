@@ -129,6 +129,7 @@ function scheduleViewModalOpen(scheduleId, noEdit) {
                 }
             }
         }, error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
@@ -203,6 +204,7 @@ function scheduleDelete(scheduleId) {
             location.reload()
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
@@ -352,6 +354,7 @@ function submitSchedule(type, scheduleId) {
             alert(res.message);
             location.reload()
         }, error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })

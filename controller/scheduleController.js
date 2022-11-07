@@ -119,7 +119,7 @@ module.exports = {
         } catch (e) {
             throw new Error(e);
         }
-    },// 총 일정 갯수 => 태그 통계 구하기
+    },
     totalTag: async (memberId) => {
         try {
             const tagName = await schedule.find({memberId: memberId}).populate('tagId')

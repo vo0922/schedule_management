@@ -58,6 +58,7 @@ function shareCategorySearch(categoryId, authMemberId) {
 
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })

@@ -195,6 +195,7 @@ function clickChartSchedule(name, address) {
             tagAboutScheduleBind(scheduleData)
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
@@ -202,7 +203,7 @@ function clickChartSchedule(name, address) {
 
 // 태그 순위
 function tagChartData() {
-    const url = '/statistics/totalTagSort';
+    const url = `/statistics/totalTagSort`;
     let tagEl = [];
     $.ajax({
         type: 'get',
@@ -241,6 +242,7 @@ function tagChartData() {
             }
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
@@ -259,6 +261,7 @@ function tagAboutSchedule() {
             }
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
@@ -318,3 +321,4 @@ function tagAboutScheduleBind(data) {
     })
     document.getElementById('scheduleDiv').innerHTML = tagUl.join('')
 }
+

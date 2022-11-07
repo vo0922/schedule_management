@@ -106,7 +106,8 @@ function scheduleProgressReq(scheduleId, progress) {
       $.radialChart()
     },
     error: function (err) {
-        console.log(err)
+        console.log(err);
+      return alert(err.responseJSON.message);
     }
   })
 }

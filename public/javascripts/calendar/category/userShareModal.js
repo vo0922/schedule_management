@@ -32,6 +32,7 @@ function userSearch() {
             userListDiv.innerHTML = userListHtml.join("");
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })

@@ -12,10 +12,10 @@ router.get('/totalTagSort', async function (req, res) {
     try{
         const totalTag = await scheduleController.totalTag(req.user._id)
         let result = totalTag.sort((a, b) => b.count - a.count);
-        res.status(201).json({data: result, message: "태그 정렬 성공"})
+        res.status(201).json({data: result, message: "총 태그"})
     }catch(err) {
         console.log(err)
-        res.status(401).json({message: "총 태그정렬 실패"})
+        res.status(401).json({message: "총 태그 가져오기 실패"})
     }
 })
 

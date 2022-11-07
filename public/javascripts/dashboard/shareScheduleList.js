@@ -64,7 +64,8 @@ function shareScheduleBind(progress) {
             document.getElementById('shareScheduleList_div').innerHTML = shareScheduleData.join('')
         },
         error: function (err) {
-            console.log(err)
+            console.log(err);
+            return alert(err.responseJSON.message);
         }
     })
 }

@@ -38,6 +38,7 @@ function categoryEditModalOpen(categoryId) {
             categorySubmitButton.innerHTML = `<button class="category_save_btn" onclick="submitCategory('patch','${res.data._id}')">편집 완료</button>`
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
@@ -81,6 +82,7 @@ function selectCategoryTag(text) {
             tagList.innerHTML = tagDiv
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
@@ -176,6 +178,7 @@ function submitCategory(type, categoryId) {
             location.reload();
         },
         error: function (err) {
+            console.log(err);
             return alert(err.responseJSON.message);
         }
     })
