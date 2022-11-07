@@ -115,8 +115,8 @@ function pieChartDraw(pieChartData) {
                             let color = chart.data.datasets[0].backgroundColor;
                             let divData = [];
                             chart.data.labels.map((label, idx) => {
-                                divData.push(`<div style="margin-bottom: 6px; font-size: 14px">
-                                            <span style="background-color: ${color[idx]}; display: inline-block; width: 15px; height: 15px; border-radius: 70px;">
+                                divData.push(`<div style="margin-bottom: 5px; font-size: 14px">
+                                            <span style="background-color: ${color[idx]}; display: inline-block; width: 14px; height: 14px; border-radius: 70px;">
                                             </span> ${label} <span id="percent${idx}"></span>
                                             </div>`);
                             })

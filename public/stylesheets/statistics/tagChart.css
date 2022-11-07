@@ -1,6 +1,6 @@
 .legendDiv {
     overflow: auto;
-    height: 28vh;
+    max-height: 28vh;
 }
 
 
@@ -32,6 +32,7 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .chart2 {
@@ -57,11 +58,11 @@
 }
 
 .chartArea .slide-control .left {
-    left: 30px;
+    left: 10px;
 }
 
 .chartArea .slide-control .right {
-    right: 30px;
+    right: 10px;
 }
 
 .chartArea .slide-control [class*="control"] {
