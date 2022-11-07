@@ -12,8 +12,10 @@ function addressListBind(addressData) {
             `
              <div class="addressCard" onclick='addressCardClick(${JSON.stringify(data)})'>
                 <div class="addressCardHeader">
-                   <p class="cardAddress">${data.map.title}</p>
-                    <p class="cardTitle">${data.title}</p>
+                    <div class="cardInfo">
+                        <p class="cardAddress">${data.map.title}</p>
+                        <p class="cardTitle">${data.title}</p>
+                    </div>
                     <p class="cardDate">-${new Date(data.endDate).getFullYear()}.${new Date(data.endDate).getMonth() + 1}.${new Date(data.endDate).getDate()}</p>
                 </div>
             <div class="addressCardContent">
