@@ -20,7 +20,6 @@ function Slider() {
 
 
     dotsSlide.addEventListener('click', function (e) {
-        console.log(e.target)
         if (e.target.classList.contains('dot')) {
             const slide = e.target.dataset.slide;
             changeSlide(slide);
