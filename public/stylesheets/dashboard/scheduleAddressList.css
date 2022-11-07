@@ -97,13 +97,16 @@
     margin-bottom: 10px;
     justify-content: space-between;
 }
-
-.addressCardHeader > .cardAddress {
+.addressCardHeader > .cardInfo {
+    display: flex;
+    column-gap: 10px;
+}
+.addressCardHeader > .cardInfo > .cardAddress {
     font-size: 18px;
     font-weight: bold;
 }
 
-.addressCardHeader > .cardTitle {
+.addressCardHeader > .cardInfo > .cardTitle {
     color: #1b5ac2;
     font-weight: bold;
 }
