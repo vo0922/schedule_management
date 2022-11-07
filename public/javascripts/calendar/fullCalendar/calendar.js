@@ -89,7 +89,7 @@ function scheduleListModalOpen(scheduleList) {
     let scheduleDivList = '';
     // 일정 목록 정렬 filter
     let scheduleListSortDiv = `
-    <div name="scheduleListSortDiv" id="scheduleListSortDiv_select" style="display: none;">
+    <div class="scheduleListSortDiv" id="scheduleListSortDiv_select" style="display: none;">
         <option class="option" value="title" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>이름순</option>
         <option class="option" value="start" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>시작일순</option>
         <option class="option" value="end" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>종료일순</option>
@@ -135,7 +135,7 @@ function scheduleListModalOpen(scheduleList) {
         </div>`
     })
     document.getElementById('scheduleDiv').innerHTML = scheduleDivList;
-    document.getElementById('scheduleListSortDiv_icon').innerHTML = scheduleListSortDiv
+    document.getElementById('sortModal').innerHTML = scheduleListSortDiv
     // filter 클릭 시 option toggle
     var count = 0;
 
