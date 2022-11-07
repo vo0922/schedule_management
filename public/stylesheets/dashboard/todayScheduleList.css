@@ -28,7 +28,7 @@
 .todayScheduleList_container {
   display: flex;
   flex-direction: row;
-  height: 80%;
+  height: 83%;
 }
 
 .draggable {
