@@ -48,6 +48,7 @@ function chartBinding() {
                     labels.push('기타')
                 }
             })
+
             totalTagCount.push(etcTotalCount)
             count.push(etcCount)
             color.push(defaultColor[6]);
@@ -121,8 +122,10 @@ function pieChartDraw(pieChartData) {
                             })
                             document.getElementById('legendDiv').innerHTML = divData.join('');
                             chart.data.datasets[0].data.map((data, idx) => {
-                                let percent = data / totalCount * 100;
-                                document.getElementById(`percent${idx}`).innerHTML = !isNaN(percent) ? ` : ${percent.toFixed(1)}%(${data})` : null;
+                                if(data){
+                                    let percent = data / totalCount * 100;
+                                    document.getElementById(`percent${idx}`).innerHTML =` : ${percent.toFixed(1)}%(${data})`
+                                }
                             })
                         }
                     }

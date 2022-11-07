@@ -12,6 +12,7 @@ function scheduleCompletion() {
             let totalScheduleCount = res.data.length
             let doneScheduleCount = 0;
             addressListBind(res.data)
+
             res.data.map((data) => {
                 if (data.map) {
                     let placePosition = new kakao.maps.LatLng(data.map.y, data.map.x);
@@ -29,7 +30,6 @@ function scheduleCompletion() {
             let doneRatePoint = doneRate.toFixed(1)
             let dateString = ['일', '월', '화', '수', '목', '금', '토'];
             let todayString = `${new Date().getFullYear()}.${new Date().getMonth() + 1}.${new Date().getDate()}.${dateString[new Date().getDay()]}`
-            document.getElementById('addressListCount').innerText = res.data.length;
             document.getElementById('scheduleCount').innerText = res.data.length;
             document.getElementById('radial-progress').setAttribute('data-percentage', doneRatePoint);
             document.getElementById('percentageText').innerHTML = doneRatePoint + '%';

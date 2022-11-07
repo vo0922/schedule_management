@@ -1,6 +1,8 @@
 function addressListBind(addressData) {
     let addressEl = [];
     addressData.map((data) => {
+        if(!data.map)
+            return
         let content = data.content;
         if(content.length>20){
             content = content.substring(0, 20)
@@ -21,6 +23,7 @@ function addressListBind(addressData) {
             `
         )
     });
+    document.getElementById('addressListCount').innerText = addressEl.length.toString();
     document.getElementById('addressCardList').innerHTML = addressEl.join('');
 }
 

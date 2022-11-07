@@ -147,11 +147,14 @@
     color: var(--text-color);
 }
 
+.tagRankGridDiv {
+    overflow: auto;
+    height: 33vh;
+}
+
 .tagRankGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    overflow: auto;
-    height: 33.5vh;
 }
 
 /* scrollbar custom */
