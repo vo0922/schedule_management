@@ -1,6 +1,20 @@
 let clickUser = document.getElementById("drop-user-content")
 let clickColor = document.getElementById("drop-color-content")
 
+window.addEventListener('click', function (e){
+    let userProfileModal = document.querySelector('.userProfile');
+    let headerColorModal = document.querySelector('.headerColor');
+    let colorChangeModal = document.querySelector('.color_change');
+    const up = document.querySelector('.fa-caret-down')
+    if(!userProfileModal.getElementsByClassName(e.target.className).length) {
+        clickUser.style.display = "none"
+        up.style.transform = "rotateX( 0deg )"
+    }
+    if(!(headerColorModal.getElementsByClassName(e.target.className).length || colorChangeModal.getElementsByClassName(e.target.className).length)){
+        clickColor.style.display = "none"
+    }
+})
+
 /*=============== User Profile 클릭 시 상세 정보 표시 ===============*/
 function dp_userProfile() {
     const up = document.querySelector('.fa-caret-down')

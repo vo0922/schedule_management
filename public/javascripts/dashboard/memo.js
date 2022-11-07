@@ -2,6 +2,14 @@ window.addEventListener('load', function () {
     memoList()
 })
 
+window.addEventListener('click', function (e) {
+    let memoSortModal = document.querySelector('.myMemoRight');
+    let menu = document.querySelector('.sortMenu');
+    if (!memoSortModal.getElementsByClassName(e.target.className).length) {
+        menu.classList.remove('active');
+    }
+})
+
 function memoScheduleHover(e) {
     let event = e.querySelectorAll('.memoSchedule');
     if (event) {
@@ -144,9 +152,9 @@ function sort(type) {
         memoSort.push(memoData[i]);
     }
     let result;
-    if(type == 'asc'){
+    if (type == 'asc') {
         result = sortAsc(memoSort);
-    }else {
+    } else {
         result = sortDesc(memoSort);
     }
     document.getElementById('memoList').innerHTML = null;
@@ -159,7 +167,7 @@ function sortAsc(memoSort) {
     let result = memoSort.sort((a, b) => {
         let first = new Date(a.querySelector(".hiddenDate").value);
         let second = new Date(b.querySelector(".hiddenDate").value);
-        if(first > second) {
+        if (first > second) {
             return 1;
         } else {
             return -1;
@@ -174,7 +182,7 @@ function sortDesc(memoSort) {
     let result = memoSort.sort((a, b) => {
         let first = new Date(a.querySelector(".hiddenDate").value);
         let second = new Date(b.querySelector(".hiddenDate").value);
-        if(first < second) {
+        if (first < second) {
             return 1;
         } else {
             return -1;

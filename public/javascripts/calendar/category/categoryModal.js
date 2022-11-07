@@ -10,6 +10,13 @@ function categoryModalDone() {
     categoryModalReload();
 }
 
+window.addEventListener('click', function (e) {
+    let plusModal = document.querySelector('.plus');
+    if(!(plusModal.getElementsByClassName(e.target.className).length || e.target.className == 'plus')) {
+        plus.style.display = 'none'
+    }
+})
+
 function categoryEditModalOpen(categoryId) {
     event.stopPropagation();
     const url = '/category/search'

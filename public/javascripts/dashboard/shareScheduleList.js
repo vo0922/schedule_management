@@ -2,6 +2,15 @@ window.addEventListener('load', function () {
     shareScheduleBind(null)
 });
 
+window.addEventListener('click', function (e) {
+    let shareScheduleFilter = document.querySelector('.shareScheduleHeaderRight');
+    let menu = document.querySelector('.filterMenu');
+
+    if(!shareScheduleFilter.getElementsByClassName(e.target.className).length) {
+        menu.classList.remove('active')
+    }
+})
+
 function filterMenu() {
     let menu = document.querySelector('.filterMenu');
     menu.classList.toggle('active')

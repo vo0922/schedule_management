@@ -23,7 +23,7 @@
         <div class="nav__menu-login" id="nav-menu-login">
             <ul class="nav__list nav__menu-login__ul">
                 <div class="dropdown">
-                    <div onclick="dp_userProfile()">
+                    <div onclick="dp_userProfile()" class="userProfile">
                         <li class="nav__item nav__menu-login__li">
                             <img class="user_img" src="<%= member.profile %>" alt="user 프로필 사진">
                             <a class="nav__link nav__menu-login__a"><%= member.name %></a>
@@ -32,11 +32,13 @@
                     </div>
                 </div>
                 <!-- 상단 메뉴 사용자 지정 색깔 바꾸기 -->
+                <div class="headerColor">
                 <li class="nav__item nav__menu-login__li">
                     <a class="nav__link nav__menu-login__a">
                         <i class="fa-solid fa-palette" onclick="dp_headerColor()"></i>
                     </a>
                 </li>
+                </div>
                 <!-- 로그인 API 정보 -->
                 <div class="login_icon">
                     <% if(member.provider == 'naver') { %>
