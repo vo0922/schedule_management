@@ -22,21 +22,19 @@
     border-radius: 20px;
     width: 25%;
     max-width: 1200px;
-    height: auto;
     max-height: 422px;
     box-sizing: content-box;
     transition: all .4s;
-    overflow: auto;
 }
 /* scrollbar custom */
-.modal-content_scheduleList::-webkit-scrollbar {
+.listSchedule::-webkit-scrollbar {
     width: var(--webkit-scrollbar-width);
   }
-  .modal-content_scheduleList::-webkit-scrollbar-thumb {
+  .listSchedule::-webkit-scrollbar-thumb {
     background-color: var(--webkit-scrollbar-thumb-bg);
     border-radius: var(--webkit-scrollbar-thumb-br);
   }
-  .modal-content_scheduleList::-webkit-scrollbar-track {
+  .listSchedule::-webkit-scrollbar-track {
     background-color: var(--webkit-scrollbar-track-bg);
     border-radius: var(--webkit-scrollbar-track-br);
     /* box-shadow: inset 0px 0px 5px white; */
@@ -86,8 +84,7 @@
 
 #scheduleDiv {
     width: 100%;
-    /* position: relative;
-    left: 34px; */
+    /* max-height: 422px; */
 }
 .scheduleDiv {
     z-index: 3;
@@ -99,13 +96,16 @@
     column-gap: 2rem;
     padding: 1rem;
     position: relative;
-    right: 5.25%;
+    right: 5%;
 }
 
 .vertical-line {
     height: auto;
     border-left: 3px solid #8a8a8a;
     margin-top: 20px;
+    max-width: 86%;
+    position: relative;
+    left: 5rem;
 }
 .sortDivList {
     /* position: relative;
@@ -125,5 +125,12 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: #1b5ac2;
+}
+
+.listSchedule {
+    width: 122%;
+    max-height: 422px;
+    position: relative;
+    right: 4rem;
+    overflow: auto;
 }
