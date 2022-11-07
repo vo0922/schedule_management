@@ -61,6 +61,7 @@
 }
 #scheduleListSortDiv_icon:hover {
     opacity: 0.5;
+    cursor: pointer;
 }
 #scheduleListSortDiv_select {
     position: absolute;
