@@ -43,7 +43,7 @@ function selectTag(text) {
             tagList.innerHTML = tagDiv
         },
         error: function (err) {
-            console.log(err);
+            return alert(err.responseJSON.message);
         }
     })
 }

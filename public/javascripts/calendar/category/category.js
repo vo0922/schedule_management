@@ -31,7 +31,7 @@ function scheduleListRequest(address) {
 
         },
         error: function (err) {
-            alert(err);
+            return alert(err.responseJSON.message);
         }
     })
 }
@@ -58,7 +58,7 @@ function shareCategorySearch(categoryId, authMemberId) {
 
         },
         error: function (err) {
-            alert(err);
+            return alert(err.responseJSON.message);
         }
     })
 }

@@ -41,7 +41,7 @@ function scheduleCompletion() {
             $.radialChart()
         },
         error: function (err) {
-            console.log(err)
+            return alert(err.responseJSON.message);
         }
     })
 }

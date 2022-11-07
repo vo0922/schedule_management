@@ -61,7 +61,7 @@ window.onload = function () {
             calendar.render();
         },
         error: function (err) {
-            console.log(err);
+            return alert(err.responseJSON.message);
         }
     })
 }

@@ -34,7 +34,7 @@ function memoModalOpen(memoId) {
             memoModal.style.display = 'block';
         },
         error: function (err) {
-            console.log(err)
+            return alert(err.responseJSON.message);
         }
     })
 }
@@ -49,7 +49,7 @@ function scheduleSearch(memoId) {
             memoModalBind(res)
         },
         error: function (err) {
-            console.log(err)
+            return alert(err.responseJSON.message);
         }
     })
 }

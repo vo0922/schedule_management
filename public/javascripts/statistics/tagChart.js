@@ -52,7 +52,7 @@ function chartBinding() {
             count.push(etcCount)
             color.push(defaultColor[6]);
             let pieChartData = {
-                labels: labels.length? labels : ["태그가 없습니다."],
+                labels: labels.length ? labels : ["태그가 없습니다."],
                 datasets: [{
                     data: count,
                     backgroundColor: color,
@@ -73,16 +73,16 @@ function chartBinding() {
                     }
                 ]
             }
-            if(res.data.length){
+            if (res.data.length) {
                 pieChartDraw(pieChartData)
                 barChartDraw(barChartData)
-            }else{
+            } else {
                 document.getElementById('chartArea').innerHTML = noneTag
             }
 
         },
         error: function (err) {
-            console.log(err)
+            return alert(err.responseJSON.message);
         }
     })
 
@@ -177,11 +177,14 @@ function clickChartSchedule(name, address) {
         success: function (res) {
             let scheduleData = [];
             let scheduleCount = 0;
-            if(res.data.length > 1) {
+            if (res.data.length > 1) {
                 res.data.map((data) => {
-                    scheduleCount += data.scheduleId.length;
                     data.scheduleId.map((schedules) => {
-                        scheduleData.push(schedules);
+                        let flag = scheduleData.find(value => value._id === schedules._id);
+                        if (!flag) {
+                            scheduleCount += data.scheduleId.length;
+                            scheduleData.push(schedules);
+                        }
                     })
                 })
             } else {
@@ -192,7 +195,7 @@ function clickChartSchedule(name, address) {
             tagAboutScheduleBind(scheduleData)
         },
         error: function (err) {
-            console.log(err)
+            return alert(err.responseJSON.message);
         }
     })
 }
@@ -231,14 +234,14 @@ function tagChartData() {
                 `)
             })
             document.getElementById('myTagHeader').innerHTML = `<p>태그 (${res.data.length})</p> &nbsp; 에 대한 통계입니다.`
-            if(res.data.length){
+            if (res.data.length) {
                 document.getElementById('tagRankGrid').innerHTML = tagEl.join('');
             } else {
                 document.getElementById('myTagRank').innerHTML = noneTag;
             }
         },
         error: function (err) {
-            console.log(err);
+            return alert(err.responseJSON.message);
         }
     })
 }
@@ -249,14 +252,14 @@ function tagAboutSchedule() {
         url: '/statistics/tagAboutSchedule',
         success: function (res) {
             document.getElementById('scheduleCount').innerText = res.data.length
-            if(res.data.length){
+            if (res.data.length) {
                 tagAboutScheduleBind(res.data);
-            }else{
+            } else {
                 document.getElementById('scheduleDiv').innerHTML = noneSchedule;
             }
         },
         error: function (err) {
-            console.log(err)
+            return alert(err.responseJSON.message);
         }
     })
 }
