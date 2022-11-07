@@ -40,6 +40,12 @@ function memoModalOpen(memoId) {
     })
 }
 
+window.addEventListener('click', function (event) {
+    if (event.target == memoModal) {
+        memoModalDone();
+    }
+})
+
 function scheduleSearch(memoId) {
     $.ajax({
         type: 'post',
@@ -100,6 +106,7 @@ function checkScheduleCreate(schedule) {
     let newSchedule = document.createElement('div');
     newSchedule.id = schedule._id;
     newSchedule.className = 'checkMySchedule';
+    newSchedule.onclick = () => scheduleViewModalOpen(`${schedule._id}`, true);
     newSchedule.innerHTML = `<p className="scheduleTitle">${schedule.title}</p>`
     return newSchedule
 }
@@ -137,10 +144,6 @@ function memoModalDone() {
     memoModal.style.display = 'none';
 }
 
-window.addEventListener('click', function (event) {
-    if (event.target == memoModal) {
-        memoModalDone();
-    }
-})
+
 
 
