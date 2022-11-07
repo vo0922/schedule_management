@@ -2,13 +2,15 @@ let clickUser = document.getElementById("drop-user-content")
 let clickColor = document.getElementById("drop-color-content")
 
 /*=============== User Profile 클릭 시 상세 정보 표시 ===============*/
-function dp_menu() {
+function dp_userProfile() {
+    const up = document.querySelector('.fa-caret-down')
     if (clickUser.style.display === "none") {
         clickUser.style.display = "block"
         clickColor.style.display = "none"
-
+        up.style.transform = "rotateX( 180deg )"
     } else {
         clickUser.style.display = "none"
+        up.style.transform = "rotateX( 0deg )"
     }
 }
 
