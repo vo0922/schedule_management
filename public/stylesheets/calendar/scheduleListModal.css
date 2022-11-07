@@ -98,6 +98,10 @@
     position: relative;
     right: 5%;
 }
+.scheduleDiv_li:hover {
+    color: #939393;
+    cursor: pointer;
+}
 
 .vertical-line {
     height: auto;
