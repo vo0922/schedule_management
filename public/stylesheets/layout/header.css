@@ -220,13 +220,13 @@
 /* 색상 박스들을 배치할 박스 */
 .box {
     z-index: 5;
-    width: 145px;
-    height: 193px;
-    background-color: rgb(230, 230, 230);
-    box-shadow: 0 0 5px black;
+    width: 183px;
+    height: 300px;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0 0 8px #6868689e;
     border-radius: 0.5rem;
     position: fixed;
-    right: 0.2rem;
+    right: 2.2rem;
     top: 3.85rem;
 }
 
@@ -237,10 +237,10 @@
 
 /* 색상 박스 */
 .colorBox {
-    width: 2rem;
-    height: 2rem;
+    width: 2.25rem;
+    height: 2.25rem;
     float: left;
-    margin: .5rem;
+    margin: 0.75rem;
     cursor: pointer;
     border-radius: 50%;
 }
