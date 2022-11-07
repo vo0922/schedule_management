@@ -28,10 +28,11 @@ function dp_headerColor() {
 let selectedColor; //선택한 컬러값 저장할 변수
 
 function init() {
-    let colorChip = ["#ffffff", "#f7e600", "#7dbad5",
-        "#e091a9", "#86e6c2", "#81c147",
-        "#9941ec", "#ff93f1", "#fd3b85",
-        "#ffd54a", "#6eff4a", "#5ab9c5"]; //색상코드
+    let colorChip = ["#fff", "#dcd0c3", "#b4afaa",
+        "#ccdeeb", "#c9d3e7", "#92b5d8",
+        "#cdd9c8", "#b7beae", "#fbf199",
+        "#ffccbb", "#e7b3a7", "#ea999b",
+        "#c191a3", "#c9b5c8", "#a690a9"]; //색상코드
     let tag = "";
     let leftColor = document.getElementById('leftColor').value;
     for (let i = 0; i < colorChip.length; i++) {  //colorBox 의 id명을 색상명으로 지정해주기.
