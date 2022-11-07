@@ -59,6 +59,9 @@
 #scheduleListSortDiv_icon {
     font-size: 25px;
 }
+#scheduleListSortDiv_icon:hover {
+    opacity: 0.5;
+}
 #scheduleListSortDiv_select {
     position: absolute;
     border-radius: 5px;
