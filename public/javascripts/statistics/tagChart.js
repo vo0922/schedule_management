@@ -182,11 +182,11 @@ function clickChartSchedule(name, address) {
                     data.scheduleId.map((schedules) => {
                         let flag = scheduleData.find(value => value._id === schedules._id);
                         if (!flag) {
-                            scheduleCount += data.scheduleId.length;
                             scheduleData.push(schedules);
                         }
                     })
                 })
+                scheduleCount += scheduleData.length;
             } else {
                 scheduleCount = res.data.scheduleId.length;
                 scheduleData = res.data.scheduleId;
