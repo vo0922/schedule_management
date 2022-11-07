@@ -76,17 +76,18 @@
 
 /*=============== USER 정보 띄우기 ===============*/
 .user {
-    width: 17rem;
+    width: 16rem;
     box-shadow: 0px 1px 3px rgb(75, 75, 75);
-    border-radius: .5rem;
+    border-radius: 10px;
     position: fixed;
-    right: 1rem;
+    right: 5rem;
     margin-top: .2rem;
     z-index: 10;
 }
 
 .user_info_header {
   background-color: #ffffff;
+  border-radius: 10px 10px 0 0;
 }
 
 .user_info_header p {
@@ -96,12 +97,17 @@
 }
 
 .user_info {
-    background-color: #e7e7e7;
-    border-top: 1px solid rgb(131, 131, 131);
+    background-color: #f7f4f4;
+    border-top: 1px dashed rgb(131 131 131 / 32%);
     padding: 1rem 1rem;
     display: flex;
     column-gap: 0.75rem;
     align-items: center;
+    color: var(--text-color);
+}
+.user_info:hover {
+    background-color: rgb(224, 222, 222);
+    cursor: pointer;
 }
 .login_icon img {
     vertical-align: middle;
