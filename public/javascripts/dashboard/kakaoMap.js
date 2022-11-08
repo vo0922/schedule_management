@@ -1,12 +1,18 @@
-// 마커를 담을 배열입니다
+// 대쉬보드에 사용될 카카오맵의 마커를 담을 배열
 let dashBoardMarkers = [];
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 처음으로 랜더링될 지도의 기본값 설정 함수 입니다.
+ * 주요 기능 : 지도의 중심 좌표를 서울로두고 확대 레벨을 3으로 설정합니다.
+ */
 let dashBoardMapContainer = document.getElementById('dashBoardMap'), // 지도를 표시할 div
     dashBoardMapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 3
     };
 
+// 마커에 표시될 오버레이를 담을 변수입니다.
 var overlay = [];
 
 // 지도를 생성합니다
