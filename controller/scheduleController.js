@@ -132,6 +132,7 @@ module.exports = {
             let totalTag = []
             tagName.map((schedule) => {
                 schedule.tagId.map((tagData) => {
+                    // flag는 조건을 걸고 싶을 때 사용
                     let flag = totalTag.findIndex(value => value.tag._id === tagData._id);
                     if (flag == -1) {
                         totalTag.push({
