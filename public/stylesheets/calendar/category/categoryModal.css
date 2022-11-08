@@ -1,3 +1,7 @@
+/* 
+  담당자 : 이승현
+  주요 기능 : [캘린더 : 카테고리] - 카테고리 모달창 UI 설계 및 CSS code 작성
+*/
 #categoryModal {
   display: none;
   position: fixed;
@@ -81,29 +85,6 @@
   width: 50px;
   height: 50px;
 }
-/* .category_share_user_list_img .tooltip:nth-child(1) {
-  z-index: 6;
-}
-.category_share_user_list_img .tooltip:nth-child(2) {
-  left: -20px;
-  z-index: 5;
-}
-.category_share_user_list_img .tooltip:nth-child(3) {
-  left: -40px;
-  z-index: 4;
-}
-.category_share_user_list_img .tooltip:nth-child(4) {
-  left: -60px;
-  z-index: 3;
-}
-.category_share_user_list_img .tooltip:nth-child(5) {
-  left: -80px;
-  z-index: 2;
-}
-.category_share_user_list_img .tooltip:nth-child(6) {
-  left: -100px;
-  z-index: 1;
-} */
 
 /* 사용자 목록 추가 버튼(사용자 추가 모달창 가기) */
 .category_share_user_list_add {
