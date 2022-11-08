@@ -140,6 +140,7 @@
   box-shadow: 0 0 5px black;
   font: var(--body-font);
   font-size: small;
+  z-index: 10;
 }
 
 .tooltip:hover .tooltip-text {
