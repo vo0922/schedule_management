@@ -107,7 +107,7 @@
     cursor: pointer;
     opacity: 0.5;
 }
-.scheduleDiv_li:hover {
+.scheduleDiv:hover {
     color: #939393;
     cursor: pointer;
 }
