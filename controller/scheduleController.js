@@ -114,7 +114,7 @@ module.exports = {
     },
     readed: async (scheduleId) => {
         try {
-            const scheduleData = await schedule.findOne({_id: scheduleId}).populate('tagId');
+            const scheduleData = await schedule.findOne({_id: scheduleId}).populate('memberId').populate('tagId');
             return scheduleData;
         } catch (e) {
             throw new Error(e);

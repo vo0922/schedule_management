@@ -103,6 +103,7 @@ function scheduleSubmitModalReload() {
     document.getElementById('tagList').innerHTML = null;
     document.getElementById('completeLabel').innerHTML = '진행도 선택'
     document.getElementById('progress_label_icon').classList.add('hidden');
+    document.getElementById('writeUser').innerText = null;
     document.querySelectorAll('.progress_label').forEach(function (lb) {
         lb.parentNode.classList.remove('active');
     })
@@ -122,6 +123,7 @@ function scheduleModalOpen(clickStart) {
     //startDate.min = date;
     endDate.min = date;
     document.getElementById('scheduleProgress').classList.add('hidden');
+    document.getElementById('writeUserDiv').style.display = 'none'
     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class="schedule_save_btn" onclick="submitSchedule('post')">등록</button>`
 }
 
@@ -141,7 +143,7 @@ function scheduleViewModalOpen(scheduleId, noEdit) {
             document.querySelector(".schedule_address_qLabel").classList.add('view');
             document.querySelector('.progress_selectBox').classList.add('view');
             if (!noEdit) {
-                if (res.memberId == res.scheduleView.memberId) {
+                if (res.memberId == res.scheduleView.memberId._id) {
                     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class='schedule_save_btn' onclick='scheduleModalEditOpen(${JSON.stringify(res)})'>편집</button>` + `<button class='schedule_delete_btn' onclick="scheduleDelete('${res.scheduleView._id}')">삭제</button>`
                 } else {
                     document.getElementsByClassName('schedule_save')[0].innerHTML = null
@@ -164,6 +166,7 @@ function scheduleViewData(res) {
     let tagInput = document.getElementById('tagInput');
     let kakaoMapMenu = document.getElementById('menu_wrap');
     let scheduleProgress = document.getElementById('scheduleProgress');
+    document.getElementById('writeUserDiv').style.display = 'flex'
     let writeUser = document.getElementById('writeUser');
     title.disabled = true;
     content.disabled = true;
@@ -205,7 +208,7 @@ function scheduleViewData(res) {
         show_map(placePosition, 1, addMarker);
         document.getElementById('keyword').value = res.scheduleView.map.title;
     }
-    writeUser.innerText = `작성자 : ${res.data.scheduleView.memberId.name}`
+    writeUser.innerText = `작성자 : ${res.scheduleView.memberId.name}`
     modal.style.display = "block";
     scheduleSubmitModal.style.display = 'block';
 }

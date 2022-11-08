@@ -93,6 +93,14 @@ input[type="range"] {
     margin-top: 1rem;
 }
 
+.schedule_save {
+    height: fit-content;
+}
+
+.schedule_save > button {
+    height: 50px;
+}
+
 .schedule_save_btn {
     width: 100px;
     height: 70%;
