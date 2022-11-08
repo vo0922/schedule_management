@@ -67,6 +67,13 @@ window.onload = function () {
     })
 }
 
+window.addEventListener('click', function (e) {
+    let scheduleListSort = document.getElementById('scheduleListSortDiv_icon');
+    let sortModal = document.getElementById('scheduleListSortDiv_select');
+    if (sortModal && scheduleListSort != e.target) {
+        sortModal.style.display = 'none'
+    }
+})
 
 function scheduleListModalDone() {
     scheduleListModal.style.display = 'none';
@@ -115,8 +122,8 @@ function scheduleListModalOpen(scheduleList) {
         let endDayStr = endDate.getDay()
         let endHours = endDate.getHours() < 12 ? "AM " + endDate.getHours() : "PM " + (endDate.getHours() - 12)
         let endMinutes = endDate.getMinutes()
-        scheduleDivList += 
-        `<div class="scheduleDiv_li">
+        scheduleDivList +=
+            `<div class="scheduleDiv_li">
             <div class="list_style" style="background-color: ${data.borderColor}"></div>
             <li class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
                 <div class="title_group">
@@ -137,14 +144,12 @@ function scheduleListModalOpen(scheduleList) {
     document.getElementById('scheduleDiv').innerHTML = scheduleDivList;
     document.getElementById('sortModal').innerHTML = scheduleListSortDiv
     // filter 클릭 시 option toggle
-    var count = 0;
 
     document.getElementById('scheduleListSortDiv_icon').addEventListener('click', function () {
-        count++;
-        if (count % 2 == 0) {
-            document.getElementById('scheduleListSortDiv_select').style.display = 'none'
-        } else {
+        if(document.getElementById('scheduleListSortDiv_select').style.display == 'none'){
             document.getElementById('scheduleListSortDiv_select').style.display = 'block'
+        }else {
+            document.getElementById('scheduleListSortDiv_select').style.display = 'none'
         }
     })
 }
