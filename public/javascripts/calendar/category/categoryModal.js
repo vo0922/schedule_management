@@ -171,6 +171,7 @@ function submitCategory(type, categoryId) {
     if (shareCheck.checked) {
         for (let i = 0; i < shareUser.length; i++) {
             data.shareMemberIds.push(shareUser[i].id);
+            
         }
     }
     const url = '/category';
