@@ -42,6 +42,32 @@
     margin-left: 15px;
 }
 
+.scheduleListHeader {
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.scheduleListHeaderLeft {
+    font-size: 18px;
+    opacity: 0.8;
+    font-weight: bolder;
+    margin-left: 15px;
+    display: flex;
+    column-gap: 16px;
+}
+
+.scheduleListHeader > i {
+    font-size: 18px;
+}
+
+.scheduleListHeader > i:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 /* ===== 태그 관련 일정 목록 ===== */
 .scheduleList {
     width: 48%;
@@ -52,11 +78,6 @@
     padding: 10px;
     border-radius: 15px;
     box-shadow: 4px 5px 10px #00000052;
-}
-
-.scheduleTitle:hover {
-    cursor: pointer;
-    background-color: #dadada;
 }
 
 .title_group, .time_flex {
