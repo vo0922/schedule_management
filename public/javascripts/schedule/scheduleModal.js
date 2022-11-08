@@ -164,6 +164,7 @@ function scheduleViewData(res) {
     let tagInput = document.getElementById('tagInput');
     let kakaoMapMenu = document.getElementById('menu_wrap');
     let scheduleProgress = document.getElementById('scheduleProgress');
+    let writeUser = document.getElementById('writeUser');
     title.disabled = true;
     content.disabled = true;
     content.placeholder = ''
@@ -204,6 +205,7 @@ function scheduleViewData(res) {
         show_map(placePosition, 1, addMarker);
         document.getElementById('keyword').value = res.scheduleView.map.title;
     }
+    writeUser.innerText = `작성자 : ${res.data.scheduleView.memberId.name}`
     modal.style.display = "block";
     scheduleSubmitModal.style.display = 'block';
 }

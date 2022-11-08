@@ -77,7 +77,6 @@
   z-index: 6;
 }
 .category_share_user_list_img .tooltip:nth-child(2) {
-  position: relative;
   left: -20px;
   z-index: 5;
 }
