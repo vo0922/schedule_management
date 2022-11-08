@@ -45,6 +45,10 @@ function shareUserCheck(user, e) {
         categoryShareUser.appendChild(categoryShareUserDiv);
     } else {
         document.getElementById(`${user._id}`).remove();
+        let tooltipList = document.getElementsByClassName('tooltip');
+        for(let i = 0; i < tooltipList.length; i++) {
+            tooltipList[i].style.left = `${(i%8) * -20}px`
+        }
     }
 }
 
@@ -56,7 +60,10 @@ function shareUserList(user) {
 
 function shareUserCreate(user) {
     let tooltipDiv = document.createElement('div');
+    let tooltipList = document.getElementsByClassName('tooltip');
     tooltipDiv.className = 'tooltip';
+    tooltipDiv.style.left = `${(tooltipList.length % 8) * -20}px`
+    
     tooltipDiv.id = `${user._id}`;
     tooltipDiv.innerHTML =
         `<img src="${user.profile}">\n` +
