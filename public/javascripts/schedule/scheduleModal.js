@@ -31,6 +31,25 @@ function handleLine(e, line) {
     }
 }
 
+function handleAlert(text) {
+    if (aleartFlag == 1) {
+        return
+    }
+    aleartFlag = 1;
+    let lineAlertDiv = document.getElementById('lineAlert');
+    lineAlertDiv.innerHTML = text;
+    lineAlertDiv.style.display = 'block'
+    lineAlertDiv.style.opacity = 0.6;
+    let alertTimer = setInterval(() => {
+        lineAlertDiv.style.opacity -= 0.02
+    }, 50)
+    setTimeout(() => {
+        clearInterval(alertTimer);
+        lineAlertDiv.style.display = 'none'
+        aleartFlag = 0;
+    }, 1500)
+}
+
 const label = document.querySelectorAll('.progress_label');
 
 label[0].addEventListener('click', labelHandle)
@@ -121,7 +140,7 @@ function scheduleViewModalOpen(scheduleId, noEdit) {
             resize()
             document.querySelector(".schedule_address_qLabel").classList.add('view');
             document.querySelector('.progress_selectBox').classList.add('view');
-            if(!noEdit){
+            if (!noEdit) {
                 if (res.memberId == res.scheduleView.memberId) {
                     document.getElementsByClassName('schedule_save')[0].innerHTML = `<button class='schedule_save_btn' onclick='scheduleModalEditOpen(${JSON.stringify(res)})'>편집</button>` + `<button class='schedule_delete_btn' onclick="scheduleDelete('${res.scheduleView._id}')">삭제</button>`
                 } else {
@@ -190,7 +209,7 @@ function scheduleViewData(res) {
 }
 
 function scheduleDelete(scheduleId) {
-    if(!confirm("정말 삭제 하시겠습니까?")){
+    if (!confirm("정말 삭제 하시겠습니까?")) {
         return
     }
     const url = '/schedule'
@@ -314,10 +333,10 @@ function submitSchedule(type, scheduleId) {
     let title = document.getElementById('schedule_title'), content = document.getElementById('schedule_content'),
         priority = document.getElementById('schedule_priority')
     if (!title.value) {
-        return alert('일정 제목을 작성해주세요.');
+        return handleAlert("일정 제목을 입력해주세요.")
     }
     if (!endDate.value) {
-        return alert('일정 종료일을 선택해주세요.')
+        return handleAlert("일정 종료일을 입력해주세요.")
     }
     const url = '/schedule';
     let addressCheck = document.getElementById('schedule_address_q');

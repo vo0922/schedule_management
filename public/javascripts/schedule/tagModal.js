@@ -3,9 +3,10 @@ let tagModal = document.getElementById('tagModal');
 function tagKeyUp(e) {
     let tagListDiv = document.getElementsByClassName('tagListDiv')
     let tagHash = e.value.replace('#', '');
-    if (window.event.keyCode == 13) {
-        if (!e.value)
-            return
+    let trimValue = e.value.trim();
+    if (window.event.keyCode == 13 || window.event.keyCode == 32) {
+        if (!trimValue || trimValue == '#')
+            return e.value = trimValue
         addTagList(tagHash);
     }
     if (!e.value && window.event.keyCode == 8 && tagListDiv.length)
@@ -14,6 +15,11 @@ function tagKeyUp(e) {
 
 function tagInput(e, line) {
     handleLine(e, line)
+    let specialRule = /[`~!@$%^&*()=+|.\\\'\";:\/?]/gi;
+    if(specialRule.test(e.value)) {
+        handleAlert("태그작성에 특수문자를 작성할 수 없습니다.")
+        return e.value = e.value.slice(0, -1);
+    }
     let tagHash = e.value.replace('#', '');
     if (!e.value)
         return tagModal.style.display = "none";
@@ -56,6 +62,7 @@ function addTagList(text) {
     let leftTag = document.getElementsByClassName(text)[0];
     if (leftTag) {
         tagModal.style.display = "none";
+        tagInput.value = text.trim();
         return alert("이미 태그가 존재합니다.");
     }
     tagDiv.appendChild(newTag);

@@ -13,6 +13,7 @@ const tagSchema = new Schema({
             type: String,
             unique: true,
             required: true,
+            index: true
         },
     memberId:
         {
