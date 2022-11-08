@@ -1,6 +1,17 @@
+<!-- 
+    담당자 : 이승현
+    주요 기능 : 상단 메뉴
+                1. 연동 API 구별
+                2. 이름 정보 표시
+                3. 프로필 사진 표시
+                4. 로그아웃 btn
+                5. 배경색 지정 btn
+ -->
 <!--==================== HEADER ====================-->
 <header class="header" id="header" style='background-color: <%= member.headerColor %>'>
+    <!-- 현재 위치한 페이지 상태를 보여줌 -->
     <input id="leftColor" type="hidden" value=<%= member.headerColor %>>
+    <!-- 메뉴 네비게이션 -->
     <nav class="nav">
         <a href="/" class="nav__logo">
             <i class="fa-sharp fa-solid fa-calendar"></i>C&B
@@ -25,6 +36,7 @@
                 <div class="dropdown">
                     <div onclick="dp_userProfile()" class="userProfile">
                         <li class="nav__item nav__menu-login__li">
+                            <!-- 프로필 사진 표시 -->
                             <img class="user_img" src="<%= member.profile %>" alt="user 프로필 사진">
                             <a class="nav__link nav__menu-login__a"><%= member.name %></a>
                             <i class="fa-solid fa-caret-down" style="font-size: 20px;"></i>
