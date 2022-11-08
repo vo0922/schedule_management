@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 메모 모델
+ * 주요 기능 : 메모 스키마 설계
+ */
 const memoSchema = new Schema({
     content:
         {

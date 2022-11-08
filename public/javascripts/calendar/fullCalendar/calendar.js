@@ -1,12 +1,19 @@
-let scheduleData = [];
 let calendarEl = document.getElementById('calendar');
 let calendar;
+
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 캘린더 페이지가 랜더링 되었을 때 캘린더에 초기 데이터를 바인딩 하고 캘린더의 이벤트들을 설정하는 함수
+ * 주요 기능 : 유저의 전체 일정 데이터를 가져와 데이터를 바인딩하고 캘린더의 기본값과 이벤트들을 설정하는 기능
+ */
 window.onload = function () {
+    let scheduleData = [];
     $.ajax({
         type: 'get',
         url: '/calendar/scheduleCalendar',
         async: false,
         success: function (res) {
+            // 캘린더에 바인딩 될 데이터들을 가공 하여 scheduleData변수에 추가
             res.data.map((data) => {
                 let schedule = {
                     start: data.scheduleData.startDate,
@@ -17,15 +24,18 @@ window.onload = function () {
                 }
                 scheduleData.push(schedule);
             })
+
             calendar = new FullCalendar.Calendar(calendarEl, {
+                // 캘린더의 헤더부분의 설정
                 headerToolbar: {
                     left: 'title',
                     center: '',
                     right: 'prevYear,prev,next,nextYear today'
                 },
                 initialDate: new Date(),
-                dayMaxEvents: true, // allow "more" link when too many events
+                dayMaxEvents: true,
                 events: scheduleData,
+                // 캘린더의 more을 클릭 했을경우 커스텀한 오늘 일정 리스트 모달창을 띄워주고 return을 none으로 주어 기존 캘린더의 more클릭 기능을 없애줌
                 moreLinkClick: function (event) {
                     let scheduleList = [];
                     event.allSegs.map((data) => {
@@ -36,17 +46,21 @@ window.onload = function () {
                     return "none"
                 },
                 locale: "ko",
-                // 달력의 날짜 클릭했을 때
+                // 날짜를 클릭 했을 경우
                 dateClick: function (event) {
                     let clickDate = new Date(event.date.toDateString()).getTime();
+                    // 일정 리스트에 들어갈 객체 배열 변수
                     let scheduleList = [];
                     calendar.getEvents().map((data) => {
                         let startDate = new Date(data.start.toDateString()).getTime();
                         let endDate = data.end ? new Date(data.end.toDateString()).getTime() : new Date(data.start.toDateString()).getTime()
+                        // 바인딩 되어있는 일정이 클릭한 일정 사이에있을경우 일정리스트에 들어갈 데이터 추가
                         if (clickDate >= startDate && clickDate <= endDate) {
                             scheduleList.push(data);
                         }
                     })
+                    // 일정이 있을경우 일정리스트 데이터를 인자로 넘겨 일정리스트 모달창 오픈
+                    // 일정이 존재하지 않을경우 클릭한 날짜를 시작일로 하는 일정 생성 모달창 오픈
                     if (scheduleList.length) {
                         scheduleListModalOpen(scheduleList);
                         clickDateRequest(event)
@@ -54,6 +68,7 @@ window.onload = function () {
                         scheduleModalOpen(event.date);
                     }
                 },
+                // 일정하나를 클릭 하였을 경우 클릭한 일정의 상세페이지를 보여주는 모달창 오픈
                 eventClick: function (event) {
                     scheduleViewModalOpen(event.event._def.publicId)
                 }
@@ -67,6 +82,11 @@ window.onload = function () {
     })
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 일정 리스트의 정렬 Element를 제외한 다른 요소를 클릭했을시 정렬 모달창 끄기
+ * 주요 기능 : 정렬 Element가 this된 객체와 다를경우 정렬 모달창 닫기
+ */
 window.addEventListener('click', function (e) {
     let scheduleListSort = document.getElementById('scheduleListSortDiv_icon');
     let sortModal = document.getElementById('scheduleListSortDiv_select');

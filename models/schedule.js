@@ -68,6 +68,12 @@ const scheduleSchema = new Schema({
         }
 }, {versionKey: false})
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 일정이 삭제될 경우 삭제되기전 연관된 태그들의 매핑관계를 끊어주고 메모와 매핑되어있는 일정 매핑관계 해제 하는 함수
+ * 주요 기능 : 일정이 삭제될때 각태그들과 연관된 일정 매핑관계를 끊어주고 각태그의 사용횟수를 1씩 차감
+ * 메모와 매핑되어있는 일정을 삭제
+ */
 scheduleSchema.pre("deleteOne", async function (next) {
     const {_id} = this.getFilter();
     await tag.updateMany({scheduleId: {$in: _id}}, {

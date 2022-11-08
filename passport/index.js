@@ -5,8 +5,9 @@ const member = require('../models/member');
 
 /**
  * 담당자 : 박신욱
- * 함수 설명 : 소셜로그인 passport index
- * 주요 기능 : 소셜로그인 Strategy와 성공, 실패 처리
+ * 함수 설명 : 소셜로그인 passport
+ * 주요 기능 : 유저 정보 객체를 세션에 저장 및 세션에 저장한 객체를 가져오는기능
+ * 네이버와 카카오의 strategy등록
  */
 module.exports = () => {
     passport.serializeUser((user, done) => {

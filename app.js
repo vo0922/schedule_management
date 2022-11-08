@@ -35,7 +35,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// 쿠키 세션 설정
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 쿠키 세션 설정
+ * 주요 기능 : 쿠키 설정하는 함수
+ */
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(
     session({
@@ -51,9 +55,19 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(passport.initialize()); // 요청 객체에 passport 설정을 심음
-app.use(passport.session()); // req.session 객체에 passport정보를 추가 저장
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : passport 연결
+ * 주요 기능 : 요청 객체에 passport를 심고 req.session 객체에 passport정보를 추가 저장
+ */
+app.use(passport.initialize());
+app.use(passport.session());
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 라우터 설정
+ * 주요 기능 : 라우터 설정및 로그인 확인 미들웨어 주입
+ */
 // router config
 app.use('/', indexRouter);
 app.use('/login', loginRouter);

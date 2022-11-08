@@ -15,7 +15,7 @@ function tagKeyUp(e) {
 
 function tagInput(e, line) {
     handleLine(e, line)
-    let specialRule = /[`~!@$%^&*()=+|.\\\'\";:\/?]/gi;
+    let specialRule = /[\{\}\[\]\/?.,;:|\)*~`!^\+<>@\$%&\\\=\(\'\"]/gi
     if(specialRule.test(e.value)) {
         handleAlert("태그작성에 특수문자를 작성할 수 없습니다.")
         return e.value = e.value.slice(0, -1);

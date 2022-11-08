@@ -5,7 +5,7 @@ const member = require('../models/member');
 
 /**
  * 담당자 : 박신욱
- * 함수 설명 : 소셜로그인 카카오 Strategy
+ * 함수 설명 : 소셜로그인 네이버 Strategy
  * 주요 기능 : 네이버로그인 성공후 사용자 데이터 저장및 업데이트
  */
 module.exports = () => {
@@ -24,7 +24,7 @@ module.exports = () => {
                         snsId: profile.id,
                         provider: 'naver'
                     });
-                    // 이미 가입된 네이버 프로필이면 성공
+                    // 이미 가입된 네이버 프로필이면 프로필 업데이트 후 성공
                     if (exMember) {
                         const updateMember = await member.findOneAndUpdate({snsId:profile.id},{
                             $set:{
@@ -36,7 +36,7 @@ module.exports = () => {
                         }).exec();
                         done(null, updateMember);
                     } else {
-                        // 가입되지 않는 유저면 회원가입 시키고 로그인을 시킨다
+                        // 가입되지 않는 유저면 유저 등록 후 성공
                         const newMember = await member.create({
                             email: profile._json.email,
                             nickname: profile._json.nickname,
