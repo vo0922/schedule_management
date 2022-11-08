@@ -23,7 +23,7 @@ router.post('/colorUpdate', authUtil, async function (req, res) {
 })
 
 // 일정 완료율 API
-router.get('/todaySchedule', async function (req, res) {
+router.get('/todaySchedule', authUtil, async function (req, res) {
     try {
         const data = await scheduleController.todaySchedule(req.user._id);
         res.status(201).json({data: data});
@@ -33,7 +33,7 @@ router.get('/todaySchedule', async function (req, res) {
     }
 })
 
-router.get('/memo', async function (req, res) {
+router.get('/memo', authUtil, async function (req, res) {
     try {
         const data = await memoController.memoReaded(req.user._id);
         res.status(201).json({data: data});
@@ -44,7 +44,7 @@ router.get('/memo', async function (req, res) {
 })
 
 
-router.delete('/memo', async function (req, res) {
+router.delete('/memo', authUtil, async function (req, res) {
     try {
         const data = await memoController.memoDelete(req.body.memoId);
         res.status(201).json({data: data});
@@ -54,7 +54,7 @@ router.delete('/memo', async function (req, res) {
     }
 })
 
-router.post('/memo', async function (req, res) {
+router.post('/memo', authUtil, async function (req, res) {
     try {
         const data = await memoController.memoInsert(req.user._id, req.body.content, req.body.scheduleId);
         res.status(201).json({data: data});
@@ -64,7 +64,7 @@ router.post('/memo', async function (req, res) {
     }
 })
 
-router.post('/memo/view/search', async function (req, res) {
+router.post('/memo/view/search', authUtil, async function (req, res) {
     try {
         const memoData = await memoController.memoFind(req.body.memoId);
         const myScheduleData = await scheduleController.myScheduleSearch(req.user._id, req.body.text);
@@ -75,7 +75,7 @@ router.post('/memo/view/search', async function (req, res) {
     }
 })
 
-router.post('/memo/view', async function (req, res) {
+router.post('/memo/view', authUtil, async function (req, res) {
     try {
         const memoData = await memoController.memoFind(req.body.memoId);
         const myScheduleData = await scheduleController.mySchedule(req.user._id);
@@ -86,7 +86,7 @@ router.post('/memo/view', async function (req, res) {
     }
 })
 
-router.patch('/memo', async function (req, res) {
+router.patch('/memo', authUtil, async function (req, res) {
     try {
         const data = await memoController.memoUpdate(req.body.data);
         res.status(201).json({data: data});
@@ -96,7 +96,7 @@ router.patch('/memo', async function (req, res) {
     }
 })
 
-router.post('/todayShareSchedule', async function (req, res) {
+router.post('/todayShareSchedule', authUtil, async function (req, res) {
     try {
         let progress = req.body.progress != null ? req.body.progress : null
         const data = await categoryController.todayShareSchedule(req.user._id, progress);
@@ -107,7 +107,7 @@ router.post('/todayShareSchedule', async function (req, res) {
     }
 })
 // 일정 진행도 변경 API
-router.patch('/todayScheduleProgress', async function (req, res) {
+router.patch('/todayScheduleProgress', authUtil, async function (req, res) {
     try {
         const data = await scheduleController.scheduleProgress(req.body.scheduleId, req.body.progress)
         res.status(201).json({data: data})
