@@ -163,18 +163,19 @@ function scheduleListModalOpen(scheduleList) {
     })
     document.getElementById('scheduleDiv').innerHTML = scheduleDivList;
     document.getElementById('sortModal').innerHTML = scheduleListSortDiv
+    // filter 클릭 시 option toggle
 
-}
-
-function sortModalOpen() {
-    if(document.getElementById('scheduleListSortDiv_select').style.display == 'none'){
-        document.getElementById('scheduleListSortDiv_select').style.display = 'block'
-    }else {
-        document.getElementById('scheduleListSortDiv_select').style.display = 'none'
-    }
+    document.getElementById('scheduleListSortDiv_icon').addEventListener('click', function () {
+        if(document.getElementById('scheduleListSortDiv_select').style.display == 'none'){
+            document.getElementById('scheduleListSortDiv_select').style.display = 'block'
+        }else {
+            document.getElementById('scheduleListSortDiv_select').style.display = 'none'
+        }
+    })
 }
 
 // 일정 목록 정렬 기능
+
 function scheduleListSort(scheduleList, e) {
     let scheduleListSortObject = scheduleList
     switch (e.value) {
