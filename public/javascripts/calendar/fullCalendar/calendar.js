@@ -196,7 +196,7 @@ function sortModalOpen() {
 /**
  * 담당자 : 이승현
  * 함수 설명 : 일정 목록을 정렬하고 뿌려주는 기능을 담당하는 함수
- * 주요 기능 : 일정 목록을 이름순, 시작일순, 종료일순으로 정렬하고 정렬된 데이터를 뿌려줍니다.
+ * 주요 기능 : 일정 목록을 이름순, 시작일순, 종료일순으로 정렬하고 각각의 정렬된 데이터를 바인딩 합니다.
  */
 function scheduleListSort(scheduleList, e) {
     let scheduleListSortObject = scheduleList
@@ -257,16 +257,18 @@ function scheduleListSort(scheduleList, e) {
         })
     }
 
-    // 종류별로 변경된 데이터 뿌려주기
+    // 종류별로 변경된 Element데이터들을 담을 변수
     let scheduleListWantSort = []
-    // 비동기 방식을 사용하기 위해 for 대신 forEach를 사용
+    
     scheduleListSortObject.forEach((a, i) => {
-        // startDay
+        // 시작일
         let startDate = new Date(scheduleListSortObject[i].start)
 
+        // 요일 배열
         var weekend = new Array('일', '월', '화', '수', '목', '금', '토')
 
         // 일정 목록 startDay 받아오기
+        // 삼항연산자를 사용해 시작일이 12시간 이전일 경우 AM, 이후일경우 PM
         let startYear = startDate.getFullYear()
         let startMonth = startDate.getMonth() + 1
         let startDay = startDate.getDate()
@@ -274,10 +276,11 @@ function scheduleListSort(scheduleList, e) {
         let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12)
         let startMinutes = startDate.getMinutes()
 
-        // endDay
+        // 종료일
         let endDate = new Date(scheduleListSortObject[i].end ? scheduleListSortObject[i].end : scheduleListSortObject[i].start)
 
         // 일정 목록 endDay 받아오기
+        // 삼항연산자를 사용해 종료일 12시간 이전일 경우 AM, 이후일경우 PM
         let endYear = endDate.getFullYear()
         let endMonth = endDate.getMonth() + 1
         let endDay = endDate.getDate()
