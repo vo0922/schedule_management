@@ -1,15 +1,12 @@
-/* 
-  담당자 : 이승현
-  주요 기능 : [상단 메뉴] - 상단 메뉴 UI 설계 및 CSS code 작성
-*/
 /*=============== HEADER ===============*/
 .header {
     width: 100%;
+    /* background-color: var(--body-color); */
     position: fixed;
     top: 0;
     left: 0;
     z-index: var(--z-fixed);
-    transition: .4s; 
+    transition: .4s; /*For animation >> dark mode로 바뀔 때*/
     box-shadow: 0 1px 4px hsla(var(--hue), 4%, 15%, .1);
 }
 
@@ -56,6 +53,7 @@
     font-weight: 700;
     letter-spacing: -1px;
     display: inline-flex;
+    /* align-items: center; */
     column-gap: .5rem;
     transition: .3s;
 }
@@ -68,6 +66,13 @@
 .nav__logo:hover {
     color: var(--first-color);
 }
+
+/* .nav__toggle{
+  display: inline-flex;
+  font-size: 1.25rem;
+  cursor: pointer;
+} */
+
 
 /*=============== USER 정보 띄우기 ===============*/
 .user {
@@ -146,41 +151,6 @@
     width: 1.5rem;
     border-radius: 50%;
 }
-/*=============== 팔레트, User가 커스텀한 헤더 ===============*/
-.body-box {
-    display: flex;
-    justify-content: center;
-}
-
-/* 색상 박스들을 배치할 박스 */
-.box {
-    z-index: 5;
-    width: 183px;
-    height: 300px;
-    background-color: rgb(245, 245, 245);
-    box-shadow: 0 0 8px #6868689e;
-    border-radius: 0.5rem;
-    position: fixed;
-    right: 2.2rem;
-    top: 3.85rem;
-}
-
-/* 색상 박스가 선택되었을 때 속성 */
-.selected {
-    box-shadow: 0 0 5px black;
-}
-
-/* 색상 박스 */
-.colorBox {
-    width: 2.25rem;
-    height: 2.25rem;
-    float: left;
-    margin: 0.75rem;
-    cursor: pointer;
-    border-radius: 50%;
-}
-
-
 
 /* 테블릿 반응형 */
 @media screen and (max-width: 767px) {
@@ -240,5 +210,39 @@
     height: 2px;
     /* background-color: var(--first-color); */
     background-color: var(--first-color);
+}
+
+/*=============== 팔레트, User가 커스텀한 헤더 ===============*/
+.body-box {
+    display: flex;
+    justify-content: center;
+}
+
+/* 색상 박스들을 배치할 박스 */
+.box {
+    z-index: 5;
+    width: 183px;
+    height: 300px;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0 0 8px #6868689e;
+    border-radius: 0.5rem;
+    position: fixed;
+    right: 2.2rem;
+    top: 3.85rem;
+}
+
+/* 색상 박스가 선택되었을 때 속성 */
+.selected {
+    box-shadow: 0 0 5px black;
+}
+
+/* 색상 박스 */
+.colorBox {
+    width: 2.25rem;
+    height: 2.25rem;
+    float: left;
+    margin: 0.75rem;
+    cursor: pointer;
+    border-radius: 50%;
 }
 

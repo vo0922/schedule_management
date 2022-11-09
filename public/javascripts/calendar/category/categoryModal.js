@@ -1,4 +1,8 @@
-
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 카테고리 생성을 눌렀을 때 카테고리 생성 모달창을 띄우는 함수
+ * 주요 기능 : 새로운 카테고리를 생성할 수 있는 생성 모달창을 띄워 줍니다.
+ */
 function categoryModalOpen() {
     c_modal.style.display = "block";
     document.getElementById('categoryColor').value = '#f08080';
@@ -6,6 +10,11 @@ function categoryModalOpen() {
     plus.style.display = 'none'
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 카테고리 모달창을 닫는 함수
+ * 주요 기능 : 닫기 버튼을 클릭했을 때 카테고리 모달창을 닫아 줍니다.
+ */
 function categoryModalDone() {
     c_modal.style.display = "none";
     categoryModalReload();
@@ -65,6 +74,11 @@ function categoryEditModalOpen(categoryId) {
     categoryModalOpen();
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 공유할 사용자 추가 여부 체크되었을 경우의 함수
+ * 주요 기능 : 공유할 사용자 추가하겠다는 체크박스 체크 시 사용자 목록을 보여 줍니다.
+ */
 function share_user() {
     let cb = document.getElementById('category_share_q').checked
     let shareList = document.getElementById('checkShareUser_list')
@@ -72,6 +86,7 @@ function share_user() {
         shareList.style.display = "block"
     } else {
         shareList.style.display = "none"
+        // 체크 해제 시 사용자 목록 모달창을 닫는 함수
         shareUserModalDone()
     }
 }
@@ -80,7 +95,7 @@ let categoryTagModal = document.getElementById('categoryTagModal');
 
 /**
  * 담당자 : 박신욱
- * 함수 설명 : 카테고리 모달창에서 태그를 검색할경우의 함수
+ * 함수 설명 : 카테고리 모달창에서 태그를 검색할 경우의 함수
  * 주요 기능 : 태그를 검색할 경우 태그 모달창을 보여주고 태그 모달창에서 태그 데이터를 바인딩
  */
 function selectCategoryTag(text) {
@@ -170,6 +185,11 @@ function categoryModalReload() {
     categoryTagModal.style.display = "none";
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 사용자 공유 여부 체크 해제 시 사용자 목록 모달창을 닫는 함수
+ * 주요 기능 : 사용자 공유 여부 체크 해제 시 원래의 카테고리 모달창의 형태로 돌아가기 위해 체크되었을 때 추가된 클래스들을 제거해 줍니다.
+ */
 function shareUserModalDone() {
     document.getElementsByClassName('category-modal-content')[0].classList.remove('show')
     document.getElementsByClassName('category_modal_section')[0].classList.remove('div')
@@ -177,11 +197,17 @@ function shareUserModalDone() {
     document.getElementsByClassName('category_modal_section')[2].classList.remove('border');
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 사용자 공유 여부 체크 시 사용자 목록 모달창을 여는 함수
+ * 주요 기능 : 사용자 공유 여부 체크 시, 체크되었을 때 카테고리 모달창의 형태로 바뀌기 위해 체크되었을 때 추가되어야 하는 클래스들을 추가해 줍니다.
+ */
 function extendsUserList() {
     document.getElementsByClassName('category-modal-content')[0].classList.add('show')
     document.getElementsByClassName('category_modal_section')[0].classList.add('div')
     document.getElementById('category_modal_section2').style.display = "block"
     document.getElementsByClassName('category_modal_section')[2].classList.add('border');
+    // 공유사용자검색에 사용될 사용자 데이터를 가져오고 바인딩하는 함수
     userSearch();
 }
 
