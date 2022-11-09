@@ -40,6 +40,11 @@ function filterReq(progress) {
     shareScheduleBind(progress)
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 오늘 공유받은 일정 목록 바인딩 함수
+ * 주요 기능 : ajax 통신으로 공유받은 일정 목록 중 오늘에 해당하는 목록들만 바인딩해 줍니다.
+ */
 function shareScheduleBind(progress) {
     $.ajax({
         type: 'post',
@@ -48,6 +53,7 @@ function shareScheduleBind(progress) {
         data: JSON.stringify({progress: progress}),
         success: function (res) {
             let shareScheduleData = [];
+            // 오늘 공유받은 총 일정 갯수
             document.getElementById('shareScheduleCount').innerText = res.data.length
             res.data.map((data)=>{
                 shareScheduleData.push(`
@@ -97,9 +103,11 @@ function shareScheduleBind(progress) {
     })
 }
 
-// 공유 일정 목록 hover event
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 공유 일정 목록 hover 시 발생하는 event 함수
+ */
 function shareScheduleListDivHover(e) {
-  // console.log(e)
   let event = e.querySelector('.shareScheduleList_content_bottom')
   if (event) {
           event.classList.add('hover');
@@ -107,6 +115,10 @@ function shareScheduleListDivHover(e) {
       }
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 공유 일정 목록 hover를 하지 않았을 실행되는 함수
+ */
 function shareScheduleListDivNotHover(e) {
   let event = e.querySelector('.shareScheduleList_content_bottom')
   if (event) {

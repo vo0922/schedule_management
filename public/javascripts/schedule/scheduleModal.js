@@ -361,7 +361,10 @@ window.onclick = function (event) {
     }
 }
 
-/*=============== 지도 checkbox 클릭 시 상세 정보 표시 ===============*/
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 지도 checkbox 클릭 시 상세 정보 표시하는 함수
+ */
 var clickCheck = document.getElementById("map_wrap")
 var addressInput = document.getElementById('addressInput');
 var address = document.getElementById('address');
