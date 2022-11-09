@@ -43,7 +43,6 @@ function userSearch() {
         },
         error: function (err) {
             console.log(err);
-            return alert(err.responseJSON.message);
         }
     })
 }

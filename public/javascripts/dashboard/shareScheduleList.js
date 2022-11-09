@@ -1,7 +1,16 @@
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 대쉬보드 페이지가 랜더링될때 공유일정 데이터를 바인딩하는 함수 호출하는 함수
+ */
 window.addEventListener('load', function () {
     shareScheduleBind(null)
 });
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 당일 공유된 일정 필터에서 필터이외의 요소들을 클릭시 필터팝업창 닫는 함수
+ * 주요 기능 : this객체를 인자로받아 공유 필터요소 자식 요소에 this객체가 존재하지 않다면 필터 팝업창 닫기
+ */
 window.addEventListener('click', function (e) {
     let shareScheduleFilter = document.querySelector('.shareScheduleHeaderRight');
     let menu = document.querySelector('.filterMenu');
@@ -11,11 +20,20 @@ window.addEventListener('click', function (e) {
     }
 })
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 공유필터 팝업창을 끄고닫을 수 있는 팝업 toggle 함수
+ */
 function filterMenu() {
     let menu = document.querySelector('.filterMenu');
     menu.classList.toggle('active')
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 공유필터 팝업창에서 선택한 필터 종류에 따른 데이터 바인딩 함수 호출 하는 함수
+ * 주요 기능 : progress를 인자로 진행중인 일정, 완료된 일정, 전체일정을 구분하여 공유 일정 바인딩 함수 호출
+ */
 function filterReq(progress) {
     let menu = document.querySelector('.filterMenu');
     menu.classList.toggle('active')

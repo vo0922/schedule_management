@@ -68,21 +68,6 @@ function getDragAfterElement(container, y) {
   ).element;
 }
 
-/*function dropDrag(event, target) {
-  // element를 옮긴 container의 id값 scheduleContainer_elements_done(완료) = true일 때 실행할 것
-  const done = 'scheduleContainer_elements_done'
-  const ing = 'scheduleContainer_elements_ing'
-  let scheduleId = event.dataTransfer.getData('_id')
-  let targetEl = document.getElementById(`${scheduleId}check`);
-  if (target.id === done) {
-    scheduleProgressReq(scheduleId, true)
-    targetEl.checked = true
-  }else if (target.id === ing){
-    scheduleProgressReq(scheduleId, false)
-    targetEl.checked = false
-  }
-}*/
-
 // 진행도를 수정하는 함수
 function scheduleProgressReq(scheduleId, progress) {
   let ingCountDiv = document.getElementById('ingCount')

@@ -105,6 +105,11 @@ function scrollHeader() {
 
 let stateUrl = document.querySelector('#stateUrl').value;
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 현제 url값에 따라 위치하고있는 메뉴가 어디인지 표시하기위한 함수
+ * 주요 기능 : active-lick클래스를 추가하여 위치하고 있는 메뉴에 따로 css적용
+ */
 switch (stateUrl) {
     case 'home':
         document.querySelector('.home').classList.add('active-link');
