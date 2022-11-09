@@ -105,7 +105,7 @@
 
 #scheduleDiv {
     overflow: auto;
-    height: 30vh;
+    height: 29vh;
 }
 /* scrollbar custom */
 #scheduleDiv::-webkit-scrollbar {
