@@ -24,6 +24,7 @@ function scheduleCompletion() {
 
             res.data.map((data) => {
                 if (data.map) {
+                    // 카카오맵을 첫 랜더링 값으로 초기화
                     let placePosition = new kakao.maps.LatLng(data.map.y, data.map.x);
                     dashBoardAddMarker(placePosition, 1, data.map.title);
                 }
@@ -34,6 +35,7 @@ function scheduleCompletion() {
             })
             scheduleBinding(res.data)
             let doneRate = 0
+            // 완료율이 nan값이 아닐경우 처리
             if (!isNaN(doneScheduleCount / totalScheduleCount * 100))
                 doneRate = doneScheduleCount / totalScheduleCount * 100
             // .toFixed(1)로 소수점 1자리까지 구하기
@@ -49,6 +51,7 @@ function scheduleCompletion() {
             // 오늘 날짜
             document.getElementById('todayDateTag').innerHTML = todayString;
 
+            // 카카오 맵 범위를 확대 및 축소
             if (Object.keys(dashBoardBounds).length) {
                 dashBoardMap.setBounds(dashBoardBounds);
             }
