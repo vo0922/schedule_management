@@ -95,10 +95,20 @@ window.addEventListener('click', function (e) {
     }
 })
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 일정 목록 모달창 닫기 버튼을 클릭 시 모달창을 닫아주는 함수입니다.
+ */
 function scheduleListModalDone() {
     scheduleListModal.style.display = 'none';
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 클릭한 날짜 정보 받아오는 함수
+ * 주요 기능 : 캘린더에 날짜를 클릭하면 그에 해당하는 날짜의 일정 목록이 뜨는데, 
+ *             클릭한 날짜가 며칠이고 무슨 요일인지 보여 줍니다.
+ */
 function clickDateRequest(event) {
     // 클릭한 날짜 정보 받아오기
     let needDay = new Date(event.date).getDate();
@@ -110,11 +120,16 @@ function clickDateRequest(event) {
     document.getElementById('nows').innerHTML = today
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 일정 목록 정렬(이름순, 시작일순, 종료일순) 함수
+ * 주요 기능 : 정렬된 목록을 받아와서 정렬 결과대로 뿌려주어 결과를 즉시 확인 가능하게 해 줍니다.
+ */
 function scheduleListModalOpen(scheduleList) {
     scheduleListModal.style.display = 'block';
 
     let scheduleDivList = '';
-    // 일정 목록 정렬 filter
+    // 일정 목록 정렬 filter 만들기
     let scheduleListSortDiv = `
     <div class="scheduleListSortDiv" id="scheduleListSortDiv_select" style="display: none;">
         <option class="option" value="title" onclick='scheduleListSort(${JSON.stringify(scheduleList)}, this)'>이름순</option>
@@ -130,6 +145,7 @@ function scheduleListModalOpen(scheduleList) {
         let startMonth = startDate.getMonth() + 1
         let startDay = startDate.getDate()
         let startDayStr = startDate.getDay()
+        // 삼항연산자를 사용하여 오전 오후 구하기
         let startHours = startDate.getHours() < 12 ? "AM " + startDate.getHours() : "PM " + (startDate.getHours() - 12)
         let startMinutes = startDate.getMinutes()
 
@@ -143,7 +159,7 @@ function scheduleListModalOpen(scheduleList) {
         let endHours = endDate.getHours() < 12 ? "AM " + endDate.getHours() : "PM " + (endDate.getHours() - 12)
         let endMinutes = endDate.getMinutes()
         scheduleDivList +=
-            `<div class="scheduleDiv_li">
+        `<div class="scheduleDiv_li">
             <div class="list_style" style="background-color: ${data.borderColor}"></div>
             <li class='scheduleDiv' onclick="scheduleViewModalOpen('${data._def.publicId}')">
                 <div class="title_group">
@@ -166,6 +182,10 @@ function scheduleListModalOpen(scheduleList) {
 
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 일정 리스트의 정렬 모달창 열기 함수
+ */
 function sortModalOpen() {
     if(document.getElementById('scheduleListSortDiv_select').style.display == 'none'){
         document.getElementById('scheduleListSortDiv_select').style.display = 'block'
@@ -174,7 +194,11 @@ function sortModalOpen() {
     }
 }
 
-// 일정 목록 정렬 기능
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 일정 목록을 정렬하고 뿌려주는 기능을 담당하는 함수
+ * 주요 기능 : 일정 목록을 이름순, 시작일순, 종료일순으로 정렬하고 정렬된 데이터를 뿌려줍니다.
+ */
 function scheduleListSort(scheduleList, e) {
     let scheduleListSortObject = scheduleList
     switch (e.value) {
@@ -189,11 +213,12 @@ function scheduleListSort(scheduleList, e) {
             break
     }
     let scheduleListBinding = document.getElementById('scheduleDiv')
-    // 1. 버튼 누르면
-    // 2. scheduleList 안에 있는 자료들을 가나다순으로 정렬하고
-    // 3. 안에 내용물을 싹 지웠다가 가나다순으로 다시 만들어라
-
-    function titleSort() {  // 이름순
+    
+    /**
+     * 담당자 : 이승현
+     * 함수 설명 : 일정 목록을 이름순으로 정렬
+     */
+    function titleSort() { 
         scheduleListSortObject.sort(function (a, b) {
             if (a.title > b.title) {
                 return 1
@@ -202,8 +227,12 @@ function scheduleListSort(scheduleList, e) {
             }
         })
     }
-
-    function startSort() {  // startDay순
+    
+    /**
+     * 담당자 : 이승현
+     * 함수 설명 : 일정 목록을 시작일순으로 정렬
+     */
+    function startSort() {  
         scheduleListSortObject.sort(function (a, b) {
             if (a.start > b.start) {
                 return 1
@@ -212,8 +241,12 @@ function scheduleListSort(scheduleList, e) {
             }
         })
     }
-
-    function endSort() {    // endDay순
+    
+    /**
+     * 담당자 : 이승현
+     * 함수 설명 : 일정 목록을 종료일순으로 정렬
+     */
+    function endSort() {    
         scheduleListSortObject.sort(function (a, b) {
             let a_end = a.end ? a.end : a.start
             let b_end = b.end ? b.end : b.start
@@ -227,6 +260,7 @@ function scheduleListSort(scheduleList, e) {
 
     // 종류별로 변경된 데이터 뿌려주기
     let scheduleListWantSort = []
+    // 비동기 방식을 사용하기 위해 for 대신 forEach를 사용
     scheduleListSortObject.forEach((a, i) => {
         // startDay
         let startDate = new Date(scheduleListSortObject[i].start)
