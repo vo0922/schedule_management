@@ -15,7 +15,11 @@ router.get('/', authUtil, function (req, res, next) {
     res.render('index', {member: req.user, url: 'home', kakaoKey: process.env.KAKAO_SCRIPT});
 });
 
-// 헤더 색상 변경 API
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 네비게이션 헤더바에서 색상을 변경할시 유저의 헤더색상 데이터를 변경해주는 API
+ * 주요 기능 : 유저 컨트롤러에서 해당 유저 헤더색상을 변경해주는 함수 호출 후 변경된 색상 response
+ */
 router.post('/colorUpdate', authUtil, async function (req, res) {
     try {
         const color = await memberController.colorUpdate(req.body.color, req.user._id);
@@ -26,7 +30,11 @@ router.post('/colorUpdate', authUtil, async function (req, res) {
     }
 })
 
-// 일정 완료율 API
+/**
+ * 담당자 : 이승현, 박신욱
+ * 함수 설명 : 대쉬 보드 페이지에 당일 일정 요소에 필요한 데이터를 반환하는 API
+ * 주요 기능 : 일정 컨트롤러에서 당일 일정을 반환하는 함수 호출 후 데이터 response
+ */
 router.get('/todaySchedule', authUtil, async function (req, res) {
     try {
         const data = await scheduleController.todaySchedule(req.user._id);
@@ -145,7 +153,11 @@ router.post('/todayShareSchedule', authUtil, async function (req, res) {
     }
 })
 
-// 일정 진행도 변경 API
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 대쉬보드 페이지에서 당일 일정들의 변경된 진행도를 update해주는 API
+ * 주요 기능 : 일정컨트롤러에서 해당 일정 진행도를 변경해주는 함수 호출 후 변경된 데이터 response
+ */
 router.patch('/todayScheduleProgress', authUtil, async function (req, res) {
     try {
         const data = await scheduleController.scheduleProgress(req.body.scheduleId, req.body.progress)

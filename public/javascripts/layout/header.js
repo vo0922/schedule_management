@@ -1,6 +1,10 @@
 let clickUser = document.getElementById("drop-user-content")
 let clickColor = document.getElementById("drop-color-content")
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 색 모달창과 유저 프로필 모달창이외의 요소클릭시 모달창 닫기 함수
+ */
 window.addEventListener('click', function (e){
     let userProfileModal = document.querySelector('.userProfile');
     let headerColorModal = document.querySelector('.headerColor');
@@ -79,7 +83,7 @@ function init() {
 
 /**
  * 담당자 : 이승현
- * 함수 설명 : 사용자 지정으로 바뀐 배경 색상이 db에 update되는 함수
+ * 함수 설명 : 사용자 지정으로 바뀐 배경 색상을 유저스키마에 업데이트하는 요청을 보내는 함수
  * 주요 기능 : ajax 통신으로 배경색을 선택한 색상박스의 id값으로 지정해서 database에 update한다. 
  */
 function colorSet(colorPick) {

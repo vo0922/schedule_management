@@ -1,31 +1,41 @@
-.tree{
+/*
+  담당자 : 이승현, 박신욱
+  주요 기능 : [캘린더] - 카테고리 영역의 3단트리 CSS
+*/
+.tree {
     position: absolute;
     overflow: auto;
     height: 450px;
 }
-.tree, .tree ul{
+
+.tree, .tree ul {
     list-style: none; /* 기본 리스트 스타일 제거 */
     width: 100%;
 }
-.tree, .tree li{
+
+.tree, .tree li {
     width: 100%;
 }
+
 .tree_list {
-    padding-left:10px;
-    /* padding: 12px; */
+    padding-left: 10px;
 }
+
 .tree_list:hover {
     background-color: #d2d2d2;
     cursor: pointer;
 }
-.tree_list:hover > .label_text{
+
+.tree_list:hover > .label_text {
     color: #00AACC;
 }
-.tree *:before{
+
+.tree *:before {
     /* width:20px;
     height:20px; */
-    display:inline-block;
+    display: inline-block;
 }
+
 .option_share {
     display: flex;
     align-items: center;
@@ -37,16 +47,17 @@
     font-weight: bold;
     color: var(--text-color);
 }
+
 .option_share_me {
     font-size: var(--h3-font-size);
 }
-.tree label{
+
+.tree label {
     cursor: pointer;
     font-size: 16px;
     color: var(--text-color);
     display: flex;
     width: auto;
-    /* background-color: #0000ff; */
     padding: 7px;
 }
 
@@ -54,75 +65,80 @@
     color: #00AACC;
     background-color: #d2d2d2;
 }
+
 /* checkbox 커스텀하기! */
-.fs_label::before{
+.fs_label::before {
     content: '>';
     transform: rotate(-90deg);
     margin: .1rem;
 }
 
-.lastTree_before{
-    content:'';
+.lastTree_before {
+    content: '';
     display: inline-block;
     background-color: #00AACC;
     width: 6px;
     height: 30px;
 }
-.fs_label:hover:before{
+
+.fs_label:hover:before {
     content: '>';
     transform: rotate(-90deg);
-    /* content: '+' */
-
 }
-.lastTree_before:hover{
-    content:'';
+
+.lastTree_before:hover {
+    content: '';
     display: inline-block;
     background-color: #00AACC;
     width: 6px;
     height: 30px;
 }
+
 #tab-1 > .tree input[type="checkbox"] {
     display: none;
 }
-#tab-1 > .tree input[type="checkbox"]:checked~ul {
+
+#tab-1 > .tree input[type="checkbox"]:checked ~ ul {
     display: none;
 }
-#tab-1 > .tree input[type="checkbox"]:checked+.fs_label:before{
+
+#tab-1 > .tree input[type="checkbox"]:checked + .fs_label:before {
     content: '>';
     transform: rotate(90deg);
 
-    /* content: '-' */
 }
-#tab-1 > .tree input[type="checkbox"]:checked+.fs_label:hover:before{
+
+#tab-1 > .tree input[type="checkbox"]:checked + .fs_label:hover:before {
     content: '>';
     transform: rotate(90deg);
-    /* content: '-' */
-
 }
 
-#tab-1 > .tree input[type="checkbox"]:checked+.lastTree_before{
-    content:'';
-    display: inline-block;
-    background-color: #00AACC;
-    width: 6px;
-    height: 30px;
-}
-#tab-1 > .tree input[type="checkbox"]:checked+.lastTree_before:hover{
-    content:'';
+#tab-1 > .tree input[type="checkbox"]:checked + .lastTree_before {
+    content: '';
     display: inline-block;
     background-color: #00AACC;
     width: 6px;
     height: 30px;
 }
 
-.label_text{
+#tab-1 > .tree input[type="checkbox"]:checked + .lastTree_before:hover {
+    content: '';
+    display: inline-block;
+    background-color: #00AACC;
+    width: 6px;
+    height: 30px;
+}
+
+.label_text {
     display: flex;
     align-items: center;
     padding-left: 12px;
 }
+
 .label_text:first-of-type .label_text:nth-of-type(2) {
     margin-top: 0.5rem;
 }
+
 .tree_third {
     padding-left: 34px;
 }
@@ -131,38 +147,40 @@
 #tab-3 > .tree input[type="checkbox"] {
     display: none;
 }
-#tab-3 > .tree input[type="checkbox"]:checked~ul {
+
+#tab-3 > .tree input[type="checkbox"]:checked ~ ul {
     display: none;
 }
-#tab-3 > .tree input[type="checkbox"]:checked+.fs_label:before{
+
+#tab-3 > .tree input[type="checkbox"]:checked + .fs_label:before {
     content: '>';
     transform: rotate(90deg);
 
-    /* content: '-' */
 }
-#tab-3 > .tree input[type="checkbox"]:checked+.fs_label:hover:before{
+
+#tab-3 > .tree input[type="checkbox"]:checked + .fs_label:hover:before {
     content: '>';
     transform: rotate(90deg);
-    /* content: '-' */
 
 }
 
-#tab-3 > .tree input[type="checkbox"]:checked+.lastTree_before{
-    content:'';
-    display: inline-block;
-    background-color: #00AACC;
-    width: 6px;
-    height: 30px;
-}
-#tab-3 > .tree input[type="checkbox"]:checked+.lastTree_before:hover{
-    content:'';
+#tab-3 > .tree input[type="checkbox"]:checked + .lastTree_before {
+    content: '';
     display: inline-block;
     background-color: #00AACC;
     width: 6px;
     height: 30px;
 }
 
-.fs_label:hover, .lastTree:hover{
+#tab-3 > .tree input[type="checkbox"]:checked + .lastTree_before:hover {
+    content: '';
+    display: inline-block;
+    background-color: #00AACC;
+    width: 6px;
+    height: 30px;
+}
+
+.fs_label:hover, .lastTree:hover {
     color: #00AACC;
     background-color: #d2d2d2;
     cursor: pointer;

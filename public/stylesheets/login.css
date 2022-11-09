@@ -91,14 +91,7 @@ button .fas{
   width: 5.5rem;
   cursor: pointer;
 }
-/* .prev{
-  left:3rem;
-  transform: translate(-50%, -50%);
-}
-.next{
-  right: 3rem;
-  transform: translate(50%, -50%); 
-} */
+
 .dots-container{
   display: flex;
   justify-content: center;

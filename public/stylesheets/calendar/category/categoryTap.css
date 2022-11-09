@@ -1,4 +1,7 @@
-
+/*
+  담당자 : 이승현, 박신욱
+  주요 기능 : [캘린더] - 카테고리 영역의 탭 CSS
+*/
 .tapContainer {
     position: relative;
     top: 80px;
@@ -103,7 +106,6 @@ ul.tabs li.current {
     margin-right: 10px;
 }
 
-/* 나의 일정 */
 .option_schedule {
     display: flex;
     align-items: center;

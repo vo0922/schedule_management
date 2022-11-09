@@ -27,10 +27,6 @@
 #tagInput {
     width: 50%;
 }
-/* input[id="tagInput"]:focus {
-    border: none;
-} */
-
 /* 해시태그 */
 .tagListDiv {
     font-size: 1.1rem;
@@ -80,7 +76,6 @@
     height: auto;
     margin-top: 0.5rem;
     padding-bottom: 0.5rem;
-    /* overflow: auto; */
 }
 /* 주소 추가 옵션 선택 시 넓어지면 해시태그 css 수정(.tagModal-content_show */
 .tagModal-content_show {

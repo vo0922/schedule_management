@@ -73,7 +73,11 @@ router.get('/totalTag', async function (req, res) {
     }
 })
 
-
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 태그통계 페이지에서 렌더링시에 필요한 일정 데이터를 반환하는 API
+ * 주요 기능 : 일정 컨트롤러에서 태그와 관련 일정 데이터를 반환하는 함수 호출 후 데이터 response
+ */
 router.get('/tagAboutSchedule', async function (req, res) {
     try{
         const tagAboutScheduleData = await scheduleController.tagAboutSchedule(req.user._id)

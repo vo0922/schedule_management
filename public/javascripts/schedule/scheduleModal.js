@@ -68,6 +68,10 @@ const label = document.querySelectorAll('.progress_label');
 
 label[0].addEventListener('click', labelHandle)
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 커스텀 진행도 선택했을경우 진행도 selectBox 팝업창 표출
+ */
 function labelHandle() {
     const lb = document.querySelectorAll('.progress_label')[0];
     let progress_optionList = lb.nextElementSibling;
@@ -75,11 +79,22 @@ function labelHandle() {
     clickLabel(lb, progress_optionItems);
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 진행도 팝업창 에서 진행중 및 완료 요소 클릭시 클릭한 요소로 진행도에 바인딩하는 함수
+ * 주요 기능 : active클래스를 제거해줌으로 팝업창 닫기
+ *            선택한 this객체의 내용을 진행도에 바인딩
+ */
 function handleSelect(label, item) {
     document.getElementById('completeLabel').innerHTML = item.innerHTML;
     label.parentNode.classList.remove('active');
 }
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 진행도 클릭시 이벤트 함수
+ * 주오 기능 : 클릭한 진행도를 인자로넘겨 진행도 처리기능
+ */
 function clickLabel(lb, progress_optionItems) {
     if (lb.parentNode.classList.contains('active')) {
         lb.parentNode.classList.remove('active');
@@ -363,7 +378,7 @@ window.onclick = function (event) {
 
 /**
  * 담당자 : 이승현
- * 함수 설명 : 지도 checkbox 클릭 시 상세 정보 표시하는 함수
+ * 함수 설명 : 지도 checkbox 클릭 시 상세 정보 표시하는 변수
  */
 var clickCheck = document.getElementById("map_wrap")
 var addressInput = document.getElementById('addressInput');
