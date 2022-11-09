@@ -429,6 +429,7 @@ function DateValidation() {
 function submitSchedule(type, scheduleId) {
     let title = document.getElementById('schedule_title'), content = document.getElementById('schedule_content'),
         priority = document.getElementById('schedule_priority')
+    // 조건에 맞게 알림창 표출
     if (!title.value) {
         return handleAlert("일정 제목을 입력해주세요.")
     }

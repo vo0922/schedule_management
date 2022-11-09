@@ -12,7 +12,6 @@ function Slider() {
     };
     activeDot(currentSlide);
 
-
     const changeSlide = function (slides) {
         carouselSlides.forEach((slide, index) => (slide.style.transform = `translateX(${100 * (index - slides)}%)`));
     };
