@@ -15,7 +15,10 @@ window.addEventListener('click', function (e){
     }
 })
 
-/*=============== User Profile 클릭 시 상세 정보 표시 ===============*/
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : User Profile 클릭 시 상세 정보가 보이는 합수
+ */
 function dp_userProfile() {
     const up = document.querySelector('.fa-caret-down')
     if (clickUser.style.display === "none") {
@@ -28,7 +31,10 @@ function dp_userProfile() {
     }
 }
 
-/*=============== 팔레트 클릭 시 header 색상 바꾸기 상세 정보 표시 ===============*/
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 팔레트 클릭 시 header 색상 바꾸기 상세 정보가 보이는 함수
+ */
 function dp_headerColor() {
     if (clickColor.style.display === "none") {
         clickColor.style.display = "block"
@@ -39,25 +45,31 @@ function dp_headerColor() {
     }
 }
 
-let selectedColor; //선택한 컬러값 저장할 변수
 
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 사용자 지정 상단 메뉴 색상 변경 함수
+ * 주요 기능 : 색상 코드를 지정해서 팔레트를 만들어 주고, 선택한 색상으로 상단 메뉴 색상이 변경된다.
+ */
+let selectedColor; // 선택한 컬러값 저장할 변수
 function init() {
     let colorChip = ["#fff", "#dcd0c3", "#b4afaa",
         "#ccdeeb", "#c9d3e7", "#92b5d8",
         "#cdd9c8", "#b7beae", "#fbf199",
         "#ffccbb", "#e7b3a7", "#ea999b",
         "#c191a3", "#c9b5c8", "#a690a9"]; //색상코드
-    let tag = "";
+    let colorChange = "";
     let leftColor = document.getElementById('leftColor').value;
     for (let i = 0; i < colorChip.length; i++) {  //colorBox 의 id명을 색상명으로 지정해주기.
         if (leftColor == colorChip[i]) {
             selectedColor = colorChip[i]
-            tag += "<div id=" + colorChip[i] + " class='colorBox selected' onclick='colorSet(this)'></div>";
+            // 선택한 컬러값에 선택됨을 표시해 주는 selected class를 추가
+            colorChange += "<div id=" + colorChip[i] + " class='colorBox selected' onclick='colorSet(this)'></div>";
         }
         else
-            tag += "<div id=" + colorChip[i] + " class='colorBox' onclick='colorSet(this)'></div>";
+            colorChange += "<div id=" + colorChip[i] + " class='colorBox' onclick='colorSet(this)'></div>";
     }
-    document.getElementById("colorList").innerHTML = tag;
+    document.getElementById("colorList").innerHTML = colorChange;
 
     let colorBoxList = document.getElementsByClassName("colorBox");
     for (let i = 0; i < colorBoxList.length; i++) {
@@ -65,7 +77,11 @@ function init() {
     }
 }
 
-// onclick event
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 사용자 지정으로 바뀐 배경 색상이 db에 update되는 함수
+ * 주요 기능 : ajax 통신으로 배경색을 선택한 색상박스의 id값으로 지정해서 database에 update한다. 
+ */
 function colorSet(colorPick) {
     const url = `/colorUpdate`
     $.ajax({
@@ -75,7 +91,8 @@ function colorSet(colorPick) {
             color: colorPick.id
         },
         success: function (res) {
-            document.querySelector("#header").style.background = res.data;  //배경색을 선택한 색상박스의 id 값으로 지정해주기
+            //배경색을 선택한 색상박스의 id 값으로 지정해주기
+            document.querySelector("#header").style.background = res.data;  
 
         },
         error: function (err) {
@@ -83,6 +100,7 @@ function colorSet(colorPick) {
             return alert(err.responseJSON.message);
         }
     })
+    // 선택된 색상에 선택됨을 알리는 효과 또한 페이지를 나갔다가 다시 들어와도 보이도록
     if (selectedColor != null) {
         document.getElementById(selectedColor).className = document.getElementById(selectedColor).className.replace(" selected", "");
     }
@@ -91,8 +109,10 @@ function colorSet(colorPick) {
     selectedColor = colorPick.id;
 }
 
-
-/*=============== CHANGE BACKGROUND HEADER. header 배경 변경 ===============*/
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 스크롤이 발생했을 때 header에 그림자가 생기는 class를 추가해 준다
+ */
 function scrollHeader() {
     const header = document.getElementById('header')
     // 스크롤 높이가 80 veiwport 보다 크면 header 태그에 scroll-header class 를 추가한다.

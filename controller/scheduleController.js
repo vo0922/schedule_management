@@ -176,6 +176,7 @@ module.exports = {
      */
     totalTag: async (memberId) => {
         try {
+            // member가 작성한 일정에 포함된 태그 정보들을 불러와라.
             const tagName = await schedule.find({memberId: memberId}).populate('tagId')
             let totalTag = []
             tagName.map((schedule) => {
@@ -220,6 +221,11 @@ module.exports = {
             throw new Error(e);
         }
     },
+    /**
+     * 담당자 : 이승현
+     * 함수 설명 : 태그에 포함된 일정 목록 API
+     * 주요 기능 : 태그 차트에서 태그 항목을 선택(클릭) 시 선택된 태그 항목이 포함된 일정 목록을 보여줍니다.
+     */
     tagAboutSchedule: async (memberId) => {
         try {
             const tagAboutScheduleData = await schedule.find({memberId: memberId}).populate('tagId')
@@ -227,13 +233,20 @@ module.exports = {
         } catch (e) {
             throw new Error(e)
         }
-    },// 일정 진행도(진행/완료)
+    },
+    /**
+     * 담당자 : 이승현
+     * 함수 설명 : 일정 진행도(진행/완료) API
+     * 주요 기능 : 대시보드에서 일정 진행도 상태를 동적으로 변경하고.
+     *            그에 따른 오늘 일정 완료율 또한 변동됩니다.
+     */
     scheduleProgress: async (scheduleId, progress) => {
         try {
             const scheduleData = await schedule.findOneAndUpdate({_id: scheduleId}, {
                 $set :{
                     completion: progress
             }
+        // update된 이후의 데이터를 받아오기 위해서 {new: true}를 적어준다.
         },{new: true})
         return scheduleData
 

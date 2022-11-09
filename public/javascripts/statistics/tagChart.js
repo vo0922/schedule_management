@@ -250,7 +250,11 @@ function tagChartData() {
         }
     })
 }
-
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 태그에 포함된 일정 목록 API
+ * 주요 기능 : 태그 차트에 있는 태그 항목을 클릭했을 때 그 태그가 포함되어 있는 일정을 받아옵니다.
+ */
 function tagAboutSchedule() {
     $.ajax({
         type: 'get',
@@ -270,7 +274,11 @@ function tagAboutSchedule() {
     })
 }
 
-// 일정 목록
+/**
+ * 담당자 : 이승현
+ * 함수 설명 : 태그에 관련된 일정 목록 바인딩
+ * 주요 기능 :  태그 차트에 있는 태그 항목을 클릭했을 때 그 태그가 포함되어 있는 일정을 뿌려줍니다.
+ */
 function tagAboutScheduleBind(data) {
     let tagUl = []
     data.map((data) => {
