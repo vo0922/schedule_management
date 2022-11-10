@@ -35,7 +35,7 @@ function memoModalOpen(memoId) {
                 checkScheduleData.push(
                     `
                     <div id="${data._id}" onclick="scheduleViewModalOpen('${data._id}', true)" class="checkMySchedule">
-                        <p class="scheduleTitle">${data.title}</p>
+                        <p class="scheduleTitle">${data.title.length > 15 ? data.title.substr(0, 15) + '...' : data.title}</p>
                     </div>
                     `
                 )
