@@ -20,7 +20,7 @@ function addressListBind(addressData) {
                 <div class="addressCardHeader">
                     <div class="cardInfo">
                         <p class="cardAddress">${data.map.title}</p>
-                        <p class="cardTitle">${data.title}</p>
+                        <p class="cardTitle">${data.title.length > 10 ? data.title.substr(0, 10) + '...' : data.title}</p>
                     </div>
                     <p class="cardDate">-${new Date(data.endDate).getFullYear()}.${new Date(data.endDate).getMonth() + 1}.${new Date(data.endDate).getDate()}</p>
                 </div>
