@@ -19,7 +19,7 @@ function scheduleListRequest(address) {
                     schedule = {
                         start: data.scheduleData.startDate,
                         end: data.scheduleData.endDate,
-                        title: data.scheduleData.title,
+                        title: data.scheduleData.title.length > 20 ? data.scheduleData.title.substr(0, 20) + '...' : data.scheduleData.title,
                         color: data.category ? data.category : "#f08080",
                         id: data.scheduleData._id
                     }
@@ -27,7 +27,7 @@ function scheduleListRequest(address) {
                     schedule = {
                         start: data.startDate,
                         end: data.endDate,
-                        title: data.title,
+                        title: data.title.length > 20 ? data.title.substr(0, 20) + '...' : data.title,
                         color: data.category ? data.category : "#f08080",
                         id: data._id
                     }
@@ -62,7 +62,7 @@ function shareCategorySearch(categoryId, authMemberId) {
                 let schedule = {
                     start: data.scheduleData.startDate,
                     end: data.scheduleData.endDate,
-                    title: data.scheduleData.title,
+                    title: data.scheduleData.title.length > 20 ? data.scheduleData.title.substr(0, 20) + '...' : data.scheduleData.title,
                     color: data.category ? data.category : "#f08080",
                     id: data.scheduleData._id
                 }

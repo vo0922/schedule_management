@@ -8,7 +8,7 @@
 <div id="myScheduleList" class="myScheduleList_class">
     <% mySchedule.map((data)=>{ %>
         <div class="myScheduleList" onclick="scheduleViewModalOpen('<%= data._id %>')">
-            <p><%= data.title %></p>
+            <p><%= data.title.length > 10 ? data.title.substr(0, 10) + '...' : data.title %></p>
         </div>
     <% }) %>
 </div>
