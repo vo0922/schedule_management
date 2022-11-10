@@ -363,7 +363,7 @@ function tagAboutScheduleBind(data) {
                     <div class="list_style"></div>
                     <li class='scheduleDiv'>
                         <div class="title_group">
-                            <div class="title sortDivList">${data.title}</div>
+                            <div class="title sortDivList">${data.title.length > 20 ? data.title.substr(0, 20) + '...' : data.title}</div>
                             <div class="about_tag sortDivList">${tagName.join('')}</div>
                         </div>
                         <div class="time_flex">
