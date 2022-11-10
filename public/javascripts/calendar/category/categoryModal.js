@@ -223,6 +223,9 @@ function submitCategory(type, categoryId) {
         return alert("카테고리 제목을 입력해주세요.");
     }
     let tagList = document.getElementsByClassName("tagListDiv");
+    if(!tagList.length){
+        return alert("태그를 넣어주세요.");
+    }
     let shareUser = document.getElementsByClassName('tooltip');
     let color = document.getElementById('categoryColor');
     // ajax요청으로 보낼 데이터를 가공
