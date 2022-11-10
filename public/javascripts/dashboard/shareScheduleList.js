@@ -65,7 +65,7 @@ function shareScheduleBind(progress) {
                       <div class="shareScheduleList_content_top">
                         <div>
                           <!-- 공유받은 일정 제목 -->
-                          <p class="shareScheduleList_content_top_title">${data.scheduleData.title}</p>
+                          <p class="shareScheduleList_content_top_title">${data.scheduleData.title.length > 15 ? data.scheduleData.title.substr(0, 15) + '...' : data.scheduleData.title}</p>
                           <!-- 날짜 -->
                           <p>
                               ${new Date(data.scheduleData.startDate).getFullYear()}.${new Date(data.scheduleData.startDate).getMonth() + 1}.${new Date(data.scheduleData.startDate).getDate()}

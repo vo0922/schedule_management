@@ -147,7 +147,7 @@ function scheduleBinding(scheduleData) {
    <div class="draggable" draggable="true" id="${data._id}" ondragstart="startDrag(event, this)" ondragend="endDrag(event, this)">
       <div class="scheduleBox">
         <div class="scheduleCheckBox" onclick="scheduleViewModalOpen('${data._id}', true)">
-          <p class="scheduleCheckBox_title">${data.title}</p>
+          <p class="scheduleCheckBox_title">${data.title.length > 15 ? data.title.substr(0, 15) + '...' : data.title}</p>
           <p class="scheduleDate">
           ${new Date(data.startDate).getFullYear()}.
           ${new Date(data.startDate).getMonth() + 1}.
