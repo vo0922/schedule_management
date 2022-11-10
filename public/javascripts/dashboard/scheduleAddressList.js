@@ -68,7 +68,6 @@ function fullAdress() {
                     dashBoardAddMarker(placePosition, 1, data.map.title);
                 }
             })
-            document.getElementById('addressListCount').innerText = res.data.length
             // 여러게의 마커를 한눈에 볼수있도록 카카오맵 뷰화면을 확대및 축소
             if(Object.keys(dashBoardBounds).length){
                 dashBoardMap.setBounds(dashBoardBounds);
