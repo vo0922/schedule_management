@@ -287,11 +287,10 @@ function scheduleListSort(scheduleList, e) {
         let endDayStr = endDate.getDay()
         let endHours = endDate.getHours() < 12 ? "AM " + endDate.getHours() : "PM " + (endDate.getHours() - 12)
         let endMinutes = endDate.getMinutes()
-
         scheduleListWantSort.push(`
         <div class="scheduleDiv_li">
             <div class="list_style" style="background-color: ${scheduleListSortObject[i].borderColor}"></div>
-            <li class="scheduleDiv sortDiv">
+            <li class="scheduleDiv sortDiv" onclick="scheduleViewModalOpen('${scheduleListSortObject[i].id}')">
                 <div class="title sortDivList">${scheduleListSortObject[i].title}</div>
                 <div class="time_flex">
                     <div class="start sortDivList">${startYear}.${startMonth}.${startDay}.${weekend[startDayStr]}, ${startHours}:${startMinutes}</div>
