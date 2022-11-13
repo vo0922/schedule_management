@@ -200,7 +200,7 @@ function barChartDraw(barChartData) {
                     display: true
                 },
                 y: {
-                    display: false
+                    display: true
                 }
             }
         }
