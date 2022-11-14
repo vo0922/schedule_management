@@ -31,6 +31,9 @@
 
 .nav__menu {
     margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    column-gap: 3rem;
 }
 
 /*=============== NAVIGATION ===============*/
@@ -223,20 +226,129 @@
     cursor: pointer;
     border-radius: 50%;
 }
+.nav__btns {
+    display: none;
+}
+/* 반응형을 위한 유저 정보, 색상 박스 nav__link class 변경 */
+.nav__link_active {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    transition: .3s;
+    font-size: 1.15rem;
 
-/* 테블릿 반응형 */
-@media screen and (max-width: 767px) {
+    
+}
+.nav__link_active:hover {
+    color: var(--first-color);
+}
+
+/*=============== 반응형 NAVIGATION ===============*/
+@media screen and (max-width: 767px){
+    .nav__toggle{
+        display: inline-flex;
+        font-size: 1.25rem;
+        cursor: pointer;
+    }
+    .nav__btns {
+        display: block;
+    }
     .nav__menu {
         position: fixed;
         background-color: var(--container-color);
-        width: 80%;
+        width: 30%;
         height: 100%;
         top: 0;
         right: -100%;
         box-shadow: -2px 0 4px hsla(var(--hue), 24%, 15%, .1);
-        padding: 4rem 0 0 3rem;
+        padding: 4rem 0 0 0rem;
         border-radius: 1rem 0 0 1rem;
         transition: .3s;
         z-index: var(--z-fixed);
+    }
+    .nav__menu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav__close{
+        display: inline-flex;
+        font-size: 1.5rem;
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        cursor: pointer;
+    }
+
+    .nav__list{
+        display: flex;
+        flex-direction: column;
+        column-gap: 1.5rem;
+    }
+    .nav__menu-login {
+        /* position: fixed;
+        top: 236px;
+        z-index: 100; */
+    }
+    .nav__menu-login__ul {
+        display: flex;
+        flex-direction: column;
+        column-gap: 1.5rem;
+        margin-top: 25px;
+    }
+    .user {
+        width: 16rem;
+        box-shadow: 0px 1px 3px rgb(75 75 75);
+        border-radius: 10px;
+        position: absolute;
+        right: 0rem;
+        top: 15rem;
+        margin-top: 0.2rem;
+        z-index: var(--z-fixed);
+    }
+    .box {
+        z-index: var(--z-fixed);
+        width: 183px;
+        height: 300px;
+        background-color: rgb(245, 245, 245);
+        box-shadow: 0 0 8px #6868689e;
+        border-radius: 0.5rem;
+        position: fixed;
+        right: 0.75rem;
+        top: 17.85rem;
+    }
+    .nav__link{
+        color: var(--title-color);
+        font-weight: var(--font-medium);
+        transition: .3s;
+    }
+
+    .nav__link:hover{
+        color: var(--first-color);
+    }
+
+    /* Show menu. 메뉴 보여주기 */
+    .show-menu{
+        right: 0;
+    }
+
+    /* header 배경 바뀌기 */
+    .scroll-header{
+        box-shadow: 0 1px 4px hsla(var(--hue), 4%, 15%, .1);
+    }
+
+    /* Active link */
+    .active-link{
+        position: relative;
+        color: var(--first-color);
+    }
+
+    .active-link::after{
+        content: '';
+        position: absolute;
+        bottom: -.5rem;
+        left: 0;
+        width: 50%;
+        height: 2px;
+        background-color: var(--first-color);
     }
 }
