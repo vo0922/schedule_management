@@ -98,7 +98,6 @@
   cursor: pointer;
   font-size: var(--nomal-font-size);
   user-select: none;
-  width: 180px;
 }
 
 /* Hide the browser's default checkbox */
