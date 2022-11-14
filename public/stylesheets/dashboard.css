@@ -89,3 +89,64 @@
   border-radius: 15px;
   box-shadow: 4px 5px 10px #00000052;
 }
+
+/*=============== 모바일 반응형 ===============*/
+@media screen and (max-width: 767px){
+  .dashboardPage{ 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #eeeeee;
+  }
+  .topDashboard{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    margin-top: 2rem;
+  }
+  .bottomDashboard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    margin-top: 52rem;
+
+  }
+  /* 오늘 일정 완료율 */
+  .todayScheduleChart {
+    width: 95%;
+    margin: 0 auto;
+  }
+  /* 오늘 일정 리스트 */
+  .todayScheduleList { 
+    width: 95%;
+    margin: 0 auto;
+
+  }
+  /* 공유받은 일정 리스트 */
+  .shareScheduleList {
+    width: 95%;
+    margin: 0 auto;
+
+  }
+  /* 메모 */
+  .myMemo {
+    width: 95%;
+    margin: 0 auto;
+
+  }
+  /* 오늘 가야 할 곳 표시(리스트) */
+  .scheduleAddressList {
+    width: 95%;
+    margin: 0 auto;
+
+  }
+  /* 오늘 가야 할 곳 표시(지도) */
+  .scheduleAddress {
+    width: 95%;
+    margin: 0 auto;
+
+  }
+}
