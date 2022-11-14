@@ -7,6 +7,7 @@
                 4. 로그아웃 btn
                 5. 배경색 지정 btn
  -->
+
 <!--==================== HEADER ====================-->
 <header class="header" id="header" style='background-color: <%= member.headerColor %>'>
     <input id="leftColor" type="hidden" value=<%= member.headerColor %>>
@@ -27,7 +28,11 @@
                     <a href="/statistics" class="nav__link statistics">태그 통계</a>
                 </li>
             </ul>
-        </div>
+            <!-- 모바일 네비게이션 close 버튼 -->
+            <div class="nav__close" id="nav-close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+
 
         <div class="nav__menu-login" id="nav-menu-login">
             <ul class="nav__list nav__menu-login__ul">
@@ -35,7 +40,7 @@
                     <div onclick="dp_userProfile()" class="userProfile">
                         <li class="nav__item nav__menu-login__li">
                             <img class="user_img" src="<%= member.profile %>" alt="user 프로필 사진">
-                            <a class="nav__link nav__menu-login__a"><%= member.name %></a>
+                            <a class="nav__link_active nav__menu-login__a"><%= member.name %></a>
                             <i class="fa-solid fa-caret-down" style="font-size: 20px;"></i>
                         </li>
                     </div>
@@ -43,7 +48,7 @@
                 <!-- 상단 메뉴 사용자 지정 색깔 바꾸기 -->
                 <div class="headerColor">
                 <li class="nav__item nav__menu-login__li">
-                    <a class="nav__link nav__menu-login__a">
+                    <a class="nav__link_active nav__menu-login__a">
                         <i class="fa-solid fa-palette" onclick="dp_headerColor()"></i>
                     </a>
                 </li>
@@ -59,6 +64,14 @@
                     
                 
             </ul>
+        </div>
+    </div>
+        
+        <div class="nav__btns">
+            <!-- 모바일 네비게이션 opne 버튼 -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </nav>
 </header>
@@ -93,3 +106,6 @@
 </div>
 
 <script src="/javascripts/layout/header.js"></script>
+<script>
+
+</script>

@@ -150,3 +150,44 @@ switch (stateUrl) {
 }
 
 window.addEventListener('scroll', scrollHeader)
+
+/**
+ * 담당자 :  이승현
+ * 함수 설명 : 모바일 반응형 네비게이션 만드는 함수
+ * 주요 기능 : 웹 너비가 767px 이하일 때 반응하는 헤더 메뉴 조정입니다.
+ */
+/*=============== 반응형. SHOW MENU ===============*/
+const navMenu = document.getElementById('nav-menu'),
+      navMenuLogin = document.getElementById('nav-menu-login'),
+      navToggle = document.getElementById('nav-toggle'),
+      navClose = document.getElementById('nav-close')
+
+/*===== MENU SHOW. 메뉴 보이기 =====*/
+if(navToggle){
+    navToggle.addEventListener('click', () =>{
+        navMenu.classList.add('show-menu')
+        navMenuLogin.classList.add('show-menu')
+    })
+}
+
+/*===== MENU HIDDEN. 메뉴 닫기 =====*/
+if(navClose){
+    navClose.addEventListener('click', () =>{
+        navMenu.classList.remove('show-menu')
+        navMenuLogin.classList.remove('show-menu')
+    })
+}
+
+/*=============== REMOVE MENU MOBILE. 모바일에서 메뉴 toggle ===============*/
+const navLink = document.querySelectorAll('.nav__link')
+
+function linkAction(){
+    const navMenu = document.getElementById('nav-menu'),
+          navMenuLogin = document.getElementById('nav-menu-login')
+          
+
+    // 각 nav__link를 클릭하면 show-menu 클래스가 제거됨
+    navMenu.classList.remove('show-menu')
+    navMenuLogin.classList.remove('show-menu')
+}
+navLink.forEach(n => n.addEventListener('click', linkAction))
