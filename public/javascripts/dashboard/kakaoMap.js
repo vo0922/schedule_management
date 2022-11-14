@@ -31,6 +31,7 @@ function dashBoardAddMarker(position, idx, title) {
             position: position, // 마커의 위치
         });
         // 커스텀한 오버레이 Element
+        // href url을 통해 실제 카카오맵에 선택한 장소에 마커를 찍히도록 정의
     var content = '<div class="customoverlay">' +
         `  <a href="https://map.kakao.com/link/map/${title},${position.Ma},${position.La}" target="_blank">` +
         `    <span class="title">${title}</span>` +
