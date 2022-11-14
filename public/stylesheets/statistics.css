@@ -122,7 +122,6 @@
   #scheduleDiv::-webkit-scrollbar-track {
     background-color: var(--webkit-scrollbar-track-bg);
     border-radius: var(--webkit-scrollbar-track-br);
-    /* box-shadow: inset 0px 0px 5px white; */
   }
 
 .scheduleDiv_li {
@@ -193,7 +192,6 @@
   .tagRankGrid::-webkit-scrollbar-track {
     background-color: var(--webkit-scrollbar-track-bg);
     border-radius: var(--webkit-scrollbar-track-br);
-    /* box-shadow: inset 0px 0px 5px white; */
   }
 
 .tagItem {
@@ -256,4 +254,52 @@ span > .percent {
 
 .bronze {
     color: #8b6331;
+}
+/*=============== 모바일 반응형 ===============*/
+@media screen and (max-width: 767px){ 
+    .statisticsPage {
+        height: 100%;
+    }
+    .topStatistics {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 2rem;
+    }
+    /* ===== 태그 차트 - 원형 도표 ===== */
+    .tagChart {
+        width: 95%;
+        margin: 0 auto;
+    }
+    /* ===== 태그 관련 일정 목록 ===== */
+    .scheduleList {
+        width: 95%;
+        margin: 0 auto;
+    }
+    /* ===== 태그 사용 순위 ===== */
+    .myTagRank {
+        width: 91%;
+        margin: 0 auto;
+        margin-top: 20rem;
+    }
+    .tagRankGrid {
+        display: flex;
+        flex-direction: column;
+    }
+    .tagItem {
+        padding: 10px;
+        column-gap: 1rem;
+    }
+    /* scrollbar custom */
+    .tagRankGridDiv::-webkit-scrollbar {
+        width: var(--webkit-scrollbar-width);
+    }
+    .tagRankGridDiv::-webkit-scrollbar-thumb {
+        background-color: var(--webkit-scrollbar-thumb-bg);
+        border-radius: var(--webkit-scrollbar-thumb-br);
+    }
+    .tagRankGridDiv::-webkit-scrollbar-track {
+        background-color: var(--webkit-scrollbar-track-bg);
+        border-radius: var(--webkit-scrollbar-track-br);
+    }
 }

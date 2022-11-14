@@ -90,7 +90,7 @@
   box-shadow: 4px 5px 10px #00000052;
 }
 
-/*=============== 반응형 NAVIGATION ===============*/
+/*=============== 모바일 반응형 ===============*/
 @media screen and (max-width: 767px){
   .dashboardPage{ 
     display: flex;
