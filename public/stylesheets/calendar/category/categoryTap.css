@@ -151,15 +151,16 @@ ul.tabs li.current {
     cursor: pointer;
 }
 /* scrollbar custom */
-.myScheduleList_class::-webkit-scrollbar {
+.myCategoryList::-webkit-scrollbar {
     width: var(--webkit-scrollbar-width);
   }
-  .myScheduleList_class::-webkit-scrollbar-thumb {
+  .myCategoryList::-webkit-scrollbar-thumb {
     background-color: var(--webkit-scrollbar-thumb-bg);
     border-radius: var(--webkit-scrollbar-thumb-br);
   }
-  .myScheduleList_class::-webkit-scrollbar-track {
+  .myCategoryList::-webkit-scrollbar-track {
     background-color: var(--webkit-scrollbar-track-bg);
     border-radius: var(--webkit-scrollbar-track-br);
     /* box-shadow: inset 0px 0px 5px white; */
   }
+  
