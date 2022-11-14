@@ -83,7 +83,8 @@
 
 .addressCard {
     width: 90%;
-    height: 25%;
+    min-height: 25%;
+    max-height: fit-content;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 10px;

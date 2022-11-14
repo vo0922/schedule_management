@@ -3,7 +3,6 @@
   주요 기능 : [대시보드] - 오늘 일정 drag and drop 기능으로 진행, 완료 상태 편집 UI 설계 및 CSS code 작성
 */
 #todayScheduleList_content {
-  /* background-color: #3d4e56fa; */
   background-color: #fff;
   color: var(--text-color);
   height: 100%;
@@ -37,22 +36,21 @@
 
 .draggable {
   width: 90%;
-  height: 68px;
+  min-height: 68px;
+  max-height: fit-content;
   border: none;
   border-radius: 8px;
   margin: 12px;
   cursor: move;
   font-size: 16px;
   background: #ffffffe6;
-  /* background: #eaeaea4f; */
 }
 
 .scheduleContainer {
-  width: 500px;
+  width: 48%;
   /* height: 33vh; */
   margin: 10px;
   padding: 10px;
-  /* background-color: #f0efe9; */
   border-radius: 8px;
   height: 100%;
 }
@@ -100,6 +98,7 @@
   cursor: pointer;
   font-size: var(--nomal-font-size);
   user-select: none;
+  width: 180px;
 }
 
 /* Hide the browser's default checkbox */
