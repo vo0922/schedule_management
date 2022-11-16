@@ -7,7 +7,7 @@
 </div>
 <div class="myScheduleSearchArea">
     <input id="myScheduleSearch" onkeyup="scheduleSearch(this)" type="text" placeholder="일정 검색">
-    <i class="fa-solid fa-rotate-right" onclick="searchReload()"></i>
+    <i id="searchReload" class="fa-solid fa-rotate-right" onclick="searchReload()"></i>
 </div>
 <div id="myScheduleList" class="myScheduleList_class">
     <% mySchedule.map((data)=>{ %>
