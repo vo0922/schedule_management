@@ -132,9 +132,13 @@ function pieChartDraw(pieChartData) {
                     // 기타 요소를 클릭할경우 기타 일정 불러오는 함수호출
                     if (tagName != '기타') {
                         scheduleCountReq(tagName)
+                        schedulePage = 0;
+                        document.getElementById('scheduleDiv').innerHTML = null;
                         clickChartSchedule(tagName, 'tagSchedule')
                     } else {
                         scheduleCountReq(etcLabels)
+                        schedulePage = 0;
+                        document.getElementById('scheduleDiv').innerHTML = null;
                         clickChartSchedule(etcLabels, 'tagManySchedule')
                     }
                 }
@@ -268,8 +272,7 @@ function tagChartData() {
  * 주요 기능 : 태그이름과 API리소스 값을통해 각태그 및 기타태그 데이터 호출하여 태그들에 매핑되어있는 일정들을 바인딩하는 기능
  */
 function clickChartSchedule(name, address) {
-    schedulePage = 0;
-    const url = `/statistics/${address}/?page=${schedulePage}`
+    const url = `/statistics/${address}`
     $.ajax({
         type: 'post',
         url: url,
@@ -290,7 +293,6 @@ function clickChartSchedule(name, address) {
             } else {
                 scheduleData = res.data.scheduleId;
             }
-            document.getElementById('scheduleDiv').innerHTML = null;
             tagAboutScheduleBind(scheduleData)
         },
         error: function (err) {
@@ -313,7 +315,6 @@ function scheduleCountReq(name) {
         contentType: 'application/json',
         data: JSON.stringify({name: name}),
         success: function (res) {
-            console.log(res.data);
             document.getElementById('scheduleCount').innerText = res.data.toString();
         },
         error: function (err) {

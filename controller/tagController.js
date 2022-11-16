@@ -10,7 +10,7 @@ module.exports = {
      * 함수 설명 : 태그이름으로 매핑되어있는 유저의 일정을 같이 반환 하는 함수
      * 주요 기능 : 태그이름을 조건으로 유저 _id매치로 유저 태그와 일정 반환
      */
-    findNameAndSchedule: async (name, memberId, page) => {
+    findNameAndSchedule: async (name, memberId) => {
         try {
             return await tag.findOne({name: name}).populate({
                 path: 'scheduleId',
@@ -18,7 +18,7 @@ module.exports = {
                 populate: {
                     path: 'tagId',
                 }
-            }).skip(page * 5).limit(5);
+            })
         } catch (e) {
             throw new Error(e);
         }
@@ -28,7 +28,7 @@ module.exports = {
      * 함수 설명 : 여러가지의 태그이름으로 유저 일정을 같이 반환하는 함수
      * 주요 기능 : 태그이름을 포함하는 조건으로 유저 _id매치로 유저 태그와 일정 반환
      */
-    findManyNameAndSchedule: async (names, memberId, page) => {
+    findManyNameAndSchedule: async (names, memberId) => {
         try {
             return await tag.find({name: {$in: names}}).populate({
                 path: 'scheduleId',
@@ -36,7 +36,7 @@ module.exports = {
                 populate: {
                     path: 'tagId',
                 }
-            }).skip(page * 5).limit(5);
+            })
         } catch (e) {
             throw new Error(e);
         }

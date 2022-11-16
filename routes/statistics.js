@@ -35,8 +35,7 @@ router.get('/totalTagSort', async function (req, res) {
  */
 router.post('/tagSchedule', async function (req, res) {
     try {
-        const page = req.query.page;
-        const scheduleData = await tagController.findNameAndSchedule(req.body.name, req.user._id, page)
+        const scheduleData = await tagController.findNameAndSchedule(req.body.name, req.user._id)
         res.status(201).json({data: scheduleData, message: "일정 가져오기 성공"})
     } catch (err) {
         console.log(err)
@@ -51,8 +50,7 @@ router.post('/tagSchedule', async function (req, res) {
  */
 router.post('/tagManySchedule', async function (req, res) {
     try {
-        const page = req.query.page;
-        const scheduleData = await tagController.findManyNameAndSchedule(req.body.name, req.user._id, page)
+        const scheduleData = await tagController.findManyNameAndSchedule(req.body.name, req.user._id)
         res.status(201).json({data: scheduleData, message: "일정 가져오기 성공"})
     } catch (err) {
         console.log(err)
