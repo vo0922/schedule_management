@@ -133,7 +133,7 @@ module.exports = {
             })
 
             await Promise.all(authSchedule.map(async (authScheduleData) => {
-                // 카테고리 작성자와 일정 작성자가 일치하는 데이터를 가져오기 위한 함수
+                    // 카테고리 작성자와 일정 작성자가 일치하는 데이터를 가져오기 위한 함수
                     let shareSchedule = await schedule.find({
                         tagId: {$in: authScheduleData.tagId},
                         memberId: authScheduleData.memberId
@@ -226,10 +226,15 @@ module.exports = {
      * 함수 설명 : 유저 _id를 인자로 받아와 유저의 일정과 매핑되어있는 태그 데이터들을 같이 반환하는 함수
      * 주요 기능 : 유저의 일정 데이터와 태그 데이터들을 반환하는 기능
      */
-    tagAboutSchedule: async (memberId) => {
+    tagAboutSchedule: async (memberId, page) => {
         try {
-            const tagAboutScheduleData = await schedule.find({memberId: memberId}).populate('tagId')
-            return tagAboutScheduleData
+            const tagAboutScheduleData = await schedule.find({memberId: memberId}).populate('tagId').skip(page * 5).limit(5);
+            const scheduleCount = await schedule.find({memberId: memberId}).count();
+            let scheduleData = {
+                schedules: tagAboutScheduleData,
+                count: scheduleCount
+            }
+            return scheduleData
         } catch (e) {
             throw new Error(e)
         }
@@ -243,12 +248,12 @@ module.exports = {
     scheduleProgress: async (scheduleId, progress) => {
         try {
             const scheduleData = await schedule.findOneAndUpdate({_id: scheduleId}, {
-                $set :{
+                $set: {
                     completion: progress
-            }
-        // update된 이후의 데이터를 받아오기 위해서 {new: true}를 적어준다.
-        },{new: true})
-        return scheduleData
+                }
+                // update된 이후의 데이터를 받아오기 위해서 {new: true}를 적어준다.
+            }, {new: true})
+            return scheduleData
 
         } catch (e) {
             throw new Error(e)

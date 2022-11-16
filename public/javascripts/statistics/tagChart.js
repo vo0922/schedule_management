@@ -5,9 +5,9 @@ let totalCount = 0;
  * 함수 설명 : 통계페이지가 랜덩링 될시 전체적으로 바인딩되어야할 함수를 호출 하는 함수
  */
 window.onload = function () {
-    chartBinding()
-    tagChartData()
-    tagAboutSchedule()
+    chartBinding();
+    tagChartData();
+    tagAboutSchedule();
 }
 
 // 기타 태그를 담을 배열변수
@@ -70,7 +70,7 @@ function chartBinding() {
             totalTagCount.push(etcTotalCount)
             count.push(etcCount)
             color.push(defaultColor[6]);
-            
+
             // 가공된 데이터들을 원형차트와 막대차트에 데이터 적용
             let pieChartData = {
                 labels: labels.length ? labels : ["태그가 없습니다."],
@@ -131,8 +131,10 @@ function pieChartDraw(pieChartData) {
                     let tagName = event.chart.data.labels[elements[0].index]
                     // 기타 요소를 클릭할경우 기타 일정 불러오는 함수호출
                     if (tagName != '기타') {
+                        scheduleCountReq(tagName)
                         clickChartSchedule(tagName, 'tagSchedule')
                     } else {
+                        scheduleCountReq(etcLabels)
                         clickChartSchedule(etcLabels, 'tagManySchedule')
                     }
                 }
@@ -153,9 +155,9 @@ function pieChartDraw(pieChartData) {
                             })
                             document.getElementById('legendDiv').innerHTML = divData.join('');
                             chart.data.datasets[0].data.map((data, idx) => {
-                                if(data){
+                                if (data) {
                                     let percent = data / totalCount * 100;
-                                    document.getElementById(`percent${idx}`).innerHTML =` : ${percent.toFixed(1)}%(${data})`
+                                    document.getElementById(`percent${idx}`).innerHTML = ` : ${percent.toFixed(1)}%(${data})`
                                 }
                             })
                         }
@@ -209,46 +211,6 @@ function barChartDraw(barChartData) {
 
 /**
  * 담당자 : 박신욱
- * 함수 설명 : 태그통계 차트에서 차트들에 걸린 이벤트에 의해 실행되어 일정목록으로 데이터를 바인딩 해주는 함수
- * 주요 기능 : 태그이름과 API리소스 값을통해 각태그 및 기타태그 데이터 호출하여 태그들에 매핑되어있는 일정들을 바인딩하는 기능
- */
-function clickChartSchedule(name, address) {
-    const url = `/statistics/${address}`
-    $.ajax({
-        type: 'post',
-        url: url,
-        contentType: 'application/json',
-        data: JSON.stringify({name: name}),
-        success: function (res) {
-            let scheduleData = [];
-            let scheduleCount = 0;
-            if (res.data.length > 1) {
-                res.data.map((data) => {
-                    data.scheduleId.map((schedules) => {
-                        // flag변수를 선언하여 중복된 일정은 제외하고 scheduleData변수에 추가
-                        let flag = scheduleData.find(value => value._id === schedules._id);
-                        if (!flag) {
-                            scheduleData.push(schedules);
-                        }
-                    })
-                })
-                scheduleCount += scheduleData.length;
-            } else {
-                scheduleCount = res.data.scheduleId.length;
-                scheduleData = res.data.scheduleId;
-            }
-            document.getElementById('scheduleCount').innerText = scheduleCount;
-            tagAboutScheduleBind(scheduleData)
-        },
-        error: function (err) {
-            console.log(err);
-            return alert(err.responseJSON.message);
-        }
-    })
-}
-
-/**
- * 담당자 : 박신욱
  * 함수 설명 : 태그통계페이지가 랜더링될 시 태그 순위영역에 데이터 바인딩하는 함수
  * 주요 기능 : 태그 순위 API를 호출후 response받은 객체데이터로 데이터들을 바인딩
  */
@@ -299,6 +261,67 @@ function tagChartData() {
         }
     })
 }
+
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 태그통계 차트에서 차트들에 걸린 이벤트에 의해 실행되어 일정목록으로 데이터를 바인딩 해주는 함수
+ * 주요 기능 : 태그이름과 API리소스 값을통해 각태그 및 기타태그 데이터 호출하여 태그들에 매핑되어있는 일정들을 바인딩하는 기능
+ */
+function clickChartSchedule(name, address) {
+    schedulePage = 0;
+    const url = `/statistics/${address}/?page=${schedulePage}`
+    $.ajax({
+        type: 'post',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify({name: name}),
+        success: function (res) {
+            let scheduleData = [];
+            if (res.data.length > 1) {
+                res.data.map((data) => {
+                    data.scheduleId.map((schedules) => {
+                        // flag변수를 선언하여 중복된 일정은 제외하고 scheduleData변수에 추가
+                        let flag = scheduleData.find(value => value._id === schedules._id);
+                        if (!flag) {
+                            scheduleData.push(schedules);
+                        }
+                    })
+                })
+            } else {
+                scheduleData = res.data.scheduleId;
+            }
+            document.getElementById('scheduleDiv').innerHTML = null;
+            tagAboutScheduleBind(scheduleData)
+        },
+        error: function (err) {
+            console.log(err);
+            return alert(err.responseJSON.message);
+        }
+    })
+}
+
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 태그통계 차트에서 클릭한 차트들의 일정 갯수를 요청하는 함수
+ * 주요 기능 : 태그이름을 인자로 받아 태그들의 일정 갯수를 요청하고 바인딩 하는기능
+ */
+function scheduleCountReq(name) {
+    const url = `/statistics/tagScheduleCount`
+    $.ajax({
+        type: 'post',
+        url: url,
+        contentType: 'application/json',
+        data: JSON.stringify({name: name}),
+        success: function (res) {
+            console.log(res.data);
+            document.getElementById('scheduleCount').innerText = res.data.toString();
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+}
+
 /**
  * 담당자 : 이승현
  * 함수 설명 : 태그 통계 페이지가 렌더링 될시 일정 목록에 바인딩될 데이터를 요청 하는 함수
@@ -307,13 +330,19 @@ function tagChartData() {
 function tagAboutSchedule() {
     $.ajax({
         type: 'get',
-        url: '/statistics/tagAboutSchedule',
+        url: `/statistics/tagAboutSchedule/?page=${schedulePage}`,
         success: function (res) {
-            document.getElementById('scheduleCount').innerText = res.data.length
-            if (res.data.length) {
-                tagAboutScheduleBind(res.data);
+            document.getElementById('scheduleCount').innerText = res.data.count
+            if (res.data.schedules.length) {
+                tagAboutScheduleBind(res.data.schedules);
             } else {
-                document.getElementById('scheduleDiv').innerHTML = noneSchedule;
+                if (!document.querySelectorAll('.scheduleDiv_li').length)
+                    document.getElementById('scheduleDiv').innerHTML = noneSchedule;
+            }
+            if (res.data.length < 5) {
+                observer.disconnect();
+            } else {
+                return lastDocument();
             }
         },
         error: function (err) {
@@ -379,6 +408,48 @@ function tagAboutScheduleBind(data) {
                 </div>`
         )
     })
-    document.getElementById('scheduleDiv').innerHTML = tagUl.join('')
+    document.getElementById('scheduleDiv').innerHTML += tagUl.join('')
 }
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 태그통계에서 일정리스트새로고침 버튼을 클릭했을경우 리로드 시키는 함수
+ * 주요 기능 : 일정목록의 페이지와 내용을 초기화한후 전체일정을 다시 불러오는 기능
+ */
+function tagScheduleReload() {
+    document.getElementById('scheduleDiv').innerHTML = null;
+    schedulePage = 0;
+    tagAboutSchedule();
+}
+
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 태그통계에서 일정리스트의 페이징처리를 위한 함수
+ * 주요 기능 : 일정리스트를 페이지 처리 하기위한 기능
+ */
+let schedulePage = 0;
+
+const options = {
+    // 부모 요소
+    root: document.getElementById('scheduleDiv'),
+    // 부모 요소와 스크롤될 마지막 요소가 50퍼센트가 겹칠경우
+    threshold: 0.5
+}
+
+// 옵저버 선언
+let observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(entry => {
+        // threshold 조건이 맞을 경우
+        if (entry.isIntersecting) {
+            schedulePage++;
+            tagAboutSchedule()
+        }
+    })
+})
+
+// 마지막 요소 선언
+function lastDocument() {
+    let lastScheduleDiv_li = document.querySelectorAll('.scheduleDiv_li');
+    observer.observe(lastScheduleDiv_li[[lastScheduleDiv_li.length - 1]]);
+}
+
 
