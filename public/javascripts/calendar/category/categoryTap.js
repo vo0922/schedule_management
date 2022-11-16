@@ -88,6 +88,11 @@ function scheduleSearch(e) {
     })
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 일정검색영역의 새로고침을 클릭했을경우 실행되는 함수
+ * 주요 기능 : 검색란을 초기화시키고 유저의 일정을 불러오는 기능
+ */
 function searchReload() {
     let scheduleSearchText = document.getElementById('myScheduleSearch');
     scheduleSearchText.value = null;
