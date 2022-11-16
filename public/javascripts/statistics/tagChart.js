@@ -190,8 +190,14 @@ function barChartDraw(barChartData) {
                 if (elements.length > 0) {
                     let tagName = event.chart.data.labels[elements[0].index]
                     if (tagName != '기타') {
+                        scheduleCountReq(tagName)
+                        schedulePage = 0;
+                        document.getElementById('scheduleDiv').innerHTML = null;
                         clickChartSchedule(tagName, 'tagSchedule')
                     } else {
+                        scheduleCountReq(etcLabels)
+                        schedulePage = 0;
+                        document.getElementById('scheduleDiv').innerHTML = null;
                         clickChartSchedule(etcLabels, 'tagManySchedule')
                     }
                 }
