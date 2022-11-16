@@ -14,7 +14,7 @@
         <ul>
             <% shareCategory.map((data, idx)=> { %>
                 <li>
-                    <input type="checkbox" id='node<%= idx %>x'>
+                    <input type="checkbox" id='node<%= idx %>x' checked>
                     <label for='node<%= idx %>x' style="padding-left: 25px;" class="fs_label">
                         <p class="label_text"><%= data.memberId.name %></p>
                     </label>
