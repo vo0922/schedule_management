@@ -127,11 +127,15 @@ ul.tabs li.current {
     font-size: var(--h3-font-size);
 }
 
-#myScheduleList {
+.myScheduleList_class {
     width: 100%;
     /* padding-top: 10px; */
-    overflow: auto;
-    height: 400px;
+    overflow: hidden;
+    height: 350px;
+}
+
+.myScheduleList_class:hover {
+    overflow-y: auto;
 }
 
 .myScheduleList {
@@ -157,15 +161,49 @@ ul.tabs li.current {
 }
 
 /* scrollbar custom */
-.myCategoryList::-webkit-scrollbar {
+.myCategoryList::-webkit-scrollbar, .myScheduleList_class::-webkit-scrollbar {
     width: var(--webkit-scrollbar-width);
-  }
-  .myCategoryList::-webkit-scrollbar-thumb {
+}
+
+.myCategoryList::-webkit-scrollbar-thumb, .myScheduleList_class::-webkit-scrollbar-thumb {
     background-color: var(--webkit-scrollbar-thumb-bg);
     border-radius: var(--webkit-scrollbar-thumb-br);
-  }
-  .myCategoryList::-webkit-scrollbar-track {
+}
+
+.myCategoryList::-webkit-scrollbar-track, .myScheduleList_class::-webkit-scrollbar-track {
     background-color: var(--webkit-scrollbar-track-bg);
     border-radius: var(--webkit-scrollbar-track-br);
     /* box-shadow: inset 0px 0px 5px white; */
-  }
+}
+
+.myScheduleSearchArea > input[type='text'] {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    transition: all 0.2s ease;
+    margin: 5px;
+}
+
+.myScheduleSearchArea > input[type='text']:focus {
+    border-color: #1b5ac2;
+}
+
+.myScheduleSearchArea > input[type='text']:hover {
+    background-color: #eeeeee;
+}
+
+.myScheduleSearchArea {
+    display: flex;
+    align-items: center;
+}
+
+.fa-rotate-right:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

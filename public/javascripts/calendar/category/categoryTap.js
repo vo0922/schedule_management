@@ -57,3 +57,39 @@ function categoryDelete(categoryId, name) {
         }
     })
 }
+
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 나의 일정 탭에서 일정 검색 할때 검색데이터를 가져오는 함수
+ * 주요 기능 : 검색데이터를 통해 일정목록에 데이터 바인딩
+ */
+function scheduleSearch(e) {
+    $.ajax({
+        type: 'post',
+        url: '/calendar/scheduleSearch',
+        contentType: 'application/json',
+        data: JSON.stringify({text: e.value}),
+        success: function (res) {
+            let myScheduleData = [];
+            res.data.map((data) => {
+                myScheduleData.push(
+                    `
+                    <div class="myScheduleList" onclick="scheduleViewModalOpen('${data._id}')">
+                        <p>${data.title.length > 15 ? data.title.substr(0, 15) + '...' : data.title}</p>
+                    </div>
+                    `
+                )
+            })
+            document.getElementById('myScheduleList').innerHTML = myScheduleData.join('');
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+}
+
+function searchReload() {
+    let scheduleSearchText = document.getElementById('myScheduleSearch');
+    scheduleSearchText.value = null;
+    scheduleSearch(scheduleSearchText);
+}

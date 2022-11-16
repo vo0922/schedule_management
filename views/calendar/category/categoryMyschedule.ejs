@@ -5,6 +5,10 @@
 <div class="option_schedule">
     <span class="option_schedule_me">나의 일정</span>
 </div>
+<div class="myScheduleSearchArea">
+    <input id="myScheduleSearch" onkeyup="scheduleSearch(this)" type="text" placeholder="일정 검색">
+    <i class="fa-solid fa-rotate-right" onclick="searchReload()"></i>
+</div>
 <div id="myScheduleList" class="myScheduleList_class">
     <% mySchedule.map((data)=>{ %>
         <div class="myScheduleList" onclick="scheduleViewModalOpen('<%= data._id %>')">

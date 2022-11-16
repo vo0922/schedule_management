@@ -23,6 +23,7 @@ const scheduleSchema = new Schema({
         {
             type: String,
             default: '',
+            index: true
         },
     content:
         {

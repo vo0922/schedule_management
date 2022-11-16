@@ -97,4 +97,18 @@ router.post('/shareSchedule', async function (req, res) {
     }
 })
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 캘린더에 바인딩될 공유된 하나의 카테고리에 관한 일정들을 반환하는 API
+ * 주요 기능 : 카테고리 컨트롤러에서 유저와 공유된 하나의 카테고리에 관한 일정을 반환하는 함수 호출 후 데이터 response
+ */
+router.post('/scheduleSearch', async function (req, res) {
+    try {
+        const data = await scheduleController.myScheduleSearch(req.user._id, req.body.text);
+        res.status(201).json({data: data, message: "일정 검색 성공"});
+    } catch (err) {
+        console.log(err);
+        res.status(401).json({message: "일정 검색 실패"});
+    }
+})
 module.exports = router;
