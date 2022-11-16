@@ -189,6 +189,9 @@ ul.tabs li.current {
     transition: all 0.2s ease;
     margin-top: 6px;
 }
+#searchReload {
+    margin-top: 6px;
+}
 
 .myScheduleSearchArea > input[type='text']:focus {
     border-color: #1b5ac2;
