@@ -60,7 +60,7 @@ router.post('/tagManySchedule', async function (req, res) {
 
 /**
  * 담당자 : 박신욱
- * 함수 설명 : 태그 통계 페이지에서 내가 사용한 태그들의 사용횟수 및 일정을 반환하는 API
+ * 함수 설명 : 태그 통계 페이지에서 내가 사용한 태그들의 사용횟수와 태그들을 반환하는 API
  * 주요 기능 : 일정컨트롤러에서 내가사용한 일정을통해 태그 사용횟수를 데이터를 response 하는 기능
  */
 router.get('/totalTag', async function (req, res) {
