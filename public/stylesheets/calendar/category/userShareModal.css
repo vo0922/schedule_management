@@ -67,3 +67,18 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+/* 스크롤바 커스텀 */
+.user_share_userList_all::-webkit-scrollbar, .myScheduleList_class::-webkit-scrollbar {
+  width: var(--webkit-scrollbar-width);
+}
+
+.user_share_userList_all::-webkit-scrollbar-thumb, .myScheduleList_class::-webkit-scrollbar-thumb {
+  background-color: var(--webkit-scrollbar-thumb-bg);
+  border-radius: var(--webkit-scrollbar-thumb-br);
+}
+
+.user_share_userList_all::-webkit-scrollbar-track, .myScheduleList_class::-webkit-scrollbar-track {
+  background-color: var(--webkit-scrollbar-track-bg);
+  border-radius: var(--webkit-scrollbar-track-br);
+}
