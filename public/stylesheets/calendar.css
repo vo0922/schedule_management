@@ -36,14 +36,15 @@
 }
 #plus_menu {
   position: absolute;
-  left: 5.95rem;
-  top: 10.25rem;
+  left: 9.25%;
+  top: 102.5%;
   background-color: #fff;
-  width: 14rem;
+  max-width: 14rem;
+  width: 100%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 0 7px #5a5a5a;
-  z-index: 11;
+  z-index: 1;
 }
 .plus_menu_schedule, .plus_menu_category {
   display: flex;
@@ -76,7 +77,7 @@
   height: 100%; 
   width: 27.7%;
   position: relative; 
-  z-index: 1;
+  /* z-index: 1; */
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -117,4 +118,5 @@
 .openbtn:hover {
   background-color: #e9e9e9;
   color: #696969;
+  z-index: 1;
 }

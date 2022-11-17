@@ -38,32 +38,32 @@
                 <i class="fa-sharp fa-solid fa-plus"></i>
                 <p class="plusTitle">만들기</p>
                 <i class="fa-sharp fa-solid fa-caret-down"></i>
-            </div>
-            <!-- span tag안에 include된 component가 있어서 스팬에 모달창 컴포넌트가 span의 categoryModalOpen onClick함수를 실행해버림 -->
-            <div id="plus_menu" style="display: none;">
-                <span class="plus_menu" onclick="scheduleModalOpen()">
-                    <div class="plus_menu_schedule">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>일정생성</p>
-                    </div>
-                </span>
-                <span class="plus_menu" onclick="categoryModalOpen()">
-                    <div class="plus_menu_category">
-                        <i class="fa-regular fa-bookmark"></i>
-                        <p>카테고리</p>
-                    </div>
-                </span>
+                <!-- span tag안에 include된 component가 있어서 스팬에 모달창 컴포넌트가 span의 categoryModalOpen onClick함수를 실행해버림 -->
+                <div id="plus_menu" style="display: none;">
+                    <span class="plus_menu" onclick="scheduleModalOpen()">
+                        <div class="plus_menu_schedule">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>일정생성</p>
+                        </div>
+                    </span>
+                    <span class="plus_menu" onclick="categoryModalOpen()">
+                        <div class="plus_menu_category">
+                            <i class="fa-regular fa-bookmark"></i>
+                            <p>카테고리</p>
+                        </div>
+                    </span>
+                </div>
             </div>
         <!--=============== CATEGORY NAVIGATION BAR ===============-->
         <%- include('./calendar/category/categoryTap.ejs') %>
         </div>
     </div>
     <!-- [>>] btn -->
-    <button class="openbtn" id="sidebar_toggle_btn" onclick="sidebarToggle()" style="z-index: 5;">
+    <button class="openbtn" id="sidebar_toggle_btn" onclick="sidebarToggle()" style="z-index: 2;">
         <i id="openbtn_i" class="fa-solid fa-angles-right"></i>
     </button>
     <!--=============== CALENDAL ===============-->
-    <div id="calendar_section2" class="calendar_section">
+    <div id="calendar_section2" class="calendar_section" style="z-index: 0;">
         <div style="width: 100%; min-height: 90%;" id='calendar'></div>
     </div>
 </div>
