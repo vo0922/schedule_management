@@ -44,6 +44,26 @@
                             <i class="fa-solid fa-caret-down" style="font-size: 20px;"></i>
                         </li>
                     </div>
+                    <div class="user" style="display: none;" id="drop-user-content">
+                        <!-- 유저 정보 -->
+                        <div class="user_info_header">
+                            <p>User Profile</p>
+                        </div>
+                        <div class="user_info">
+                            <img class="user_img_deep" src="<%= member.profile %>" alt="user 프로필 사진">
+                            <div class="user_info_text">
+                                <p>이름(별명) : <%= member.name %></p>
+                                <p>이메일 : <%= member.email %> </p>
+                            </div>
+                        </div>
+                        
+                        <!-- 로그아웃 -->
+                        <div class="user_info" onclick="location.href='/logout'">
+                            <i class="fa-sharp fa-solid fa-arrow-right-from-bracket fa-xl"></i>
+                            <p>로그아웃</p>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- 상단 메뉴 사용자 지정 색깔 바꾸기 -->
                 <div class="headerColor">
@@ -75,25 +95,7 @@
         </div>
     </nav>
 </header>
-<div class="user" style="display: none;" id="drop-user-content">
-    <!-- 유저 정보 -->
-    <div class="user_info_header">
-        <p>User Profile</p>
-    </div>
-    <div class="user_info">
-        <img class="user_img_deep" src="<%= member.profile %>" alt="user 프로필 사진">
-        <div class="user_info_text">
-            <p>이름(별명) : <%= member.name %></p>
-            <p>이메일 : <%= member.email %> </p>
-        </div>
-    </div>
-    
-    <!-- 로그아웃 -->
-    <div class="user_info" onclick="location.href='/logout'">
-        <i class="fa-sharp fa-solid fa-arrow-right-from-bracket fa-xl"></i>
-        <p>로그아웃</p>
-    </div>
-</div>
+
 <!-- 팔레트, 사용자가 커스텀하여 헤더 색상 변경 -->
 <div class="color_change" style="display: none;" id="drop-color-content">
     <div class="body_box">

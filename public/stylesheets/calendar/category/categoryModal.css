@@ -135,6 +135,7 @@
   border-radius: 20px;
   width: 55%;
   max-width: 1200px;
+  min-width: 1000px;
   height: auto;
   box-sizing: content-box;
   transition: all .4s;
