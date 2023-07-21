@@ -34,8 +34,10 @@
   #### Step2. 일정 정보 입력
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/d0d8b596-89ec-4f73-a52e-75b46bdda889)
     - Step2-1. 해시태그
+
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/d9f413d2-71a1-4602-a98d-7bb84d5440e1)
     - Step2-2. 지도 옵션
+    
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/67e6f76f-b3e8-464f-8c7b-3d3ddc85d7c6)
 
 ### 캘린더
@@ -49,14 +51,18 @@
   #### Step2. 카테고리 정보 입력
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/281b331a-f518-49ee-b7ec-6fc72a3f5cb7)
     - Step2-1. 사용자 선택
+    
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/b6dfc4e3-689a-42d1-a01a-3ffab520fe0c)
   #### Step3. 카테고리 영역 탭
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/8ac60665-b2ef-4cb1-a37f-e4603e4b7040)
     - Step3-1. 카테고리 영역 - 전체
+    
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/75b3197d-87d8-4572-990b-1124793d5768)
     - Step3-2. 카테고리 영역 - 나의 일정
+    
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/13830998-f1ca-47d4-b672-8f231bc493f1)
     - Step3-3. 카테고리 영역 - 공유 일정
+    
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/dc7018a3-d447-49b3-9f4f-bee88e3a4d67)
 
 ### 태그 통계
@@ -77,9 +83,11 @@
   #### 4. 메모
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/24d1206e-345b-415b-bcb9-2602dc5c508c)
     - 4-1. 메모 상세 모달
+    
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/6ab24eb2-dbed-4587-ba8f-c017d9b037c7)
   #### 5. 오늘 장소 핑
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/7ca18378-26c9-4720-916b-3a2c1437176c)
     - 5-1. 오늘 장소 상세 모달
+    
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/09bb572f-690a-41a8-8b55-fd301aa4cf07)
 
