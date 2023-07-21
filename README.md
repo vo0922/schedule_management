@@ -57,9 +57,14 @@
   - Step3-2. 카테고리 영역 - 나의 일정
     - ![image](https://github.com/vo0922/schedule_management/assets/89440755/13830998-f1ca-47d4-b672-8f231bc493f1)
   - Step3-3. 카테고리 영역 - 공유 일정
-    - ![image](https://github.com/vo0922/schedule_management/assets/89440755/dc7018a3-d447-49b3-9f4f-bee88e3a4d67)
+    - ![image](https://github.com/vo0922/schedule_management/assets/89440755/b1450eed-7482-4a11-bb61-16dfcea6c379)
+
 
 ### 태그 통계
+![image](https://github.com/vo0922/schedule_management/assets/89440755/4f7f1e71-3150-4cdd-96e1-dbeb036ffacc)
+
+![image](https://github.com/vo0922/schedule_management/assets/89440755/c52d1a03-7804-4dbc-b414-8f595616a984)
+
   #### 1. 태그 차트
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/3c05ce33-5ee2-4379-9d2b-345dcf5b3edf)
   #### 2. 일정 목록
@@ -68,18 +73,20 @@
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/2064f855-d378-448d-84e3-b83c297655c6)
 
 ### 대시보드
+![image](https://github.com/vo0922/schedule_management/assets/89440755/2d760fd6-b974-4da5-984c-4b37f6c9dfcc)
   #### 1. 나의 일정 목록
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/2693f1c4-6a49-49c7-ae93-268891515b1d)
   #### 2. 공유받은 일정 목록
-  ![image](https://github.com/vo0922/schedule_management/assets/89440755/a52120c7-d4dc-4550-9695-3a248db881c1)
+  ![image](https://github.com/vo0922/schedule_management/assets/89440755/988bdee4-58f9-4b1d-897c-d8eb7157cc80)
   #### 3. 일정 상세 View 모달창
-  ![image](https://github.com/vo0922/schedule_management/assets/89440755/f1df1678-30e3-44fc-ae52-9a7a824299e4)
+  ![image](https://github.com/vo0922/schedule_management/assets/89440755/e00c1444-e92a-4c2e-8352-85d8beacf32c)
   #### 4. 메모
-  ![image](https://github.com/vo0922/schedule_management/assets/89440755/24d1206e-345b-415b-bcb9-2602dc5c508c)
+  ![image](https://github.com/vo0922/schedule_management/assets/89440755/0d4a815f-f3b1-40c4-94a9-861d2a7a1518)
   - 4-1. 메모 상세 모달
-    - ![image](https://github.com/vo0922/schedule_management/assets/89440755/6ab24eb2-dbed-4587-ba8f-c017d9b037c7)
+    - ![image](https://github.com/vo0922/schedule_management/assets/89440755/4b685e1b-680e-459b-bb30-5017f26c33ce)
   #### 5. 오늘 장소 핑
   ![image](https://github.com/vo0922/schedule_management/assets/89440755/7ca18378-26c9-4720-916b-3a2c1437176c)
   - 5-1. 오늘 장소 상세 모달
-    - ![image](https://github.com/vo0922/schedule_management/assets/89440755/09bb572f-690a-41a8-8b55-fd301aa4cf07)
+    - ![image](https://github.com/vo0922/schedule_management/assets/89440755/90d7a2be-72de-4433-96b2-1904788f98fd)
+
 
